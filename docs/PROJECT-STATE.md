@@ -68,6 +68,20 @@ YES
 
 0.19 — Final Phase 0 closure verification and publish closure state — VERIFIED
 
+## Approved Runtime Baseline
+
+Node.js runtime line:
+24.x LTS
+
+Phase 01 validated Node.js version:
+24.19.0
+
+Eleventy version:
+@11ty/eleventy@3.1.6
+
+Decision record:
+docs/decisions/ADR-006-runtime-version-pinning.md
+
 ## Next Item
 
 UNDEFINED — awaiting Product Manager definition and approval of Phase 1 scope and milestone structure.

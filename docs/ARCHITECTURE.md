@@ -170,13 +170,27 @@ No deployment should be treated as approved until the required audit for that de
 
 The audit protocol is defined in docs/PRE-DEPLOYMENT-AUDIT.md.
 
+## Runtime Versioning
+
+Approved runtime line:
+Node.js 24.x LTS
+
+Phase 01 validated runtime:
+Node.js 24.19.0
+
+Approved Eleventy version:
+@11ty/eleventy@3.1.6
+
+Eleventy v4 prerelease versions are not approved for Phase 01.
+
+Authoritative decision:
+docs/decisions/ADR-006-runtime-version-pinning.md
+
 ## Explicitly Undefined
 
 The following items are not yet approved and must not be assumed:
 
 - Final repository directory structure
-- Node.js version
-- Eleventy version
 - Nunjucks configuration
 - Cloudflare Worker project configuration
 - D1 schema
