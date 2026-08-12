@@ -2,7 +2,7 @@
 
 ## NOW
 
-- Phase 0 — Project Governance & Source of Truth
+- UNDEFINED
 
 ## NEXT
 

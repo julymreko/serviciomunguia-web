@@ -97,6 +97,31 @@ This exception is permitted only when all of the following are true:
 
 For an audit using this exception, "uncommitted working tree" satisfies any requirement for a Git diff, commit, commit range, or Git reference under this protocol.
 
+
+### Post-Baseline Working-Tree Diff Reference
+
+After the initial baseline commit exists, an audit of uncommitted changes may use:
+
+Working-tree diff against validated commit: <commit-hash>
+
+This is a permitted Git reference only when all of the following are true:
+
+- The validated base commit is identified explicitly.
+- The auditor verifies the current branch and working tree.
+- The diff from that commit to the working tree is the exact audit scope.
+
+
+### No-Write Audit Result Recording
+
+When an auditor is explicitly operating under a no-write constraint:
+
+- The auditor returns the complete audit result in its response.
+- The coordinating agent or Product Manager records that response as the next immutable audit-result artifact.
+- The recorded artifact must preserve the auditor's PASS/FAIL decision, blockers, evidence, and required corrections without changing their meaning.
+- The auditor must not modify project files merely to satisfy the audit-result artifact requirement.
+
+Recording the result after the auditor response satisfies the audit-result artifact requirement.
+
 ## Audit Record
 
 Audit record location and naming must follow docs/ARTIFACT-CONVENTIONS.md.
@@ -105,7 +130,7 @@ Each completed audit must record:
 
 - Phase
 - Milestone
-- Commit, commit range, or permitted pre-commit governance working-tree reference
+- Commit, commit range, permitted pre-commit governance working-tree reference, or permitted post-baseline working-tree diff reference
 - Audit result
 - Blocking issues, if any
 - Auditor

@@ -1,4 +1,4 @@
-﻿# PHASE / MILESTONE EXECUTION TEMPLATE
+# PHASE / MILESTONE EXECUTION TEMPLATE
 
 ## Identification
 
@@ -87,3 +87,5 @@ Not generated.
 ## Final Status
 
 NOT STARTED
+
+Use COMPLETED only after all applicable acceptance criteria have been verified.

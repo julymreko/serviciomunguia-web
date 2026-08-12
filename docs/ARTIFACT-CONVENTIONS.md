@@ -92,6 +92,7 @@ Rules:
 - Remediation status must be recorded in the subsequent audit result or relevant phase specification.
 - A later PASS may supersede previous FAIL results for closure purposes.
 - Previous audit results must remain in the repository and must not be deleted.
+When an auditor is explicitly constrained from modifying project files, the coordinating agent or Product Manager must create the immutable audit-result artifact from the auditor response according to docs/PRE-DEPLOYMENT-AUDIT.md.
 
 ## Completion Record
 
@@ -105,3 +106,11 @@ Approved by:
 
 Julián Cely
 Product Manager
+
+## Phase and Milestone Completion Status
+
+The canonical final status for a successfully completed phase or milestone is:
+
+COMPLETED
+
+`COMPLETED` may be assigned only after all applicable acceptance criteria have been verified.

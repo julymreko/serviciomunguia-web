@@ -6,7 +6,6 @@ Phase:
 Milestone:
 From Agent:
 To Agent:
-Status:
 
 ## Required Reading
 
