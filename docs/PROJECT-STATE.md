@@ -22,10 +22,10 @@ new.serviciomunguia.com
 ## Current Phase
 
 Phase:
-0 — Project Governance & Source of Truth
+1 — Foundation
 
 Status:
-COMPLETED
+IN PROGRESS
 
 ## Confirmed Architecture
 
@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-0.19 — Final Phase 0 closure verification and publish closure state — VERIFIED
+M01-00 — Phase Specification & Governance Bootstrap — COMPLETED
 
 ## Approved Runtime Baseline
 
@@ -84,4 +84,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-UNDEFINED — awaiting Product Manager definition and approval of Phase 1 scope and milestone structure.
+M01-01 — Repository Runtime Skeleton
