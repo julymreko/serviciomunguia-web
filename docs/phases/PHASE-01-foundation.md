@@ -117,6 +117,16 @@ No testing area may be omitted.
 
 Only areas marked APPLIES require milestone closure evidence.
 
+### Publication Gate Policy
+
+For self-verified milestones M01-01 through M01-06, technical verification determines whether the milestone may be marked COMPLETED.
+
+Commit, push, HEAD = origin/main verification, and clean working-tree verification are mandatory publication checks performed after the milestone is marked COMPLETED and before execution of the next milestone begins.
+
+A self-verified milestone must not require an additional post-commit documentation commit solely to record its own commit hash.
+
+The next milestone must not begin until the preceding milestone publication gate has passed.
+
 ### Blocking Policy
 
 Every Phase 01 milestone must define explicit PASS criteria and explicit STOP/BLOCKED conditions.
@@ -143,6 +153,9 @@ Status:
 COMPLETED
 
 ### M01-01 - Repository Runtime Skeleton
+
+Status:
+COMPLETED
 
 Purpose:
 Establish a minimal Eleventy project that runs locally and produces a successful static build.

@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-M01-00 — Phase Specification & Governance Bootstrap — COMPLETED
+M01-01 — Repository Runtime Skeleton — COMPLETED
 
 ## Approved Runtime Baseline
 
@@ -84,4 +84,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-01 — Repository Runtime Skeleton
+M01-02 — Nunjucks Layout Foundation
