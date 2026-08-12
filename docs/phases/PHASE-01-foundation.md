@@ -165,6 +165,9 @@ NO
 
 ### M01-02 - Nunjucks Layout Foundation
 
+Status:
+COMPLETED
+
 Purpose:
 Validate reusable Nunjucks layouts and partial composition using synthetic placeholder content only.
 

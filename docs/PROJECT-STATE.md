@@ -66,7 +66,8 @@ YES
 
 ## Current Working Item
 
-M01-01 — Repository Runtime Skeleton — COMPLETED
+M01-02 — Nunjucks Layout Foundation — COMPLETED
+
 
 ## Approved Runtime Baseline
 
@@ -84,4 +85,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-02 — Nunjucks Layout Foundation
+M01-03 — Static Asset Pipeline
