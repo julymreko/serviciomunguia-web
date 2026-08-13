@@ -66,7 +66,8 @@ YES
 
 ## Current Working Item
 
-M01-02 — Nunjucks Layout Foundation — COMPLETED
+M01-03 — Static Asset Pipeline — COMPLETED
+
 
 
 ## Approved Runtime Baseline
@@ -85,4 +86,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-03 — Static Asset Pipeline
+Cloudflare zone readiness check before M01-04; execute M01-03.5 only if required.

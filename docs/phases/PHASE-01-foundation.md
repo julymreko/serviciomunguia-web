@@ -179,6 +179,9 @@ Real Bricks content, final production copy, final design system, production CSS,
 
 ### M01-03 - Static Asset Pipeline
 
+Status:
+COMPLETED
+
 Purpose:
 Establish and verify static CSS, JavaScript, image, and related asset handling.
 
