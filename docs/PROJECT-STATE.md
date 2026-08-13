@@ -86,4 +86,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-Cloudflare zone readiness check before M01-04; execute M01-03.5 only if required.
+M01-04 — Cloudflare Static Deployment Foundation
