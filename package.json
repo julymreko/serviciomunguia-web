@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/julymreko/serviciomunguia-web#readme",
   "devDependencies": {
-    "@11ty/eleventy": "3.1.6"
+    "@11ty/eleventy": "3.1.6",
+    "wrangler": "^4.122.0"
   }
 }

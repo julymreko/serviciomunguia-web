@@ -66,7 +66,8 @@ YES
 
 ## Current Working Item
 
-M01-03 — Static Asset Pipeline — COMPLETED
+M01-04 — Cloudflare Static Deployment Foundation — COMPLETED
+
 
 
 
@@ -86,4 +87,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-04 — Cloudflare Static Deployment Foundation
+M01-05 — SEO HTML Baseline

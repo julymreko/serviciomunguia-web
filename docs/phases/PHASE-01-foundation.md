@@ -203,6 +203,9 @@ NO
 
 ### M01-04 - Cloudflare Static Deployment Foundation
 
+Status:
+COMPLETED
+
 Purpose:
 Deploy the minimal Eleventy static foundation through Cloudflare Workers Static Assets and expose it at https://new.serviciomunguia.com.
 
