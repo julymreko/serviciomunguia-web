@@ -66,7 +66,8 @@ YES
 
 ## Current Working Item
 
-M01-04 — Cloudflare Static Deployment Foundation — COMPLETED
+M01-05 — SEO HTML Baseline — COMPLETED
+
 
 
 
@@ -87,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-05 — SEO HTML Baseline
+M01-06 — Reference-Site Extraction Framework

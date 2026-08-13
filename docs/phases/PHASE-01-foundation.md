@@ -228,6 +228,9 @@ D1, Worker API routes, Turnstile, ZeptoMail, and application secrets.
 
 ### M01-05 - SEO HTML Baseline
 
+Status:
+COMPLETED
+
 Purpose:
 Validate that the minimum SEO-critical metadata and semantic baseline exist directly in generated static HTML without JavaScript dependency.
 
