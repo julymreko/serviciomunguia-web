@@ -237,8 +237,7 @@ Validate that the minimum SEO-critical metadata and semantic baseline exist dire
 Audit gate:
 NO
 
-### M01-06 - Reference-Site Extraction Framework
-
+### M01-06 - Reference-Site Extraction Framework — COMPLETED
 Purpose:
 Create the reusable framework and template that will later be used to extract approved content, responsive behavior, assets, links, and interaction decisions from the Bricks reference site.
 
