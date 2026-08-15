@@ -35,7 +35,7 @@ Header is the first real-world extraction pilot.
 - Phase 01 formal audit result is PASS.
 - Phase 01 closure state is synchronized and published.
 - The approved reference extraction workflow and template exist.
-- staging.serviciomunguia.com must be accessible before M02-01 starts.
+- staging.serviciomunguia.com/inicio-bricks/ must be accessible before M02-01 starts.
 - Undefined product, visual, responsive, content, migration, or architecture decisions require Product Manager approval.
 
 ## Evidence Convention
@@ -138,10 +138,10 @@ STOP / BLOCKED:
 ### M02-01 - Header Reference Extraction
 
 Purpose:
-Validate the Phase 01 extraction framework against the approved Header on staging.serviciomunguia.com.
+Validate the Phase 01 extraction framework against the approved Header on staging.serviciomunguia.com/inicio-bricks/.
 
 Precondition:
-staging.serviciomunguia.com accessibility verified.
+staging.serviciomunguia.com/inicio-bricks/ accessibility verified.
 
 Evidence:
 docs/reference-extraction/HEADER-EXTRACTION.md
@@ -179,7 +179,7 @@ M02-02 cannot begin before that approval.
 
 STOP / BLOCKED:
 
-- staging.serviciomunguia.com inaccessible.
+- staging.serviciomunguia.com/inicio-bricks/ inaccessible.
 - Reconstruction-critical UNKNOWN exists.
 - Required behavior cannot be verified.
 - Required PM decision unresolved.
@@ -334,7 +334,7 @@ STOP / BLOCKED:
 ## Phase 02 Acceptance Criteria
 
 1. Phase 02 specification is approved and published before M02-01.
-2. staging.serviciomunguia.com accessibility is verified before M02-01.
+2. staging.serviciomunguia.com/inicio-bricks/ accessibility is verified before M02-01.
 3. Header is the first real extraction pilot.
 4. Header extraction follows the approved workflow and template.
 5. Responsive and Accessibility are APPLIES in M02-01 through M02-04.
@@ -353,4 +353,4 @@ STOP / BLOCKED:
 
 Complete and publish M02-00.
 
-Do not begin M02-01 until M02-00 is complete and staging.serviciomunguia.com accessibility is verified.
+Do not begin M02-01 until M02-00 is complete and staging.serviciomunguia.com/inicio-bricks/ accessibility is verified.
