@@ -117,6 +117,31 @@ Confirmed major OnePage sections:
 
 Detailed component structure is not yet defined.
 
+## Nunjucks Component Structure
+
+Approved Phase 02 component convention:
+
+src/
+├── index.njk
+├── _includes/
+│   ├── base.njk
+│   └── components/
+│       └── <section-name>.njk
+└── assets/
+
+Rules:
+
+- base.njk remains directly under src/_includes/.
+- OnePage sections live under src/_includes/components/.
+- Component filenames use lowercase kebab-case semantic section names.
+- index.njk composes the OnePage by explicitly including section components in approved order.
+- base.njk remains the reusable HTML shell and does not automatically include Header or Footer.
+- Do not create layouts/, partials/, macros/, atomic-design layers, per-component directories, or barrel/manifests unless a later verified requirement justifies them.
+- Shared fragments or macros should be introduced only when actual reuse exists.
+
+Approval:
+Julián Cely — 2026-08-15
+
 ## Environment Roles
 
 Production:
