@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-M02-02 — Header Reconstruction
+M02-03 — Header Staging Validation
 
 
 
@@ -88,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M02-03 — Header Staging Validation
+M02-04 — Menu Overlay Implementation
