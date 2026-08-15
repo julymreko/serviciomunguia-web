@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-M02-00 — Phase 02 Specification & Governance
+M02-02 — Header Reconstruction
 
 
 
@@ -88,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M02-01 — Header Reference Extraction
+M02-03 — Header Staging Validation
