@@ -122,6 +122,31 @@ A phase closure commit must not be created while any of these artifacts contradi
 The final pre-commit verification must inspect the actual values in every affected authoritative state artifact.
 
 Successful individual edits must not be treated as evidence that the complete closure state is synchronized.
+
+## Canonical Status Rule
+
+Each phase or milestone specification must contain exactly one canonical status field.
+
+The canonical status field is:
+
+Status:
+
+under the `## Identification` section.
+
+No secondary field such as `Final Status`, `Closure Status`, or equivalent may independently represent the current phase or milestone state.
+
+Closure and completion sections may define the conditions required to change `Status` to `COMPLETED`, but must not duplicate the current status value.
+
+Before a phase or milestone is declared closed, the executing agent must verify that the canonical `Status` is synchronized with:
+
+- docs/PROJECT-STATE.md, when applicable;
+- the relevant handoff;
+- audit status and audit references;
+- pending items;
+- Git references.
+
+Any contradiction or stale state is a STOP condition until synchronized.
+
 ## Authority
 
 Approved by:
