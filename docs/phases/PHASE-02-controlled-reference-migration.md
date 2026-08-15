@@ -196,7 +196,7 @@ NO
 Testing:
 
 - Build: APPLIES
-- Functional: APPLIES
+- Functional: APPLIES - limited to the reconstructed Header itself. The menu trigger must exist, remain keyboard reachable, expose the approved accessible attributes, and preserve the observed visual and interaction states that do not require the Menu overlay. Real open/close behavior for `#sm-menu-overlay` is explicitly deferred to M02-04 and is not a FAIL condition for M02-02.
 - Responsive: APPLIES
 - SEO: APPLIES
 - Accessibility: APPLIES
@@ -209,6 +209,8 @@ PASS:
 
 - Build succeeds.
 - Implementation matches approved evidence.
+- The menu trigger exists and preserves the approved structure, accessible attributes, keyboard reachability, focus behavior, default state, and hover behavior that can be validated without the Menu overlay.
+- Real `#sm-menu-overlay` open/close behavior is deferred to M02-04 and does not block M02-02.
 - Responsive and accessibility requirements pass.
 - No unapproved deviation exists.
 - No blocking bug or finding remains.
