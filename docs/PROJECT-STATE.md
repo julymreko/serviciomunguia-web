@@ -22,10 +22,10 @@ new.serviciomunguia.com
 ## Current Phase
 
 Phase:
-1 — Foundation
+2 — Controlled Reference Migration
 
 Status:
-COMPLETED
+IN PROGRESS
 
 ## Confirmed Architecture
 
@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-NONE
+M02-00 — Phase 02 Specification & Governance
 
 
 
@@ -88,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-UNDEFINED — awaiting Product Manager approval of Phase 2 entry point
+M02-01 — Header Reference Extraction
