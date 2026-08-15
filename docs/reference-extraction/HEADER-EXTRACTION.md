@@ -356,4 +356,4 @@ NONE
   APPROVED — Julián Cely — 2026-08-15
 - Notes:
   - Responsive sizing rules have been technically observed.
-  - M02-01 remains open only for the mandatory Product Manager evidence-approval checkpoint.
+  - M02-01 evidence approval checkpoint completed by Julián Cely on 2026-08-15.
