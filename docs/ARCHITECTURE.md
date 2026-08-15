@@ -228,3 +228,38 @@ The following items are not yet approved and must not be assumed:
 - Testing framework
 - Analytics implementation
 - Final component file structure
+
+## CSS Architecture
+
+The production frontend uses plain CSS with no approved preprocessor, utility framework, or CSS bundler.
+
+Canonical production stylesheet:
+
+`src/assets/css/main.css`
+
+Rules:
+
+- A single production CSS file is used for the project.
+- CSS methodology is BEM-lite.
+- The root class of a component uses the same semantic kebab-case name as its Nunjucks component.
+- Component elements use `__`.
+- Component modifiers use `--`.
+- Utility-first naming systems are not part of the approved architecture.
+- Shared design values such as colors, spacing, and typography must use CSS custom properties in `:root` when they are reused.
+- CSS sections inside `main.css` must be separated with clear comments and follow the same logical order as the Nunjucks components.
+- No Sass, Less, PostCSS, Tailwind, Bootstrap, CSS-in-JS, or equivalent CSS processing/framework layer may be introduced without a new approved architectural decision.
+- Per-component production stylesheets are not part of the current architecture.
+- Splitting `main.css` into multiple source files may only be considered when maintainability justifies it and an approved concatenation or bundling strategy exists.
+- The current Eleventy asset pipeline remains passthrough-based; CSS is copied, not transformed.
+
+## Post-Implementation Code Documentation
+
+After project coding is complete, a dedicated documentation task must document every source-code file in the repository.
+
+This documentation must explain the responsibility, structure, dependencies, and relevant implementation decisions of each code file without changing application behavior.
+
+For files that contain multiple logical components or sections, documentation must preserve those boundaries.
+
+In particular, although all production CSS currently lives in `src/assets/css/main.css`, each major CSS section or component block must be documented separately rather than treating `main.css` as one undifferentiated file.
+
+Completion of this documentation task is required before final project technical closure.
