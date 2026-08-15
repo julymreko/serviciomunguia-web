@@ -249,8 +249,7 @@ The extraction template remains unvalidated against a real SERVICIOMUNGUIA.COM s
 
 Real-world validation is deferred to Phase 2 and is not required for M01-06 closure.
 
-### M01-07 - Foundation Integration Check
-
+### M01-07 - Foundation Integration Check — COMPLETED
 Purpose:
 Verify that the complete Phase 01 foundation works as an integrated system and close the phase.
 
@@ -325,6 +324,6 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Final Status
 
-IN PROGRESS
+COMPLETED
 
 Use COMPLETED only after all applicable Phase 01 acceptance criteria and the M01-07 audit gate have been verified.

@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-M01-06 — Reference-Site Extraction Framework — COMPLETED
+NONE
 
 
 
@@ -88,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M01-07 — Foundation Integration Check
+UNDEFINED — awaiting Product Manager approval of Phase 2 entry point
