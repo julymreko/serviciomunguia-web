@@ -102,6 +102,26 @@ Handoffs must reference the last validated Git commit when available.
 
 An agent must not rely on a stale handoff when a newer validated repository state exists.
 
+
+## Phase Closure State Synchronization
+
+Before a phase closure commit may be created, the coordinating agent must verify that all authoritative state artifacts represent the same verified closure state.
+
+At minimum, the following must be synchronized and explicitly verified:
+
+- The active phase specification status is COMPLETED.
+- The active phase specification final status is COMPLETED.
+- docs/PROJECT-STATE.md no longer identifies the completed phase as IN PROGRESS.
+- docs/PROJECT-STATE.md Current Working Item is cleared.
+- docs/PROJECT-STATE.md Next Item reflects only a Product Manager-approved next phase or remains explicitly UNDEFINED.
+- The closing handoff is READY when required.
+- The formal audit result is PASS when the phase requires an audit gate.
+
+A phase closure commit must not be created while any of these artifacts contradict each other.
+
+The final pre-commit verification must inspect the actual values in every affected authoritative state artifact.
+
+Successful individual edits must not be treated as evidence that the complete closure state is synchronized.
 ## Authority
 
 Approved by:

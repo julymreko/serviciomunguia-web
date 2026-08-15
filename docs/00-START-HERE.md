@@ -68,8 +68,12 @@ Authoritative governance documents:
 Artifact locations and naming conventions are defined in:
 
 docs/ARTIFACT-CONVENTIONS.md
-## Current Status
+## Current Project State
 
-Phase: 0 — Project Governance & Source of Truth
+The current verified project phase, status, active working item, and next approved item are defined exclusively in:
 
-Status: COMPLETED
+docs/PROJECT-STATE.md
+
+Do not duplicate current phase or status values in this document.
+
+Agents must read docs/PROJECT-STATE.md before executing project work.
