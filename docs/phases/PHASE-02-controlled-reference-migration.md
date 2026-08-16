@@ -256,6 +256,56 @@ STOP / BLOCKED:
 - Discrepancy requires an undefined PM decision.
 - Required testing remains FAIL, BLOCKED, or NOT RUN.
 
+
+### M02-03A - Hero Shell and Carousel Reconstruction
+
+Purpose:
+Reconstruct the Hero shell, Hero media, Hero content, and carousel behavior using the approved Eleventy/Nunjucks architecture without Bricks dependencies.
+
+Evidence:
+- Approved Hero structure observed from staging.serviciomunguia.com/inicio-bricks/
+- Existing Header reconstruction evidence
+- Approved frontend JavaScript architecture in docs/ARCHITECTURE.md
+
+Audit gate:
+NO
+
+Testing:
+
+- Build: APPLIES
+- Functional: APPLIES
+- Responsive: APPLIES
+- SEO: APPLIES
+- Accessibility: APPLIES
+- Performance: APPLIES
+- Security: APPLIES
+- Integrations: APPLIES when applicable
+- Regression: APPLIES
+
+PASS:
+
+- Hero shell uses project-owned BEM-lite classes with no Bricks classes.
+- Header remains correctly composed inside the Hero shell.
+- Hero media and Hero content are separate Nunjucks components.
+- Hero carousel content exists as static HTML before JavaScript enhancement.
+- Required Hero image assets are self-hosted.
+- Swiper, if used, is self-hosted and limited to the required modules.
+- Carousel JavaScript uses the approved native ESM architecture without an additional bundler.
+- Responsive behavior matches approved reference evidence.
+- Accessibility requirements pass, including a PM decision for autoplay pause/control if required.
+- Build and staging validation pass.
+- No unapproved deviation exists.
+- No blocking bug or finding remains.
+
+STOP / BLOCKED:
+
+- Required Hero evidence is insufficient.
+- A reconstruction-critical UNKNOWN appears.
+- Required assets cannot be verified.
+- An accessibility decision required for carousel behavior remains unresolved.
+- An unapproved dependency or build-system change is required.
+- Required testing cannot complete.
+
 ### M02-04 - Menu and Footer Migration
 
 Purpose:
