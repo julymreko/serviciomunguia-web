@@ -14,37 +14,34 @@
 
 /* ===== Header ===== */
 
-#sm-hero-header {
+.sm-hero__header {
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
   z-index: 1001;
-  padding: clamp(16px, 2vw, 32px) var(--sm-space-inline);
+  padding: clamp(16px, 2vw, 32px) 0;
   pointer-events: none;
 }
 
-#sm-hero-logo {
+.sm-hero__logo {
   display: block;
   width: clamp(150px, 10vw, 200px);
   height: auto;
   flex-shrink: 0;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-#sm-hero-logo img {
+.sm-hero__logo img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
 }
 
-#sm-menu-trigger {
+.sm-hero__menu-trigger {
   width: 52px;
   height: 52px;
   padding: 0;
@@ -55,8 +52,8 @@
   cursor: pointer;
   pointer-events: auto;
 }
-#sm-menu-trigger::before,
-#sm-menu-trigger::after {
+.sm-hero__menu-trigger::before,
+.sm-hero__menu-trigger::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -67,12 +64,12 @@
     background-color 0.3s;
 }
 
-#sm-menu-trigger::before {
+.sm-hero__menu-trigger::before {
   width: 30px;
   transform: translate(-15px, -7px);
 }
 
-#sm-menu-trigger::after {
+.sm-hero__menu-trigger::after {
   width: 22px;
   transform: translate(-11px, 6px);
 }
@@ -80,12 +77,29 @@
 
 @media (max-width: 478px) {
 
-  #sm-hero-header {
+  .sm-hero__header {
     justify-content: space-between;
   }
 
-  #sm-hero-logo {
+  .sm-hero__logo {
     width: clamp(120px, 8vw, 180px);
   }
 
+}
+
+/* ===== Hero Shell ===== */
+
+.sm-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #111a38;
+}
+
+.sm-hero__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 50px);
 }
