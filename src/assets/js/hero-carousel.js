@@ -20,6 +20,17 @@ if (heroCarousel) {
 
     const slides = heroCarousel.querySelector(".sm-hero__slides");
     const pagination = heroCarousel.querySelector(".sm-hero__pagination");
+    const autoplayToggle = heroCarousel.querySelector(".sm-hero__autoplay-toggle");
+    const autoplayIcon = heroCarousel.querySelector(".sm-hero__autoplay-icon");
+    const heroTitle = document.querySelector("#sm-hero-slide-title");
+
+    const slideTitles = [
+      "¿Cómo trabajamos?",
+      "Servicios",
+      "Cobertura",
+      "Marcas",
+      "Contacto"
+    ];
 
     slides?.classList.add("swiper-wrapper");
 
@@ -31,7 +42,7 @@ if (heroCarousel) {
       pagination.classList.add("swiper-pagination");
     }
 
-    new Swiper(heroCarousel, {
+    const swiper = new Swiper(heroCarousel, {
       modules: [Autoplay, Pagination, EffectCoverflow, A11y],
       effect: "coverflow",
       speed: 900,
@@ -78,6 +89,54 @@ if (heroCarousel) {
         }
       }
     });
+
+    const updateTitle = () => {
+      if (!heroTitle) {
+        return;
+      }
+
+      heroTitle.textContent =
+        slideTitles[swiper.realIndex] || slideTitles[0];
+    };
+
+    const setAutoplayState = (paused) => {
+      autoplayToggle?.setAttribute("aria-pressed", String(paused));
+      autoplayToggle?.setAttribute(
+        "aria-label",
+        paused ? "Reanudar carrusel" : "Pausar carrusel"
+      );
+
+      if (autoplayIcon) {
+        autoplayIcon.textContent = paused ? "▶" : "Ⅱ";
+      }
+    };
+
+    autoplayToggle?.addEventListener("click", () => {
+      if (swiper.autoplay.running) {
+        swiper.autoplay.stop();
+        setAutoplayState(true);
+      } else {
+        swiper.autoplay.start();
+        setAutoplayState(false);
+      }
+    });
+
+    swiper.on("slideChange", updateTitle);
+
+    swiper.on("autoplayTimeLeft", (_swiper, timeLeft, percentage) => {
+      if (!autoplayToggle) {
+        return;
+      }
+
+      const progress = Math.max(0, Math.min(1, 1 - percentage));
+      autoplayToggle.style.setProperty(
+        "--sm-autoplay-progress",
+        `${progress * 100}%`
+      );
+    });
+
+    updateTitle();
+    setAutoplayState(false);
   };
 
   const observer = new IntersectionObserver(
