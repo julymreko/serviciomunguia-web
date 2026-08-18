@@ -390,11 +390,87 @@ body {
   }
 }
 
-/* ===== Hero: Mobile Landscape ≤767 ===== */
+/* ===== Hero: Mobile Landscape ===== */
 
-@media (max-width: 767px) and (orientation: landscape) {
+@media (max-width: 991px) and (orientation: landscape) {
+  .sm-hero,
+  .sm-hero__wrapper {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .sm-hero__wrapper {
+    --sm-hero-landscape-edge: 16px;
+    --sm-hero-landscape-logo-size: clamp(150px, 10vw, 200px);
+    --sm-hero-landscape-header-padding: clamp(16px, 2vw, 32px);
+    --sm-hero-landscape-header-height: calc(
+      var(--sm-hero-landscape-logo-size) +
+      var(--sm-hero-landscape-header-padding)
+    );
+
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 100%;
+    align-items: stretch;
+    justify-content: initial;
+  }
+
+  .sm-hero__content {
+    position: absolute;
+    top: calc(
+      var(--sm-hero-landscape-header-height) +
+      (
+        (100svh - var(--sm-hero-landscape-header-height)) / 2
+      )
+    );
+    left: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: flex-start;
+
+    width: 40%;
+    height: auto;
+    margin: 0;
+    padding-inline: var(--sm-space-inline);
+
+    text-align: left;
+    transform: translateY(-50%);
+  }
+
+  .sm-hero__slide-title {
+    width: 100%;
+    font-size: clamp(32px, 4.2vw, 42px);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .sm-hero__heading {
+    width: 100%;
+    text-align: left;
+  }
+
+  .sm-hero__media {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 100%;
+    height: calc(
+      100svh - (var(--sm-hero-landscape-edge) * 2)
+    );
+    margin-block: var(--sm-hero-landscape-edge);
+
+    overflow: visible;
+  }
+
+  #sm-hero-carousel {
+    width: 100%;
+    height: 100%;
+  }
+
   .sm-hero__controls {
-    bottom: 52px;
+    bottom: 20px;
   }
 
   #sm-hero-carousel .swiper-pagination-bullet {
@@ -406,12 +482,7 @@ body {
   #sm-hero-carousel .swiper-pagination-bullet-active {
     width: 38px;
   }
-
-  .sm-hero__content {
-    margin-top: 12px;
-  }
 }
-
 /* ===== Hero: Mobile Portrait ≤478 ===== */
 
 @media (max-width: 478px) {
