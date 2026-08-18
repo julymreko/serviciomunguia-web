@@ -306,6 +306,91 @@ STOP / BLOCKED:
 - An unapproved dependency or build-system change is required.
 - Required testing cannot complete.
 
+
+### M02-03B - Hero Mobile Landscape Two-Column Restructure
+
+Purpose:
+Restructure the Hero exclusively at the Mobile Landscape breakpoint into the approved two-column composition defined in:
+
+- docs/phases/phase-02/M02-03B-hero-mobile-landscape-two-column.md
+
+Authority:
+This milestone is an explicitly approved Product Manager deviation from the validated Bricks reference behavior for Mobile Landscape only.
+
+Implementation:
+- Text column approximately 40% width on the left.
+- Carousel column approximately 60% width on the right.
+- No gutter between columns.
+- Header behavior remains unchanged.
+- Coverflow bleed into the text area is permitted.
+- Coverflow depth may be reduced at this breakpoint to prevent clipping.
+- Legibility treatment must satisfy the milestone acceptance criteria.
+- Desktop, Tablet, and Mobile Portrait geometry must not regress.
+
+Testing:
+- Build: APPLIES
+- Functional: APPLIES
+- Responsive: APPLIES
+- SEO: N/A
+- Accessibility: APPLIES
+- Performance: APPLIES
+- Security: N/A
+- Integrations: N/A
+- Regression: APPLIES
+
+PASS:
+- All acceptance criteria in docs/phases/phase-02/M02-03B-hero-mobile-landscape-two-column.md pass.
+- No blocking finding remains.
+- Validated work is committed and pushed before M02-03C begins.
+
+STOP / BLOCKED:
+- Mobile Landscape breakpoint cannot be confirmed.
+- Required contrast cannot be achieved across all five slides.
+- Header, Desktop, Tablet, or Mobile Portrait regresses.
+- Required testing cannot complete.
+
+### M02-03C - Hero Carousel Signature Interaction
+
+Purpose:
+Add the approved Hero carousel signature interaction layer without changing validated Hero composition, geometry, autoplay timing, pagination styling, or typography.
+
+Dependency:
+M02-03B — Hero Mobile Landscape Two-Column Restructure must complete first for the Mobile Landscape path.
+
+Evidence:
+- docs/phases/phase-02/M02-03C-hero-carousel-signature-interaction.md
+- Stable Hero implementation from M02-03A
+- Completed M02-03B Mobile Landscape geometry
+
+Implementation:
+- Pointer-fine / hover-capable devices receive the approved custom aspa cursor and radial reveal interaction.
+- Touch devices receive the approved static affordance path only.
+- Hero links are scoped to rotating title text only.
+- CSS mask / requestAnimationFrame approach is used; Canvas/WebGL remain out of scope.
+- Mobile Landscape interaction geometry must use the final bounds produced by M02-03B.
+
+Testing:
+- Build: APPLIES
+- Functional: APPLIES
+- Responsive: APPLIES
+- SEO: N/A
+- Accessibility: APPLIES
+- Performance: APPLIES
+- Security: N/A
+- Integrations: N/A
+- Regression: APPLIES
+
+PASS:
+- All acceptance criteria in docs/phases/phase-02/M02-03C-hero-carousel-signature-interaction.md pass.
+- M02-03B dependency is satisfied.
+- No regression exists in Hero geometry, autoplay, pagination, or typography.
+- Validated work is committed and pushed before M02-04 begins.
+
+STOP / BLOCKED:
+- Required aspa asset is unavailable or unapproved.
+- M02-03B is not complete.
+- Interaction causes observable jank or layout regression.
+- Required testing cannot complete.
 ### M02-04 - Menu and Footer Migration
 
 Purpose:
