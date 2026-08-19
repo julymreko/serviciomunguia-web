@@ -16,11 +16,11 @@ Audit Agent: Claude Code
 
 ## Dependency (added at renumbering)
 
-**This milestone depends on M02-03B (Hero Mobile Landscape Two-Column Restructure) completing first, specifically for the Mobile Landscape breakpoint.** M02-03B changes the Hero's layout structure and carousel container geometry at that breakpoint (stacked → two-column, altered column bounds, coverflow depth retuned). The touch/coarse-pointer affordance icon in this milestone (Scope In, mobile path) is positioned relative to the carousel container bounds — those bounds are not final until M02-03B ships for that breakpoint. Desktop/pointer-fine behavior in this milestone has no dependency on M02-03B, since Mobile Landscape is a touch context and receives the static-icon path, not the pointer-tracking path.
+**This milestone depends on M02-03B (Hero Mobile Landscape Two-Column Restructure) completing first, specifically for the Mobile Landscape breakpoint.** M02-03B changes the Hero's layout structure and carousel container geometry at that breakpoint (stacked → two-column, altered column bounds, coverflow depth retuned). The touch/coarse-pointer affordance icon in this milestone (Scope In, mobile path) is positioned relative to the carousel container bounds — those bounds are not final until M02-03B ships for that breakpoint. Desktop/pointer-fine behavior in this milestone has no dependency on M02-03B. Mobile Landscape uses the touch/coarse-pointer autonomous animation path, positioned against the carousel bounds finalized by M02-03B.
 
 ## Objective
 
-Add an optional, brand-reinforcing pointer/touch interaction layer to the Hero carousel, without altering any previously validated Hero composition, geometry, or content. On pointer-capable devices, replace the default cursor with an animated fan-blade ("aspa") icon while inside the carousel bounds, and reveal a sharper version of the underlying slide image within a radius around the pointer, with a fading "foam trail" as the pointer moves and a self-playing idle animation when there is no pointer activity. On touch devices, use the lowest-cost option: a static affordance icon indicating the carousel is draggable, without pointer-following logic. Additionally, scope all Hero carousel links to the rotating title text only, removing link behavior from the photo/slide area so drag and navigation don't conflict.
+Add an optional, brand-reinforcing pointer/touch interaction layer to the Hero carousel, without altering any previously validated Hero composition, geometry, or content. On pointer-capable devices, replace the default cursor with an animated fan-blade ("aspa") icon while inside the carousel bounds, and reveal a sharper version of the underlying slide image within a radius around the pointer, with a fading "foam trail" as the pointer moves and a self-playing idle animation when there is no pointer activity. On touch devices, the aspa runs an autonomous reveal-and-foam animation without following the user's finger or interfering with swipe/scroll. Additionally, scope all Hero carousel links to the rotating title text only, removing link behavior from the photo/slide area so drag and navigation don't conflict.
 
 This milestone is additive interaction design. It does not modify the Hero composition, breakpoint geometry, coverflow configuration, autoplay behavior, or any item already reviewed and approved in the Hero UX/UI review — except where M02-03B has explicitly changed Mobile Landscape geometry, per the dependency above.
 
@@ -30,7 +30,7 @@ This milestone originates from product feedback during review of the Hero UX/UI 
 
 Decisions confirmed in the originating conversation:
 
-- **Mobile/touch path: Option (b) — static affordance icon.** A finger-following "ghost" icon during active drag (Option a) was considered and explicitly rejected as more costly for equivalent or lower UX value on touch devices. The Product Manager selected the least-costly option as most appropriate for mobile UX.
+- **Mobile/touch path: autonomous signature animation.** The original static affordance decision was superseded during implementation by Product Manager approval. On touch/coarse-pointer devices the aspa now moves autonomously within the carousel, accompanied by reveal and foam effects, without following the user's finger or interfering with swipe/scroll.
 - **Technique: CSS mask + JS pointer tracking, not canvas/WebGL.** Chosen to stay consistent with ADR-001 (low conceptual lock-in, minimal client-side complexity) and to avoid introducing a rendering dependency for a decorative effect.
 - **Link scoping: text-only.** All Hero carousel navigation links are scoped to the rotating title text element. The photo/slide area is a pure swipe/drag surface with no link behavior.
 
@@ -50,7 +50,7 @@ Decisions confirmed in the originating conversation:
 - Radial reveal effect: a duller/lower-fidelity version of each slide sits above the sharp version; a CSS `mask-image` radial gradient centered on pointer position (updated via CSS custom properties, `requestAnimationFrame`-throttled) reveals the sharp image within a radius around the pointer
 - Foam-trail behavior: the reveal fades/decays over roughly 600–1000ms as the pointer moves away from a given point, rather than snapping instantly — exact technique (single decaying mask vs. multiple stacked trailing masks) is an implementation decision, not prescribed here
 - Idle state: when there is no pointer activity, the reveal effect animates on its own in a soft, continuous loop, so the section reads as alive without requiring interaction
-- Touch/coarse-pointer devices (including Mobile Landscape): a static, persistent aspa affordance icon signaling the carousel is draggable — no pointer-following logic, no reveal-mask tracking; positioned relative to the carousel container bounds as finalized by M02-03B
+- Touch/coarse-pointer devices (including Mobile Landscape): autonomous aspa movement with reveal and foam effects; no finger-following logic and no interference with native swipe/scroll behavior
 - Link scoping: interactive `<a>`/link behavior exists only on the rotating title text element; the photo/slide container has no link behavior
 - `prefers-reduced-motion: reduce`: disables the custom cursor, the reveal mask animation, and the idle loop entirely; the carousel falls back to its default validated appearance
 - Feature gating via `@media (hover: hover) and (pointer: fine)` so touch devices never execute pointer-tracking code
@@ -99,7 +99,7 @@ A milestone is not complete until every criterion below has been verified with o
 
 - On pointer-fine/hover-capable devices, moving the pointer within the carousel bounds shows the custom aspa cursor and a reveal effect that visibly tracks pointer position with no observable jank; no forced layout reflow attributable to the effect during interaction.
 - When the pointer leaves the carousel, or after a defined period without pointer movement, the effect returns to its idle looping animation.
-- On touch/coarse-pointer devices, no pointer-tracking JavaScript executes; the static aspa affordance icon is visible and correctly positioned against the carousel bounds (including the M02-03B two-column bounds at Mobile Landscape); native browser touch/scroll/cursor behavior is unaffected.
+- On touch/coarse-pointer devices, no finger-following pointer-tracking logic executes; the aspa moves autonomously with reveal and foam effects inside the carousel bounds, including Mobile Landscape, while native touch/scroll/swipe behavior remains unaffected.
 - With `prefers-reduced-motion: reduce` set, the custom cursor, reveal-mask animation, and idle loop are fully disabled; the carousel renders in its default validated appearance with no residual effect artifacts.
 - Clicking or tapping the photo/slide area does not trigger navigation. Only the rotating title text is a clickable/tappable link — confirmed by DOM inspection (link element scoped to the text node only) and by direct interaction test.
 - No regression against previously validated Hero acceptance criteria: coverflow behavior, autoplay timing, pagination appearance/behavior, and breakpoint geometry remain unchanged, except where M02-03B has explicitly changed Mobile Landscape geometry.
@@ -136,14 +136,14 @@ None recorded.
 
 ## Pending Items
 
-- Formal adoption of this document into `docs/phases/phase-02/` by the executing agent.
-- Aspa vector asset delivery.
-- Confirmation that M02-03B has shipped before this milestone's Mobile Landscape path is verified.
+- Formal adoption completed by the executing agent.
+- Aspa vector asset delivered and integrated at `src/assets/images/ui/aspa.svg`.
+- M02-03B completed and Mobile Landscape dependency verified.
 
 ## Handoff
 
-Not generated. This document is a proposal pending formal adoption.
+Not generated. Milestone implementation is active and formally adopted; final handoff will be produced after remaining acceptance checks.
 
 ## Final Status
 
-PROPOSED — NOT STARTED
+IN PROGRESS — IMPLEMENTATION VALIDATED; LINK SCOPING AND FINAL PERFORMANCE/AUDIT CHECKS PENDING
