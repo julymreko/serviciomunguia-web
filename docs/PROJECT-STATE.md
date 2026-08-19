@@ -66,7 +66,7 @@ YES
 
 ## Current Working Item
 
-M02-03C — Hero Carousel Signature Interaction
+M02-04 — Menu and Footer Migration
 
 
 
@@ -88,4 +88,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M02-04 — Menu and Footer Migration
+M02-05 — Phase Gate / Formal Claude Code Audit
