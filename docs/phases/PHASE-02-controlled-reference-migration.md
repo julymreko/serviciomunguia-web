@@ -6,7 +6,7 @@ Phase:
 02 - Controlled Reference Migration
 
 Status:
-NOT STARTED
+IN PROGRESS — M02-04 ACTIVE
 
 Owner:
 Julián Cely
@@ -364,7 +364,7 @@ Evidence:
 
 Implementation:
 - Pointer-fine / hover-capable devices receive the approved custom aspa cursor and radial reveal interaction.
-- Touch devices receive the approved static affordance path only.
+- Touch/coarse-pointer devices receive the approved autonomous aspa movement with reveal and foam effects, without finger-following behavior or interference with native swipe/scroll.
 - Hero links are scoped to rotating title text only.
 - CSS mask / requestAnimationFrame approach is used; Canvas/WebGL remain out of scope.
 - Mobile Landscape interaction geometry must use the final bounds produced by M02-03B.
@@ -488,6 +488,6 @@ STOP / BLOCKED:
 
 ## Required Next Action
 
-Complete and publish M02-00.
+Execute M02-04 — Menu and Footer Migration.
 
-Do not begin M02-01 until M02-00 is complete and staging.serviciomunguia.com/inicio-bricks/ accessibility is verified.
+Menu and Footer remain separate extraction units and each must reach READY FOR RECONSTRUCTION before implementation.
