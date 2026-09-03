@@ -462,7 +462,7 @@ body {
 
 .sm-hero__autoplay-toggle {
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 20px;
   z-index: 32;
   isolation: isolate;
