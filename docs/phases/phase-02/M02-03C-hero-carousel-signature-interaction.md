@@ -126,6 +126,96 @@ A milestone is not complete until every criterion below has been verified with o
 - Source and final format of the aspa vector asset — not yet provided.
 - Confirmation of this milestone's actual placement/numbering within the live `PHASE-02` specification — this document was authored without direct visibility into that file's current state.
 
+## PM-Approved Post-Validation Hero Refinements
+
+The following refinements were approved by the Product Manager after the original M02-03C interaction scope was implemented. They are recorded here as later approved Hero evolution and must not be represented as behavior observed from the Bricks reference.
+
+### Mobile Portrait Composition
+
+State: PM APPROVED
+
+- The active carousel slide begins at the top of the Hero composition with a consistent approximately 12px visual margin at top, left, and right.
+- Header logo and menu trigger remain fixed/overlaid above the carousel with higher stacking order.
+- The rotating editorial title remains a non-heading `div`; the stable service proposition remains the Hero `h1`.
+- The rotating title and Hero `h1` are positioned inside the active slide in Mobile Portrait.
+- The combined text block starts approximately at the beginning of the lower third of the slide.
+- Text is left aligned.
+- Mobile Portrait rotating-title typography was reduced to better accommodate long labels such as "¿Cómo trabajamos?".
+- The `h1` width was increased to approximately 250px so the service proposition normally resolves in two lines rather than three.
+- Pagination is vertical on the right side of the slide.
+- Pagination bullets use increased vertical spacing.
+- The autoplay control is visually separated below the pagination group.
+- Pagination/autoplay alignment was refined toward the right edge while preserving the approved visual axis with the menu trigger.
+- The autonomous aspa/reveal/foam interaction remains intact and was not removed by these layout changes.
+
+### Hero Contact CTAs
+
+State: PM APPROVED
+
+- A dedicated `hero-cta.njk` component was added.
+- The CTA component is rendered inside `#sm-hero-carousel`.
+- Mobile Portrait displays two equal-width CTAs side by side at the bottom of the active slide.
+- WhatsApp is the left CTA.
+- Telephone is the right CTA.
+- Both retain the approved compact glassmorphism treatment.
+- WhatsApp visible primary label: `WhatsApp`.
+- WhatsApp secondary label: `Atención inmediata`.
+- Telephone visible primary label: `Llámanos ahora`.
+- Telephone secondary label: `(56) 4795-7364`.
+- WhatsApp target uses the approved direct `wa.me` service-diagnostic message.
+- Telephone target uses `tel:+525647957364`.
+
+### Tablet Regression Refinement
+
+State: PM APPROVED
+
+- At the 992–1024px Tablet breakpoint, the Hero content block uses `bottom: 82px`.
+- This value supersedes the earlier inherited 24px position and the intermediate 42px test value.
+- Desktop, Mobile Landscape, and Mobile Portrait were revalidated after this adjustment.
+
+### Responsive Regression Result
+
+State: OBSERVED / PM APPROVED
+
+Final visual regression after the Mobile Portrait and CTA work:
+
+- Desktop: PASS
+- Tablet: PASS
+- Mobile Landscape: PASS
+- Mobile Portrait: PASS
+- Bottom mobile navigation remains hidden outside its Mobile Portrait breakpoint.
+- Aspa interaction remains present after the responsive changes.
+
+### Mobile Bottom Navigation Relationship
+
+State: PM APPROVED
+
+A new mobile Bottom Navigation Bar with center FAB was approved during the same refinement cycle. It is not part of the original Hero interaction scope and is owned by M02-04 / mobile navigation architecture.
+
+Approved actions:
+
+- Servicios
+- Cobertura
+- WhatsApp — center FAB
+- Llamar
+- Agendar visita
+
+Approved future section targets:
+
+- `#servicios`
+- `#cobertura`
+- `#agendar-diagnostico`
+
+WhatsApp and telephone remain direct actions.
+
+The approved mobile shell architecture is:
+
+`app-shell → page-scroll → bottom-nav → panel`
+
+with dynamic viewport handling, reserved bottom navigation space, safe-area support, and a centered FAB/notch treatment.
+
+This navigation must be documented separately as a PM-approved Menu deviation/evolution under M02-04 and in the project architecture documentation.
+
 ## Findings
 
 None recorded.

@@ -401,6 +401,23 @@ Evidence:
 - docs/reference-extraction/MENU-EXTRACTION.md
 - docs/reference-extraction/FOOTER-EXTRACTION.md
 
+
+PM-Approved Mobile Navigation Evolution:
+
+- A Mobile Portrait Bottom Navigation Bar with center WhatsApp FAB and notch has already been approved and implemented during the Hero refinement cycle.
+- This behavior is new approved product scope and must not be represented as observed Bricks reference behavior.
+- Approved mobile actions:
+  - Servicios → `#servicios`
+  - Cobertura → `#cobertura`
+  - WhatsApp → approved direct `wa.me` action
+  - Llamar → `tel:+525647957364`
+  - Agendar visita → `#agendar-diagnostico`
+- The mobile shell architecture is `app-shell → page-scroll → bottom-nav → panel`.
+- The Bottom Navigation Bar is currently Mobile Portrait only and remains hidden on Desktop, Tablet, and Mobile Landscape.
+- The center FAB is emphasized visually but does not represent an active navigation state.
+- Section-aware active navigation is explicitly deferred to later work.
+- `MENU-EXTRACTION.md` must record this as a PM APPROVED deviation/evolution, separate from OBSERVED reference menu evidence.
+
 Audit gate:
 NO
 

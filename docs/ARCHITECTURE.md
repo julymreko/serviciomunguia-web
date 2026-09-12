@@ -252,6 +252,99 @@ Rules:
 - Splitting `main.css` into multiple source files may only be considered when maintainability justifies it and an approved concatenation or bundling strategy exists.
 - The current Eleventy asset pipeline remains passthrough-based; CSS is copied, not transformed.
 
+## Mobile App Shell and Bottom Navigation Architecture
+
+Approved mobile navigation pattern:
+
+**Bottom Navigation Bar + Center FAB + Notch**
+
+This is the approved architectural pattern for the SERVICIOMUNGUIA.COM Mobile Portrait experience.
+
+### Shell Structure
+
+Approved hierarchy:
+
+`app-shell → page-scroll → bottom-nav → panel`
+
+Current implementation:
+
+- `.sm-app-shell`
+- `.sm-page-scroll`
+- `.sm-bottom-nav`
+- `.sm-mobile-nav__panel`
+
+Rules:
+
+- The mobile application shell uses `min-height: 100dvh`.
+- The shell owns the Mobile Portrait viewport experience.
+- The shell and fixed bottom navigation share the same width boundary.
+- The bottom navigation is fixed independently from scrollable page content.
+- The scrollable page reserves sufficient bottom space so content is not obscured by the navigation.
+- `env(safe-area-inset-bottom)` must be respected for mobile browser and device safe areas.
+- The bottom navigation outer chrome and its visual panel remain separate structural layers.
+- The fixed navigation is horizontally centered against the application shell rather than positioned independently against arbitrary viewport offsets.
+
+### Bottom Navigation Bar
+
+State: PM APPROVED
+
+Mobile Portrait actions:
+
+1. Servicios
+2. Cobertura
+3. WhatsApp
+4. Llamar
+5. Agendar visita
+
+Approved future section targets:
+
+- Servicios → `#servicios`
+- Cobertura → `#cobertura`
+- Agendar visita → `#agendar-diagnostico`
+
+Direct actions:
+
+- WhatsApp uses the approved `wa.me` service-diagnostic link.
+- Llamar uses `tel:+525647957364`.
+
+The navigation is currently intended for Mobile Portrait and must remain hidden at Desktop, Tablet, and Mobile Landscape breakpoints unless a later PM-approved decision changes that behavior.
+
+### Center FAB
+
+WhatsApp is the center Floating Action Button (FAB).
+
+Rules:
+
+- The FAB is part of the Bottom Navigation Bar structure; it is not an unrelated floating control.
+- The FAB is visually elevated through a centered notch in the navigation panel.
+- The FAB's central placement provides emphasis without representing an active or selected navigation state.
+- The `WhatsApp` label uses the same navigation-label visual treatment as the other actions.
+- The notch and FAB share the same geometric center.
+- The spacing between FAB and notch should remain visually uniform around the circular control.
+
+### Dynamic Mobile Viewport
+
+The mobile shell uses dynamic viewport units so the layout responds correctly to browser chrome changes, including Safari's expanding and collapsing browser controls.
+
+The combination of:
+
+- `100dvh`
+- shared shell width
+- reserved bottom content space
+- fixed navigation chrome
+- safe-area handling
+
+is the approved approach for stable Mobile Portrait behavior.
+
+### Active Navigation State
+
+Section-aware active navigation is planned but not yet implemented.
+
+When implemented, active state must represent the section currently visible in the OnePage and must not use the center FAB's visual emphasis as a substitute for navigation state.
+
+Approval:
+Julián Cely — 2026-09-12
+
 ## Post-Implementation Code Documentation
 
 After project coding is complete, a dedicated documentation task must document every source-code file in the repository.

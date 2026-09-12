@@ -653,6 +653,10 @@ body {
     );
     left: 0;
   }
+
+  .sm-hero__content {
+    bottom: 82px;
+  }
 }
 
 /* ===== Hero: ≤991 ===== */
@@ -933,6 +937,7 @@ body {
     line-height: 1.1;
   }
 }
+@media (max-width: 478px) {
   #sm-hero-carousel {
     width: calc(100% - 24px);
     max-width: none;
