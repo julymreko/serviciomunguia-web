@@ -259,6 +259,13 @@
 - Approval reference: Product Manager approval recorded in `docs/ARCHITECTURE.md`.
 - Reason / context: Visual emphasis and navigation state are separate concerns.
 - State: PM APPROVED
+
+### Primary link weight refinement
+- State: PM APPROVED
+- Observed reference behavior: Primary navigation links use `font-weight: 600`.
+- Approved reconstruction behavior: Primary navigation links use `font-weight: 400` by default and `font-weight: 600` on `:hover` and `:focus-visible`.
+- Reason: PM-approved visual refinement to reduce default visual weight while preserving stronger emphasis during interaction.
+- Fidelity impact: Typography refinement only; layout, link geometry, responsive sizing, motion, and navigation behavior remain unchanged.
 ## 17. Evidence References
 - Reference URL: https://staging.serviciomunguia.com/inicio-bricks/
 - Screenshots: Desktop open-menu overlay screenshot supplied by Product Manager.

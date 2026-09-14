@@ -309,6 +309,35 @@ Direct actions:
 
 The navigation is currently intended for Mobile Portrait and must remain hidden at Desktop, Tablet, and Mobile Landscape breakpoints unless a later PM-approved decision changes that behavior.
 
+When the full-screen Menu overlay is open in Mobile Portrait, it must cover the Bottom Navigation Bar. The Bottom Navigation must not remain visually or interactively above the open Menu overlay.
+
+PM-approved Menu stacking adaptation:
+
+- Bottom Navigation: z-index: 1200
+- Menu overlay: z-index: 1300
+- Header menu trigger: z-index: 1301
+
+This preserves the observed reference relationship overlay < trigger while allowing the reconstructed Menu overlay to cover the PM-approved Mobile Portrait Bottom Navigation. This is a technical integration adaptation and does not redefine the Menu's visual design.
+
+PM-approved Menu accessibility improvements:
+
+- Closed trigger accessible name: `aria-label="Abrir menú de navegación"`
+- Open trigger accessible name: `aria-label="Cerrar menú de navegación"`
+- While the Menu overlay is open, keyboard focus must be trapped completely inside the Menu in both forward and reverse tab order.
+- `Escape` closes the Menu.
+- Closing the Menu returns focus to `#sm-menu-trigger`.
+
+These are accessibility corrections to documented reference defects and do not alter the Menu's approved visual reconstruction.
+
+
+PM-approved Menu typography refinement:
+
+- Primary Menu overlay links use `font-weight: 400` in their default state.
+- On `:hover`, primary Menu overlay links use `font-weight: 600`.
+- For keyboard interaction parity, `:focus-visible` uses the same emphasized `font-weight: 600` treatment.
+- This intentionally differs from the extracted Bricks reference, where the primary navigation links were observed at `font-weight: 600` by default.
+
+This is a PM-approved visual refinement and does not redefine the Menu's layout, responsive behavior, content hierarchy, or interaction geometry.
 ### Center FAB
 
 WhatsApp is the center Floating Action Button (FAB).
