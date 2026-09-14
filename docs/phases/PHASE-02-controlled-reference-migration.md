@@ -6,7 +6,7 @@ Phase:
 02 - Controlled Reference Migration
 
 Status:
-IN PROGRESS — M02-04 ACTIVE
+IN PROGRESS — M02-05 ACTIVE
 
 Owner:
 Julián Cely
@@ -25,7 +25,6 @@ Approved migration order:
 
 1. Header
 2. Menu
-3. Footer
 
 Header is the first real-world extraction pilot.
 
@@ -44,7 +43,6 @@ Extraction artifacts:
 
 - docs/reference-extraction/HEADER-EXTRACTION.md
 - docs/reference-extraction/MENU-EXTRACTION.md
-- docs/reference-extraction/FOOTER-EXTRACTION.md
 
 Each extraction must follow:
 
@@ -391,15 +389,17 @@ STOP / BLOCKED:
 - M02-03B is not complete.
 - Interaction causes observable jank or layout regression.
 - Required testing cannot complete.
-### M02-04 - Menu and Footer Migration
+### M02-04 - Menu Migration
+
+Status:
+COMPLETE
 
 Purpose:
-Repeat the validated migration workflow for Menu and Footer while keeping both as separate extraction units.
+Repeat the validated migration workflow for the Menu. Footer has been removed from Phase 2 scope by PM decision and deferred until the main page is completed.
 
 Evidence:
 
 - docs/reference-extraction/MENU-EXTRACTION.md
-- docs/reference-extraction/FOOTER-EXTRACTION.md
 
 
 PM-Approved Mobile Navigation Evolution:
@@ -435,7 +435,7 @@ Testing:
 
 PASS:
 
-- Menu and Footer each reach READY FOR RECONSTRUCTION.
+- Menu reaches READY FOR RECONSTRUCTION.
 - Required PM approvals are recorded.
 - Implementations match approved evidence.
 - Required tests pass.
@@ -470,7 +470,7 @@ Testing:
 
 PASS:
 
-- Header, Menu, and Footer evidence is complete.
+- Header and Menu evidence is complete.
 - Required tests pass.
 - No blocking bug or finding remains.
 - Claude Code audit result is PASS.
@@ -496,7 +496,7 @@ STOP / BLOCKED:
 7. M02-02 cannot begin before M02-01 closes.
 8. Reconstruction-critical UNKNOWN values block reconstruction.
 9. M02-03 discrepancies remain internal iterations and are recorded in FINDINGS.md when relevant.
-10. Menu and Footer remain separate extraction units.
+10. Footer is OUT OF PHASE 2 SCOPE by PM decision and deferred until the main page is completed.
 11. M02-05 is the sole planned formal Claude Code audit gate.
 12. Every milestone classifies all nine testing areas.
 13. Every milestone defines PASS and STOP/BLOCKED criteria.
@@ -505,6 +505,6 @@ STOP / BLOCKED:
 
 ## Required Next Action
 
-Execute M02-04 — Menu and Footer Migration.
+Execute M02-05 — Phase 02 Workflow Gate.
 
-Menu and Footer remain separate extraction units and each must reach READY FOR RECONSTRUCTION before implementation.
+M02-04 Menu Migration is complete. Footer remains deferred outside Phase 2 and will be implemented as the final global component after the main page is completed.

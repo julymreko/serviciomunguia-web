@@ -66,12 +66,11 @@ YES
 
 ## Current Working Item
 
-M02-04 — Menu and Footer Migration
+M02-05 — Phase 02 Workflow Gate / Formal Claude Code Audit
 
+M02-04 Menu Migration: COMPLETE — reconstructed, validated locally, deployed to `new.serviciomunguia.com`, and validated across Desktop, Tablet, Mobile Landscape, and Mobile Portrait.
 
-
-
-
+Footer: OUT OF PHASE 2 SCOPE — PM decision. It will be implemented as the final global component after the main page is completed.
 ## Approved Runtime Baseline
 
 Node.js runtime line:
@@ -88,4 +87,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M02-05 — Phase Gate / Formal Claude Code Audit
+M02-05 — Execute the sole formal Phase 02 Claude Code audit gate.
