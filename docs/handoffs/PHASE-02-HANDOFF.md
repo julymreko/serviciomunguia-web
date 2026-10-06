@@ -195,7 +195,12 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 - Formal closure remains pending re-audit PASS.
 
 F-11:
-PENDING remediation or explicit disposition.
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
+
+- `docs/tracking/FINDINGS.md` now backfills Phase 02 R01 findings F-01 through F-11.
+- Each entry records source finding, severity, impact, required action, published remediation/disposition, and formal closure state.
+- Findings remain OPEN until the formal M02-05 re-audit returns PASS.
+- Formal closure remains pending re-audit PASS.
 
 F-12:
 INFO — no M02-05 action required.
