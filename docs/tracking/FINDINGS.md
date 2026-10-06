@@ -600,3 +600,287 @@ docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
 UNDEFINED — formal closure pending re-audit PASS
+
+
+
+### FIND-012
+
+ID:
+FIND-012
+
+Status:
+OPEN
+
+Severity:
+MEDIUM
+
+Source Audit Finding:
+F-13 — Menu breakpoint boundaries leave uncovered sub-pixel gaps
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+Adjacent integer breakpoint ranges leave uncovered fractional-width gaps where no Menu refinement rule matches.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+At fractional CSS viewport widths around 478.5, 991.5, and 1024.5, the base desktop Menu grid can render and push contact content far outside the viewport.
+
+Related Test IDs:
+NONE
+
+Required Action:
+Close the breakpoint gaps and re-verify at 478.5, 991.5, and 1024.5.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
+
+### FIND-013
+
+ID:
+FIND-013
+
+Status:
+OPEN
+
+Severity:
+MEDIUM
+
+Source Audit Finding:
+F-14 — Mobile Portrait shell uses 100vw, misaligning the fixed bottom navigation
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+The Mobile Portrait shell and fixed bottom navigation use `100vw`, causing horizontal overflow and nav/shell misalignment when classic scrollbars are present.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+At ≤478px with classic scrollbars, the document can overflow horizontally and the fixed Bottom Navigation can shift relative to the shell.
+
+Related Test IDs:
+NONE
+
+Required Action:
+Use a scrollbar-safe shell/nav width strategy and re-verify 390×844 and 360×640 with and without classic scrollbars.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
+
+### FIND-014
+
+ID:
+FIND-014
+
+Status:
+OPEN
+
+Severity:
+LOW
+
+Source Audit Finding:
+F-15 — Audit request references a file removed by F-09 remediation
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+The active Phase 02 audit request still references `mobile-sticky-nav.njk` instead of canonical `mobile-nav.njk`.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+A future auditor could be directed to a non-existent file.
+
+Related Test IDs:
+NONE
+
+Required Action:
+Update the active audit-request inspection path to `src/_includes/components/mobile-nav.njk`.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
+
+### FIND-015
+
+ID:
+FIND-015
+
+Status:
+OPEN
+
+Severity:
+LOW
+
+Source Audit Finding:
+F-16 — M02-03C acceptance criterion not satisfied as written: no Hero title link exists
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+M02-03C states that the rotating Hero title is a link, but the current DOM contains no title anchor and the target sections do not yet exist.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+A COMPLETED milestone records a criterion as verified that the current implementation does not satisfy.
+
+Related Test IDs:
+NONE
+
+Required Action:
+PM disposition required: defer title linking until target sections exist, or schedule implementation in the phase that creates those targets.
+
+Resolution:
+UNDEFINED — PM decision required
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
+
+### FIND-016
+
+ID:
+FIND-016
+
+Status:
+OPEN
+
+Severity:
+LOW
+
+Source Audit Finding:
+F-17 — Milestone completion status uses non-canonical vocabulary
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+M02-04 is recorded as `COMPLETE` in two authoritative documents while the canonical completion vocabulary is `COMPLETED`.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+Vocabulary drift can cause textual or automated status checks to miss the completed milestone.
+
+Related Test IDs:
+NONE
+
+Required Action:
+Normalize the two M02-04 status references to `COMPLETED`.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
+
+### FIND-017
+
+ID:
+FIND-017
+
+Status:
+OPEN
+
+Severity:
+LOW
+
+Source Audit Finding:
+F-18 — Hero slide alt text does not describe its image or its own slide label
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+At least two Hero slide alt strings are semantically offset from the depicted image and the corresponding rotating label.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Impact:
+Screen-reader descriptions and image-search relevance are weakened.
+
+Related Test IDs:
+NONE
+
+Required Action:
+PM decision required on the canonical alt-text convention, followed by alignment of all five Hero slide alt values.
+
+Resolution:
+UNDEFINED — PM decision required
+
+Verified By:
+Claude Code — R02
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
+Closed Date:
+UNDEFINED
