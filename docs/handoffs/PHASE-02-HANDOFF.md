@@ -30,7 +30,7 @@ M02-05 R01 — FAIL — 2026-09-15
 
 Phase 02 is IN PROGRESS.
 
-M02-04 — Menu Migration is COMPLETE.
+M02-04 — Menu Migration is COMPLETED.
 
 M02-05 — Phase 02 Workflow Gate is ACTIVE.
 
@@ -233,7 +233,38 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 F-12:
 INFO — no M02-05 action required.
 
-## Remediation Verification — 2026-10-05
+
+## R02 Remediation Update — 2026-10-06
+
+F-02 — REMEDIATED AND LOCALLY VERIFIED; formal closure pending R03.
+- Intermediate Menu rule now reduces the contact link to 18px / 24.3px.
+- Required widths 1025, 1040, 1080, 1120, 1152, 1200, 1280, and 1310 were manually verified without horizontal overflow or contact clipping.
+
+F-13 — PM DISPOSITION: NON-BLOCKING.
+- PM explicitly waived further pursuit of the fractional breakpoint-gap finding.
+- CSS upper bounds were nevertheless widened to .98px, covering the previously identified fractional intervals.
+
+F-14 — REMEDIATED AND LOCALLY VERIFIED; formal closure pending R03.
+- Mobile Portrait shell and Bottom Navigation use min(100%, 478px).
+- Bottom Navigation is centered with left/right 0 and auto inline margins.
+- 390x844 and 360x640 passed with no horizontal overflow or visible shell/nav misalignment.
+
+F-15 — REMEDIATED; formal closure pending R03.
+- Audit request now references src/_includes/components/mobile-nav.njk.
+
+F-16 — PM DISPOSITION: DEFER.
+- Rotating Hero title remains non-link text until destination sections exist.
+- M02-03C was updated to remove the contradictory implemented-link requirement.
+
+F-17 — REMEDIATED; formal closure pending R03.
+- M02-04 status vocabulary is normalized to COMPLETED in the Phase 02 master and PROJECT-STATE.
+
+F-18 — PM DECISION: DESCRIPTIVE; REMEDIATED; formal closure pending R03.
+- All five Hero image alt values now briefly describe the actual photographic content using visual evidence supplied by the PM.
+
+## Pre-R02 Remediation Verification — 2026-10-05
+
+Historical note: this section predates R02 and is superseded where R02 later reproduced F-02.
 
 Verification baseline:
 `471d0e0d1c9977426745c367c0013edadebe49ff`
@@ -342,18 +373,15 @@ Do not fail Phase 02 because Footer extraction or implementation is absent or in
 
 ## Required Next Action
 
-Continue M02-05 remediation after R02.
+R02 remediation and PM dispositions are published.
 
 Before R03:
-
-1. Resolve F-02 and verify the failing 1025–1310px band at the widths required by R02.
-2. Resolve or formally disposition F-13 and F-14.
-3. Resolve or formally disposition F-15 through F-18; F-16 and F-18 require PM decisions.
-4. Record F-13 through F-18 in `docs/tracking/FINDINGS.md`.
-5. Re-run required verification.
-6. Commit/publish remediation, synchronize local and GitHub, and confirm a clean working tree.
-7. Re-run the formal Claude Code M02-05 audit as R03.
+1. Pull latest main locally.
+2. Run the standard build.
+3. Confirm local and origin/main are synchronized and the working tree is clean.
+4. Run the formal M02-05 R03 audit against that exact SHA.
+5. Preserve the R03 result as a new immutable audit artifact.
 
 ## Handoff Status
 
-NOT READY FOR PHASE CLOSURE — M02-05 R02 REMEDIATION ACTIVE
+READY FOR FORMAL R03 RE-AUDIT — NOT YET AUTHORIZED FOR PHASE CLOSURE
