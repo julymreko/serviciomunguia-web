@@ -186,7 +186,15 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 - Existing `sm-mobile-nav` / `sm-bottom-nav` classes were preserved; no CSS behavior was changed.
 - Formal closure remains pending re-audit PASS.
 
-F-10 through F-11:
+F-10:
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
+
+- PM approved `#cobertura` as the canonical Coverage anchor.
+- Menu overlay and Mobile Navigation now both target `#cobertura`.
+- `MENU-EXTRACTION.md` preserves `#zonas-de-cobertura` as observed historical reference evidence while documenting `#cobertura` as the canonical reconstruction target.
+- Formal closure remains pending re-audit PASS.
+
+F-11:
 PENDING remediation or explicit disposition.
 
 F-12:
