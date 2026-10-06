@@ -638,7 +638,7 @@ Required Action:
 Close the breakpoint gaps and re-verify at 478.5, 991.5, and 1024.5.
 
 Resolution:
-PM disposition: this finding must not block Phase 02 progression. The breakpoint upper bounds were nevertheless widened to `.98px` on `main`, eliminating the uncovered fractional intervals in the CSS ranges. Exact fractional-width manual verification is not required by PM; no further remediation effort is authorized for this finding.
+PM disposition: this finding must not block Phase 02 progression. Several breakpoint upper bounds were widened to `.98px`, but R03 confirmed that fractional Menu gaps still remain at `(1024, 1025)` in any orientation and `(991, 992)` in landscape. The PM explicitly waived further pursuit of those sub-pixel gaps; no additional remediation is authorized or required for Phase 02.
 
 Verified By:
 Julián Cely — Product Manager disposition; implementation by OpenAI GPT-5.6 Sol
@@ -825,7 +825,7 @@ Required Action:
 Normalize the two M02-04 status references to `COMPLETED`.
 
 Resolution:
-Remediation is published on `main`. M02-04 status references in the Phase 02 master and PROJECT-STATE now use canonical `COMPLETED` vocabulary.
+R03 found one remaining canonical `COMPLETE` value in the M02-04 Status field. That field has now been corrected to `COMPLETED`; the Phase 02 master and PROJECT-STATE are aligned on canonical completion vocabulary.
 
 Verified By:
 OpenAI GPT-5.6 Sol
@@ -872,7 +872,7 @@ Required Action:
 PM decision required on the canonical alt-text convention, followed by alignment of all five Hero slide alt values.
 
 Resolution:
-PM approved the DESCRIPTIVE alt-text convention. All five Hero slide `alt` values were rewritten from visual evidence to briefly describe the actual photographic content rather than mirror rotating labels.
+PM approved the DESCRIPTIVE alt-text convention. R03 found that the five accurate descriptions had been assigned one slide out of position. The existing descriptions have now been rotated to the correct source images without introducing new copy.
 
 Verified By:
 Julián Cely — Product Manager decision; implementation by OpenAI GPT-5.6 Sol
@@ -883,3 +883,51 @@ docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
 UNDEFINED — formal closure pending R03 re-audit
+
+### FIND-018
+
+ID:
+FIND-018
+
+Status:
+OPEN
+
+Severity:
+LOW
+
+Source Audit Finding:
+F-19 — FINDINGS.md resolution statements overstate completeness
+
+Phase:
+02 — Controlled Reference Migration
+
+Milestone:
+M02-05 — Phase 02 Workflow Gate
+
+Finding:
+Three resolution narratives in FINDINGS.md overstated the state verified in the repository at the R03 baseline.
+
+Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-06-R03.md
+
+Impact:
+The canonical remediation tracker could cause later agents to infer that incomplete or misapplied remediation had already been verified.
+
+Related Test IDs:
+NONE
+
+Required Action:
+Correct FIND-012, FIND-016, and FIND-017 so their resolution text matches the actual repository state and PM dispositions.
+
+Resolution:
+The three resolution narratives were corrected after R03. FIND-012 now accurately records the remaining fractional Menu gaps and PM waiver; FIND-016 records the final canonical M02-04 status correction; FIND-017 records the alt-text reassignment identified by direct image inspection.
+
+Verified By:
+OpenAI GPT-5.6 Sol, using the immutable R03 evidence
+
+Verification Evidence:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-06-R03.md
+docs/tracking/FINDINGS.md
+
+Closed Date:
+UNDEFINED — to be synchronized during formal Phase 02 closure
