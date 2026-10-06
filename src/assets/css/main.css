@@ -1456,6 +1456,11 @@ body {
     column-gap: clamp(48px, 7vw, 96px);
     padding-inline: clamp(32px, 4vw, 50px);
   }
+
+  .sm-menu-overlay__contact-link {
+    font-size: 18px;
+    line-height: 24.3px;
+  }
 }
 
 /* ===== Menu Overlay: Portrait Tablet ===== */
