@@ -249,6 +249,7 @@
 ### Deviation 3 — Future section targets
 - Observed reference behavior: Reference href targets remain UNKNOWN.
 - PM-approved behavior: `Servicios` → `#servicios`; `Cobertura` → `#cobertura`; `Agendar visita` → `#agendar-diagnostico`; WhatsApp and telephone remain direct actions.
+- PM-approved canonical implementation anchor: `#cobertura` is the single final target for Coverage navigation across the reconstructed site. The observed reference Menu target `#zonas-de-cobertura` remains documented above as historical reference evidence and is not the canonical reconstruction target.
 - Approval reference: Product Manager approval recorded in Phase 02 and architecture documentation.
 - Reason / context: Approved OnePage navigation targets for the new architecture.
 - State: PM APPROVED
