@@ -107,7 +107,7 @@ Non-blocking findings F-05 through F-12 were also reported and remain subject to
 ## Remediation Status
 
 F-03:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - M02-03B canonical Status synchronized to COMPLETED.
 - M02-03C canonical Status synchronized to COMPLETED.
@@ -115,53 +115,61 @@ REMEDIATED IN WORKING TREE
 - forbidden secondary Final Status fields removed.
 - stale pending/handoff state synchronized.
 - Phase 02 master and PROJECT-STATE were checked for contradictory milestone-state references.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-04:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - docs/audits/PHASE-02-AUDIT-REQUEST.md created.
 - docs/audits/PHASE-02-AUDIT-RESULT-2026-09-15-R01.md recorded as the immutable first audit result.
 - docs/handoffs/PHASE-02-HANDOFF.md created.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-01:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - Inter and Open Sans are self-hosted under `src/assets/fonts/`.
 - Inter 400/500/600/700 and Open Sans 400/500/600/700 normal WOFF2 assets are present.
 - Eight `@font-face` declarations were added to `src/assets/css/main.css`.
 - Eleventy build copies the font assets to `dist/assets/fonts/`.
 - Browser font loading was verified with `document.fonts.load()` / `document.fonts.check()`.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-02:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - Menu responsive coverage was added for portrait tablet widths 479–991px.
 - Intermediate desktop/laptop coverage was added for 1025–1438px.
 - 768×1024, 820×1180, 1280×800, and 1366×768 were verified with zero page and Menu horizontal overflow.
 - Contact content remains fully reachable in all four remediation viewports.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-05:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - UTF-8 BOM was removed from `src/_includes/components/menu-overlay.njk`.
 - The stray 18px layout line disappeared after rebuild.
 - At 820×1180, document, app-shell, page-scroll, and Hero heights now align at 1180px with `scrollY = 0`.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-06:
-REMEDIATED IN WORKING TREE
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
 
 - `HEADER-EXTRACTION.md` now records the PM-approved trigger-layer separation.
 - Reference behavior remains preserved as observed evidence.
 - Reconstruction behavior documents `.sm-menu-trigger-layer` as the approved structural integration deviation.
 - Approved stacking relationship 1200 / 1300 / 1301 is explicitly recorded.
-- Formal closure remains pending commit, push, repository synchronization, and re-audit.
+- Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
-F-07 through F-11:
+F-07:
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
+
+- `MENU-EXTRACTION.md` section 17 now reflects the four directly observed viewports.
+- DOM and computed-style inspection provenance is explicitly recorded.
+- The stale statements that Tablet, Mobile Landscape, Mobile Portrait, DOM, and computed styles were not captured were removed.
+- Formal closure remains pending re-audit PASS.
+
+F-08 through F-11:
 PENDING remediation or explicit disposition.
 
 F-12:
@@ -179,9 +187,9 @@ Continue M02-05 remediation.
 
 Before formal re-audit:
 
-1. Complete remediation or explicit disposition of F-01 through F-11 as applicable.
+1. Complete remediation or explicit disposition of F-08 through F-11 as applicable.
 2. Run required verification.
-3. Commit and push remediation.
+3. Commit and push any remaining remediation changes.
 4. Confirm HEAD = origin/main and clean working tree.
 5. Re-run the formal Claude Code M02-05 audit.
 
