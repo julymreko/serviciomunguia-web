@@ -61,7 +61,7 @@ Inspect the implementation relevant to Phase 02, including at minimum:
 - src/_includes/components/header.njk
 - src/_includes/components/hero.njk
 - src/_includes/components/menu-overlay.njk
-- src/_includes/components/mobile-sticky-nav.njk
+- src/_includes/components/mobile-nav.njk
 - src/_includes/base.njk
 - src/index.njk
 - src/assets/css/main.css
