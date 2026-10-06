@@ -169,7 +169,15 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 - The stale statements that Tablet, Mobile Landscape, Mobile Portrait, DOM, and computed styles were not captured were removed.
 - Formal closure remains pending re-audit PASS.
 
-F-08 through F-11:
+F-08:
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
+
+- `MENU-EXTRACTION.md` now records the observed primary-navigation default opacity as `0.72`.
+- Hover behavior is explicitly recorded as `opacity: 1` with the observed `translateX(18px)`.
+- This is a traceability correction only; it does not reinterpret or change the approved Menu implementation.
+- Formal closure remains pending re-audit PASS.
+
+F-09 through F-11:
 PENDING remediation or explicit disposition.
 
 F-12:
