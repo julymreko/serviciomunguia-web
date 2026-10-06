@@ -18,7 +18,7 @@ Audit Agent: Claude Code
 
 ## Objective
 
-Add an optional, brand-reinforcing pointer/touch interaction layer to the Hero carousel, without altering any previously validated Hero composition, geometry, or content. On pointer-capable devices, replace the default cursor with an animated fan-blade ("aspa") icon while inside the carousel bounds, and reveal a sharper version of the underlying slide image within a radius around the pointer, with a fading "foam trail" as the pointer moves and a self-playing idle animation when there is no pointer activity. On touch devices, the aspa runs an autonomous reveal-and-foam animation without following the user's finger or interfering with swipe/scroll. Additionally, scope all Hero carousel links to the rotating title text only, removing link behavior from the photo/slide area so drag and navigation don't conflict.
+Add an optional, brand-reinforcing pointer/touch interaction layer to the Hero carousel, without altering any previously validated Hero composition, geometry, or content. On pointer-capable devices, replace the default cursor with an animated fan-blade ("aspa") icon while inside the carousel bounds, and reveal a sharper version of the underlying slide image within a radius around the pointer, with a fading "foam trail" as the pointer moves and a self-playing idle animation when there is no pointer activity. On touch devices, the aspa runs an autonomous reveal-and-foam animation without following the user's finger or interfering with swipe/scroll. Additionally, keep the photo/slide area free of link behavior so drag and navigation do not conflict. The originally planned rotating-title link is deferred by PM decision until the destination sections exist.
 
 This milestone is additive interaction design. It does not modify the Hero composition, breakpoint geometry, coverflow configuration, autoplay behavior, or any item already reviewed and approved in the Hero UX/UI review — except where M02-03B has explicitly changed Mobile Landscape geometry, per the dependency above.
 
@@ -30,7 +30,7 @@ Decisions confirmed in the originating conversation:
 
 - **Mobile/touch path: autonomous signature animation.** The original static affordance decision was superseded during implementation by Product Manager approval. On touch/coarse-pointer devices the aspa now moves autonomously within the carousel, accompanied by reveal and foam effects, without following the user's finger or interfering with swipe/scroll.
 - **Technique: CSS mask + JS pointer tracking, not canvas/WebGL.** Chosen to stay consistent with ADR-001 (low conceptual lock-in, minimal client-side complexity) and to avoid introducing a rendering dependency for a decorative effect.
-- **Link scoping: text-only.** All Hero carousel navigation links are scoped to the rotating title text element. The photo/slide area is a pure swipe/drag surface with no link behavior.
+- **Link scoping: photo area remains non-interactive; title link deferred.** The photo/slide area is a pure swipe/drag surface with no link behavior. The originally planned rotating-title link is deferred by PM decision until the destination sections exist, avoiding dead anchors during the current phase.
 
 ## Required Inputs
 
@@ -49,7 +49,7 @@ Decisions confirmed in the originating conversation:
 - Foam-trail behavior: the reveal fades/decays over roughly 600–1000ms as the pointer moves away from a given point, rather than snapping instantly — exact technique (single decaying mask vs. multiple stacked trailing masks) is an implementation decision, not prescribed here
 - Idle state: when there is no pointer activity, the reveal effect animates on its own in a soft, continuous loop, so the section reads as alive without requiring interaction
 - Touch/coarse-pointer devices (including Mobile Landscape): autonomous aspa movement with reveal and foam effects; no finger-following logic and no interference with native swipe/scroll behavior
-- Link scoping: interactive `<a>`/link behavior exists only on the rotating title text element; the photo/slide container has no link behavior
+- Link scoping: the photo/slide container has no link behavior. The rotating-title link is deferred until its destination sections exist.
 - `prefers-reduced-motion: reduce`: disables the custom cursor, the reveal mask animation, and the idle loop entirely; the carousel falls back to its default validated appearance
 - Feature gating via `@media (hover: hover) and (pointer: fine)` so touch devices never execute pointer-tracking code
 
@@ -81,7 +81,7 @@ Listed for scoping purposes; execution order is the executing agent's determinat
 5. Implement the foam-trail fade/decay behavior.
 6. Implement the idle/no-pointer-activity animation state.
 7. Implement the static mobile affordance icon (Option b), positioned against M02-03B's finalized carousel bounds for Mobile Landscape.
-8. Scope all Hero carousel link behavior to the title text element only; remove link behavior from the photo/slide container.
+8. Keep the photo/slide container non-interactive. Defer the rotating-title link until the destination sections exist, per PM disposition recorded after R02.
 9. Implement full `prefers-reduced-motion` disablement path.
 10. Cross-browser and cross-device verification.
 
@@ -99,7 +99,7 @@ A milestone is not complete until every criterion below has been verified with o
 - When the pointer leaves the carousel, or after a defined period without pointer movement, the effect returns to its idle looping animation.
 - On touch/coarse-pointer devices, no finger-following pointer-tracking logic executes; the aspa moves autonomously with reveal and foam effects inside the carousel bounds, including Mobile Landscape, while native touch/scroll/swipe behavior remains unaffected.
 - With `prefers-reduced-motion: reduce` set, the custom cursor, reveal-mask animation, and idle loop are fully disabled; the carousel renders in its default validated appearance with no residual effect artifacts.
-- Clicking or tapping the photo/slide area does not trigger navigation. Only the rotating title text is a clickable/tappable link — confirmed by DOM inspection (link element scoped to the text node only) and by direct interaction test.
+- Clicking or tapping the photo/slide area does not trigger navigation. The rotating title remains non-link text during this phase; title linking is explicitly deferred until the corresponding destination sections exist.
 - No regression against previously validated Hero acceptance criteria: coverflow behavior, autoplay timing, pagination appearance/behavior, and breakpoint geometry remain unchanged, except where M02-03B has explicitly changed Mobile Landscape geometry.
 - No measurable negative impact on Hero LCP; the effect must not block, delay, or compete with the initial slide image render.
 - No new external or CDN dependency is introduced; implementation uses CSS and vanilla JavaScript only, consistent with ADR-001.
@@ -224,9 +224,23 @@ None recorded.
 NONE
 
 Validation note:
-- Link scoping was completed and validated during implementation.
+- Photo/slide link removal was completed and validated during implementation.
+- The originally planned rotating-title link is PM-DEFERRED until its destination sections exist; this supersedes the earlier acceptance wording that described the title as already clickable.
 - Responsive regression was validated across Desktop, Tablet, Mobile Landscape, and Mobile Portrait.
 - Performance remains governed by `docs/TESTING-PROTOCOL.md`: no pass threshold is invented where none has been approved. No observable Hero regression was identified during Phase 2 validation.
+## PM-Approved R02 Disposition — Hero Title Link
+
+State: DEFERRED
+
+R02 finding F-16 identified that this completed milestone still described the rotating Hero title as an implemented link, while the current DOM correctly contains no title anchor.
+
+PM decision:
+- Do not add dead-anchor links during the current phase.
+- Keep the photo/slide area non-interactive.
+- Keep the rotating title as non-link text until the corresponding destination sections exist.
+- Implement title linking only in the phase that creates those destination sections.
+- This disposition supersedes the earlier text-only-link acceptance wording without reopening the completed interaction work.
+
 ## Handoff
 
-Milestone completed and incorporated into the validated Phase 02 Hero implementation. Its Mobile Landscape dependency on M02-03B is satisfied, the aspa interaction is integrated, and subsequent PM-approved Hero refinements are documented in this artifact.
+Milestone completed and incorporated into the validated Phase 02 Hero implementation. Its Mobile Landscape dependency on M02-03B is satisfied, the aspa interaction is integrated, the title-link requirement is explicitly deferred until destination sections exist, and subsequent PM-approved Hero refinements are documented in this artifact.
