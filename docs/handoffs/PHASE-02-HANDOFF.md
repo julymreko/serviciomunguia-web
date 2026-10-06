@@ -205,6 +205,107 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 F-12:
 INFO — no M02-05 action required.
 
+## Remediation Verification — 2026-10-05
+
+Verification baseline:
+`471d0e0d1c9977426745c367c0013edadebe49ff`
+
+### Build
+
+Status:
+PASS
+
+Evidence:
+- `npm run build`
+- Eleventy 3.1.6 wrote `dist/index.html` successfully.
+- 33 assets copied.
+- No unexpected build errors.
+- `git status --short` remained clean after build.
+
+### Functional / Regression
+
+Status:
+PASS
+
+Evidence:
+- Desktop 1920×945 Menu opens correctly.
+- Menu trigger remains above the overlay.
+- Header logo remains covered by the open overlay.
+- Primary navigation hover reaches `opacity: 1` and translates approximately 18px without layout regression.
+- Keyboard focus remains trapped inside the open Menu.
+- Escape closes the Menu and returns focus to the trigger.
+
+### Responsive
+
+Status:
+PASS
+
+Evidence:
+- 768×1024 — no horizontal overflow or clipping; navigation and contact content remain visible.
+- 820×1180 — no horizontal overflow or clipping; no recurrence of the prior 18px BOM layout artifact.
+- 1280×800 — no horizontal overflow or clipping; contact block remains accessible.
+- 1366×768 — no horizontal overflow or clipping; contact block remains visible.
+- 844×414 — single-column Menu composition, vertical scrolling available, no horizontal overflow.
+- 390×844 — single-column Menu composition; Bottom Navigation, overlay, and trigger preserve the approved 1200 / 1300 / 1301 stacking relationship; logo remains covered.
+
+### Accessibility
+
+Status:
+PASS
+
+Evidence:
+- Bidirectional focus trapping verified in the open Menu.
+- Escape close verified.
+- Focus return to the trigger verified.
+
+### Reduced Motion
+
+Status:
+PASS
+
+Evidence:
+- `prefers-reduced-motion: reduce` emulation verified.
+- Menu remains functional and accessible.
+- Reduced transitions do not leave stuck visual states.
+
+### Typography / Font Loading
+
+Status:
+PASS
+
+Evidence:
+Browser verification returned:
+- Inter 400: true
+- Inter 600: true
+- Open Sans 400: true
+- Open Sans 600: true
+
+### Performance
+
+Status:
+NOT VERIFIED
+
+Reason:
+No approved performance threshold exists. No pass threshold is invented.
+
+### Integrations
+
+Status:
+N/A
+
+Reason:
+No applicable external integration acceptance dependency is part of this remediation set.
+
+### Repository State
+
+Status:
+PASS
+
+Evidence:
+- Local working tree clean after verification.
+- All F-01 through F-11 remediation is published on `main`.
+- F-01 through F-11 remain formally OPEN pending Claude Code re-audit PASS.
+
 ## Footer Boundary
 
 Footer is not a Phase 02 acceptance dependency.
@@ -213,16 +314,16 @@ Do not fail Phase 02 because Footer extraction or implementation is absent or in
 
 ## Required Next Action
 
-Continue M02-05 remediation.
+Run the formal Claude Code M02-05 re-audit.
 
-Before formal re-audit:
+Before audit execution:
 
-1. Complete remediation or explicit disposition of F-08 through F-11 as applicable.
-2. Run required verification.
-3. Commit and push any remaining remediation changes.
-4. Confirm HEAD = origin/main and clean working tree.
-5. Re-run the formal Claude Code M02-05 audit.
+1. Synchronize the local repository with GitHub.
+2. Confirm HEAD = origin/main and clean working tree.
+3. Execute the formal re-audit against the current published `main`.
+4. Record the auditor response as a new immutable R02 audit-result artifact.
+5. Only after R02 PASS may Phase 02 closure state be advanced.
 
 ## Handoff Status
 
-NOT READY FOR PHASE CLOSURE — M02-05 REMEDIATION ACTIVE
+READY FOR FORMAL RE-AUDIT — NOT READY FOR PHASE CLOSURE
