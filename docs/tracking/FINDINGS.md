@@ -154,17 +154,16 @@ Required Action:
 Add responsive coverage and verify 768, 820, 1280, and 1366 widths.
 
 Resolution:
-Remediation is published on main with portrait-tablet and intermediate desktop/laptop rules; the required remediation viewports were verified without horizontal overflow.
+R02 reproduced the defect after the first remediation. A second remediation is now published on `main`: the 1025–1438.98px Menu rule reduces `.sm-menu-overlay__contact-link` to 18px / 24.3px and preserves the intermediate two-column layout. Manual verification passed at 1025, 1040, 1080, 1120, 1152, 1200, 1280, and 1310px without horizontal overflow or contact clipping.
 
 Verified By:
-OpenAI GPT-5.6 Sol
+OpenAI GPT-5.6 Sol — local remediation verification
 
 Verification Evidence:
 docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
-UNDEFINED — formal closure pending re-audit PASS
-
+UNDEFINED — formal closure pending R03 re-audit
 ### FIND-003
 
 ID:
@@ -639,17 +638,17 @@ Required Action:
 Close the breakpoint gaps and re-verify at 478.5, 991.5, and 1024.5.
 
 Resolution:
-UNDEFINED
+PM disposition: this finding must not block Phase 02 progression. The breakpoint upper bounds were nevertheless widened to `.98px` on `main`, eliminating the uncovered fractional intervals in the CSS ranges. Exact fractional-width manual verification is not required by PM; no further remediation effort is authorized for this finding.
 
 Verified By:
-Claude Code — R02
+Julián Cely — Product Manager disposition; implementation by OpenAI GPT-5.6 Sol
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+src/assets/css/main.css
+docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
-UNDEFINED
-
+UNDEFINED — PM-dispositioned as non-blocking; R03 may acknowledge disposition
 ### FIND-013
 
 ID:
@@ -686,17 +685,17 @@ Required Action:
 Use a scrollbar-safe shell/nav width strategy and re-verify 390×844 and 360×640 with and without classic scrollbars.
 
 Resolution:
-UNDEFINED
+Remediation is published on `main`. Mobile Portrait shell and fixed Bottom Navigation now use scrollbar-safe `min(100%, 478px)` sizing; the navigation is centered with `left: 0`, `right: 0`, and `margin-inline: auto` instead of viewport translation. Manual verification passed at 390×844 and 360×640 with no horizontal overflow and correct shell/nav alignment.
 
 Verified By:
-Claude Code — R02
+OpenAI GPT-5.6 Sol — local remediation verification
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+src/assets/css/main.css
+docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
-UNDEFINED
-
+UNDEFINED — formal closure pending R03 re-audit
 ### FIND-014
 
 ID:
@@ -733,17 +732,16 @@ Required Action:
 Update the active audit-request inspection path to `src/_includes/components/mobile-nav.njk`.
 
 Resolution:
-UNDEFINED
+Remediation is published on `main`. The active Phase 02 audit request now references `src/_includes/components/mobile-nav.njk`.
 
 Verified By:
-Claude Code — R02
+OpenAI GPT-5.6 Sol
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+docs/audits/PHASE-02-AUDIT-REQUEST.md
 
 Closed Date:
-UNDEFINED
-
+UNDEFINED — formal closure pending R03 re-audit
 ### FIND-015
 
 ID:
@@ -780,17 +778,17 @@ Required Action:
 PM disposition required: defer title linking until target sections exist, or schedule implementation in the phase that creates those targets.
 
 Resolution:
-UNDEFINED — PM decision required
+PM decision: DEFER. The rotating Hero title remains non-link text until the corresponding destination sections exist. M02-03C was updated so it no longer claims the title link is currently implemented; the photo/slide area remains non-interactive and dead anchors are not introduced.
 
 Verified By:
-Claude Code — R02
+Julián Cely — Product Manager disposition; documentation by OpenAI GPT-5.6 Sol
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+docs/phases/phase-02/M02-03C-hero-carousel-signature-interaction.md
+docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
-UNDEFINED
-
+UNDEFINED — formal closure pending R03 acknowledgment of PM disposition
 ### FIND-016
 
 ID:
@@ -827,17 +825,17 @@ Required Action:
 Normalize the two M02-04 status references to `COMPLETED`.
 
 Resolution:
-UNDEFINED
+Remediation is published on `main`. M02-04 status references in the Phase 02 master and PROJECT-STATE now use canonical `COMPLETED` vocabulary.
 
 Verified By:
-Claude Code — R02
+OpenAI GPT-5.6 Sol
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+docs/phases/PHASE-02-controlled-reference-migration.md
+docs/PROJECT-STATE.md
 
 Closed Date:
-UNDEFINED
-
+UNDEFINED — formal closure pending R03 re-audit
 ### FIND-017
 
 ID:
@@ -874,13 +872,14 @@ Required Action:
 PM decision required on the canonical alt-text convention, followed by alignment of all five Hero slide alt values.
 
 Resolution:
-UNDEFINED — PM decision required
+PM approved the DESCRIPTIVE alt-text convention. All five Hero slide `alt` values were rewritten from visual evidence to briefly describe the actual photographic content rather than mirror rotating labels.
 
 Verified By:
-Claude Code — R02
+Julián Cely — Product Manager decision; implementation by OpenAI GPT-5.6 Sol
 
 Verification Evidence:
-docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+src/_includes/components/hero-media.njk
+docs/handoffs/PHASE-02-HANDOFF.md
 
 Closed Date:
-UNDEFINED
+UNDEFINED — formal closure pending R03 re-audit
