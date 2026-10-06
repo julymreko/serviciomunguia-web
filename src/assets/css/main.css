@@ -725,7 +725,7 @@ body {
 
 /* ===== Hero: Tablet 992–1024 ===== */
 
-@media (min-width: 992px) and (max-width: 1024px) {
+@media (min-width: 992px) and (max-width: 1024.98px) {
   .sm-hero__wrapper {
     --sm-hero-carousel-height: 720px;
     width: 100%;
@@ -761,7 +761,7 @@ body {
 
 /* ===== Hero: Mobile Landscape ===== */
 
-@media (max-width: 991px) and (orientation: landscape) {
+@media (max-width: 991.98px) and (orientation: landscape) {
   .sm-hero,
   .sm-hero__wrapper {
     min-height: 100svh;
@@ -1450,7 +1450,7 @@ body {
 
 /* ===== Menu Overlay: Intermediate Desktop / Laptop ===== */
 
-@media (min-width: 1025px) and (max-width: 1438px) {
+@media (min-width: 1025px) and (max-width: 1438.98px) {
   .sm-menu-overlay__inner {
     grid-template-columns: minmax(0, 2.08fr) minmax(0, 1fr);
     column-gap: clamp(48px, 7vw, 96px);
@@ -1465,7 +1465,7 @@ body {
 
 /* ===== Menu Overlay: Portrait Tablet ===== */
 
-@media (min-width: 479px) and (max-width: 991px) and (orientation: portrait) {
+@media (min-width: 479px) and (max-width: 991.98px) and (orientation: portrait) {
   .sm-menu-overlay__inner {
     grid-template-columns: minmax(0, 1fr);
     align-content: center;
@@ -1540,7 +1540,7 @@ body {
 
 /* ===== Menu Overlay: Mobile Portrait ===== */
 
-@media (max-width: 478px) and (orientation: portrait) {
+@media (max-width: 478.98px) and (orientation: portrait) {
   .sm-menu-overlay__inner {
     grid-template-columns: minmax(0, 1fr);
     align-content: center;
