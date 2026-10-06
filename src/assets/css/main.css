@@ -1091,7 +1091,7 @@ body {
   .sm-app-shell {
     position: relative;
 
-    width: min(100vw, 478px);
+    width: min(100%, 478px);
     min-height: 100dvh;
     margin-inline: auto;
 
@@ -1107,14 +1107,15 @@ body {
 
   .sm-bottom-nav {
     position: fixed;
-    right: auto;
+    right: 0;
     bottom: 0;
-    left: 50%;
+    left: 0;
     z-index: 1200;
 
     display: block;
 
-    width: min(100vw, 478px);
+    width: min(100%, 478px);
+    margin-inline: auto;
     padding:
       0
       12px
@@ -1127,8 +1128,6 @@ body {
         rgba(8, 12, 28, 0.88) 30%,
         rgba(8, 12, 28, 0.98)
       );
-
-    transform: translateX(-50%);
   }
 
   .sm-mobile-nav__panel {
