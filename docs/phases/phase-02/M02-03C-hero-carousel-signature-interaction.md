@@ -1,17 +1,15 @@
 # M02-03C — Hero Carousel Signature Interaction
 
-> **Draft status:** Prepared by Claude (design/technical advisory role) at direct Product Manager request. This is a proposal document, not yet an authoritative phase artifact. Per the established agent-role split for Phase 2 (GPT-5.6 Sol executes/authors phase and milestone specifications; Claude audits), this draft should be reviewed and formally adopted into `docs/phases/phase-02/` by the executing agent before it governs execution.
->
 > **Renumbering note:** This document was originally issued as `M02-03B`. The Product Manager reassigned letters so that the Mobile Landscape structural restructure is `M02-03B` and this interaction-layer document is `M02-03C`. This file supersedes the prior `M02-03B` version under the new identifier — no content changed except identification and the dependency note below.
 
 ## Identification
 
 Phase: 02 — Controlled Reference Migration
 Milestone: M02-03C — Hero Carousel Signature Interaction
-Status: PROPOSED — not started, pending confirmation of placement in the Phase 02 sequence and formal adoption
+Status: COMPLETED
 
 Owner: Julián Cely — Product Manager
-Executing Agent: TBD (per Phase 2 assignment — GPT-5.6 Sol)
+Executing Agent: OpenAI GPT-5.6 Sol
 Audit Agent: Claude Code
 
 ## Dependency (added at renumbering)
@@ -122,10 +120,7 @@ A milestone is not complete until every criterion below has been verified with o
 
 ## Open Questions / Decisions Required
 
-- Exact foam-trail rendering technique (single decaying mask vs. multiple stacked trailing masks) — implementation detail; can be resolved during execution unless the Product Manager wants to pre-approve a specific approach.
-- Source and final format of the aspa vector asset — not yet provided.
-- Confirmation of this milestone's actual placement/numbering within the live `PHASE-02` specification — this document was authored without direct visibility into that file's current state.
-
+NONE — implementation details were resolved during execution and subsequent PM-approved refinement cycles.
 ## PM-Approved Post-Validation Hero Refinements
 
 The following refinements were approved by the Product Manager after the original M02-03C interaction scope was implemented. They are recorded here as later approved Hero evolution and must not be represented as behavior observed from the Bricks reference.
@@ -226,14 +221,12 @@ None recorded.
 
 ## Pending Items
 
-- Formal adoption completed by the executing agent.
-- Aspa vector asset delivered and integrated at `src/assets/images/ui/aspa.svg`.
-- M02-03B completed and Mobile Landscape dependency verified.
+NONE
 
+Validation note:
+- Link scoping was completed and validated during implementation.
+- Responsive regression was validated across Desktop, Tablet, Mobile Landscape, and Mobile Portrait.
+- Performance remains governed by `docs/TESTING-PROTOCOL.md`: no pass threshold is invented where none has been approved. No observable Hero regression was identified during Phase 2 validation.
 ## Handoff
 
-Not generated. Milestone implementation is active and formally adopted; final handoff will be produced after remaining acceptance checks.
-
-## Final Status
-
-IN PROGRESS — IMPLEMENTATION VALIDATED; LINK SCOPING AND FINAL PERFORMANCE/AUDIT CHECKS PENDING
+Milestone completed and incorporated into the validated Phase 02 Hero implementation. Its Mobile Landscape dependency on M02-03B is satisfied, the aspa interaction is integrated, and subsequent PM-approved Hero refinements are documented in this artifact.

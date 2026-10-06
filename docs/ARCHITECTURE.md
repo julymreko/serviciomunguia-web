@@ -252,6 +252,53 @@ Rules:
 - Splitting `main.css` into multiple source files may only be considered when maintainability justifies it and an approved concatenation or bundling strategy exists.
 - The current Eleventy asset pipeline remains passthrough-based; CSS is copied, not transformed.
 
+## Typography and Font Asset Architecture
+
+Production typography must not depend on fonts being installed on the visitor's operating system.
+
+Approved production font families currently required by validated reference evidence:
+
+- Inter
+- Open Sans
+
+Rules:
+
+- Production web fonts must be self-hosted.
+- Font files live under `src/assets/fonts/`.
+- WOFF2 is the preferred production format.
+- During active page construction, a controlled set of reasonably anticipated font weights may be included to avoid repeated asset changes across upcoming sections.
+- The currently approved working set is Inter 400/500/600/700 and Open Sans 400/500/600/700, normal style only.
+- Italic variants are not included unless a later approved section requires them.
+- Before final technical closure, unused font weights must be identified and removed.
+- Font families referenced by production CSS must have corresponding local font assets and explicit `@font-face` declarations.
+- Declaring `font-family` in CSS without loading the corresponding production font does not satisfy implementation fidelity.
+- Font assets follow the existing Eleventy passthrough asset pipeline and are copied without transformation.
+- External font CDNs or runtime font-provider dependencies must not be introduced without explicit architectural approval.
+- Reference-extraction typography evidence must distinguish between the observed font family/weight and the mechanism used by this project to provide that font.
+- Reconstruction verification must confirm that the browser actually loads the required font, not only that the CSS declaration exists.
+- Where a font is required by approved reference evidence, fallback rendering must be treated as a failed fidelity check unless explicitly approved otherwise.
+
+Current required weights:
+
+Inter:
+- 400
+- 600
+- 700 where already required by the approved Hero implementation
+
+Open Sans:
+- 400
+- 500 where already required by the approved Hero implementation
+- 600
+
+Verification must include browser font availability checks such as:
+
+`document.fonts.check('400 16px Inter')`
+
+and:
+
+`document.fonts.check('400 16px "Open Sans"')`
+
+Both must resolve successfully for the relevant production font faces after page load.
 ## Mobile App Shell and Bottom Navigation Architecture
 
 Approved mobile navigation pattern:

@@ -267,12 +267,17 @@
 - Reason: PM-approved visual refinement to reduce default visual weight while preserving stronger emphasis during interaction.
 - Fidelity impact: Typography refinement only; layout, link geometry, responsive sizing, motion, and navigation behavior remain unchanged.
 ## 17. Evidence References
+
 - Reference URL: https://staging.serviciomunguia.com/inicio-bricks/
 - Screenshots: Desktop open-menu overlay screenshot supplied by Product Manager.
-- Viewports: Desktop observed; Tablet, Mobile Landscape, and Mobile Portrait reference overlays not yet captured.
-- DOM observations: Not yet captured.
-- Computed-style observations: Not yet captured.
-- Asset references: Close-menu control visually observed; exact asset/source not yet identified.
+- Viewports directly observed and inspected:
+  - Desktop: `1920 × 945`
+  - Tablet: `1024 × 1366`
+  - Mobile Landscape: `844 × 414`
+  - Mobile Portrait: `390 × 844`
+- DOM observations: Direct DevTools Elements / browser DOM inspection completed for Menu structure, trigger state, navigation links, contact block, hidden controls, and responsive composition.
+- Computed-style observations: Direct DevTools Computed / browser console inspection completed for overlay geometry, grid columns, gaps, padding, typography, link states, trigger pseudo-elements, transitions, responsive behavior, and reduced-motion behavior.
+- Asset references: Close-menu visual state is generated from the Header menu-trigger pseudo-elements; no separate close-menu image asset is required by the reconstruction.
 - Interaction observations: Open/close states, trigger animation, navigation/contact hover states, keyboard focus flow, Escape behavior, focus return, reduced-motion behavior, and overlay transitions were directly inspected.
 - PM specifications: Mobile Bottom Navigation Bar + center WhatsApp FAB + notch; approved actions and future section targets; active-state behavior deferred; architecture recorded in `docs/ARCHITECTURE.md` and Phase 02 documentation.
 ## 18. Reconstruction Readiness

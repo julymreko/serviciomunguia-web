@@ -325,8 +325,33 @@ Transition:
 
 ## 16. PM-Approved Deviations
 
-NONE
+### Menu Trigger Layer Separation
 
+State:
+PM APPROVED
+
+Reference behavior:
+- `BUTTON#sm-menu-trigger` was observed as a direct child of `HEADER#sm-hero-header`.
+- The Header itself was observed with `position: absolute`.
+- The Header and trigger participated in the reference stacking model with Header z-index 1001.
+
+Reconstruction behavior:
+- The logo remains inside `HEADER#sm-hero-header`.
+- `#sm-menu-trigger` was moved into a dedicated sibling layer, `.sm-menu-trigger-layer`, inside the Hero wrapper.
+- The trigger layer uses fixed positioning so the trigger can remain above the reconstructed Menu overlay independently of the Header stacking context.
+- The Header remains below the open Menu overlay so the logo is covered correctly.
+
+Approved stacking relationship:
+- Bottom Navigation: `z-index: 1200`
+- Menu overlay: `z-index: 1300`
+- Menu trigger layer: `z-index: 1301`
+- Header/logo layer remains below the Menu overlay.
+
+Reason:
+The reconstructed site introduces the PM-approved Mobile Portrait Bottom Navigation, which does not exist in the reference implementation. Elevating the complete Header above the Menu overlay caused the logo to remain visible above the overlay. Separating the trigger into its own fixed layer preserves the approved trigger behavior while keeping the logo correctly covered.
+
+Fidelity impact:
+This is an approved structural integration deviation. It does not redefine the observed Header geometry, logo asset, trigger visual state, or Menu interaction behavior.
 ## 17. Evidence References
 
 - Reference URL:

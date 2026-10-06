@@ -1,3 +1,68 @@
+/* ===== Fonts ===== */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/Inter-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/Inter-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/Inter-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/Inter-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans/OpenSans-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans/OpenSans-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans/OpenSans-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans/OpenSans-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 /* ===== Tokens ===== */
 
 :root {
@@ -1383,6 +1448,45 @@ body {
   transform: translate(-15px, 0) rotate(-45deg);
 }
 
+/* ===== Menu Overlay: Intermediate Desktop / Laptop ===== */
+
+@media (min-width: 1025px) and (max-width: 1438px) {
+  .sm-menu-overlay__inner {
+    grid-template-columns: minmax(0, 2.08fr) minmax(0, 1fr);
+    column-gap: clamp(48px, 7vw, 96px);
+    padding-inline: clamp(32px, 4vw, 50px);
+  }
+}
+
+/* ===== Menu Overlay: Portrait Tablet ===== */
+
+@media (min-width: 479px) and (max-width: 991px) and (orientation: portrait) {
+  .sm-menu-overlay__inner {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    row-gap: 48px;
+
+    padding: 80px 32px 60px;
+  }
+
+  .sm-menu-overlay__navigation {
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .sm-menu-overlay__list {
+    gap: 12px;
+  }
+
+  .sm-menu-overlay__item {
+    line-height: normal;
+  }
+
+  .sm-menu-overlay__contact-link {
+    font-size: 18px;
+    line-height: 24.3px;
+  }
+}
 /* ===== Menu Overlay: Tablet ===== */
 
 @media (min-width: 992px) and (max-width: 1024px) {

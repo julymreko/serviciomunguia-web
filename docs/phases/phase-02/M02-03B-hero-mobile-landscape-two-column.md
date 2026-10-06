@@ -1,15 +1,13 @@
 # M02-03B — Hero Mobile Landscape Two-Column Restructure
 
-> **Draft status:** Prepared by Claude (design/technical advisory role) at direct Product Manager request. This is a proposal document, not yet an authoritative phase artifact. Per the established agent-role split for Phase 2 (GPT-5.6 Sol executes/authors phase and milestone specifications; Claude audits), this draft should be reviewed and formally adopted into `docs/phases/phase-02/` by the executing agent before it governs execution. This document does not have direct visibility into the current live `PHASE-02` specification and cannot confirm sequencing/adjacency against it — verify before merging.
-
 ## Identification
 
 Phase: 02 — Controlled Reference Migration
 Milestone: M02-03B — Hero Mobile Landscape Two-Column Restructure
-Status: PROPOSED — not started, pending confirmation of placement in the Phase 02 sequence and formal adoption
+Status: COMPLETED
 
 Owner: Julián Cely — Product Manager
-Executing Agent: TBD (per Phase 2 assignment — GPT-5.6 Sol)
+Executing Agent: OpenAI GPT-5.6 Sol
 Audit Agent: Claude Code
 
 ## Objective
@@ -105,10 +103,7 @@ A milestone is not complete until every criterion below has been verified with o
 
 ## Open Questions / Decisions Required
 
-- Exact CSS breakpoint/media query boundary for "Mobile Landscape" — to be confirmed against the current codebase, not assumed from the ~844×390 reference figure alone.
-- Exact darkening technique (gradient overlay vs. per-slide tint vs. both) — implementation-time decision, governed by the contrast acceptance criterion, not fixed here.
-- Confirmation of this milestone's actual placement/numbering within the live `PHASE-02` specification.
-
+NONE — implementation decisions were resolved during execution and validated before successor milestones proceeded.
 ## Findings
 
 None recorded.
@@ -119,13 +114,7 @@ None recorded.
 
 ## Pending Items
 
-- Formal adoption of this document into `docs/phases/phase-02/` by the executing agent.
-- Confirmation of the real breakpoint boundary before implementation begins.
-
+NONE
 ## Handoff
 
-Not generated. This document is a proposal pending formal adoption.
-
-## Final Status
-
-PROPOSED — NOT STARTED
+Milestone completed and incorporated into the Phase 02 execution path. M02-03C subsequently consumed the completed Mobile Landscape geometry dependency.
