@@ -177,7 +177,16 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 - This is a traceability correction only; it does not reinterpret or change the approved Menu implementation.
 - Formal closure remains pending re-audit PASS.
 
-F-09 through F-11:
+F-09:
+REMEDIATED AND PUBLISHED — FORMALLY OPEN
+
+- PM approved `mobile-nav.njk` as the canonical component filename.
+- The component was renamed from `mobile-sticky-nav.njk` to `mobile-nav.njk`.
+- `src/index.njk` now includes `components/mobile-nav.njk`.
+- Existing `sm-mobile-nav` / `sm-bottom-nav` classes were preserved; no CSS behavior was changed.
+- Formal closure remains pending re-audit PASS.
+
+F-10 through F-11:
 PENDING remediation or explicit disposition.
 
 F-12:
