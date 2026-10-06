@@ -21,6 +21,9 @@ Formal audit request:
 docs/audits/PHASE-02-AUDIT-REQUEST.md
 
 Latest formal audit:
+M02-05 R02 — FAIL — 2026-10-05
+
+Previous formal audit:
 M02-05 R01 — FAIL — 2026-09-15
 
 ## Current State
@@ -31,7 +34,7 @@ M02-04 — Menu Migration is COMPLETE.
 
 M02-05 — Phase 02 Workflow Gate is ACTIVE.
 
-The first formal M02-05 Claude Code audit returned FAIL and remediation is in progress.
+The second formal M02-05 Claude Code audit (R02) returned FAIL. Remediation remains active.
 
 This handoff does not authorize Phase 02 closure.
 
@@ -104,6 +107,31 @@ Blocking findings:
 
 Non-blocking findings F-05 through F-12 were also reported and remain subject to remediation or explicit disposition.
 
+## Second M02-05 Audit — R02
+
+Decision:
+FAIL
+
+Date:
+2026-10-05
+
+Git reference reviewed:
+d61f1d7ddc97bb9e767e2f1b6d79af9846e607ee
+
+Result summary:
+- F-01 and F-03 through F-11 independently verified RESOLVED.
+- F-02 remains OPEN and BLOCKING.
+- F-12 remains INFO with no M02-05 action required.
+- New findings F-13 through F-18 were reported.
+- Responsive test area failed because F-02 is reproducible across approximately 1025–1310px.
+- Build, Functional, SEO, Accessibility, Security, Regression, Reduced Motion, Documentation Consistency, Architecture Compliance, and Repository Synchronization passed, subject to the non-blocking exceptions recorded in R02.
+- Performance remains NOT VERIFIED because no approved threshold exists.
+- Integrations remain N/A.
+- Footer remains out of Phase 02 scope.
+
+Immutable result:
+docs/audits/PHASE-02-AUDIT-RESULT-2026-10-05-R02.md
+
 ## Remediation Status
 
 F-03:
@@ -136,13 +164,13 @@ REMEDIATED AND PUBLISHED — FORMALLY OPEN
 - Remediation is published to `main`; formal closure remains pending re-audit PASS.
 
 F-02:
-REMEDIATED AND PUBLISHED — FORMALLY OPEN
+REMAINS OPEN — BLOCKER AFTER R02
 
-- Menu responsive coverage was added for portrait tablet widths 479–991px.
-- Intermediate desktop/laptop coverage was added for 1025–1438px.
-- 768×1024, 820×1180, 1280×800, and 1366×768 were verified with zero page and Menu horizontal overflow.
-- Contact content remains fully reachable in all four remediation viewports.
-- Remediation is published to `main`; formal closure remains pending re-audit PASS.
+- R02 reproduced horizontal overflow and contact clipping inside the 1025–1438px remediation range.
+- The 1025–1438px rule does not reduce `.sm-menu-overlay__contact-link` from the 24px base size.
+- Failure is reproducible across approximately 1025–1310px, with viewport-level horizontal overflow across approximately 1025–1150px.
+- Required re-verification widths: 1025, 1040, 1080, 1120, 1152, 1200, 1280, and 1310.
+- Formal closure remains pending successful remediation and a later re-audit PASS.
 
 F-05:
 REMEDIATED AND PUBLISHED — FORMALLY OPEN
@@ -314,16 +342,18 @@ Do not fail Phase 02 because Footer extraction or implementation is absent or in
 
 ## Required Next Action
 
-Run the formal Claude Code M02-05 re-audit.
+Continue M02-05 remediation after R02.
 
-Before audit execution:
+Before R03:
 
-1. Synchronize the local repository with GitHub.
-2. Confirm HEAD = origin/main and clean working tree.
-3. Execute the formal re-audit against the current published `main`.
-4. Record the auditor response as a new immutable R02 audit-result artifact.
-5. Only after R02 PASS may Phase 02 closure state be advanced.
+1. Resolve F-02 and verify the failing 1025–1310px band at the widths required by R02.
+2. Resolve or formally disposition F-13 and F-14.
+3. Resolve or formally disposition F-15 through F-18; F-16 and F-18 require PM decisions.
+4. Record F-13 through F-18 in `docs/tracking/FINDINGS.md`.
+5. Re-run required verification.
+6. Commit/publish remediation, synchronize local and GitHub, and confirm a clean working tree.
+7. Re-run the formal Claude Code M02-05 audit as R03.
 
 ## Handoff Status
 
-READY FOR FORMAL RE-AUDIT — NOT READY FOR PHASE CLOSURE
+NOT READY FOR PHASE CLOSURE — M02-05 R02 REMEDIATION ACTIVE
