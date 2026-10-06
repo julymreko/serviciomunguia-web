@@ -117,8 +117,8 @@
 - PM-approved relationship: The Bottom Navigation Bar used in the new architecture remains a separate PM-approved evolution and is not part of the observed Bricks Mobile Portrait overlay.
 ## 10. Interactive Behavior and States
 - Trigger: `BUTTON#sm-menu-trigger` controls `#sm-menu-overlay` through `aria-controls="sm-menu-overlay"` and changes `aria-expanded` between `false` and `true`.
-- Default state: Closed trigger uses two horizontal white pseudo-element lines: `::before` `30 × 2px` and `::after` `22 × 2px`.
-- Hover state: Closed trigger swaps line lengths: `::before` becomes `22px`; `::after` becomes `30px`. Primary navigation links translate `18px` to the right on hover. Contact email and WhatsApp links change to `#1a2ad3`.
+- Default state: Closed trigger uses two horizontal white pseudo-element lines: `::before` `30 × 2px` and `::after` `22 × 2px`. Primary navigation links use `opacity: 0.72`.
+- Hover state: Closed trigger swaps line lengths: `::before` becomes `22px`; `::after` becomes `30px`. Primary navigation links change to `opacity: 1` and translate `18px` to the right on hover. Contact email and WhatsApp links change to `#1a2ad3`.
 - Focus state: UNKNOWN
 - Active state: UNKNOWN
 - Expanded / collapsed state: Open trigger transforms both `30 × 2px` pseudo-elements into an X at approximately ±45°. Open overlay has `.is-open`, `aria-hidden="false"`, and remains below the Header trigger (`z-index: 1000` vs `1001`).
