@@ -4,7 +4,7 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-03 — Product Manager Approval & Scope Freeze
-Status: IN PROGRESS
+Status: COMPLETED
 
 Owner: Julián Cely — Product Manager
 Executing Agent: Claude Code (Claude Sonnet 5.5), acting only as transcriber of the Product Manager's decisions (see "PM Directive on Roles")
@@ -289,7 +289,7 @@ Unchanged from `docs/phases/PHASE-03-como-trabajamos.md`:
 2026-10-11 (transcription of decisions given 2026-10-10 to 2026-10-11)
 
 ### Completed
-UNDEFINED — scope freeze approved by the PM on 2026-10-11, but milestone closure remains pending the M03-04 specification, confirmed file allow-list, and publication verification.
+2026-10-11 — proposed formal closure subject to PM authorization and publication of this closure record. M03-04 specification was published in commit 368afd7; O-08 planning decisions are recorded. Final synchronized working-tree confirmation is required at publication.
 
 ### Git Commit
 See Git history (`docs: record Phase 03 PM decisions (M03-03)`).
@@ -302,10 +302,10 @@ None recorded.
 
 ## Pending Items
 
-O-01, O-02, O-03, O-04, O-06, and O-07 are resolved. The PM expressly approved scope freeze on 2026-10-11. O-08 (the M03-04 specification and OpenCode file allow-list) remains pending; its preparation and implementation have not been authorized by this decision. O-05 is a separate, non-blocking future proposal. See "Scope Freeze — Remaining Before Freeze".
+O-01, O-02, O-03, O-04, O-06, and O-07 are resolved. The PM expressly approved scope freeze on 2026-10-11. O-08 planning allow-list and the M03-04 specification were subsequently approved and published, with the latest planning decision recorded in this file. Publication of this milestone closure does NOT authorize OpenCode or M03-04 execution. O-05 is a separate, non-blocking future proposal. See "Scope Freeze — Remaining Before Freeze".
 
 ## Decisions Required
-The PM decisions needed to close the open items above. If a required decision is undefined, execution must stop and request clarification from Julián Cely.
+No outstanding scope-freeze decision blocks the proposed M03-03 closure. O-05 remains a separate non-blocking future proposal. M03-04 execution requires separate explicit PM authorization.
 
 ## Handoff
 `docs/handoffs/PHASE-03-M03-HANDOFF.md` (for the coordinating ChatGPT).

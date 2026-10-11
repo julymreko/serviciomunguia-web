@@ -229,10 +229,10 @@ M03-01.
 ### M03-03 - Product Manager Approval & Scope Freeze
 
 Status:
-IN PROGRESS
+COMPLETED
 
 Record:
-PM decisions D-01 to D-15 are transcribed in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (Claude Code acted only as transcriber at the PM's direction). Scope freeze was expressly approved by the PM on 2026-10-11; M03-03 remains IN PROGRESS pending its other acceptance criteria, and neither M03-04 nor implementation is authorized by the freeze decision. Remaining items are listed there. Handoff: `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
+PM decisions D-01 to D-15 are transcribed in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (Claude Code acted only as transcriber at the PM's direction). Scope freeze was approved by the PM on 2026-10-11. Reconstruction readiness, decision approvals, the file allow-list and the M03-04 published specification are recorded. Formal M03-03 closure is proposed for PM approval and is effective only after this record is published and synchronized. M03-04 execution remains NOT AUTHORIZED. Handoff: `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
 
 Purpose:
 Resolve UNKNOWN items and convert explicitly approved proposals into implementation requirements. No implementation begins before this milestone closes.

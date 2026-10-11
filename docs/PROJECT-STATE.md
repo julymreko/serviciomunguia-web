@@ -28,7 +28,7 @@ Status:
 IN PROGRESS
 
 Implementation authorization:
-NOT AUTHORIZED — Phase 03 discovery and planning only. No `src/` change is authorized until M03-03 (Product Manager approval and scope freeze) closes, with one PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` (docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md, "D-07 Image Transfer Resolution"). The status of this transfer is recorded only in M03-03, "D-07 Image Transfer Resolution". Implementation remains NOT AUTHORIZED.
+NOT AUTHORIZED — M03-03 scope freeze and planned documentation closure do not authorize `src/` modifications, OpenCode execution, or deployment. M03-04 implementation requires separate explicit Product Manager approval. The prior CTA asset transfer is documented in M03-03, "D-07 Image Transfer Resolution".
 
 Phase specification:
 docs/phases/PHASE-03-como-trabajamos.md
@@ -75,7 +75,7 @@ YES
 
 ## Current Working Item
 
-M03-03 — Product Manager Approval & Scope Freeze. IN PROGRESS: PM decisions D-01 to D-15 are recorded in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`; scope freeze was expressly APPROVED by the PM on 2026-10-11, but M03-03 remains IN PROGRESS pending its remaining acceptance criteria; M03-04 and implementation are NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED upon PM approval and publication of the closure record. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
+M03-03 — Product Manager Approval & Scope Freeze: COMPLETED upon explicit PM closure authorization and publication of the closure record. PM decisions D-01 to D-15, scope freeze, approved O-08 planning decisions, and the published M03-04 specification are documented. M03-04 remains NOT STARTED and its execution, including OpenCode, is NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED upon PM approval and publication of the closure record. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
 
 Phase 02 completed after formal M02-05 R03 PASS.
 
@@ -99,4 +99,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-Review M03-03 formal closure based on its acceptance criteria. The M03-04 specification and approved O-08 planning allow-list are published; execution remains separately unauthorized. M03-04 (OpenCode implementation) remains NOT AUTHORIZED and does not begin before M03-03 closes and a separate PM authorization is recorded.
+M03-04 — OpenCode Implementation: NOT STARTED, awaiting separate explicit Product Manager authorization. The specification and approved O-08 planning allow-list are published; no implementation, deployment, or source modification is authorized by this closure.
