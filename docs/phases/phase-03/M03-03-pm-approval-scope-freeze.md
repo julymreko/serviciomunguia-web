@@ -26,7 +26,7 @@ Record in the repository, exactly as given, the Product Manager's decisions on t
 
 - Scope freeze: **PENDING PM CONFIRMATION.** The Product Manager has not given the explicit freeze confirmation. Scope is NOT frozen.
 - Implementation: **NOT AUTHORIZED.** No OpenCode instruction and no M03-04 specification exist or are authorized. No `src/` change is authorized, with one PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` (see "D-07 Image Transfer Resolution"). The exception covers that single file and nothing else.
-- This milestone is not COMPLETED. The extraction readiness result remains as recorded in the extraction (NOT READY FOR RECONSTRUCTION); this document does not re-evaluate it.
+- This milestone is not COMPLETED. The reassessed extraction readiness result is recorded in the extraction (section 18, per "O-07 Extraction Evidence Approval"); it is not a scope freeze and not an implementation authorization.
 
 ## Decisions (state: PM APPROVED; approver: Julián Cely)
 
@@ -141,6 +141,20 @@ For later review under handoff proposal P-04 (the handoff is not edited in this 
 - #cobertura is the PM-approved canonical Coverage anchor (Phase 02, F-10). The approved Menu links to #marcas, which is not listed among the ARCHITECTURE.md approved targets. No anchor for Testimonios is defined in the repository and none may be invented.
 - The handoff still shows O-04 as unresolved (line 80) and P-04 still says no order can be proposed; both are to be synchronized in the later wording-cleanup commit.
 
+## O-07 Extraction Evidence Approval (state: PM APPROVED; approver: Julián Cely; transcribed by Claude Code)
+
+Resolves open item O-07. The Product Manager explicitly approved O-07 Option A. Relayed 2026-10-11.
+
+- Approve the original extraction as evidence of the observed staging reference.
+- Authorize documentation of PM-approved deviations.
+- Preserve the original observations without rewriting history.
+- Reevaluate extraction UNKNOWN items using verified PM decisions.
+- Reevaluate reconstruction readiness without inventing requirements.
+
+Approving the extraction as evidence corresponds to the acceptance step attributed to M03-01 ("Julián Cely approves the extraction evidence"). No milestone Status line (M03-00, M03-01, M03-02) is changed by this record.
+
+Applied in `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md`: section 16 now lists the PM-approved deviations with references to this document; annotations (original text preserved) were added to sections 6, 9, 15, and 17; section 18 carries a reassessment under the readiness criterion defined by the documentation. The reassessed readiness result is recorded there. That result is not a scope freeze and not an implementation authorization.
+
 ## Approval Coverage of ISS / PI / MOT Items
 
 Factual mapping of what the PM decisions above address. "No PM decision recorded" is not a rejection; it means the item is still open for the PM.
@@ -164,7 +178,7 @@ Factual mapping of what the PM decisions above address. "No PM decision recorded
 
 ## Extraction UNKNOWN Mapping (EXT §15)
 
-Only what is clearly resolved by a recorded decision is mapped. The extraction document itself is unchanged.
+Only what is clearly resolved by a recorded decision is mapped. The extraction's original rows are preserved; a resolution-status annotation table using this same mapping was added to its section 15 under O-07.
 
 | UNKNOWN | Mapping |
 |---|---|
@@ -174,7 +188,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 | U-04 layout where titles overflow | Layout intent resolved by D-14 (keep three layouts; solve only via D-01 sizes; STOP if no reasonable size fits). Switch-points resolved in "O-01 and O-02 Measurement Resolution" (open item O-01); the measurement shows 0 failing rows with the approved title sizes, so no title collision remains and no STOP condition applies |
 | U-05 overflow at Mobile Landscape 844 and at 478/479 | Established for the reference by the measurement in "O-01 and O-02 Measurement Resolution": 844 × 414 shows no overflow at 28.8px, and the inconsistent 478px reading is explained by the fractional-width gap between 478/479. Fit of the implementation is verified at testing |
 | U-06 focus ring on the light mobile card | Remains UNKNOWN — to be measured at implementation or testing; D-05 requires the implementer to verify contrast on both card backgrounds |
-| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer was PERFORMED on 2026-10-11 (integrity record in the "D-07 Image Transfer Resolution"); the extraction, which was not modified, still records U-07 as UNKNOWN |
+| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer was PERFORMED on 2026-10-11 (integrity record in the "D-07 Image Transfer Resolution"); the extraction's original row is preserved and carries the resolution annotation under O-07 |
 | U-08 commercial claims | Resolved by D-13 |
 | U-09 browser baseline | Resolved by D-11 |
 | U-10 Header offset on anchor navigation | Remains UNKNOWN until measured at implementation or testing (PI-09 is approved in "O-06 Decisions Resolution"; the Header geometry itself is not yet measured) |
@@ -195,7 +209,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
   - Actions outside the repository: Google Business Profile as a service-area business; Search Console and sitemap; check that Cloudflare and `robots.txt` do not block crawlers.
   - PM-cited reference: Google states that no special markup or AI-specific files are needed for AI Overviews or AI Mode (https://developers.google.com/search/docs/appearance/ai-features). Not verified by Claude Code in this task.
 - **O-06 PM decisions — RESOLVED.** All seven items (PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, the MOT-03 reduced-motion treatment) are decided in "O-06 Decisions Resolution". The factual notes recorded there remain (the new-tab accessible-indication mechanism is to be specified in the M03-04 specification; the Header geometry is to be measured).
-- **O-07 Extraction approval and readiness.** No PM approval of the extraction evidence (M03-01 acceptance) and no re-evaluation of reconstruction readiness are recorded. The extraction has not been updated with PM APPROVED deviations (not performed in this task).
+- **O-07 Extraction approval and readiness — RESOLVED.** See "O-07 Extraction Evidence Approval".
 - **O-08 OpenCode inputs.** The M03-04 specification does not exist and the OpenCode file allow-list is not confirmed.
 
 ## Implementer STOP Rule Recorded from D-14
@@ -207,8 +221,8 @@ If no reasonable step-title size fits the columns under the D-01 scale, the impl
 Scope freeze requires the Product Manager's explicit confirmation, which has not been given. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
 
 1. Explicit PM confirmation of scope freeze.
-2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
-3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
+2. Reconstruction-critical UNKNOWN items: resolved; the reassessed readiness result is recorded in the extraction's section 18 (see "O-07 Extraction Evidence Approval").
+3. PM approval of the extraction evidence and PM-approved deviations recorded in the extraction: done (O-07 RESOLVED; see "O-07 Extraction Evidence Approval").
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred: recorded for PI-01 to PI-10 and MOT-01 to MOT-07 (see the "Approval Coverage of ISS / PI / MOT Items" table; O-06 RESOLVED in "O-06 Decisions Resolution").
 5. Section-order discrepancy (O-04): resolved by the PM (physical OnePage order recorded in "O-04 Section Order Resolution"). The Menu, the Bottom Navigation, and all anchors are unchanged by that decision.
 6. The M03-04 specification and the confirmed file allow-list (O-08), created only after freeze.

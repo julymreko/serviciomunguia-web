@@ -97,8 +97,10 @@ Computed values (browser) — these are the OBSERVED rendered values.
 | CTA buttons | Open Sans | 15px | 700 | 1.2 | see §7 |
 
 - Authored vs computed: the extracted CSS authors the H2 as `clamp(2.125rem, 3.6vw, 3.125rem)` and `.sm-process-steps__title` as `clamp(1.5rem, 2.4vw, 2rem)`, but the browser computes 31.25px and 20px respectively at 1920. `.sm-process-step__title` has **no authored font-size** in the extracted CSS; the computed 28.8px therefore comes from another stylesheet (Bricks default or theme). The cause of the H2/steps-title discrepancy is not determined (see §15).
+- ANNOTATION (O-07, 2026-10-11; original text above is preserved): the cause is recorded in M03-03, "O-01 and O-02 Measurement Resolution": the reference authors its sizes in rem against a 10px root, so the computed 31.25px and 20px agree with the authored clamp values. The step title has no authored size (unchanged).
 - Responsive computed values (H2 / step title / steps group title): Tablet 1024 — 31.25 / 28.8 / 20; 820 — 29.52 / 28.8 / 19.68; Mobile Landscape 844 — 30.384 / 28.8 / 20; Mobile Portrait 390 — 21.25 / 28.8 / 15. CTA title: 38 / 30.72 / 31.16 / 32 / 24px.
 - Evidence state: OBSERVED (computed); cause of mismatch UNKNOWN.
+- ANNOTATION (O-07, 2026-10-11; original line above is preserved): the cause is no longer UNKNOWN; see the annotation above and M03-03, "O-01 and O-02 Measurement Resolution".
 - Evidence references: `getComputedStyle` per viewport; extracted CSS.
 
 ## 7. Colors and Visual Treatment
@@ -135,6 +137,7 @@ Breakpoints observed in the reference CSS (not project-approved values): `max-wi
 - 1024 × 1366 (still ≥992px, so the Desktop rules apply): 5 columns of 166.2px. **Step titles at 28.8px do not fit the columns**: measured `scrollWidth` > `clientWidth` for titles 2, 4, 5 (198/178/220 vs 166px); titles 2 and 3 render visually fused ("ConfirmamosRealizamos"), title 5's last word is clipped at the right edge, titles wrap to 3–4 lines, and step heights vary 367–505px. Trust items remain 5 columns (151px). CTA: image 416px / content 509px.
 - 820 × 1180 (≤991px rules): 6-track grid, steps 1–3 on row 1 (230px each) and steps 4–5 centered on row 2; connectors as segments; title overflow: none at 820 (see sweep below). CTA 2-column 44/56 with a single-column actions stack and `min-height: 420px`.
 - Step-title overflow sweep (live resize without reload, 900px-high window; "over" = step titles whose `scrollWidth` exceeds `clientWidth`; step-title column width in parentheses): 992px → 4 titles (160px); 1000 → 4 (162); 1024 → 3 (166); 1100 → 2 (180); 1200 → 1 (199); 1280 → 1 (214); 1366 and wider → 0 (229); 820 → 0 (230); 768 → 1 (214); 600 → 4 (163); 479 → 4 (125px, up to 5 lines); 390 → 0 (231); 360 → 1 (201). A reading at 478px returned the same column width as 479px (125px) although the ≤478px single-column rule should apply; that single reading is not relied upon. Step-title font size stays 28.8px at every width.
+- ANNOTATION (O-07, 2026-10-11; original text above is preserved): the inconsistent 478px reading is explained by the fractional-width gap between `max-width: 478px` and `min-width: 479px` (likewise 991/992); see M03-03, "O-01 and O-02 Measurement Resolution", which also summarizes a denser sweep (167 widths) and the five inspected viewports.
 - Evidence state: OBSERVED (geometry and overflow counts at the listed widths only; widths not listed are not measured).
 
 ### Mobile Landscape (844 × 414)
@@ -218,10 +221,50 @@ Recorded as evidence only; not requirements.
 | U-09 | Browser-support baseline for any proposed progressive-enhancement CSS/JS features | UNKNOWN | No approved browser-support policy exists in the repository | NO for extraction; YES for motion implementation | PM decision |
 | U-10 | Header offset when navigating to `#como-trabajamos` (fixed header may cover the section heading) | UNKNOWN | Header height at all viewports not measured here; the section's `scroll-margin` on the reference is not present in the extracted rules | NO | Measure during implementation |
 
+### Resolution status after M03-03 (annotation added under O-07, 2026-10-11)
+The original rows above are preserved unchanged. This table maps each item to the decisions or measurements recorded in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`. An item with no recorded decision or measurement stays UNKNOWN.
+
+| ID | Status after M03-03 | Basis (M03-03 section) |
+|---|---|---|
+| U-01 | PM APPROVED | D-01; "O-01 and O-02 Measurement Resolution" |
+| U-02 | PM APPROVED | D-02, D-03 |
+| U-03 | PM APPROVED | D-06 |
+| U-04 | PM APPROVED | D-14; "O-01 and O-02 Measurement Resolution" |
+| U-05 | OBSERVED (measurement); fit of the implementation is verified at testing | "O-01 and O-02 Measurement Resolution" |
+| U-06 | UNKNOWN — to be measured at implementation or testing | D-05 requires the implementer to verify contrast on both card backgrounds; no measurement is recorded |
+| U-07 | PM APPROVED; transfer performed | D-07; "D-07 Image Transfer Resolution" |
+| U-08 | PM APPROVED | D-13 |
+| U-09 | PM APPROVED | D-11 |
+| U-10 | UNKNOWN — to be measured at implementation or testing | PI-09 is approved in "O-06 Decisions Resolution"; the Header geometry is not yet measured |
+
 ## 16. PM-Approved Deviations
 - None recorded for this section.
 - PM-approved items existing elsewhere that touch this section's integration (not deviations of this section): the Menu link `¿Cómo trabajamos?` already targets `#como-trabajamos` (`MENU-EXTRACTION.md`, approved); the Mobile Portrait Bottom Navigation is a PM-approved product evolution (`docs/ARCHITECTURE.md`).
 - State: NOT APPLICABLE
+
+### Deviations recorded in M03-03 (added 2026-10-11; the original lines above are preserved)
+The Product Manager approved this extraction as evidence of the observed staging reference (O-07 Option A, relayed 2026-10-11; M03-03, "O-07 Extraction Evidence Approval"). The observed statements in §1–§14 are unchanged. The table below separates what was observed from what the PM approved; full text is in the referenced M03-03 section, not copied here.
+
+| M03-03 item | Observed reference | PM-approved | Deviates from observed? |
+|---|---|---|---|
+| D-01, "O-01 and O-02 Measurement Resolution" | Step titles 28.8px, no authored size (§6) | Step titles `clamp(15px, 2.4vw, 20px)`, line height 1.25, normal wrap; H2 and group heading unchanged; all sizes in px | YES (step titles) |
+| "O-01 and O-02 Measurement Resolution", D-14 | Switch-points 991/992 and 478/479 with fractional-width gaps (§9) | Same switch-points and three layouts, written with the `.98px` convention | Gaps closed only |
+| D-02, D-03 | Primary CTA `href="#contacto"`, no such id on the page (§4) | Primary CTA links to `#agendar-diagnostico`; `#contacto` and `#agendar-diagnostico` stay distinct | YES |
+| D-04 | Group title and five step titles all H3 (§4) | Steps-group title H3; step titles H4; trust and CTA titles H3 | YES |
+| D-05 | Secondary hover fill `#25d366` with white text; default focus outline (§7, §10) | Hover fill `#25d366` with text `#111a38`; focus outline `#1a2ad3` on the light card, white on the dark card, with offset | YES |
+| D-06 | Step text renders run-in (§3) | Separate paragraphs | YES |
+| D-07, "D-07 Image Transfer Resolution" | CTA image via Bricks JavaScript lazy-load from the WordPress upload (§8) | Self-hosted image with intrinsic width/height; file transferred to `src/assets/images/` | YES |
+| D-08 (MOT-01 to MOT-07) | No entrance, scroll, or progress motion (§10) | Approved motion system with the stated ranges; MOT-02 one-shot only | YES |
+| "O-06 Decisions Resolution", PI-01 | Steps are `div`s (§4) | `ol > li` | YES |
+| "O-06 Decisions Resolution", PI-04 | Section has no accessible name (§4) | `aria-labelledby` to the H2 | YES |
+| "O-06 Decisions Resolution", PI-05(c) | WhatsApp link `target="_blank"` without `rel` (§3) | New tab with `rel="noopener noreferrer"` and an accessible indication (mechanism not defined) | YES |
+| "O-06 Decisions Resolution", PI-08 | Placeholder `src`, JavaScript swap (§8) | `srcset`, native lazy loading, `decoding="async"`, descriptive alt, works without JavaScript | YES |
+| "O-06 Decisions Resolution", PI-09 | No `scroll-margin` observed (§15 U-10) | Responsive `scroll-margin-top` from measured Header geometry | YES |
+| "O-06 Decisions Resolution", PI-10 | CTA hover lift and 0.2s transition not covered by reduced motion (§10) | Under `prefers-reduced-motion: reduce`, no hover translation or animated transitions; color changes instantaneous | YES |
+| "O-06 Decisions Resolution", MOT-03 | No current-step emphasis (§10) | Static, instantaneous active-step emphasis in Mobile Portrait; detection retained; no ARIA current state | YES |
+| D-09, D-10, D-11, D-12, D-13, D-15, "O-04 Section Order Resolution" | Not observed behavior | Component naming, trust strip kept as observed, no browser baseline, no structured data in the section, copy claims confirmed, PROJECT-STATE entry, physical OnePage order | Constraints on reconstruction; no change to observed content |
+
+- State: PM APPROVED (as recorded in M03-03).
 
 ## 17. Evidence References
 - Reference URL: https://staging.serviciomunguia.com/inicio-bricks/ (HTTP 200 on 2026-10-10)
@@ -232,6 +275,7 @@ Recorded as evidence only; not requirements.
 - Asset references: §8 URLs.
 - Interaction observations: hover and focus on both CTAs at 1024 × 1366; reduced-motion media emulation; JavaScript-disabled load.
 - PM specifications: `docs/phases/phase-03/M03-00-claude-discovery-planning-requirement.md` (scope authority).
+- PM decisions (added 2026-10-11): `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`.
 
 ## 18. Reconstruction Readiness
 - Critical UNKNOWN values present: YES (U-01, U-02, U-04, U-07)
@@ -239,3 +283,12 @@ Recorded as evidence only; not requirements.
 - Blocking items: U-01, U-02, U-04, U-07
 - PM approval required: YES — see decision register in `docs/phases/phase-03/M03-02-review-improvement-proposal.md`
 - Notes: This extraction records the reference as-is. Defects visible in the reference (for example the 1024px title collision) are recorded as observations here and classified in the review document; none was corrected inside this extraction.
+
+### Reassessment under M03-03 (added 2026-10-11; the original assessment above is preserved)
+- Criterion defined by the documentation: `REFERENCE-EXTRACTION-WORKFLOW.md` ("Reconstruction Readiness") and the template field "Critical UNKNOWN values present": READY FOR RECONSTRUCTION requires every reconstruction-critical field to be OBSERVED, PM APPROVED, or NOT APPLICABLE; any reconstruction-critical UNKNOWN results in NOT READY FOR RECONSTRUCTION. No other criterion is defined, and none is added here.
+- Critical UNKNOWN values present: NO. The four items listed as critical in the original assessment (U-01, U-02, U-04, U-07) are each PM APPROVED (see the §15 annotation table).
+- Result: READY FOR RECONSTRUCTION
+- Blocking items: none under the criterion above.
+- PM approval: the extraction is approved as evidence (O-07 Option A, relayed 2026-10-11; M03-03, "O-07 Extraction Evidence Approval").
+- Remaining UNKNOWN items (none reconstruction-critical in §15): U-06 and U-10, both to be measured at implementation or testing.
+- Notes: this result is not a scope freeze and not an implementation authorization; both are governed by M03-03 and remain pending or not authorized. Items recorded in M03-03 as still open outside this extraction's UNKNOWN register (the PI-05(c) accessible-indication mechanism, the M03-04 specification and file allow-list) are not extraction UNKNOWN items and are not used to justify the result either way.
