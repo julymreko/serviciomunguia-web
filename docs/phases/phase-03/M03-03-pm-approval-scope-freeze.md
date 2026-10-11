@@ -249,6 +249,16 @@ The implementation specification must explicitly resolve whether conditional Jav
 
 **Authorization boundary:** M03-03 remains IN PROGRESS; scope freeze already APPROVED. M03-04 specification creation, OpenCode instruction, and implementation remain NOT AUTHORIZED.
 
+### O-08 — Subsequent PM Planning Approvals (2026-10-11)
+
+The Product Manager approved these refinements for future M03-04 planning only. They do not authorize M03-04 publication or implementation:
+
+- PI-05(c): visibly rendered text that states the WhatsApp link opens in a new tab, also accessible to assistive technologies. Existing link-target and rel requirements remain unchanged.
+- PI-08: retain the original 1600 × 1280 WebP without modification. Extend the future planning file allow-list with exactly three derived WebP files: `src/assets/images/servicio-munguia-tecnico-diagnostico-lavadora-cta-480.webp` (480 × 384), `src/assets/images/servicio-munguia-tecnico-diagnostico-lavadora-cta-800.webp` (800 × 640), and `src/assets/images/servicio-munguia-tecnico-diagnostico-lavadora-cta-1200.webp` (1200 × 960). Preserve the original composition and 5:4 ratio.
+- Proposal A: for planning, approve `src/assets/js/process.js` as an independent native ES module and a single `type="module"` script reference in `src/_includes/base.njk`. The previously conditional JavaScript paths are justified and approved for planning. The ten technical refinements from Claude Code's read-only review are approved: CSS owns animations; JS toggles state; only activate hidden reveal styling after successful enhancement; no-JS/failed-IO content stays visible; reduced motion retains instantaneous MOT-03 detection; portrait observer connects/disconnects on media changes and measures bottom-nav occlusion; one-shot observers clean up without scroll or animation-frame loops; MOT-06 waits for image load; local helpers with no Hero JS modification; section existence guard; test deep-link/reload flashes.
+
+These decisions extend the planning scope, not the frozen visual/product behavior. M03-03 remains IN PROGRESS, M03-04 remains NOT AUTHORIZED, and implementation has NOT STARTED.
+
 ## Implementer STOP Rule Recorded from D-14
 
 If no reasonable step-title size fits the columns under the D-01 scale, the implementer must STOP and return to the Product Manager instead of changing the layout.
