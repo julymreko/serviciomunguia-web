@@ -97,6 +97,25 @@ Resolves open items O-01 and O-02 under D-01 and D-14. Claude Code measured and 
 - Fonts: Inter 700 from the project's self-hosted file measured identically to the reference's Google-hosted Inter (13 words compared).
 - Evidence screenshots are outside the repository and are not committed.
 
+## O-06 Decisions Resolution (state: PM APPROVED; approver: Julián Cely; transcribed by Claude Code)
+
+Resolves open item O-06. The Product Manager explicitly approved the seven decisions below. Relayed 2026-10-11. They are recorded under their own proposal identifiers; D-01 to D-15 are not renumbered.
+
+| Item | Decision as given by the PM |
+|---|---|
+| PI-01 (ISS-07) | APPROVED. Use `ol > li` for the five process steps, preserving visuals and preventing duplicate numbering announcements to assistive technology. |
+| PI-04 (ISS-08) | APPROVED. Add `aria-labelledby` to the section, referencing its H2 heading ID. |
+| PI-05(c) (ISS-10) | APPROVED. Open the WhatsApp link in a new tab using `target="_blank"` and `rel="noopener noreferrer"`, with an accessible indication of the new-tab behavior. |
+| PI-08 (ISS-09) | APPROVED IN FULL. Use responsive `srcset`, native `loading="lazy"`, `decoding="async"`, the documented descriptive alt text, and an image that works without JavaScript. Preserve D-07. |
+| PI-09 | APPROVED. Use responsive `scroll-margin-top` based on measured fixed-Header geometry, verified across all four project viewport classes. |
+| PI-10 (ISS-12) | APPROVED. Under `prefers-reduced-motion: reduce`, remove CTA hover translation and animated transitions. Preserve instantaneous color-state changes. |
+| MOT-03 reduced-motion treatment | APPROVED. Maintain static, instantaneous emphasis of the active step in Mobile Portrait, without scale animation or transitions. Retain active-step detection; do not add ARIA current-state semantics. |
+
+### Factual notes (not PM decisions)
+- PI-05(c): the mechanism of the "accessible indication" of new-tab behavior is NOT defined by the PM or by M03-02. It remains to be specified in the M03-04 specification. The implementer must not choose it independently.
+- PI-01: the treatment of the visual number badge for assistive technology (hidden from AT or visual-only) follows M03-02 PI-01 and the approved goal of preventing duplicate numbering announcements. No other badge treatment is recorded.
+- PI-09: the repository does not define widths for the four viewport classes (Desktop, Tablet, Mobile Landscape, Mobile Portrait); see the "O-01 and O-02 Measurement Resolution" evidence note and the handoff proposal P-08. The wording "four viewport classes" must not be read as a definition of widths. The Header geometry (U-10) remains to be measured at implementation or testing.
+
 ## Approval Coverage of ISS / PI / MOT Items
 
 Factual mapping of what the PM decisions above address. "No PM decision recorded" is not a rejection; it means the item is still open for the PM.
@@ -107,15 +126,15 @@ Factual mapping of what the PM decisions above address. "No PM decision recorded
 | ISS-03 | D-03 (with D-02) |
 | ISS-04, ISS-05 / PI-06 | D-05 |
 | ISS-06 / PI-03 | D-04 |
-| ISS-07 / PI-01 (ordered-list semantics) | No PM decision recorded |
-| ISS-08 / PI-04 (section accessible name) | No PM decision recorded |
-| ISS-09 / PI-08 | D-07 covers self-hosting and intrinsic width/height. M03-02 PI-08 also lists `srcset`, native lazy loading, `decoding="async"`, and retaining the descriptive alt: no PM decision recorded on these |
-| ISS-10 / PI-05(c) (`rel`, new-tab behavior of the WhatsApp link) | No PM decision recorded |
+| ISS-07 / PI-01 (ordered-list semantics) | "O-06 Decisions Resolution" (PI-01 approved) |
+| ISS-08 / PI-04 (section accessible name) | "O-06 Decisions Resolution" (PI-04 approved) |
+| ISS-09 / PI-08 | D-07 covers self-hosting and intrinsic width/height. `srcset`, native lazy loading, `decoding="async"`, the descriptive alt, and a no-JavaScript image: "O-06 Decisions Resolution" (PI-08 approved in full) |
+| ISS-10 / PI-05(c) (`rel`, new-tab behavior of the WhatsApp link) | "O-06 Decisions Resolution" (PI-05(c) approved) |
 | ISS-11 / PI-07 | D-06 |
-| ISS-12 / PI-10 | No explicit PM decision on PI-10. MOT-07 is approved under D-08 |
-| PI-09 (anchor offset under the fixed Header) | No PM decision recorded |
+| ISS-12 / PI-10 | "O-06 Decisions Resolution" (PI-10 approved). MOT-07 is approved under D-08 |
+| PI-09 (anchor offset under the fixed Header) | "O-06 Decisions Resolution" (PI-09 approved) |
 | MOT-01, MOT-02 (one-shot), MOT-04, MOT-05, MOT-06, MOT-07 | D-08 |
-| MOT-03 | D-08 (approved). The reduced-motion treatment listed in M03-02 as "static non-animated style change or omitted (PM choice)": no PM decision recorded |
+| MOT-03 | D-08 (approved). The reduced-motion treatment listed in M03-02 as "static non-animated style change or omitted (PM choice)": "O-06 Decisions Resolution" |
 | MOT-02 scroll-linked variant | Not approved (D-08) |
 
 ## Extraction UNKNOWN Mapping (EXT §15)
@@ -133,7 +152,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 | U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer was PERFORMED on 2026-10-11 (integrity record in the "D-07 Image Transfer Resolution"); the extraction, which was not modified, still records U-07 as UNKNOWN |
 | U-08 commercial claims | Resolved by D-13 |
 | U-09 browser baseline | Resolved by D-11 |
-| U-10 Header offset on anchor navigation | Remains UNKNOWN — to be measured at implementation (PI-09: no PM decision recorded) |
+| U-10 Header offset on anchor navigation | Remains UNKNOWN until measured at implementation or testing (PI-09 is approved in "O-06 Decisions Resolution"; the Header geometry itself is not yet measured) |
 
 ## Open Items (not resolved by this document)
 
@@ -150,7 +169,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
   - Candidate markup per section (all must match visible text): business info and phone on Hero/Contact; Service entries in Services; `areaServed` in Coverage; no markup in Brands or Process; no self-review or `aggregateRating` markup for the business's own testimonials; consistent business data in legal pages and Footer.
   - Actions outside the repository: Google Business Profile as a service-area business; Search Console and sitemap; check that Cloudflare and `robots.txt` do not block crawlers.
   - PM-cited reference: Google states that no special markup or AI-specific files are needed for AI Overviews or AI Mode (https://developers.google.com/search/docs/appearance/ai-features). Not verified by Claude Code in this task.
-- **O-06 PM decisions not recorded** for the items listed as "No PM decision recorded" in the coverage table (PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, the MOT-03 reduced-motion treatment).
+- **O-06 PM decisions — RESOLVED.** All seven items (PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, the MOT-03 reduced-motion treatment) are decided in "O-06 Decisions Resolution". The factual notes recorded there remain (the new-tab accessible-indication mechanism is to be specified in the M03-04 specification; the Header geometry is to be measured).
 - **O-07 Extraction approval and readiness.** No PM approval of the extraction evidence (M03-01 acceptance) and no re-evaluation of reconstruction readiness are recorded. The extraction has not been updated with PM APPROVED deviations (not performed in this task).
 - **O-08 OpenCode inputs.** The M03-04 specification does not exist and the OpenCode file allow-list is not confirmed.
 
@@ -165,7 +184,7 @@ Scope freeze requires the Product Manager's explicit confirmation, which has not
 1. Explicit PM confirmation of scope freeze.
 2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
 3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
-4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred (O-06).
+4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred: recorded for PI-01 to PI-10 and MOT-01 to MOT-07 (see the "Approval Coverage of ISS / PI / MOT Items" table; O-06 RESOLVED in "O-06 Decisions Resolution").
 5. Resolution of the section-order discrepancy where it affects the implementation scope (O-04), as decided by the PM.
 6. The M03-04 specification and the confirmed file allow-list (O-08), created only after freeze.
 7. Publication: committed and pushed; HEAD = origin/main; working tree clean.
