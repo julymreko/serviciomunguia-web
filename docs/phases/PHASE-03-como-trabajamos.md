@@ -42,7 +42,7 @@ Scope authority for discovery:
 - Extraction: `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md` (follows `REFERENCE-EXTRACTION-WORKFLOW.md` and `REFERENCE-SECTION-TEMPLATE.md`).
 - Review and proposals: `docs/phases/phase-03/M03-02-review-improvement-proposal.md`.
 - Evidence states: OBSERVED / PM APPROVED / UNKNOWN / NOT APPLICABLE. Review labels: ISSUE / DEFECT and PROPOSED IMPROVEMENT.
-- A reconstruction-critical UNKNOWN blocks reconstruction. Current extraction result: NOT READY FOR RECONSTRUCTION.
+- A reconstruction-critical UNKNOWN blocks reconstruction. Current extraction result: READY FOR RECONSTRUCTION, per the PM-approved O-07 reassessment recorded in the extraction (section 18) and M03-03. This readiness does not authorize implementation.
 - Proposals are never requirements until the Product Manager approval is recorded in the repository (M03-03).
 
 ## Responsibility Chain
@@ -101,7 +101,7 @@ Testing applicability:
 Build N/A - documentation only; Functional N/A; Responsive N/A; SEO N/A; Accessibility N/A; Performance N/A; Security N/A; Integrations N/A; Regression N/A.
 
 Note:
-`docs/phases/phase-03/M03-00-claude-discovery-planning-requirement.md` records `Status: DRAFT FOR EXECUTION` under "Document Status" rather than under "Identification". It was not modified by this assignment; the Product Manager decides whether to normalize it.
+`docs/phases/phase-03/M03-00-claude-discovery-planning-requirement.md` now records `Status: IN PROGRESS` under `## Identification`, as approved in P-03 and published in commit `9de3d66`.
 
 Acceptance criteria:
 - Specification published with all milestones fully defined.

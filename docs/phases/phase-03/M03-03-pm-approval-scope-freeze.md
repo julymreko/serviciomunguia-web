@@ -266,7 +266,7 @@ UNDEFINED — scope freeze pending PM confirmation.
 See Git history (`docs: record Phase 03 PM decisions (M03-03)`).
 
 ## Findings
-None recorded. Proposed documentation changes are listed in `docs/handoffs/PHASE-03-M03-HANDOFF.md` and are not applied.
+None recorded. Documentation proposals P-01 through P-09 were resolved by the PM and their approved documentation changes were published in commit `9de3d66` (P-09 requires no file modification). The historical proposal inventory remains in `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
 
 ## Bugs
 None recorded.
