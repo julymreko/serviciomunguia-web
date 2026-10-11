@@ -22,10 +22,19 @@ new.serviciomunguia.com
 ## Current Phase
 
 Phase:
-2 — Controlled Reference Migration
+3 — CÓMO TRABAJAMOS
 
 Status:
-COMPLETED
+IN PROGRESS
+
+Implementation authorization:
+NOT AUTHORIZED — Phase 03 discovery and planning only. No `src/` change is authorized until M03-03 (Product Manager approval and scope freeze) closes.
+
+Phase specification:
+docs/phases/PHASE-03-como-trabajamos.md
+
+Previous phase:
+2 — Controlled Reference Migration — COMPLETED
 
 ## Confirmed Architecture
 
@@ -66,7 +75,7 @@ YES
 
 ## Current Working Item
 
-NONE
+M03-00 / M03-01 / M03-02 — Phase 03 discovery, reference extraction, and review/proposal (documentation only). All three are IN PROGRESS pending Product Manager review.
 
 Phase 02 completed after formal M02-05 R03 PASS.
 
@@ -90,4 +99,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-UNDEFINED — awaiting Product Manager approval of the next phase entry point.
+M03-03 — Product Manager Approval & Scope Freeze (owner: Julián Cely + coordinating ChatGPT). Implementation (M03-04) does not begin before M03-03 closes.
