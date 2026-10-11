@@ -41,6 +41,7 @@ Do not infer missing context from previous conversations.
 - Implementation: **NOT AUTHORIZED.** IMPLEMENTATION NOT STARTED.
 - M03-00, M03-01, M03-02 remain IN PROGRESS. No milestone is COMPLETED.
 - Role directive recorded: the PM directed Claude Code to act only as transcriber for M03-03; the approver of every decision is Julián Cely.
+- The PM-approved CTA image transfer exception is recorded in M03-03, "D-07 Image Transfer Resolution", which is the only place that states whether the transfer was performed.
 
 ## Completed Work
 
@@ -48,6 +49,7 @@ Do not infer missing context from previous conversations.
 - Mapped each decision to its ISS/PI/MOT/U identifiers; mapped U-01 to U-10 to resolved / remains UNKNOWN / to be measured.
 - Recorded the open items O-01 to O-08 and the remaining-before-freeze list.
 - Updated the Phase 03 specification (M03-03 status and references) and PROJECT-STATE (working item and next item; implementation still NOT AUTHORIZED).
+- Recorded the PM-approved D-07 image transfer exception in M03-03, PROJECT-STATE and the Phase 03 specification (commit 5fe5399fc42bbcc7b0c16c120846a8a5abc253b7).
 
 ## Files Created
 
@@ -58,6 +60,7 @@ Do not infer missing context from previous conversations.
 
 - docs/phases/PHASE-03-como-trabajamos.md (M03-03 Status and Record lines only)
 - docs/PROJECT-STATE.md (Current Working Item and Next Item only)
+- Commit 5fe5399fc42bbcc7b0c16c120846a8a5abc253b7 (image transfer exception only): docs/PROJECT-STATE.md, docs/phases/PHASE-03-como-trabajamos.md, docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md, docs/handoffs/PHASE-03-M03-HANDOFF.md.
 
 ## Verified Results
 
@@ -74,7 +77,7 @@ D-01 new explicit type scale (sizes by measurement); D-02 `#contacto` and `#agen
 
 - O-01 Layout switch-point values are UNDEFINED.
 - O-02 D-01 sizes are UNDEFINED; who measures and when is not stated.
-- O-03 Decision recorded: Claude Code transfers the image in M03-03 under the single exception in M03-03 "D-07 Image Transfer Resolution". Transfer NOT PERFORMED.
+- O-03 Decision recorded: Claude Code transfers the image in M03-03 under the single exception in M03-03 "D-07 Image Transfer Resolution". Transfer status: see M03-03, "D-07 Image Transfer Resolution".
 - O-04 Section-order discrepancy between PM statement, ARCHITECTURE.md, and the approved Menu (recorded, not resolved).
 - O-05 Later page-wide structured-data / AI-search-visibility milestone proposed by the PM; LocalBusiness `address` applicability for a service-area business with no public address is UNKNOWN.
 - O-06 No PM decision recorded for PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, and the MOT-03 reduced-motion treatment.
@@ -182,7 +185,7 @@ Branch:
 main
 
 Last validated commit (before this handoff):
-0b1e31eb708b79074f295934e4645565b1554050
+5fe5399fc42bbcc7b0c16c120846a8a5abc253b7
 
 Commit containing this handoff: see Git history (`docs: record Phase 03 PM decisions (M03-03)`).
 

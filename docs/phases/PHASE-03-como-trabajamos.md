@@ -21,7 +21,7 @@ Claude Code for M03-06 (formal audit); Claude Code for M03-05 (independent testi
 
 Authorized now: discovery, reference extraction, review, proposals, and planning documentation (M03-00, M03-01, M03-02).
 
-NOT authorized: any implementation. No file under `src/` may be created or modified for this phase until M03-03 closes with a recorded Product Manager approval and scope freeze. One PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` during M03-03 (see M03-03, "D-07 Image Transfer Resolution"). This boundary is not a status; `Status` above is the only canonical state field.
+NOT authorized: any implementation. No file under `src/` may be created or modified for this phase until M03-03 closes with a recorded Product Manager approval and scope freeze. One PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` during M03-03 (see M03-03, "D-07 Image Transfer Resolution"). The status of this transfer is recorded only in M03-03, "D-07 Image Transfer Resolution". This boundary is not a status; `Status` above is the only canonical state field.
 
 ## Objective
 
@@ -288,7 +288,7 @@ Responsible agent:
 OpenCode.
 
 Files allowed to change (proposed, to be confirmed by M03-03):
-`src/index.njk` (add the include); one new component under `src/_includes/components/`; `src/assets/css/main.css` (new section block only); `src/assets/images/` (approved image, already transferred in M03-03; M04 references it and does not re-transfer it); optionally one new file under `src/assets/js/` and one script line in `src/_includes/base.njk`, only if a JavaScript-dependent motion proposal is approved.
+`src/index.njk` (add the include); one new component under `src/_includes/components/`; `src/assets/css/main.css` (new section block only); `src/assets/images/` (approved image; M03-04 references it and does not transfer it; it may be used only if M03-03 records the transfer as performed, otherwise STOP and ask the PM); optionally one new file under `src/assets/js/` and one script line in `src/_includes/base.njk`, only if a JavaScript-dependent motion proposal is approved.
 
 Files prohibited from change:
 `docs/reference-extraction/*`; `docs/audits/*`; Phase 02 documents; `docs/ARCHITECTURE.md`; ADRs; governance documents; existing Header, Hero, Menu, and Mobile Navigation components, styles, and scripts (except where M03-03 explicitly authorizes an integration change); `package.json` dependencies.

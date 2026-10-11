@@ -28,7 +28,7 @@ Status:
 IN PROGRESS
 
 Implementation authorization:
-NOT AUTHORIZED — Phase 03 discovery and planning only. No `src/` change is authorized until M03-03 (Product Manager approval and scope freeze) closes, with one PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` (docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md, "D-07 Image Transfer Resolution"). Implementation remains NOT AUTHORIZED.
+NOT AUTHORIZED — Phase 03 discovery and planning only. No `src/` change is authorized until M03-03 (Product Manager approval and scope freeze) closes, with one PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` (docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md, "D-07 Image Transfer Resolution"). The status of this transfer is recorded only in M03-03, "D-07 Image Transfer Resolution". Implementation remains NOT AUTHORIZED.
 
 Phase specification:
 docs/phases/PHASE-03-como-trabajamos.md
