@@ -62,7 +62,7 @@ Do not infer missing context from previous conversations.
 ## Verified Results
 
 - Git precheck before editing: branch `main`; working tree clean; HEAD = origin/main = `0b1e31eb708b79074f295934e4645565b1554050`; local and remote synchronized.
-- No file under `src/` was changed. The CTA source image was not accessed, copied, or committed.
+- No file under `src/` was changed. The CTA source image was not accessed, copied, or committed. (true as of commit da9e840; a later PM-approved exception permits the CTA image transfer, see M03-03 "D-07 Image Transfer Resolution").
 - `COMO-TRABAJAMOS-EXTRACTION.md`, `M03-02`, the M03-00 requirement, ARCHITECTURE, ARTIFACT-CONVENTIONS, CONTEXT-PROTOCOL, BUGS, FINDINGS, and all Phase 02 artifacts were not modified.
 
 ## Decisions Made
@@ -74,7 +74,7 @@ D-01 new explicit type scale (sizes by measurement); D-02 `#contacto` and `#agen
 
 - O-01 Layout switch-point values are UNDEFINED.
 - O-02 D-01 sizes are UNDEFINED; who measures and when is not stated.
-- O-03 Who copies the CTA image into `src/assets/images/`, and in which milestone, is UNDEFINED.
+- O-03 Decision recorded: Claude Code transfers the image in M03-03 under the single exception in M03-03 "D-07 Image Transfer Resolution". Transfer NOT PERFORMED.
 - O-04 Section-order discrepancy between PM statement, ARCHITECTURE.md, and the approved Menu (recorded, not resolved).
 - O-05 Later page-wide structured-data / AI-search-visibility milestone proposed by the PM; LocalBusiness `address` applicability for a service-area business with no public address is UNKNOWN.
 - O-06 No PM decision recorded for PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, and the MOT-03 reduced-motion treatment.
@@ -102,10 +102,11 @@ The "Scope Freeze — Remaining Before Freeze" list in M03-03 (items 1–7).
 - Do not start M03-04 or write OpenCode instructions before the PM confirms scope freeze.
 - Do not apply the proposals below without PM approval.
 - Stop and request clarification when required information is undefined.
+- The only permitted `src/` change before scope freeze is the CTA image transfer in M03-03, under its integrity conditions.
 
 ## Required Next Action
 
-Product Manager (Julián Cely) and the coordinating ChatGPT: review the open items O-01 to O-08, decide the proposed documentation changes below, and, when ready, give the explicit scope-freeze confirmation. Only after that may the M03-03 closure steps (extraction update, M03-04 specification) be performed.
+Product Manager (Julián Cely) and the coordinating ChatGPT: review the open items O-01 to O-08, decide the proposed documentation changes below, and, when ready, give the explicit scope-freeze confirmation. Only after that may the M03-03 closure steps (extraction update, M03-04 specification) be performed. The PM instructs Claude Code when to perform the CTA image transfer.
 
 ## PROPOSED DOCUMENTATION CHANGES
 

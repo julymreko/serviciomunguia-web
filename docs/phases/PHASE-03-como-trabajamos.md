@@ -21,7 +21,7 @@ Claude Code for M03-06 (formal audit); Claude Code for M03-05 (independent testi
 
 Authorized now: discovery, reference extraction, review, proposals, and planning documentation (M03-00, M03-01, M03-02).
 
-NOT authorized: any implementation. No file under `src/` may be created or modified for this phase until M03-03 closes with a recorded Product Manager approval and scope freeze. This boundary is not a status; `Status` above is the only canonical state field.
+NOT authorized: any implementation. No file under `src/` may be created or modified for this phase until M03-03 closes with a recorded Product Manager approval and scope freeze. One PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` during M03-03 (see M03-03, "D-07 Image Transfer Resolution"). This boundary is not a status; `Status` above is the only canonical state field.
 
 ## Objective
 
@@ -235,16 +235,16 @@ Inputs:
 M03-01 and M03-02 artifacts.
 
 Outputs:
-`docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (to be created at this milestone; it records decisions, the frozen requirement set, and the approved deviations from the reference); updated extraction with PM APPROVED deviations and readiness; `docs/phases/phase-03/M03-04-opencode-implementation.md`.
+`docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (to be created at this milestone; it records decisions, the frozen requirement set, and the approved deviations from the reference); updated extraction with PM APPROVED deviations and readiness; `docs/phases/phase-03/M03-04-opencode-implementation.md`; the approved CTA image asset in `src/assets/images/` (integrity record: file name, byte size, SHA-256, dimensions, format).
 
 Responsible agent:
-Julián Cely + coordinating ChatGPT. Claude Code may be asked to update planning artifacts after decisions are given.
+Julián Cely + coordinating ChatGPT. Claude Code may be asked to update planning artifacts after decisions are given. Claude Code performs the approved CTA image transfer (M03-03, "D-07 Image Transfer Resolution").
 
 Files allowed to change:
-Phase 03 documents; the extraction (only to record PM-approved deviations and readiness; observed evidence stays untouched).
+Phase 03 documents; the extraction (only to record PM-approved deviations and readiness; observed evidence stays untouched); the approved CTA image asset under `src/assets/images/` (transfer only).
 
 Files prohibited from change:
-All `src/`; Phase 02 documents and audit results.
+All `src/` except the single approved CTA image asset transfer into `src/assets/images/` (M03-03, "D-07 Image Transfer Resolution"); Phase 02 documents and audit results.
 
 Testing applicability:
 Build N/A - documentation only; Functional N/A; Responsive N/A; SEO N/A; Accessibility N/A; Performance N/A; Security N/A; Integrations N/A; Regression N/A.
@@ -259,7 +259,7 @@ STOP / BLOCKED:
 Any reconstruction-critical UNKNOWN remains; the PM has not decided D-01, D-02, D-03, D-07, D-13, or D-14.
 
 Required evidence:
-Recorded PM decisions; synchronized artifacts.
+Recorded PM decisions; synchronized artifacts; image transfer integrity record (source and copy SHA-256 and byte size identical; dimensions and aspect ratio compared with the extraction).
 
 Publication gate:
 Committed and pushed before M03-04.
@@ -288,7 +288,7 @@ Responsible agent:
 OpenCode.
 
 Files allowed to change (proposed, to be confirmed by M03-03):
-`src/index.njk` (add the include); one new component under `src/_includes/components/`; `src/assets/css/main.css` (new section block only); `src/assets/images/` (approved image); optionally one new file under `src/assets/js/` and one script line in `src/_includes/base.njk`, only if a JavaScript-dependent motion proposal is approved.
+`src/index.njk` (add the include); one new component under `src/_includes/components/`; `src/assets/css/main.css` (new section block only); `src/assets/images/` (approved image, already transferred in M03-03; M04 references it and does not re-transfer it); optionally one new file under `src/assets/js/` and one script line in `src/_includes/base.njk`, only if a JavaScript-dependent motion proposal is approved.
 
 Files prohibited from change:
 `docs/reference-extraction/*`; `docs/audits/*`; Phase 02 documents; `docs/ARCHITECTURE.md`; ADRs; governance documents; existing Header, Hero, Menu, and Mobile Navigation components, styles, and scripts (except where M03-03 explicitly authorizes an integration change); `package.json` dependencies.

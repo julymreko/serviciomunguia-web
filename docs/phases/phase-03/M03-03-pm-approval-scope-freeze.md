@@ -25,7 +25,7 @@ Record in the repository, exactly as given, the Product Manager's decisions on t
 ## State Boundary
 
 - Scope freeze: **PENDING PM CONFIRMATION.** The Product Manager has not given the explicit freeze confirmation. Scope is NOT frozen.
-- Implementation: **NOT AUTHORIZED.** No `src/` change, no OpenCode instruction, and no M03-04 specification exist or are authorized.
+- Implementation: **NOT AUTHORIZED.** No OpenCode instruction and no M03-04 specification exist or are authorized. No `src/` change is authorized, with one PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` (see "D-07 Image Transfer Resolution"). The exception covers that single file and nothing else.
 - This milestone is not COMPLETED. The extraction readiness result remains as recorded in the extraction (NOT READY FOR RECONSTRUCTION); this document does not re-evaluate it.
 
 ## Decisions (state: PM APPROVED; approver: Julián Cely)
@@ -40,7 +40,7 @@ IDs match the decision register in `docs/phases/phase-03/M03-02-review-improveme
 | D-04 | ISS-06, PI-03 | Option A. The steps-group title stays H3; the five step titles become H4; the trust-strip title and the CTA-card title stay H3. Visual styling must not depend on the tag name. |
 | D-05 | ISS-04, ISS-05, PI-06, MOT-07 | Secondary button hover = fill `#25d366` with text `#111a38`. Keyboard focus indicator = outline `#1a2ad3` on the light card and white on the dark card. The implementer must keep a visible separation (offset) where the blue outline meets the blue primary button and verify contrast on both card backgrounds. |
 | D-06 | ISS-11, PI-07, U-03 | Step text is rendered as separate paragraphs. |
-| D-07 | ISS-09, PI-08, U-07 | Approved to self-host the CTA image with intrinsic width/height. The PM confirms ownership/rights. PM-supplied source file: `F:\0_Proyectos web\serviciomunguia.com\Diseño\Fotos\Originales\servicio-munguia-tecnico-diagnostico-lavadora-cta.webp` (outside the repository; not accessed, copied, or committed by this task). |
+| D-07 | ISS-09, PI-08, U-07 | Approved to self-host the CTA image with intrinsic width/height. The PM confirms ownership/rights. PM-supplied source file: `F:\0_Proyectos web\serviciomunguia.com\Diseño\Fotos\Originales\servicio-munguia-tecnico-diagnostico-lavadora-cta.webp` (outside the repository; it was not accessed, copied, or committed when D-07 was transcribed; transfer is governed by "D-07 Image Transfer Resolution"). |
 | D-08 | MOT-01 to MOT-07, ISS-12 | MOT-01 through MOT-07 are all approved. MOT-02 is the one-shot variant only; the scroll-linked variant is NOT approved. MOT-03 is approved (MEDIUM risk; Mobile Portrait only; its lower-cost alternative was "omit"). The PM accepted the proposed ranges: reveal 350–600ms, 12–24px, stagger 60–100ms; connector 600–900ms; badge 200–300ms; CTA image 500–800ms; button transition about 0.2s. |
 | D-09 | M03-02 §5 | Component `src/_includes/components/process.njk`, root class `sm-process`, anchor id `como-trabajamos`. |
 | D-10 | UX redundancy | Keep both the steps and the trust strip as in the reference (no merge, no removal, no copy changes). PM note: the PM first chose "merge", then reverted to "keep" after learning that the "approximate duration" trust item has no equivalent in the steps. |
@@ -49,6 +49,18 @@ IDs match the decision register in `docs/phases/phase-03/M03-02-review-improveme
 | D-13 | U-08 | The PM confirms the six commercial claims in the copy are accurate: approximate two-hour appointment window with a call before arrival; visit cost informed before scheduling and deducted if the repair is authorized; work starts only with authorization; a second visit may be required if a part is missing; foliated note delivered with the work done and applicable warranty; warranty depends on the part used. |
 | D-14 | U-04 | Layout: option (a). Keep the three observed layouts (5 columns, 3+2, vertical). The title overflow must be solved only through the title sizes defined under D-01. If no reasonable title size fits the columns, the implementer must STOP and return to the PM instead of changing the layout. |
 | D-15 | PROJECT-STATE | The PROJECT-STATE entry (Phase 3, discovery/planning, implementation not authorized, next item M03-03) is accepted. |
+
+## D-07 Image Transfer Resolution (state: PM APPROVED; approver: Julián Cely; transcribed by Claude Code)
+
+Resolves open item O-03. The PM decision was relayed to Claude Code on 2026-10-11, after the commit that recorded D-01 to D-15.
+
+- Responsible agent: Claude Code.
+- Milestone: M03-03.
+- Permitted exception: Claude Code may transfer the approved CTA image asset into `src/assets/images/` and nothing else. Source (PM-supplied, outside the repository): `F:\0_Proyectos web\serviciomunguia.com\Diseño\Fotos\Originales\servicio-munguia-tecnico-diagnostico-lavadora-cta.webp`. Target file name: the same as the source file name.
+- Before the transfer, verify source identity and integrity by recording: file name, byte size, SHA-256 of the source, pixel dimensions, and format. After the copy, verify that the SHA-256 and byte size of the copy are identical to the source. Compare the dimensions and aspect ratio with the values recorded in `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md`. On any mismatch: STOP and ask the PM.
+- Prohibited: any change to Nunjucks, CSS, JavaScript, or the production section implementation; any other file under `src/`; referencing the image from any template.
+- Scope freeze remains PENDING PM CONFIRMATION. Implementation remains NOT AUTHORIZED.
+- Transfer status at the time of this record: NOT PERFORMED. The PM directed that the transfer not be done in the task that recorded this decision.
 
 ## Approval Coverage of ISS / PI / MOT Items
 
@@ -83,7 +95,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 | U-04 layout where titles overflow | Layout intent resolved by D-14 (keep three layouts; solve only via D-01 sizes; STOP if no reasonable size fits). Layout switch-point values remain UNDEFINED (open item O-01) |
 | U-05 overflow at Mobile Landscape 844 and at 478/479 | Remains UNKNOWN — to be measured at implementation or testing (as stated in EXT §15) |
 | U-06 focus ring on the light mobile card | Remains UNKNOWN — to be measured at implementation or testing; D-05 requires the implementer to verify contrast on both card backgrounds |
-| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Transfer of the file into the repository remains UNDEFINED (open item O-03) |
+| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer has NOT been performed; the extraction still records U-07 as UNKNOWN |
 | U-08 commercial claims | Resolved by D-13 |
 | U-09 browser baseline | Resolved by D-11 |
 | U-10 Header offset on anchor navigation | Remains UNKNOWN — to be measured at implementation (PI-09: no PM decision recorded) |
@@ -92,7 +104,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 
 - **O-01 Layout switch-points.** The reference breakpoints (991/992, 767, 478/479) are not project-approved values. Where the three layouts (5 columns, 3+2, vertical) switch remains UNDEFINED until the PM decides.
 - **O-02 D-01 sizes.** The exact H2, steps-group title, and step-title sizes are UNDEFINED. The PM stated they are determined by measurement "during the approval phase"; who measures and when is not stated.
-- **O-03 D-07 image transfer.** The source file lives outside the repository. Who copies it into `src/assets/images/`, and in which milestone, is UNDEFINED.
+- **O-03 D-07 image transfer — decision recorded; transfer NOT PERFORMED.** The source file lives outside the repository. The PM decision on who transfers it, in which milestone, and under which conditions is recorded in "D-07 Image Transfer Resolution" above. The file has not yet been copied into `src/assets/images/`.
 - **O-04 Section order discrepancy (recorded, not resolved).**
   - PM statement: Cómo trabajamos, Servicios, Marcas, Zonas de cobertura, Contacto, legal pages, Footer.
   - `docs/ARCHITECTURE.md` confirmed major sections: Header, Hero, Services, Coverage, Brands, Process, Testimonials, Contact, Footer.
@@ -116,7 +128,7 @@ If no reasonable step-title size fits the columns under the D-01 scale, the impl
 Scope freeze requires the Product Manager's explicit confirmation, which has not been given. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
 
 1. Explicit PM confirmation of scope freeze.
-2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the D-01 sizes (O-02), the layout switch-points (O-01), and the image transfer (O-03), unless the PM decides otherwise.
+2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the D-01 sizes (O-02), the layout switch-points (O-01), and the image transfer (O-03: decision recorded; transfer not yet performed), unless the PM decides otherwise.
 3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred (O-06).
 5. Resolution of the section-order discrepancy where it affects the implementation scope (O-04), as decided by the PM.
