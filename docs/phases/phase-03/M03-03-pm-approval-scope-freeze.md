@@ -234,11 +234,11 @@ No milestone completion or implementation authorization follows from these decis
 
 If no reasonable step-title size fits the columns under the D-01 scale, the implementer must STOP and return to the Product Manager instead of changing the layout.
 
-## Scope Freeze — Remaining Before Freeze
+## Scope Freeze — PM Approval Recorded
 
-Scope freeze requires the Product Manager's explicit confirmation, which has not been given. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
+The Product Manager explicitly APPROVED the scope freeze for the Cómo trabajamos section on 2026-10-11. This approval freezes the recorded M03-03 reconstruction decisions and deviations. It does NOT close M03-03, authorize M03-04, authorize OpenCode, or permit production source modifications. The remaining milestones and publication criteria below still apply. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
 
-1. Explicit PM confirmation of scope freeze.
+1. Explicit PM confirmation of scope freeze: APPROVED on 2026-10-11; recording/publication and subsequent milestone criteria remain separate.
 2. Reconstruction-critical UNKNOWN items: resolved; the reassessed readiness result is recorded in the extraction's section 18 (see "O-07 Extraction Evidence Approval").
 3. PM approval of the extraction evidence and PM-approved deviations recorded in the extraction: done (O-07 RESOLVED; see "O-07 Extraction Evidence Approval").
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred: recorded for PI-01 to PI-10 and MOT-01 to MOT-07 (see the "Approval Coverage of ISS / PI / MOT Items" table; O-06 RESOLVED in "O-06 Decisions Resolution").
@@ -260,7 +260,7 @@ Unchanged from `docs/phases/PHASE-03-como-trabajamos.md`:
 2026-10-11 (transcription of decisions given 2026-10-10 to 2026-10-11)
 
 ### Completed
-UNDEFINED — scope freeze pending PM confirmation.
+UNDEFINED — scope freeze approved by the PM on 2026-10-11, but milestone closure remains pending the M03-04 specification, confirmed file allow-list, and publication verification.
 
 ### Git Commit
 See Git history (`docs: record Phase 03 PM decisions (M03-03)`).
@@ -273,7 +273,7 @@ None recorded.
 
 ## Pending Items
 
-O-01, O-02, O-03, O-04, O-06, and O-07 are resolved. O-08 (M03-04 specification and OpenCode file allow-list) remains contingent on explicit scope freeze. O-05 is a separate, non-blocking future proposal. See "Scope Freeze — Remaining Before Freeze".
+O-01, O-02, O-03, O-04, O-06, and O-07 are resolved. The PM expressly approved scope freeze on 2026-10-11. O-08 (the M03-04 specification and OpenCode file allow-list) remains pending; its preparation and implementation have not been authorized by this decision. O-05 is a separate, non-blocking future proposal. See "Scope Freeze — Remaining Before Freeze".
 
 ## Decisions Required
 The PM decisions needed to close the open items above. If a required decision is undefined, execution must stop and request clarification from Julián Cely.

@@ -223,7 +223,7 @@ Status:
 IN PROGRESS
 
 Record:
-PM decisions D-01 to D-15 are transcribed in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (Claude Code acted only as transcriber at the PM's direction). Scope freeze is PENDING PM CONFIRMATION; open items are listed there. Handoff: `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
+PM decisions D-01 to D-15 are transcribed in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (Claude Code acted only as transcriber at the PM's direction). Scope freeze was expressly approved by the PM on 2026-10-11; M03-03 remains IN PROGRESS pending its other acceptance criteria, and neither M03-04 nor implementation is authorized by the freeze decision. Remaining items are listed there. Handoff: `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
 
 Purpose:
 Resolve UNKNOWN items and convert explicitly approved proposals into implementation requirements. No implementation begins before this milestone closes.
