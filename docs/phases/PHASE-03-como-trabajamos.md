@@ -74,7 +74,10 @@ Nine areas per `docs/TESTING-PROTOCOL.md`: Build, Functional, Responsive, SEO, A
 ### M03-00 - Phase 03 Discovery & Planning
 
 Status:
-IN PROGRESS
+COMPLETED
+
+Closure record (for PM approval):
+The Phase 03 specification and PROJECT-STATE entry were published; PM decision D-15 is recorded in M03-03. Formal closure is effective only after approval and publication of this update.
 
 Purpose:
 Establish Phase 03 documentation, discovery scope, responsibilities, governance boundaries, and planning artifacts.
@@ -124,7 +127,10 @@ Phase 02 COMPLETED.
 ### M03-01 - "Cómo Trabajamos" Reference Extraction
 
 Status:
-IN PROGRESS
+COMPLETED
+
+Closure record (for PM approval):
+Extraction evidence is published; PM approval O-07 and READY FOR RECONSTRUCTION reassessment are recorded, preserving the original extraction evidence. Formal closure is effective only after approval and publication of this update.
 
 Purpose:
 Create the evidence-based extraction of the staging reference.
@@ -173,7 +179,10 @@ M03-00.
 ### M03-02 - UX / Accessibility / SEO / Motion Review & Improvement Proposal
 
 Status:
-IN PROGRESS
+COMPLETED
+
+Closure record (for PM approval):
+The issued M03-02 proposal, its issue and MOT registers are published; subsequent PM decisions are recorded in M03-03. Formal closure is effective only after approval and publication of this update.
 
 Purpose:
 Document issues, improvement proposals, SEO and accessibility recommendations, motion proposals, performance-risk classification, and the PM decision register.

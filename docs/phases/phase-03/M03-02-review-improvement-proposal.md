@@ -4,7 +4,7 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-02 — UX / Accessibility / SEO / Motion Review & Improvement Proposal
-Status: IN PROGRESS
+Status: COMPLETED
 
 Owner: Julián Cely — Product Manager
 Executing Agent: Claude Code (Claude Sonnet 5.5) — Discovery & Planning
@@ -285,7 +285,7 @@ Reconstruction-critical = blocks scope freeze (EXT §18).
 2026-10-10
 
 ### Completed
-UNDEFINED — pending Product Manager review.
+Closure proposed on 2026-10-11, effective only upon explicit PM approval and publication. The review document was previously issued; later PM decisions are recorded in M03-03.
 
 ### Git Commit
 Recorded in the final report; see Git history for `docs: add Phase 03 discovery and planning package`.
@@ -297,7 +297,7 @@ None recorded. Reference defects are recorded above as ISS-xx, not as project fi
 None recorded.
 
 ## Pending Items
-All decisions in §8.
+D-01 to D-15 were subsequently resolved and recorded in M03-03. This paragraph updates the closure state; the original §8 decision-request register remains preserved as historical evidence.
 
 ## Decisions Required
 D-01 … D-15 (§8). If a required decision is undefined, execution must stop and request clarification from Julián Cely.

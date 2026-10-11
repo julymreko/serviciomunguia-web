@@ -75,7 +75,7 @@ YES
 
 ## Current Working Item
 
-M03-03 — Product Manager Approval & Scope Freeze. IN PROGRESS: PM decisions D-01 to D-15 are recorded in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`; scope freeze was expressly APPROVED by the PM on 2026-10-11, but M03-03 remains IN PROGRESS pending its remaining acceptance criteria; M03-04 and implementation are NOT AUTHORIZED. M03-00, M03-01, and M03-02 remain IN PROGRESS (no PM closure recorded).
+M03-03 — Product Manager Approval & Scope Freeze. IN PROGRESS: PM decisions D-01 to D-15 are recorded in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`; scope freeze was expressly APPROVED by the PM on 2026-10-11, but M03-03 remains IN PROGRESS pending its remaining acceptance criteria; M03-04 and implementation are NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED upon PM approval and publication of the closure record. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
 
 Phase 02 completed after formal M02-05 R03 PASS.
 
@@ -99,4 +99,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-Record and publish the PM-approved scope freeze, then resolve remaining M03-03 acceptance criteria and O-08 authorization separately. M03-04 (OpenCode implementation) remains NOT AUTHORIZED and does not begin before M03-03 closes and a separate PM authorization is recorded.
+Review M03-03 formal closure based on its acceptance criteria. The M03-04 specification and approved O-08 planning allow-list are published; execution remains separately unauthorized. M03-04 (OpenCode implementation) remains NOT AUTHORIZED and does not begin before M03-03 closes and a separate PM authorization is recorded.
