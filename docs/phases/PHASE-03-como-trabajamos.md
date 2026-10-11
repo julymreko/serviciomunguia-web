@@ -220,7 +220,10 @@ M03-01.
 ### M03-03 - Product Manager Approval & Scope Freeze
 
 Status:
-NOT STARTED
+IN PROGRESS
+
+Record:
+PM decisions D-01 to D-15 are transcribed in `docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md` (Claude Code acted only as transcriber at the PM's direction). Scope freeze is PENDING PM CONFIRMATION; open items are listed there. Handoff: `docs/handoffs/PHASE-03-M03-HANDOFF.md`.
 
 Purpose:
 Resolve UNKNOWN items and convert explicitly approved proposals into implementation requirements. No implementation begins before this milestone closes.
