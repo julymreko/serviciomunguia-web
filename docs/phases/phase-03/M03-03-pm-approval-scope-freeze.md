@@ -74,6 +74,29 @@ Resolves open item O-03. The PM decision was relayed to Claude Code on 2026-10-1
   - The image is not referenced from any template.
   - Metadata: inspected on 2026-10-11 (read-only). The EXIF and XMP chunks contain no GPS location, personal names, e-mail addresses, camera data, author, copyright, or dates. The XMP writer is `Image::ExifTool 12.98` and the XMP title is `image.png`. PM decision: keep the file unmodified.
 
+## O-01 and O-02 Measurement Resolution (state: PM APPROVED; approver: Julián Cely; transcribed by Claude Code)
+
+Resolves open items O-01 and O-02 under D-01 and D-14. Claude Code measured and proposed; the Product Manager reviewed the measurement report and approved Option A, all values in px, and the `.98px` switch-point convention. Relayed 2026-10-11.
+
+### Approved values
+- H2: Inter 700, `clamp(21.25px, 3.6vw, 31.25px)`. No change from the reference as computed.
+- Steps-group heading: Inter 700, `clamp(15px, 2.4vw, 20px)`. No change.
+- Step titles: Inter 700, `font-size: clamp(15px, 2.4vw, 20px)`, `line-height: 1.25`, normal word wrap, `overflow-wrap: normal`, `hyphens: none`.
+- Layouts and switch-points: the three D-14 layouts are unchanged. Switch-points remain the observed 991/992 (3+2 below, 5 columns above) and 478/479 (vertical below, 3+2 above), written with the project's existing `.98px` convention so no fractional-width gap remains (for example `max-width: 478.98px` and `max-width: 991.98px`).
+- Units: all sizes are in px. The reference uses rem against a 10px root (62.5%); the project root is 16px, so reference rem values must NOT be copied literally (about 1.6x larger).
+- No hard minimum size is set. The 15px clamp floor is the approved value, not a PM-mandated threshold.
+- Hierarchy: H2 > steps-group heading >= step title holds at every measured width. The step title equals the group heading size from about 833px upward, which D-01 allows.
+
+### Evidence summary (observed)
+- Method: dense sweep of 167 widths (320–1920 in 10px steps, plus 478/479, 767/768, 991/992) and the five inspected reference viewports (1920 × 945, 1024 × 1366, 820 × 1180, 844 × 414, 390 × 844), with temporary CSS injected in the reference page only. The project defines no widths for the four viewport classes (Desktop, Tablet, Mobile Landscape, Mobile Portrait); the widths above are measured viewport widths, not project definitions.
+- Proposed values: 0 failing rows for overflow, clipping, or fusion; tightest slack 7.5px at 992px with a 15px classic scrollbar (10.9px without); at most 3 lines.
+- Observed reference: step titles at 28.8px overflow at 320–370px, 479–780px, and 992–1300px (worst case 94px overflow, up to 5 lines, fused titles); the H2 > group >= step rule failed at all 167 widths.
+- Cause of the earlier U-01 mismatch: the reference authors its sizes in rem against a 10px root, so the computed 31.25px and 20px agree with the authored values; the step title has no authored size.
+- The reference leaves gaps between `max-width: 478px` / `min-width: 479px` and between 991px / 992px; at fractional widths inside a gap the steps fall into the wrong layout. This explains the inconsistent 478px reading previously flagged as U-05.
+- Text-only zoom at 200%: px sizes keep fitting but do not scale; rem sizes would overflow again at 500px, 1024px, and 1920px. Page zoom works for both.
+- Fonts: Inter 700 from the project's self-hosted file measured identically to the reference's Google-hosted Inter (13 words compared).
+- Evidence screenshots are outside the repository and are not committed.
+
 ## Approval Coverage of ISS / PI / MOT Items
 
 Factual mapping of what the PM decisions above address. "No PM decision recorded" is not a rejection; it means the item is still open for the PM.
@@ -101,11 +124,11 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 
 | UNKNOWN | Mapping |
 |---|---|
-| U-01 type scale | Intent resolved by D-01 (new explicit scale, option c). Numeric sizes remain UNDEFINED (open item O-02) |
+| U-01 type scale | Resolved by D-01 (new explicit scale, option c) and the approved sizes in "O-01 and O-02 Measurement Resolution" (open item O-02). The measurement also established the cause of the authored-versus-computed difference (rem against a 10px root) |
 | U-02 primary CTA destination | Resolved by D-02 and D-03 |
 | U-03 step-text paragraphs | Resolved by D-06 |
-| U-04 layout where titles overflow | Layout intent resolved by D-14 (keep three layouts; solve only via D-01 sizes; STOP if no reasonable size fits). Layout switch-point values remain UNDEFINED (open item O-01) |
-| U-05 overflow at Mobile Landscape 844 and at 478/479 | Remains UNKNOWN — to be measured at implementation or testing (as stated in EXT §15) |
+| U-04 layout where titles overflow | Layout intent resolved by D-14 (keep three layouts; solve only via D-01 sizes; STOP if no reasonable size fits). Switch-points resolved in "O-01 and O-02 Measurement Resolution" (open item O-01); the measurement shows 0 failing rows with the approved title sizes, so no title collision remains and no STOP condition applies |
+| U-05 overflow at Mobile Landscape 844 and at 478/479 | Established for the reference by the measurement in "O-01 and O-02 Measurement Resolution": 844 × 414 shows no overflow at 28.8px, and the inconsistent 478px reading is explained by the fractional-width gap between 478/479. Fit of the implementation is verified at testing |
 | U-06 focus ring on the light mobile card | Remains UNKNOWN — to be measured at implementation or testing; D-05 requires the implementer to verify contrast on both card backgrounds |
 | U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer was PERFORMED on 2026-10-11 (integrity record in the "D-07 Image Transfer Resolution"); the extraction, which was not modified, still records U-07 as UNKNOWN |
 | U-08 commercial claims | Resolved by D-13 |
@@ -114,8 +137,8 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 
 ## Open Items (not resolved by this document)
 
-- **O-01 Layout switch-points.** The reference breakpoints (991/992, 767, 478/479) are not project-approved values. Where the three layouts (5 columns, 3+2, vertical) switch remains UNDEFINED until the PM decides.
-- **O-02 D-01 sizes.** The exact H2, steps-group title, and step-title sizes are UNDEFINED. The PM stated they are determined by measurement "during the approval phase"; who measures and when is not stated.
+- **O-01 Layout switch-points — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
+- **O-02 D-01 sizes — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
 - **O-03 D-07 image transfer — transfer PERFORMED on 2026-10-11.** The source file lives outside the repository. The PM decision on who transfers it, in which milestone, and under which conditions is recorded in "D-07 Image Transfer Resolution" above, which also holds the integrity record of the performed transfer.
 - **O-04 Section order discrepancy (recorded, not resolved).**
   - PM statement: Cómo trabajamos, Servicios, Marcas, Zonas de cobertura, Contacto, legal pages, Footer.
@@ -140,7 +163,7 @@ If no reasonable step-title size fits the columns under the D-01 scale, the impl
 Scope freeze requires the Product Manager's explicit confirmation, which has not been given. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
 
 1. Explicit PM confirmation of scope freeze.
-2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the D-01 sizes (O-02), the layout switch-points (O-01), and the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
+2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
 3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred (O-06).
 5. Resolution of the section-order discrepancy where it affects the implementation scope (O-04), as decided by the PM.

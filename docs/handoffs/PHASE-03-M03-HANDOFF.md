@@ -75,8 +75,7 @@ D-01 new explicit type scale (sizes by measurement); D-02 `#contacto` and `#agen
 
 ## Open Questions
 
-- O-01 Layout switch-point values are UNDEFINED.
-- O-02 D-01 sizes are UNDEFINED; who measures and when is not stated.
+- Resolved: see M03-03, O-01 and O-02 Measurement Resolution.
 - O-03 Decision recorded: Claude Code transfers the image in M03-03 under the single exception in M03-03 "D-07 Image Transfer Resolution". Transfer status: see M03-03, "D-07 Image Transfer Resolution".
 - O-04 Section-order discrepancy between PM statement, ARCHITECTURE.md, and the approved Menu (recorded, not resolved).
 - O-05 Later page-wide structured-data / AI-search-visibility milestone proposed by the PM; LocalBusiness `address` applicability for a service-area business with no public address is UNKNOWN.
