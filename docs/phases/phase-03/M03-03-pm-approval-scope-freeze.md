@@ -228,7 +228,26 @@ No milestone completion or implementation authorization follows from these decis
   - PM-cited reference: Google states that no special markup or AI-specific files are needed for AI Overviews or AI Mode (https://developers.google.com/search/docs/appearance/ai-features). Not verified by Claude Code in this task.
 - **O-06 PM decisions — RESOLVED.** All seven items (PI-01, PI-04, PI-05(c), the PI-08 details, PI-09, PI-10, the MOT-03 reduced-motion treatment) are decided in "O-06 Decisions Resolution". The factual notes recorded there remain (the new-tab accessible-indication mechanism is to be specified in the M03-04 specification; the Header geometry is to be measured).
 - **O-07 Extraction approval and readiness — RESOLVED.** See "O-07 Extraction Evidence Approval".
-- **O-08 OpenCode inputs.** The M03-04 specification does not exist and the OpenCode file allow-list is not confirmed.
+- **O-08 OpenCode inputs — PM APPROVED for planning only (2026-10-11).** The PM approved the planning file allow-list below. This approval does not authorize creating M03-04, changing production source files, or beginning OpenCode implementation. The M03-04 specification does not yet exist.
+
+### O-08 PM Decision — Planning File Allow-list (2026-10-11)
+
+Approver: Julián Cely, Product Manager. Decision: APPROVED for documentation/planning only.
+
+| File | Planning permission | Boundary |
+|---|---|---|
+| `src/_includes/components/process.njk` | Proposed creation approved | Process section component; D-09 naming and frozen scope |
+| `src/assets/css/main.css` | Proposed limited modification approved | New `sm-process` styles only |
+| `src/index.njk` | Proposed limited modification approved | Include process section in approved OnePage physical order |
+| `src/assets/images/servicio-munguia-tecnico-diagnostico-lavadora-cta.webp` | Read-only use approved | Existing transferred CTA image; no transfer or modification |
+| `src/assets/js/process.js` | CONDITIONAL | Proposed filename only; justify whether JavaScript is necessary and avoid duplication with existing architecture |
+| `src/_includes/base.njk` | CONDITIONAL | One script include only if justified by the approved JavaScript approach |
+
+Prohibited: unauthorized edits to Header, Hero, Menu, Mobile Navigation, unrelated styles/scripts, dependencies, architecture or governance; do not modify issued audits or original extraction observations.
+
+The implementation specification must explicitly resolve whether conditional JavaScript files are necessary, document the accessible indication for WhatsApp opening in a new tab, and require measurement of the fixed Header geometry for anchor offset. Any technical choice beyond the frozen PM decisions must remain within that scope or be returned to the PM for approval.
+
+**Authorization boundary:** M03-03 remains IN PROGRESS; scope freeze already APPROVED. M03-04 specification creation, OpenCode instruction, and implementation remain NOT AUTHORIZED.
 
 ## Implementer STOP Rule Recorded from D-14
 
