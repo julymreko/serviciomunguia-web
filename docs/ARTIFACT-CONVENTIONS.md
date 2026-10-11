@@ -114,3 +114,20 @@ The canonical final status for a successfully completed phase or milestone is:
 COMPLETED
 
 `COMPLETED` may be assigned only after all applicable acceptance criteria have been verified.
+
+
+## Reference Extractions
+
+Location: `docs/reference-extraction/`
+
+Naming: `<SECTION>-EXTRACTION.md`
+
+Method: Follow `docs/reference-extraction/REFERENCE-EXTRACTION-WORKFLOW.md` and `docs/reference-extraction/REFERENCE-SECTION-TEMPLATE.md`.
+
+## Product Manager Decision Records
+
+Location: the applicable milestone specification under `docs/phases/phase-XX/MXX-YY-<slug>.md`.
+
+Each decision must identify its decision ID, the Product Manager as approver, the decision date or date range, and related issue/proposal/UNKNOWN identifiers.
+
+Decisions given only in conversations must be recorded in the repository before dependent work starts. A transcribing agent does not become an approver.

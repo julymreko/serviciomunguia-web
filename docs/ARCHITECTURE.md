@@ -103,19 +103,20 @@ The frontend must be organized into maintainable components or partials.
 
 A change to a specific section must be locatable without searching through a monolithic HTML document.
 
-Confirmed major OnePage sections:
+Approved physical OnePage section order (PM decision O-04, M03-03):
 
-- Header
-- Hero
-- Services
-- Coverage
-- Brands
-- Process
-- Testimonials
-- Contact
-- Footer
+1. Hero
+2. Cómo trabajamos
+3. Servicios
+4. Marcas
+5. Zonas de cobertura
+6. Testimonios
+7. Contacto
+8. Footer
 
-Detailed component structure is not yet defined.
+The Header is a global shell component. Legal pages are separate pages linked from the Footer. Physical section order is distinct from navigation-menu order. This decision does not modify the approved Menu, Bottom Navigation, or anchors.
+
+The approved component organization is defined in the Nunjucks Component Structure section below. This does not finalize every future component or repository directory.
 
 ## Nunjucks Component Structure
 
@@ -222,12 +223,14 @@ The following items are not yet approved and must not be assumed:
 - Worker API routes
 - Turnstile configuration
 - ZeptoMail configuration
-- Build command
 - CI/CD implementation details
 - Branch strategy
 - Testing framework
 - Analytics implementation
-- Final component file structure
+
+Approved build command: `npm run build` (the `package.json` build script invokes `eleventy`).
+
+The approved component organization follows the Nunjucks Component Structure section. Future component additions remain subject to their applicable approved milestone scope.
 
 ## CSS Architecture
 

@@ -34,6 +34,19 @@ docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md
 
 Do not infer missing context from previous conversations.
 
+## Current PM Decision Synchronization (2026-10-11)
+
+For authoritative details consult M03-03 and the extraction; the historical snapshot below is preserved as originally issued.
+
+- O-01, O-02, O-03, O-04, O-06, and O-07: RESOLVED.
+- O-07 extraction reassessment: READY FOR RECONSTRUCTION; this does not authorize implementation.
+- P-01 through P-08: PM APPROVED (P-08 numeric viewport values remain unapproved).
+- P-09: PM REJECTED; BOMs remain untouched.
+- O-08: pending explicit scope freeze before M03-04 specification and OpenCode allow-list.
+- O-05: separate non-blocking future proposal.
+- Scope freeze: PENDING PM CONFIRMATION. Implementation: NOT AUTHORIZED.
+- This handoff's historical references to earlier unresolved items are superseded by this update and M03-03.
+
 ## Current State
 
 - M03-03 is IN PROGRESS. The Product Manager's decisions D-01 to D-15 are recorded as PM APPROVED.

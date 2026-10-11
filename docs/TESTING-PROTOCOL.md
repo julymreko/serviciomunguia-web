@@ -161,6 +161,14 @@ docs/PRE-DEPLOYMENT-AUDIT.md
 
 The pre-deployment auditor verifies evidence and compliance but does not replace required implementation testing.
 
+## Centralized Reference Viewports
+
+The project will maintain one Product Manager-approved reference viewport catalog for Desktop, Tablet, Mobile Landscape, and Mobile Portrait.
+
+Reference testing viewports are distinct from component-specific CSS layout breakpoints. Numeric viewport values remain unapproved; do not invent or publish them as project standards.
+
+Until those numeric values are approved and recorded in the central catalog, exact viewport requirements continue to come from the relevant milestone specification.
+
 ## Test Record Template
 
 Test ID:

@@ -157,7 +157,7 @@ Applied in `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md`: section 16
 
 ## Approval Coverage of ISS / PI / MOT Items
 
-Factual mapping of what the PM decisions above address. "No PM decision recorded" is not a rejection; it means the item is still open for the PM.
+Factual mapping of proposals to recorded PM decisions. Later M03-03 resolution sections document subsequent approvals and take precedence over the earlier approval-coverage snapshot.
 
 | Item | Recorded PM decision |
 |---|---|
@@ -193,7 +193,25 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction's
 | U-09 browser baseline | Resolved by D-11 |
 | U-10 Header offset on anchor navigation | Remains UNKNOWN until measured at implementation or testing (PI-09 is approved in "O-06 Decisions Resolution"; the Header geometry itself is not yet measured) |
 
-## Open Items (not resolved by this document)
+## Documentation Proposal Decision Register — P-01 to P-09
+
+Approval authority: Julián Cely, Product Manager. Decisions approved by the Product Manager on 2026-10-11. This register is a proposed documentation update pending review and publication; scope freeze remains pending.
+
+| Proposal | PM decision | Approved scope |
+|---|---|---|
+| P-01 | PM APPROVED — Option A | General PM-directed transcription rule in CONTEXT-PROTOCOL; cross-reference in M03-00 requirement. |
+| P-02 | PM APPROVED — Option A | Historical supersession note in Phase 02 handoff; preserve original transition. |
+| P-03 | PM APPROVED — Option A | M03-00 requirement canonical Identification Status IN PROGRESS. |
+| P-04 | PM APPROVED — Option A | Approved O-04 physical OnePage order in ARCHITECTURE, without navigation or anchor changes. |
+| P-05 | PM APPROVED — Option A | Reference extraction and PM decision recording conventions. |
+| P-06 | PM APPROVED — Option B | Individual milestone Status canonical if its specification exists; otherwise phase specification authoritative. |
+| P-07 | PM APPROVED — Option A | Fix stale ARCHITECTURE undefined statements and approve npm run build. |
+| P-08 | PM APPROVED — Option A, principle only | Centralize reference testing viewports separately from CSS breakpoints. Numeric values remain UNAPPROVED. |
+| P-09 | PM REJECTED — Option B | Preserve existing UTF-8 BOMs; no BOM normalization. |
+
+No milestone completion or implementation authorization follows from these decisions.
+
+## Open Item Register
 
 - **O-01 Layout switch-points — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
 - **O-02 D-01 sizes — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
@@ -254,7 +272,8 @@ None recorded. Proposed documentation changes are listed in `docs/handoffs/PHASE
 None recorded.
 
 ## Pending Items
-O-01 to O-08 and the "Scope Freeze — Remaining Before Freeze" list.
+
+O-01, O-02, O-03, O-04, O-06, and O-07 are resolved. O-08 (M03-04 specification and OpenCode file allow-list) remains contingent on explicit scope freeze. O-05 is a separate, non-blocking future proposal. See "Scope Freeze — Remaining Before Freeze".
 
 ## Decisions Required
 The PM decisions needed to close the open items above. If a required decision is undefined, execution must stop and request clarification from Julián Cely.

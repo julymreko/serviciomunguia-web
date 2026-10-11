@@ -41,6 +41,10 @@ Previous AI conversations are not required context unless their approved outcome
 
 If required information exists only in conversation history, execution must stop until that information is verified and recorded in the repository.
 
+## PM-Directed Decision Transcription
+
+The Product Manager may direct any agent to transcribe the Product Manager's decisions into the repository. A transcriber must preserve the decision in substance, identify the Product Manager as approver, and must not approve, interpret, extend, correct, or reopen the decision. The transcription assignment itself must be recorded in the relevant milestone artifact.
+
 ## Handoff Rule
 
 Every completed phase or milestone that changes execution context must produce a handoff.
@@ -146,6 +150,10 @@ Before a phase or milestone is declared closed, the executing agent must verify 
 - Git references.
 
 Any contradiction or stale state is a STOP condition until synchronized.
+
+## Milestone Status Authority
+
+When an individual milestone specification exists, the `Status:` under its `## Identification` section is canonical. When an individual milestone specification does not exist, the milestone status stated in the phase specification is canonical. A milestone-status summary in a phase specification must not override the individual milestone's canonical status. Any contradictory duplicate representation must be synchronized before closure.
 
 ## Authority
 

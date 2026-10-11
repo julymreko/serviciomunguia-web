@@ -1,8 +1,8 @@
 # PHASE 03 — Claude Code Discovery & Planning Requirement
 
-## Document Status
+## Identification
 
-Status: DRAFT FOR EXECUTION  
+Status: IN PROGRESS  
 Project: SERVICIOMUNGUIA.COM  
 Repository: `julymreko/serviciomunguia-web`  
 Product Manager: Julián Cely  
@@ -111,6 +111,10 @@ Responsible for:
 - preparing the next phase entry point for Product Manager approval.
 
 ---
+
+### PM-directed transcription
+
+The Product Manager may designate an agent to transcribe approved decisions. This does not transfer approval authority. The transcriber must follow `docs/CONTEXT-PROTOCOL.md` and record the PM direction in the milestone artifact.
 
 ## 3. Mandatory Repository Context
 

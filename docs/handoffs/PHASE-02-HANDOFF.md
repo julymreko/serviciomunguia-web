@@ -29,6 +29,8 @@ M02-05 R01 — FAIL — 2026-09-15
 
 ## Current State
 
+Entry-point status superseded: the Product Manager subsequently approved Phase 03. For current authority see `docs/PROJECT-STATE.md` and `docs/phases/PHASE-03-como-trabajamos.md`. This Phase 02 handoff otherwise preserves its historical transition record.
+
 Phase 02 is COMPLETED.
 
 M02-04 — Menu Migration is COMPLETED.
