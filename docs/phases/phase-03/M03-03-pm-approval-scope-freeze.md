@@ -116,6 +116,31 @@ Resolves open item O-06. The Product Manager explicitly approved the seven decis
 - PI-01: the treatment of the visual number badge for assistive technology (hidden from AT or visual-only) follows M03-02 PI-01 and the approved goal of preventing duplicate numbering announcements. No other badge treatment is recorded.
 - PI-09: the repository does not define widths for the four viewport classes (Desktop, Tablet, Mobile Landscape, Mobile Portrait); see the "O-01 and O-02 Measurement Resolution" evidence note and the handoff proposal P-08. The wording "four viewport classes" must not be read as a definition of widths. The Header geometry (U-10) remains to be measured at implementation or testing.
 
+## O-04 Section Order Resolution (state: PM APPROVED; approver: Julián Cely; transcribed by Claude Code)
+
+Resolves open item O-04. The Product Manager explicitly approved Option A as the final OnePage section order. Relayed 2026-10-11.
+
+### Approved physical OnePage section order
+1. Hero
+2. Cómo trabajamos
+3. Servicios
+4. Marcas
+5. Zonas de cobertura
+6. Testimonios
+7. Contacto
+8. Footer
+
+Legal pages remain separate pages linked from the Footer.
+
+This is the physical order of the sections on the OnePage. It is distinct from the navigation-menu order. This decision does NOT change the approved Menu, the Bottom Navigation, or any anchor.
+
+### Factual notes (not PM decisions)
+For later review under handoff proposal P-04 (the handoff is not edited in this task).
+- The approved Menu order (¿Cómo trabajamos?, Servicios, Cobertura, Marcas, Contacto) differs from the approved physical order (Marcas before Zonas de cobertura), and Testimonios is not in the Menu. No change to the Menu is authorized.
+- `docs/ARCHITECTURE.md` lines 106–116 list the sections as a set in a different order (Process after Brands; Coverage before Brands). It is not modified here.
+- #cobertura is the PM-approved canonical Coverage anchor (Phase 02, F-10). The approved Menu links to #marcas, which is not listed among the ARCHITECTURE.md approved targets. No anchor for Testimonios is defined in the repository and none may be invented.
+- The handoff still shows O-04 as unresolved (line 80) and P-04 still says no order can be proposed; both are to be synchronized in the later wording-cleanup commit.
+
 ## Approval Coverage of ISS / PI / MOT Items
 
 Factual mapping of what the PM decisions above address. "No PM decision recorded" is not a rejection; it means the item is still open for the PM.
@@ -159,7 +184,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 - **O-01 Layout switch-points — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
 - **O-02 D-01 sizes — RESOLVED.** See "O-01 and O-02 Measurement Resolution".
 - **O-03 D-07 image transfer — transfer PERFORMED on 2026-10-11.** The source file lives outside the repository. The PM decision on who transfers it, in which milestone, and under which conditions is recorded in "D-07 Image Transfer Resolution" above, which also holds the integrity record of the performed transfer.
-- **O-04 Section order discrepancy (recorded, not resolved).**
+- **O-04 Section order discrepancy — RESOLVED.** The approved order is recorded in "O-04 Section Order Resolution". The original four-source discrepancy is retained below as evidence:
   - PM statement: Cómo trabajamos, Servicios, Marcas, Zonas de cobertura, Contacto, legal pages, Footer.
   - `docs/ARCHITECTURE.md` confirmed major sections: Header, Hero, Services, Coverage, Brands, Process, Testimonials, Contact, Footer.
   - Approved Menu (`src/_includes/components/menu-overlay.njk`) order: ¿Cómo trabajamos?, Servicios, Cobertura, Marcas, Contacto.
@@ -185,7 +210,7 @@ Scope freeze requires the Product Manager's explicit confirmation, which has not
 2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
 3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred: recorded for PI-01 to PI-10 and MOT-01 to MOT-07 (see the "Approval Coverage of ISS / PI / MOT Items" table; O-06 RESOLVED in "O-06 Decisions Resolution").
-5. Resolution of the section-order discrepancy where it affects the implementation scope (O-04), as decided by the PM.
+5. Section-order discrepancy (O-04): resolved by the PM (physical OnePage order recorded in "O-04 Section Order Resolution"). The Menu, the Bottom Navigation, and all anchors are unchanged by that decision.
 6. The M03-04 specification and the confirmed file allow-list (O-08), created only after freeze.
 7. Publication: committed and pushed; HEAD = origin/main; working tree clean.
 
