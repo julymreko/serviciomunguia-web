@@ -60,7 +60,19 @@ Resolves open item O-03. The PM decision was relayed to Claude Code on 2026-10-1
 - Before the transfer, verify source identity and integrity by recording: file name, byte size, SHA-256 of the source, pixel dimensions, and format. After the copy, verify that the SHA-256 and byte size of the copy are identical to the source. Compare the dimensions and aspect ratio with the values recorded in `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md`. On any mismatch: STOP and ask the PM.
 - Prohibited: any change to Nunjucks, CSS, JavaScript, or the production section implementation; any other file under `src/`; referencing the image from any template.
 - Scope freeze remains PENDING PM CONFIRMATION. Implementation remains NOT AUTHORIZED.
-- Transfer status at the time of this record: NOT PERFORMED. The PM directed that the transfer not be done in the task that recorded this decision.
+- Transfer status: **PERFORMED** on 2026-10-11, on the PM's instruction, by Claude Code. The destination directory `src/assets/images/` already existed (no directory was created); the destination file did not exist and no `.gitignore` rule ignores it.
+- Integrity record:
+  - File name (source and copy): `servicio-munguia-tecnico-diagnostico-lavadora-cta.webp`
+  - Copy location: `src/assets/images/servicio-munguia-tecnico-diagnostico-lavadora-cta.webp`
+  - Byte size: source 134966; copy 134966 (identical)
+  - SHA-256: source `DBFDB587317FCDF95457F50299CDF03FF0254162E2525650D0F3E22FA020A60C`; copy `DBFDB587317FCDF95457F50299CDF03FF0254162E2525650D0F3E22FA020A60C` (identical)
+  - Format: WebP, VP8X extended (the header flags indicate EXIF and XMP metadata chunks are present)
+  - Pixel dimensions: 1600 × 1280 (read from the WebP header with a throwaway script outside the repository; no dependency added)
+  - Aspect ratio: 1.25:1 (1600/1280)
+  - Comparison with `docs/reference-extraction/COMO-TRABAJAMOS-EXTRACTION.md` §8: the extraction records a 1024 × 819 rendition (≈1.25:1) and a 1600w original in the reference `srcset`, and does not record the original's height. 1600 matches the recorded 1600w width, and 1024 × 819 equals the 1600 × 1280 original scaled to 1024 wide (1280 × 1024 / 1600 = 819.2). No mismatch was found; the extraction was not modified.
+  - Image content (as viewed): a technician in a navy cap and polo crouching beside a front-loading washing machine, holding a blue multimeter with a red probe at the machine's lower service panel, with a stainless-steel refrigerator and an open toolbox in the background.
+  - The image is not referenced from any template.
+  - Metadata: inspected on 2026-10-11 (read-only). The EXIF and XMP chunks contain no GPS location, personal names, e-mail addresses, camera data, author, copyright, or dates. The XMP writer is `Image::ExifTool 12.98` and the XMP title is `image.png`. PM decision: keep the file unmodified.
 
 ## Approval Coverage of ISS / PI / MOT Items
 
@@ -95,7 +107,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 | U-04 layout where titles overflow | Layout intent resolved by D-14 (keep three layouts; solve only via D-01 sizes; STOP if no reasonable size fits). Layout switch-point values remain UNDEFINED (open item O-01) |
 | U-05 overflow at Mobile Landscape 844 and at 478/479 | Remains UNKNOWN — to be measured at implementation or testing (as stated in EXT §15) |
 | U-06 focus ring on the light mobile card | Remains UNKNOWN — to be measured at implementation or testing; D-05 requires the implementer to verify contrast on both card backgrounds |
-| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer has NOT been performed; the extraction still records U-07 as UNKNOWN |
+| U-07 CTA image self-hosting | Approval and rights resolved by D-07. Responsibility, milestone, and conditions for the transfer resolved by the "D-07 Image Transfer Resolution" (open item O-03). The transfer was PERFORMED on 2026-10-11 (integrity record in the "D-07 Image Transfer Resolution"); the extraction, which was not modified, still records U-07 as UNKNOWN |
 | U-08 commercial claims | Resolved by D-13 |
 | U-09 browser baseline | Resolved by D-11 |
 | U-10 Header offset on anchor navigation | Remains UNKNOWN — to be measured at implementation (PI-09: no PM decision recorded) |
@@ -104,7 +116,7 @@ Only what is clearly resolved by a recorded decision is mapped. The extraction d
 
 - **O-01 Layout switch-points.** The reference breakpoints (991/992, 767, 478/479) are not project-approved values. Where the three layouts (5 columns, 3+2, vertical) switch remains UNDEFINED until the PM decides.
 - **O-02 D-01 sizes.** The exact H2, steps-group title, and step-title sizes are UNDEFINED. The PM stated they are determined by measurement "during the approval phase"; who measures and when is not stated.
-- **O-03 D-07 image transfer — decision recorded; transfer NOT PERFORMED.** The source file lives outside the repository. The PM decision on who transfers it, in which milestone, and under which conditions is recorded in "D-07 Image Transfer Resolution" above. The file has not yet been copied into `src/assets/images/`.
+- **O-03 D-07 image transfer — transfer PERFORMED on 2026-10-11.** The source file lives outside the repository. The PM decision on who transfers it, in which milestone, and under which conditions is recorded in "D-07 Image Transfer Resolution" above, which also holds the integrity record of the performed transfer.
 - **O-04 Section order discrepancy (recorded, not resolved).**
   - PM statement: Cómo trabajamos, Servicios, Marcas, Zonas de cobertura, Contacto, legal pages, Footer.
   - `docs/ARCHITECTURE.md` confirmed major sections: Header, Hero, Services, Coverage, Brands, Process, Testimonials, Contact, Footer.
@@ -128,7 +140,7 @@ If no reasonable step-title size fits the columns under the D-01 scale, the impl
 Scope freeze requires the Product Manager's explicit confirmation, which has not been given. Per `docs/phases/PHASE-03-como-trabajamos.md` (M03-03 acceptance criteria) and section 13 of the requirement document, the following remain:
 
 1. Explicit PM confirmation of scope freeze.
-2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the D-01 sizes (O-02), the layout switch-points (O-01), and the image transfer (O-03: decision recorded; transfer not yet performed), unless the PM decides otherwise.
+2. Reconstruction-critical UNKNOWN items resolved so the extraction result can be READY FOR RECONSTRUCTION: at minimum the D-01 sizes (O-02), the layout switch-points (O-01), and the image transfer (O-03: transfer performed; see "D-07 Image Transfer Resolution"), unless the PM decides otherwise.
 3. PM approval of the extraction evidence, and PM-approved deviations recorded in the extraction (O-07).
 4. Every PI-xx and MOT-xx recorded by the PM as approved, rejected, or deferred (O-06).
 5. Resolution of the section-order discrepancy where it affects the implementation scope (O-04), as decided by the PM.
