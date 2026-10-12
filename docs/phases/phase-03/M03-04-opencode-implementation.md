@@ -1,16 +1,16 @@
-# M03-04 — OpenCode Implementation Specification (EXECUTION NOT AUTHORIZED)
+# M03-04 — OpenCode Implementation Specification (PM EXECUTION AUTHORIZED)
 
 ## Identification
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation
-Status: NOT STARTED
+Status: IN PROGRESS
 Owner / Approver: Julián Cely — Product Manager
 Proposed executing agent: OpenCode
 Audit agent: Claude Code (independent testing M03-05; formal audit M03-06)
 Draft basis: repository HEAD `a06f10f6710e205f8aacd5fd47d133ed081d12e2` (2026-10-11)
 
-**AUTHORIZATION BOUNDARY:** The Product Manager authorized creation/publication of this specification only on 2026-10-11. Publication did not close M03-03; M03-03 was subsequently closed in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`. Neither action activates M03-04 execution or authorizes OpenCode, source edits, deployment or implementation.
+**AUTHORIZATION RECORD — PM APPROVED (2026-10-11):** Following publication of the specification and closure of M03-03 in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`, the Product Manager explicitly authorized M03-04 execution through OpenCode in the project conversation, under the final approved implementation prompt. This authorization is to be registered in the repository before source work resumes. After publication and renewed clean Git preflight, OpenCode may implement **only** the frozen M03-04 source-file allow-list and must obey all tests and STOP conditions. Deployment, M03-05, M03-06, unrelated source edits and governance changes remain NOT AUTHORIZED.
 
 ## Purpose and Scope
 
@@ -80,13 +80,13 @@ MOT-03 active-step emphasis applies to Mobile Portrait only. Under reduced motio
 9. Guard initialization on the existence of `#como-trabajamos` before attaching observers or listeners, following the existing module pattern.
 10. Test deep-link/reload at `#como-trabajamos` for a possible flash between first paint and enhancement; document observed behavior and fix only within approved files/scope, or STOP for PM review.
 
-**Boundary:** This approval changes the two O-08 conditional JavaScript entries to approved planning paths, not permission to write code. This document is a published planning specification only. M03-03 is COMPLETED (commit `63c25ec`); OpenCode implementation remains NOT AUTHORIZED.
+**Boundary:** The O-08 planning approval by itself did not authorize source edits. A subsequent explicit PM execution authorization is recorded above, limited to the frozen allow-list and only actionable after the authorization record is published and clean preflight reconfirmed. M03-03 is COMPLETED (commit `63c25ec`).
 
 ## Approved Technical Specifications — Planning Only
 
-**New-tab disclosure — PI-05(c), PM APPROVED (2026-10-11):** Include concise, visibly rendered explanatory text associated with the WhatsApp link indicating that it opens a new tab (for example, “Abre en una nueva pestaña”). The indication must also be exposed in the link's accessible name or equivalent accessible association, without relying on icon-only cues or JavaScript. Preserve the approved `target="_blank" rel="noopener noreferrer"` behavior. The PM approved the visible-and-accessible textual mechanism for specification/planning only; implementation remains NOT AUTHORIZED. If the placement creates a conflict with the frozen reference layout or copy, STOP and request a PM decision rather than silently redesigning.
+**New-tab disclosure — PI-05(c), PM APPROVED (2026-10-11):** Include concise, visibly rendered explanatory text associated with the WhatsApp link indicating that it opens a new tab (for example, “Abre en una nueva pestaña”). The indication must also be exposed in the link's accessible name or equivalent accessible association, without relying on icon-only cues or JavaScript. Preserve the approved `target="_blank" rel="noopener noreferrer"` behavior. The visible-and-accessible textual mechanism is part of the PM-approved scope for authorized M03-04 implementation. If the placement creates a conflict with the frozen reference layout or copy, STOP and request a PM decision rather than silently redesigning.
 
-**Image srcset — PI-08 / O-08 extension, PM APPROVED for planning (2026-10-11):** Produce exactly three additional WebP derivatives, 480 × 384, 800 × 640, and 1200 × 960, from the existing unchanged 1600 × 1280 original; preserve the 5:4 aspect ratio, framing and visual appearance without cropping. Verify each output's dimensions and inspect its image quality. Record byte sizes and verify the original remains byte-identical. The three explicitly named files in the allow-list above are the only newly permitted image outputs for future planning. Retain the existing original intact. Specify responsive `srcset` and accurate `sizes` against rendered image widths and device pixel density, with a no-JavaScript `<img>` fallback, intrinsic dimensions, `loading="lazy"`, `decoding="async"` and the already approved descriptive alt. No additional derivatives, production dependencies, image-pipeline changes, or image generation are authorized. This approval is for planning only: do NOT create the variants, modify `src/`, publish M03-04, or start implementation without separate authorization.
+**Image srcset — PI-08 / O-08 extension, PM APPROVED for planning (2026-10-11):** Produce exactly three additional WebP derivatives, 480 × 384, 800 × 640, and 1200 × 960, from the existing unchanged 1600 × 1280 original; preserve the 5:4 aspect ratio, framing and visual appearance without cropping. Verify each output's dimensions and inspect its image quality. Record byte sizes and verify the original remains byte-identical. The three explicitly named files in the allow-list above are the only newly permitted image outputs for future planning. Retain the existing original intact. Specify responsive `srcset` and accurate `sizes` against rendered image widths and device pixel density, with a no-JavaScript `<img>` fallback, intrinsic dimensions, `loading="lazy"`, `decoding="async"` and the already approved descriptive alt. No additional derivatives, production dependencies, image-pipeline changes, or image generation are authorized. The three derivatives and only these paths may be created during separately PM-authorized M03-04 execution, after the authorization record is published and clean preflight reconfirmed.
 
 ## Pre-implementation Gate
 
@@ -96,7 +96,7 @@ Before any OpenCode execution:
 3. M03-04 has separate explicit PM implementation authorization.
 4. Working branch, clean local tree, and HEAD/origin/main verified; no unapproved local changes.
 
-The published-specification and M03-03 closure gates have been met. The separate PM execution authorization and fresh branch/working-tree verification are still required before implementation.
+The published-specification and M03-03 closure gates have been met. The separate PM execution authorization has been granted and is recorded above; it becomes operational upon publication of this record. OpenCode must still reconfirm branch, HEAD/origin/main and clean working tree before implementation.
 
 ## Implementation and Evidence Requirements (when separately authorized)
 
@@ -117,4 +117,4 @@ STOP if any source conflicts with frozen decisions; reconstruction-critical UNKN
 
 ## Review / Publication State
 
-Specification publication authorized by the PM on 2026-10-11 as a documentation-only action. M03-03 closure was subsequently authorized and published (commit `63c25ec`). M03-04 execution, OpenCode work, implementation and deployment remain NOT AUTHORIZED.
+Specification publication and M03-03 closure were approved and published. The Product Manager subsequently authorized M03-04 execution on 2026-10-11; this documentation update records that decision. Implementation may resume only after publication and fresh clean Git preflight. Deployment, M03-05 and M03-06 remain NOT AUTHORIZED.

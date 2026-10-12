@@ -279,7 +279,10 @@ M03-01, M03-02.
 ### M03-04 - OpenCode Implementation
 
 Status:
-NOT STARTED
+IN PROGRESS
+
+Authorization record:
+The Product Manager explicitly authorized M03-04 implementation in the project conversation on 2026-10-11, after approving the implementation prompt. This status and permission take effect when the authorized documentation commit is published and the agent reconfirms the clean repository baseline. No deployment, M03-05 or M03-06 authorization is implied.
 
 Purpose:
 Implement only the approved, frozen Phase 03 scope.
@@ -296,8 +299,8 @@ Section component, CSS block, assets, and any approved script; implementation-le
 Responsible agent:
 OpenCode.
 
-Files allowed to change (PM-approved planning scope; executable only after separate PM authorization):
-Use the exact file allow-list in `docs/phases/phase-03/M03-04-opencode-implementation.md`, grounded in M03-03 O-08 and its subsequent PM approvals. It includes `src/_includes/components/process.njk`, the section-only block in `src/assets/css/main.css`, an include in `src/index.njk`, read-only use of the existing CTA WebP, exactly three approved WebP derivative paths, the independent native-ESM `src/assets/js/process.js`, and one module reference in `src/_includes/base.njk`. No other files or dependencies are authorized. The prior CTA original transfer was performed and recorded in M03-03. This reference does not authorize execution.
+Files allowed to change (PM-approved frozen scope; execution authorization documented above):
+Use the exact file allow-list in `docs/phases/phase-03/M03-04-opencode-implementation.md`, grounded in M03-03 O-08 and its subsequent PM approvals. It includes `src/_includes/components/process.njk`, the section-only block in `src/assets/css/main.css`, an include in `src/index.njk`, read-only use of the existing CTA WebP, exactly three approved WebP derivative paths, the independent native-ESM `src/assets/js/process.js`, and one module reference in `src/_includes/base.njk`. No other files or dependencies are authorized. The prior CTA original transfer was performed and recorded in M03-03. Execution is authorized solely within the published M03-04 allow-list, after the preflight gate.
 
 Files prohibited from change:
 `docs/reference-extraction/*`; `docs/audits/*`; Phase 02 documents; `docs/ARCHITECTURE.md`; ADRs; governance documents; existing Header, Hero, Menu, and Mobile Navigation components, styles, and scripts (except where M03-03 explicitly authorizes an integration change); `package.json` dependencies.
