@@ -28,7 +28,7 @@ Status:
 IN PROGRESS
 
 Implementation authorization:
-NOT AUTHORIZED — M03-03 scope freeze and planned documentation closure do not authorize `src/` modifications, OpenCode execution, or deployment. M03-04 implementation requires separate explicit Product Manager approval. The prior CTA asset transfer is documented in M03-03, "D-07 Image Transfer Resolution".
+NOT AUTHORIZED — M03-03 scope freeze and completed documentation closure do not authorize `src/` modifications, OpenCode execution, or deployment. M03-04 implementation requires separate explicit Product Manager approval. The prior CTA asset transfer is documented in M03-03, "D-07 Image Transfer Resolution".
 
 Phase specification:
 docs/phases/PHASE-03-como-trabajamos.md
@@ -75,7 +75,7 @@ YES
 
 ## Current Working Item
 
-M03-03 — Product Manager Approval & Scope Freeze: COMPLETED upon explicit PM closure authorization and publication of the closure record. PM decisions D-01 to D-15, scope freeze, approved O-08 planning decisions, and the published M03-04 specification are documented. M03-04 remains NOT STARTED and its execution, including OpenCode, is NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED upon PM approval and publication of the closure record. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
+M03-03 — Product Manager Approval & Scope Freeze: COMPLETED; formal closure was approved and published in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`. PM decisions D-01 to D-15, scope freeze, approved O-08 planning decisions, and the published M03-04 specification are documented. M03-04 remains NOT STARTED and its execution, including OpenCode, is NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED; formal closures were approved and published in commit `8f2594562352450d829a52b1e928cfe58be8ae80`. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
 
 Phase 02 completed after formal M02-05 R03 PASS.
 

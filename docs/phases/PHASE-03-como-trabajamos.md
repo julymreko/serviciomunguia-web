@@ -296,8 +296,8 @@ Section component, CSS block, assets, and any approved script; implementation-le
 Responsible agent:
 OpenCode.
 
-Files allowed to change (proposed, to be confirmed by M03-03):
-`src/index.njk` (add the include); one new component under `src/_includes/components/`; `src/assets/css/main.css` (new section block only); `src/assets/images/` (approved image; M03-04 references it and does not transfer it; it may be used only if M03-03 records the transfer as performed, otherwise STOP and ask the PM); optionally one new file under `src/assets/js/` and one script line in `src/_includes/base.njk`, only if a JavaScript-dependent motion proposal is approved.
+Files allowed to change (PM-approved planning scope; executable only after separate PM authorization):
+Use the exact file allow-list in `docs/phases/phase-03/M03-04-opencode-implementation.md`, grounded in M03-03 O-08 and its subsequent PM approvals. It includes `src/_includes/components/process.njk`, the section-only block in `src/assets/css/main.css`, an include in `src/index.njk`, read-only use of the existing CTA WebP, exactly three approved WebP derivative paths, the independent native-ESM `src/assets/js/process.js`, and one module reference in `src/_includes/base.njk`. No other files or dependencies are authorized. The prior CTA original transfer was performed and recorded in M03-03. This reference does not authorize execution.
 
 Files prohibited from change:
 `docs/reference-extraction/*`; `docs/audits/*`; Phase 02 documents; `docs/ARCHITECTURE.md`; ADRs; governance documents; existing Header, Hero, Menu, and Mobile Navigation components, styles, and scripts (except where M03-03 explicitly authorizes an integration change); `package.json` dependencies.

@@ -10,7 +10,7 @@ Proposed executing agent: OpenCode
 Audit agent: Claude Code (independent testing M03-05; formal audit M03-06)
 Draft basis: repository HEAD `a06f10f6710e205f8aacd5fd47d133ed081d12e2` (2026-10-11)
 
-**AUTHORIZATION BOUNDARY:** The Product Manager authorized creation/publication of this specification only on 2026-10-11. Publication does not close M03-03, activate M03-04 execution or authorize OpenCode, source edits, deployment or implementation.
+**AUTHORIZATION BOUNDARY:** The Product Manager authorized creation/publication of this specification only on 2026-10-11. Publication did not close M03-03; M03-03 was subsequently closed in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`. Neither action activates M03-04 execution or authorizes OpenCode, source edits, deployment or implementation.
 
 ## Purpose and Scope
 
@@ -80,7 +80,7 @@ MOT-03 active-step emphasis applies to Mobile Portrait only. Under reduced motio
 9. Guard initialization on the existence of `#como-trabajamos` before attaching observers or listeners, following the existing module pattern.
 10. Test deep-link/reload at `#como-trabajamos` for a possible flash between first paint and enhancement; document observed behavior and fix only within approved files/scope, or STOP for PM review.
 
-**Boundary:** This approval changes the two O-08 conditional JavaScript entries to approved planning paths, not permission to write code. This document is a published planning specification only. M03-03 remains IN PROGRESS; OpenCode implementation remains NOT AUTHORIZED.
+**Boundary:** This approval changes the two O-08 conditional JavaScript entries to approved planning paths, not permission to write code. This document is a published planning specification only. M03-03 is COMPLETED (commit `63c25ec`); OpenCode implementation remains NOT AUTHORIZED.
 
 ## Approved Technical Specifications — Planning Only
 
@@ -96,7 +96,7 @@ Before any OpenCode execution:
 3. M03-04 has separate explicit PM implementation authorization.
 4. Working branch, clean local tree, and HEAD/origin/main verified; no unapproved local changes.
 
-None of these gates is satisfied by drafting this document.
+The published-specification and M03-03 closure gates have been met. The separate PM execution authorization and fresh branch/working-tree verification are still required before implementation.
 
 ## Implementation and Evidence Requirements (when separately authorized)
 
@@ -117,4 +117,4 @@ STOP if any source conflicts with frozen decisions; reconstruction-critical UNKN
 
 ## Review / Publication State
 
-Specification publication authorized by the PM on 2026-10-11 as a documentation-only action. M03-03 closure, M03-04 execution, OpenCode work, implementation and deployment remain NOT AUTHORIZED.
+Specification publication authorized by the PM on 2026-10-11 as a documentation-only action. M03-03 closure was subsequently authorized and published (commit `63c25ec`). M03-04 execution, OpenCode work, implementation and deployment remain NOT AUTHORIZED.
