@@ -23,6 +23,8 @@ Authorized now: discovery, reference extraction, review, proposals, and planning
 
 NOT authorized: any implementation. No file under `src/` may be created or modified for this phase until M03-03 closes with a recorded Product Manager approval and scope freeze. One PM-approved exception: the transfer of the approved CTA image asset into `src/assets/images/` during M03-03 (see M03-03, "D-07 Image Transfer Resolution"). The status of this transfer is recorded only in M03-03, "D-07 Image Transfer Resolution". This boundary is not a status; `Status` above is the only canonical state field.
 
+CLARIFYING ANNOTATION (2026-10-13): The statements above record the historical authorization boundaries in effect during M03-00 through M03-02 and M03-03 planning. They must not be read as the current restriction set. M03-03 closed, and the Product Manager separately authorized M03-04 execution on 2026-10-11 (recorded in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Current boundaries are the M03-04 allow-list and its recorded authorizations; deployment, GitHub synchronization, M03-05 and M03-06 remain NOT AUTHORIZED. The original text above is preserved as historical evidence.
+
 ## Objective
 
 Rebuild the "CÓMO TRABAJAMOS" section of the OnePage with the approved architecture, based on the staging reference, correcting objective reference defects and adding only a Product Manager-approved motion and interaction system.
@@ -283,6 +285,13 @@ IN PROGRESS
 
 Authorization record:
 The Product Manager explicitly authorized M03-04 implementation in the project conversation on 2026-10-11, after approving the implementation prompt. This status and permission take effect when the authorized documentation commit is published and the agent reconfirms the clean repository baseline. No deployment, M03-05 or M03-06 authorization is implied.
+
+Implementation status (2026-10-13):
+- PM execution authorization: granted on 2026-10-11 and recorded.
+- Priority A (implementation, responsive PM visual validation, D7–D10 decisions, local documentation): COMPLETED locally, consolidated in local commit `542601e`.
+- Priority B (dynamic scroll-driven process stepper): NOT STARTED — specification and PM approval pending; implementation NOT AUTHORIZED.
+- Priority C (intelligent Header): DEFERRED until A and B are completed.
+- M03-05 (independent testing) and M03-06 (formal audit): NOT STARTED and NOT AUTHORIZED.
 
 Purpose:
 Implement only the approved, frozen Phase 03 scope.

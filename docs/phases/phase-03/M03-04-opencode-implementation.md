@@ -108,7 +108,7 @@ Use one logical change per commit. Confirm allowed paths, verify `npm run build`
 
 STOP if any source conflicts with frozen decisions; reconstruction-critical UNKNOWN appears; typography fails the approved D-14 fit constraint; image work requires any unapproved additional derivative or modification of the original; the approved visible-and-accessible new-tab indication cannot fit without unapproved changes; an additional file, global CSS edit or dependency is required; JavaScript implementation would require changes beyond the approved Proposal A; the branch is dirty; or any required test is blocked/failed. Escalate to Product Manager without silent changes.
 
-## Acceptance Criteria (future implementation; NOT currently applicable)
+## Acceptance Criteria (implementation in progress; applicable)
 
 - Only authorized files changed; no unapproved scope changes.
 - Generated static HTML contains all approved content and semantic structure; no-JavaScript fallback functional.

@@ -75,7 +75,7 @@ YES
 
 ## Current Working Item
 
-M03-03 — Product Manager Approval & Scope Freeze: COMPLETED; formal closure was approved and published in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`. PM decisions D-01 to D-15, scope freeze, approved O-08 planning decisions, and the published M03-04 specification are documented. M03-04 is IN PROGRESS upon publication of this PM execution-authorization record; OpenCode must reconfirm the clean Git baseline before editing. M03-00, M03-01, and M03-02: COMPLETED; formal closures were approved and published in commit `8f2594562352450d829a52b1e928cfe58be8ae80`. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
+M03-03 — Product Manager Approval & Scope Freeze: COMPLETED; formal closure was approved and published in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`. PM decisions D-01 to D-15, scope freeze, approved O-08 planning decisions, and the published M03-04 specification are documented. M03-04 — OpenCode Implementation: IN PROGRESS; Priority A (CTA corrections D7–D8, desktop remediation, D9/D10, responsive Product Manager visual validation, and local documentation) is implemented and consolidated in local commit `542601e`; Priority B (dynamic scroll-driven process stepper) awaits specification and PM approval — implementation NOT AUTHORIZED; Priority C (intelligent Header) is deferred until A and B are completed. GitHub synchronization and deployment remain NOT AUTHORIZED. M03-00, M03-01, and M03-02: COMPLETED; formal closures were approved and published in commit `8f2594562352450d829a52b1e928cfe58be8ae80`. Their supporting evidence and decision references are recorded in the Phase 03 specification and M03-03.
 
 Phase 02 completed after formal M02-05 R03 PASS.
 
@@ -99,4 +99,4 @@ docs/decisions/ADR-006-runtime-version-pinning.md
 
 ## Next Item
 
-M03-04 — OpenCode Implementation: IN PROGRESS upon publication of this authorization record; resume the previously stopped agent only after updated documents are pulled and the repository preflight passes. The specification and frozen O-08 allow-list govern all edits. Deployment, M03-05 and M03-06 remain NOT AUTHORIZED.
+M03-04 — OpenCode Implementation: IN PROGRESS. Priority A completed locally (commit `542601e`). Next: Priority B — dynamic scroll-driven process stepper — requires a PM-approved specification and separate implementation authorization; implementation of B or of Priority C (intelligent Header) is NOT AUTHORIZED until each is approved by the Product Manager. Deployment, GitHub synchronization, M03-05 and M03-06 remain NOT AUTHORIZED.
