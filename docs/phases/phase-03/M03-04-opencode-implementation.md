@@ -86,6 +86,8 @@ MOT-03 active-step emphasis applies to Mobile Portrait only. Under reduced motio
 
 **New-tab disclosure — PI-05(c), PM APPROVED (2026-10-11):** Include concise, visibly rendered explanatory text associated with the WhatsApp link indicating that it opens a new tab (for example, “Abre en una nueva pestaña”). The indication must also be exposed in the link's accessible name or equivalent accessible association, without relying on icon-only cues or JavaScript. Preserve the approved `target="_blank" rel="noopener noreferrer"` behavior. The visible-and-accessible textual mechanism is part of the PM-approved scope for authorized M03-04 implementation. If the placement creates a conflict with the frozen reference layout or copy, STOP and request a PM decision rather than silently redesigning.
 
+ANNOTATION — D8 (2026-10-13): The Product Manager superseded only the *visibly rendered* portion of this requirement (see "Implementation PM Decision and Evidence Record — D8" below). The accessible disclosure is preserved through an `aria-label` on the WhatsApp link; `target="_blank"` and `rel="noopener noreferrer"` are unchanged. The original text above is preserved as historical evidence.
+
 **Image srcset — PI-08 / O-08 extension, PM APPROVED for planning (2026-10-11):** Produce exactly three additional WebP derivatives, 480 × 384, 800 × 640, and 1200 × 960, from the existing unchanged 1600 × 1280 original; preserve the 5:4 aspect ratio, framing and visual appearance without cropping. Verify each output's dimensions and inspect its image quality. Record byte sizes and verify the original remains byte-identical. The three explicitly named files in the allow-list above are the only newly permitted image outputs for future planning. Retain the existing original intact. Specify responsive `srcset` and accurate `sizes` against rendered image widths and device pixel density, with a no-JavaScript `<img>` fallback, intrinsic dimensions, `loading="lazy"`, `decoding="async"` and the already approved descriptive alt. No additional derivatives, production dependencies, image-pipeline changes, or image generation are authorized. The three derivatives and only these paths may be created during separately PM-authorized M03-04 execution, after the authorization record is published and clean preflight reconfirmed.
 
 ## Pre-implementation Gate
@@ -114,6 +116,51 @@ STOP if any source conflicts with frozen decisions; reconstruction-critical UNKN
 - Tests supported by recorded observations, no known blocking regression.
 - Commit(s) published and synchronized before M03-05.
 - No formal-audit status is self-assigned.
+
+## Implementation PM Decision and Evidence Record (2026-10-13)
+
+Chronological record of Product Manager decisions and evidence produced during the authorized M03-04 implementation and its visual validation. State: M03-04 remains `IN PROGRESS`; the implementation restrictions of this document are unchanged; deployment, M03-05 and M03-06 remain NOT AUTHORIZED.
+
+### Priority sequence (PM-approved)
+- **A — IMMEDIATE (visually approved):** CTA corrections (D7, D8) and complete responsive visual inspection across all approved viewports, including the post-D9/D10 regression.
+- **B — DEFERRED:** dynamic scroll-driven process stepper — pending a separate specification and implementation authorization; not started.
+- **C — LAST:** intelligent Header — deferred until A and B are completed; not started.
+
+### D7 — CTA image (2026-10-13)
+Resolved by PM visual validation after a local server refresh. The CTA image required no change: the original WebP, the three approved derivatives, `srcset`, `sizes`, `object-fit`, and lazy-loading remain as implemented. No image asset was replaced. Implementation-level investigation measured local rendering geometry and crop equal to the staging reference at Desktop, Tablet, Mobile Landscape, and Mobile Portrait.
+
+### D8 — CTA button size and visible disclosure (2026-10-13)
+The Product Manager superseded only the visibly rendered new-tab disclosure of PI-05(c). Approved current behavior:
+- Visible label: `Contactar por WhatsApp` (unchanged).
+- Accessible name: `aria-label="Contactar por WhatsApp (abre en una nueva pestaña)"`.
+- `target="_blank"` and `rel="noopener noreferrer"` preserved.
+- Both CTA buttons must render equal width and height within each approved responsive configuration. Implementation-level computed measurements (headless Chrome CDP): 281×50 at 1920 and 1440; equal 195×64 at 1024; 313×48 at 820; 336×48 at 844; 293×50 at 390.
+- Implementation-level verification: `npm run build` passed; keyboard focus outline confirmed (`2px` white with `3px` offset on the dark card; `#1a2ad3` override at ≤478.98px); hover states preserved.
+
+### D9 — CTA card shadow (2026-10-13)
+The invented Mobile Portrait override `box-shadow: 0 12px 30px rgba(17,26,56,0.10)` on `.sm-process-cta` was removed from `@media (max-width: 478.98px)`. Both cards now retain the original staging shadows at every viewport:
+- Trust: `0 16px 38px rgba(26,42,211,0.12), 0 3px 10px rgba(15,23,42,0.06)`.
+- CTA: `0 18px 42px rgba(17,26,56,0.16), 0 3px 10px rgba(15,23,42,0.06)`.
+
+Verified by computed-style measurement at 1920, 1024, 844, 478, and 390 widths; no invented shadow values remain.
+
+### D10 — Mobile Portrait card backgrounds (2026-10-13)
+At widths ≤478.98px only:
+- Trust card background `#f2f5ff` — **explicit PM-approved deviation** from the staging reference, which keeps the Trust card white at every width (per `COMO-TRABAJAMOS-EXTRACTION.md`).
+- CTA card background `#f2f5ff` (matches the staged mobile rule).
+- Process section background remains `#ffffff`.
+- Trust icon discs set to `#ffffff` for visible contrast against the light-blue card.
+- Wider viewports unchanged (verified Trust `#ffffff` and CTA `#111a38` at 1920, 1024, and 844).
+- No horizontal overflow observed at 390×844 or 478×844.
+
+### PM visual approval record (2026-10-13)
+- Desktop: PASS.
+- Tablet 820 × 1180: PASS.
+- Mobile Landscape 844 × 390: PASS.
+- Mobile Portrait 390 × 844: PASS.
+- Post-D9/D10 visual regression across the previously approved viewports: PASS.
+
+This record is the Product Manager's **visual acceptance** and, where stated, OpenCode implementation-level measurements. It is not an independent implementation-level test record (M03-05) and not a formal audit verdict (M03-06); both milestones remain NOT STARTED.
 
 ## Review / Publication State
 
