@@ -311,3 +311,7 @@ No outstanding scope-freeze decision blocks the proposed M03-03 closure. O-05 re
 
 ## Handoff
 `docs/handoffs/PHASE-03-M03-HANDOFF.md` (for the coordinating ChatGPT).
+
+## Amendments by later PM decisions
+
+The original D-08 and D-11 rows and the O-06 text above are historical and unedited. Later PM decisions of 2026-10-13, recorded in `docs/phases/phase-03/M03-04-opencode-implementation.md` under "Priority B — PM Decision Record (2026-10-13)", amend them for Priority B only: **PD-1** supersedes the D-08 restriction on the MOT-02 scroll-linked variant, and **PD-2** relaxes the D-11 IntersectionObserver-only path. Priority B implementation remains NOT AUTHORIZED.
