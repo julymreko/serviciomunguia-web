@@ -36,15 +36,21 @@ The goal is to establish a reliable, minimal foundation before creating `AGENTS.
 
 ## Authorization Status
 
-The Product Manager authorized the local application of GOV-01-001 (two new governance files and four modified documentation files). Commit, push and deployment are not authorized by that grant.
+Completed work, recorded as historical evidence only (current HEAD is determined from Git):
 
-No other GOV-01 item has been authorized. Every item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
+- GOV-01-001: governance documentation was committed and published in `9a9e85c`.
+- GOV-01-002: root `AGENTS.md` was committed and published in `d06a88c`.
+- GOV-01-003: root `CLAUDE.md` was committed and published in `2ff2819`, and Claude Code successfully loaded its `@AGENTS.md` import.
+
+GOV-01-004: the Product Manager authorized the local creation of three Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) with the exact contents given in that assignment. Commit, push and deployment are NOT AUTHORIZED by this grant.
+
+No other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
 | Item | Status |
 |---|---|
-| `AGENTS.md` | NOT AUTHORIZED |
-| `CLAUDE.md` | NOT AUTHORIZED |
-| Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | NOT AUTHORIZED |
+| `AGENTS.md` | Committed and published in `d06a88c` (GOV-01-002) |
+| `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
+| Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Local creation authorized (GOV-01-004). Commit, push and deployment NOT AUTHORIZED |
 | Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | NOT AUTHORIZED |
