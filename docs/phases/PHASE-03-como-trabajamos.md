@@ -12,7 +12,7 @@ Owner:
 Julián Cely
 
 Executing Agent:
-Claude Code (discovery/planning, M03-00 to M03-02); OpenCode (implementation, M03-04, not yet authorized)
+Claude Code (discovery/planning, M03-00 to M03-02); OpenCode (implementation, M03-04; PM authorization recorded in M03-04)
 
 Audit Agent:
 Claude Code for M03-06 (formal audit); Claude Code for M03-05 (independent testing)
@@ -288,8 +288,8 @@ The Product Manager explicitly authorized M03-04 implementation in the project c
 
 Implementation status (2026-10-13):
 - PM execution authorization: granted on 2026-10-11 and recorded.
-- Priority A (implementation, responsive PM visual validation, D7–D10 decisions, local documentation): COMPLETED locally, consolidated in local commit `542601e`.
-- Priority B (dynamic scroll-driven process stepper): NOT STARTED — specification and PM approval pending; implementation NOT AUTHORIZED.
+- Priority A (implementation, responsive PM visual validation, D7–D10 decisions, local documentation): COMPLETED and passed Product Manager visual verification; consolidated in commit `542601e` (historical reference; publication evidence is determined from Git).
+- Priority B (dynamic scroll-driven process stepper): NOT STARTED — PM decisions PD-1 to PD-15 recorded in M03-04; technical specification pending; implementation NOT AUTHORIZED.
 - Priority C (intelligent Header): DEFERRED until A and B are completed.
 - M03-05 (independent testing) and M03-06 (formal audit): NOT STARTED and NOT AUTHORIZED.
 

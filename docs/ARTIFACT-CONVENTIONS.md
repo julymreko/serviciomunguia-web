@@ -131,3 +131,13 @@ Location: the applicable milestone specification under `docs/phases/phase-XX/MXX
 Each decision must identify its decision ID, the Product Manager as approver, the decision date or date range, and related issue/proposal/UNKNOWN identifiers.
 
 Decisions given only in conversations must be recorded in the repository before dependent work starts. A transcribing agent does not become an approver.
+
+## Governance Initiatives
+
+Location: `docs/governance/`
+
+Naming: `GOV-XX-<slug>.md`
+
+Content: initiative definition, authorization status, candidate work items, observations, and deferred investigations.
+
+Stable decisions of a governance initiative are recorded as ADRs in `docs/decisions/`. Decisions not tied to a phase milestone are not recorded in milestone specifications.

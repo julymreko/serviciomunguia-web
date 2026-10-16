@@ -12,6 +12,8 @@ Draft basis: repository HEAD `a06f10f6710e205f8aacd5fd47d133ed081d12e2` (2026-10
 
 **AUTHORIZATION RECORD — PM APPROVED (2026-10-11):** Following publication of the specification and closure of M03-03 in commit `63c25ec1916533fe631f78d84960886b8c9bdfb9`, the Product Manager explicitly authorized M03-04 execution through OpenCode in the project conversation, under the final approved implementation prompt. This authorization is to be registered in the repository before source work resumes. After publication and renewed clean Git preflight, OpenCode may implement **only** the frozen M03-04 source-file allow-list and must obey all tests and STOP conditions. Deployment, M03-05, M03-06, unrelated source edits and governance changes remain NOT AUTHORIZED.
 
+ANNOTATION (2026-10-16): The registration and publication conditions stated in the paragraph above were satisfied after it was written. The paragraph is preserved as the state at the time of writing. The current operating state is defined in `docs/PROJECT-STATE.md`; commit and publication evidence is determined from Git.
+
 ## Purpose and Scope
 
 After separate PM authorization and closure of M03-03, implement only the frozen Cómo trabajamos section. The authoritative product decisions, copy, evidence, motion limits and deviations live in M03-03, M03-02 and the approved extraction. Do not reinterpret staging or change product decisions.
@@ -200,3 +202,5 @@ This record is the Product Manager's **visual acceptance** and, where stated, Op
 ## Review / Publication State
 
 Specification publication and M03-03 closure were approved and published. The Product Manager subsequently authorized M03-04 execution on 2026-10-11; this documentation update records that decision. Implementation may resume only after publication and fresh clean Git preflight. Deployment, M03-05 and M03-06 remain NOT AUTHORIZED.
+
+ANNOTATION (2026-10-16): The registration and publication conditions stated in the paragraph above were satisfied after it was written. The paragraph is preserved as the state at the time of writing. The current operating state is defined in `docs/PROJECT-STATE.md`; commit and publication evidence is determined from Git.
