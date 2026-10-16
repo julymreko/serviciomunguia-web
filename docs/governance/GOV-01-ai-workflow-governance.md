@@ -41,8 +41,11 @@ Completed work, recorded as historical evidence only (current HEAD is determined
 - GOV-01-001: governance documentation was committed and published in `9a9e85c`.
 - GOV-01-002: root `AGENTS.md` was committed and published in `d06a88c`.
 - GOV-01-003: root `CLAUDE.md` was committed and published in `2ff2819`, and Claude Code successfully loaded its `@AGENTS.md` import.
+- GOV-01-004: the three Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) and the update to this document were committed and published in `6fa14a7`.
 
-GOV-01-004: the Product Manager authorized the local creation of three Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) with the exact contents given in that assignment. Commit, push and deployment are NOT AUTHORIZED by this grant.
+GOV-01-004: the Product Manager authorized the creation of three Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) with the exact contents given in that assignment. Their publication is recorded above.
+
+GOV-01-005: the Product Manager authorized a controlled, read-only validation of the three Skills. Results: see "GOV-01-005 Controlled Validation".
 
 No other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
@@ -50,13 +53,30 @@ No other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZ
 |---|---|
 | `AGENTS.md` | Committed and published in `d06a88c` (GOV-01-002) |
 | `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
-| Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Local creation authorized (GOV-01-004). Commit, push and deployment NOT AUTHORIZED |
+| Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Committed and published in `6fa14a7` (GOV-01-004) |
 | Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | NOT AUTHORIZED |
-| Small controlled verification and Priority B pilot (G-10) | NOT AUTHORIZED |
+| Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
+| Priority B pilot (G-10) | NOT AUTHORIZED |
 | G-06 research | NOT AUTHORIZED |
 | Independent GOV-01 repository (G-11) | NOT AUTHORIZED |
+
+## GOV-01-005 Controlled Validation
+
+Authorization: the Product Manager authorized a controlled, read-only validation of the three Skills. No repository modification was authorized. This validation is not deployment authorization and not blanket authorization for future repository modifications.
+
+Results, as provided by the Product Manager (summary only; complete test reports are not reproduced):
+
+- Claude Code 2.1.301: tests T1-T6 PASS. T1 passed after the Product Manager confirmed slash-menu discovery. `task-preflight` and `task-report` loaded. `decision-transcription` rejected model invocation and accepted explicit `/decision-transcription` invocation. No files changed.
+- OpenCode 2.0.26, model DeepSeek V4 Pro (New), Windows / PowerShell: tests O1-O6 PASS. All three Skills were discovered or loaded explicitly. `decision-transcription` was excluded from automatic selection but explicitly loadable by name. No files changed.
+
+Limitations:
+
+- No real decision transcription was performed.
+- Dirty-tree and baseline-mismatch scenarios were not executed.
+- The individual OpenCode frontmatter fields were not tested in isolation.
+- The Priority B pilot (G-10) remains NOT AUTHORIZED.
 
 ## Candidate Work Items
 
