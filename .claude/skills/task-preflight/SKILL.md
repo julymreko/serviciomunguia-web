@@ -11,7 +11,7 @@ Rules live in `AGENTS.md`, `docs/CONTEXT-PROTOCOL.md` and `docs/PROJECT-STATE.md
 
 ## Inputs
 
-Take from the task assignment: task ID, operations the task performs (read-only, edit, commit, push, deploy), allowed files, baseline (commit SHA or ref), restrictions, stop conditions. Report any input the assignment does not state as `NOT STATED`. Never infer it.
+Take from the task assignment: task ID, task mode (exactly as the assignment states it), operations the task performs (read-only, edit, commit, push, deploy), allowed files, expected review paths (review mode only), baseline (commit SHA or ref), restrictions, stop conditions. An expected review path is an exact repository-relative file path, written exactly as `git status --short` prints it. Report any input the assignment does not state as `NOT STATED`. Never infer it.
 
 ## Checks
 
@@ -24,12 +24,12 @@ Take from the task assignment: task ID, operations the task performs (read-only,
    - NOT STATED: the assignment gives none. Report HEAD as observed; baseline-dependent checks are `NOT VERIFIED`.
 4. Git, remote state. Do not run `git fetch`, `git pull` or `git checkout` unless the assignment authorizes it. Run `git status -sb`; its first line gives the relation to the upstream as last fetched. Report it as "last fetched"; it is not live remote state. If there is no upstream or no output, remote state is `NOT VERIFIED`.
 5. Deployment. Git does not show it. Report `NOT VERIFIED` unless the assignment states it.
-6. Working tree. Run `git status --short`. List every modified, staged or untracked path and flag any outside the allowed files.
+6. Working tree. Run `git status --short`. List every path it prints (modified, staged, deleted, renamed or untracked) and flag any outside the allowed files. Exception: a printed path that exactly matches an expected review path declared by the approved assignment is review input. It is not an allowed implementation write, is not flagged by this check, and does not trigger the working-tree STOP, but only when the assignment mode is review. A renamed entry printed as `old -> new` matches only if the declaration is that exact printed text. A directory, glob, wildcard, recursive pattern, prefix, inferred path or partial path grants nothing; the path it would cover is flagged. Every other printed path is flagged.
 7. Scope. Compare the requested work with the allowed files and restrictions. A read-only task writes nothing.
 
 ## Result
 
-STOP when any of these holds: authorization for the task or for a required operation is missing or unclear; required context is missing, stale or contradictory; the baseline is MISMATCH or UNRESOLVED; working-tree changes affect the task (it writes files, or it relies on the committed content of a modified path); scope exceeds the allowed files. Report the cause and wait for the Product Manager. Do not continue by inference.
+STOP when any of these holds: authorization for the task or for a required operation is missing or unclear; required context is missing, stale or contradictory; the baseline is MISMATCH or UNRESOLVED; working-tree changes affect the task (it writes files, or it relies on the committed content of a modified path), except paths matched as expected review paths under check 6; scope exceeds the allowed files, except paths matched as expected review paths under check 6. Report the cause and wait for the Product Manager. Do not continue by inference.
 
 Report any discrepancy you encounter while running these checks. Do not search for others, classify them, or fix them.
 
@@ -41,5 +41,5 @@ PREFLIGHT: READY | STOP
 - Git (local): <branch>, HEAD <short SHA>, baseline <match|MISMATCH|UNRESOLVED|NOT STATED>
 - Remote (origin ref as of last fetch; not live remote state): <relation|NOT VERIFIED>
 - Deployment: <stated by the assignment|NOT VERIFIED>
-- Working tree: <clean|paths>
+- Working tree: <clean|paths>; expected review paths matched: <none|exact printed paths>
 - Stop reasons: <list|none>
