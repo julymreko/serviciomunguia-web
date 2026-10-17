@@ -78,6 +78,26 @@ Limitations:
 - The individual OpenCode frontmatter fields were not tested in isolation.
 - The Priority B pilot (G-10) remains NOT AUTHORIZED.
 
+## GOV-01-006 Published Task-Preflight Verification
+
+Authorization: the Product Manager authorized a read-only verification of the published `task-preflight` Skill, executed in disposable clones, and this local documentation update to this document only. This verification does not authorize GOV-01-006 M2 implementation.
+
+Published Skill change: expected-review-path support for `task-preflight` was published in `2bacf50089fc99b194d2d4ee65767931e31ee53f`. The verification used the Skill text as published in that commit.
+
+Published-text verification (disposable clones, baseline `2bacf50`):
+
+- PUB-U1: undeclared dirty path (mode review, one tracked file modified, no declaration) => STOP. Expected STOP.
+- PUB-G1: directory or glob declaration instead of an exact path (mode review, one tracked file modified) => STOP. Expected STOP.
+- PUB-N1: exact declared new or untracked path, as printed by `git status --short` (mode review) => READY. Expected READY.
+- PUB-C1: clean working tree (matching baseline) => READY. Expected READY.
+- Result: 4/4 expected outcomes achieved, PASS.
+
+Methodological limitation: Claude Code applied the published `SKILL.md` rules by reading the written checks and executing them against disposable clones. This was NOT a deterministic per-case runtime invocation of `/task-preflight`.
+
+Repository safety: during the verification the real repository remained unchanged. HEAD = origin/main = `2bacf50089fc99b194d2d4ee65767931e31ee53f`, the working tree was clean, nothing was staged, and there was no commit, no push and no deploy.
+
+Governance consequence: this verification removes the technical blocker for the GOV-01-006 M2 mailbox design. It does not authorize M2 implementation. M2 implementation remains NOT AUTHORIZED. G-04 (technical permission controls for push and deployment) remains a separate item and is NOT AUTHORIZED. No broader GOV-01 authorization is implied.
+
 ## Candidate Work Items
 
 The items in Authorization Status are candidate work items. The approved decisions state only these ordering constraints:
