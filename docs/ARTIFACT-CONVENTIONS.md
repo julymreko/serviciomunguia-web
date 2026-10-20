@@ -141,3 +141,46 @@ Naming: `GOV-XX-<slug>.md`
 Content: initiative definition, authorization status, candidate work items, observations, and deferred investigations.
 
 Stable decisions of a governance initiative are recorded as ADRs in `docs/decisions/`. Decisions not tied to a phase milestone are not recorded in milestone specifications.
+
+## Durable Status Rule
+
+A table or field that represents current authorization, permissions, or ongoing status must state a durable rule and must not depend on transient Git or working-tree state.
+
+Point-in-time facts such as "present in the working tree", "not yet committed", or "not yet pushed" belong in historical or dated narrative records, not in current-status fields or tables.
+
+Historical records must not be the sole source of a standing authorization rule.
+
+## Local AI Coordination Mailbox
+
+Name:
+
+Local AI coordination mailbox
+
+Location:
+
+.coordination/
+
+Tracking:
+
+Git-ignored / local only
+
+Purpose:
+
+Temporary operational exchange of task contracts, specifications, approvals, reports, reviews, decisions and archived task evidence between approved AI agents and the Product Manager.
+
+Canonical structure:
+
+.coordination/
+  tasks/<TASK-ID>/
+  approvals/<TASK-ID>/
+  archive/<TASK-ID>/
+
+Rules:
+
+- temporary operational evidence only;
+- not a permanent source of truth;
+- must not replace governed repository documentation;
+- accepted durable outcomes are transcribed into the appropriate governed repository artifact;
+- folder/task IDs are never reused;
+- closed tasks are archived by default rather than deleted;
+- purge requires a later PM decision.

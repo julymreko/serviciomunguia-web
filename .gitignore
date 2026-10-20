@@ -17,3 +17,5 @@ coverage/
 
 secrets/
 credentials/
+
+.coordination/

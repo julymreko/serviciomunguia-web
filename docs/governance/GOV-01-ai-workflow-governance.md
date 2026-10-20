@@ -47,13 +47,14 @@ GOV-01-004: the Product Manager authorized the creation of three Skills under `.
 
 GOV-01-005: the Product Manager authorized a controlled, read-only validation of the three Skills. Results: see "GOV-01-005 Controlled Validation".
 
-No other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
+Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation"), no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
 | Item | Status |
 |---|---|
 | `AGENTS.md` | Committed and published in `d06a88c` (GOV-01-002) |
 | `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
 | Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Committed and published in `6fa14a7` (GOV-01-004) |
+| GOV-01-006 M2 mailbox, local implementation | AUTHORIZED (local implementation). Commit, push/publication, and deploy each require separate explicit Product Manager authorization. |
 | Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | NOT AUTHORIZED |
@@ -97,6 +98,52 @@ Methodological limitation: Claude Code applied the published `SKILL.md` rules by
 Repository safety: during the verification the real repository remained unchanged. HEAD = origin/main = `2bacf50089fc99b194d2d4ee65767931e31ee53f`, the working tree was clean, nothing was staged, and there was no commit, no push and no deploy.
 
 Governance consequence: this verification removes the technical blocker for the GOV-01-006 M2 mailbox design. It does not authorize M2 implementation. M2 implementation remains NOT AUTHORIZED. G-04 (technical permission controls for push and deployment) remains a separate item and is NOT AUTHORIZED. No broader GOV-01 authorization is implied.
+
+## GOV-01-006 M2 Governance Reconciliation
+
+Approved design: GOV-01-006 M2 Revision 2 is the approved final mailbox design. The Product Manager is the approver. The decisions below were transcribed from conversation by the executing agent; the transcriber is not an approver.
+
+Approved M2 design decisions:
+
+- Mailbox root: `.coordination/`, Git-ignored and local only.
+- Structure: `.coordination/tasks/<TASK-ID>/`, `.coordination/approvals/<TASK-ID>/`, `.coordination/archive/<TASK-ID>/`.
+- `.coordination/` holds temporary operational evidence only. It is not the permanent source of truth.
+- `approval.md` and `decision.md` are Product Manager-only artifacts.
+- Routine approval flow: ChatGPT Work, after explicit Product Manager approval, plus an external-path "Allow once" confirmation.
+- Contract approval is bound to the exact contract filename and its SHA-256. Executor and reviewer recompute the approved contract hash and STOP on mismatch.
+- Expected review paths are exact repository-relative review inputs under the published `task-preflight` rules. They never authorize implementation writes.
+- Task state is derived from mailbox artifacts, not from Git dirty state.
+- Default maximum fix rounds: 3, unless the contract specifies fewer.
+- Existing reports and reviews are never overwritten; later rounds use the next number.
+- Closed tasks are archived by default. Purge requires a later Product Manager decision.
+- Commit, push and deploy remain separate Product Manager authorization gates.
+- G-08 role separation remains unchanged.
+
+Prerequisites:
+
+- `task-preflight` expected-review-path support is published in `2bacf50089fc99b194d2d4ee65767931e31ee53f`.
+- Published-text verification is recorded in `f7cc373fc61407878d4be6fd4437a6bc65b8fd40` (section "GOV-01-006 Published Task-Preflight Verification"). This is a historical commit reference, not the current HEAD.
+
+Local implementation authorization: the Product Manager authorized local M2 implementation limited to `.gitignore`, `AGENTS.md`, `docs/ARTIFACT-CONVENTIONS.md` and `docs/templates/TASK-CONTRACT-TEMPLATE.md`. For this local scope only, this section supersedes the statement "M2 implementation remains NOT AUTHORIZED" in the preceding section. That earlier statement is preserved as historical record.
+
+Existing worktree audit (read-only): the uncommitted M2 implementation was reviewed and classified against M2 Revision 2:
+
+- `.gitignore`: MATCH
+- `AGENTS.md`: MATCH
+- `docs/ARTIFACT-CONVENTIONS.md`: MATCH
+- `docs/templates/TASK-CONTRACT-TEMPLATE.md`: MATCH
+- Overall conclusion: KEEP AS-IS. No missing requirements. No extra or unapproved content changes.
+
+Point-in-time state (historical): at reconciliation time, the authorized local M2 implementation was present in the working tree and had not yet been committed or published.
+
+Standing authorization boundary:
+
+- Local M2 implementation: authorized.
+- Commit requires separate Product Manager authorization.
+- Push/publication requires separate Product Manager authorization.
+- Deploy requires separate Product Manager authorization and is NOT AUTHORIZED.
+- G-04 (technical permission controls for push and deployment) remains separate and NOT AUTHORIZED.
+- No broader GOV-01 authorization is implied.
 
 ## Candidate Work Items
 

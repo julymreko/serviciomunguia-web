@@ -30,6 +30,31 @@ Load only the minimum verified context required.
 - Do not expand or reinterpret an authorization. If authorization is unclear or conflicts with recorded governance, stop and request clarification.
 - Commit, push, and deployment operations require their applicable explicit authorization; authorization for one operation does not imply authorization for another.
 
+## Local AI Coordination Mailbox
+
+The local coordination mailbox root is `.coordination/`. It holds temporary operational evidence and is never the permanent project source of truth.
+
+- Normal task artifacts: `.coordination/tasks/<TASK-ID>/`
+- Product Manager authorization records: `.coordination/approvals/<TASK-ID>/`
+- Closed task archives: `.coordination/archive/<TASK-ID>/`
+
+Rules:
+
+- Every task invocation must explicitly name the Task ID. Agents may not select a task themselves.
+- The folder Task ID and the contract Task ID must match exactly; otherwise STOP.
+- The active contract is `contract-rN.md`. A contract requests operations; it does not grant authorization. Authorization comes only from the matching `approval.md`.
+- `approval.md` must identify the exact approved contract filename and the SHA-256 of that contract. The executor and reviewer must recompute that SHA-256 and STOP on mismatch.
+- Expected review paths are review input only, not implementation-write authorization. They follow the published `task-preflight` exact-path rules.
+- Reports use `report-NN.md`; reviews use `review-NN.md`. Existing reports and reviews are never overwritten; later rounds use the next number.
+- Automatic fix rounds default to a maximum of 3 unless the contract specifies fewer.
+- `approval.md` and `decision.md` are Product Manager-only artifacts. Any agent attempt to create or modify them without explicit Product Manager action is a STOP condition.
+- Commit, push and deploy each remain separate Product Manager authorization gates.
+- A report may propose a next task but cannot authorize it.
+- Durable accepted outcomes are recorded in governed repository documentation before task closure or archive.
+- ChatGPT Work, OpenCode, Claude Code and Claude Chat retain their existing G-08 role separation.
+
+Contract template: `docs/templates/TASK-CONTRACT-TEMPLATE.md`.
+
 ## Documentation
 
 Follow `docs/ARTIFACT-CONVENTIONS.md` for artifact locations, naming, and decision records.
