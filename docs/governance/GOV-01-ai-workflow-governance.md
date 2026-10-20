@@ -55,7 +55,7 @@ Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governan
 | `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
 | Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Committed and published in `6fa14a7` (GOV-01-004) |
 | GOV-01-006 M2 mailbox, local implementation | AUTHORIZED (local implementation). Commit, push/publication, and deploy each require separate explicit Product Manager authorization. |
-| Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED |
+| Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED, except the GOV-01-G04-001 documentation-only scope authorized in Decision GOV-01-G04-002 |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | NOT AUTHORIZED |
 | Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
@@ -145,6 +145,28 @@ Standing authorization boundary:
 - G-04 (technical permission controls for push and deployment) remains separate and NOT AUTHORIZED.
 - No broader GOV-01 authorization is implied.
 
+## GOV-01-G04 Decisions
+
+Approver: Julián Cely, Product Manager. Transcribed from the Product Manager's `/decision-transcription` assignment in conversation; the transcriber is not an approver. Decision date: NOT RECORDED.
+
+### GOV-01-G04-POLICY-1 (APPROVED)
+
+Related: G-04; GOV-01-006 M2.
+
+Authorization for any task handed to an agent must be materialized as contract-rN.md + approval.md inside .coordination/ before execution, effective from this decision forward. It does not apply retroactively: authorizations already given in conversation and already acted upon and recorded in the repository (including the GOV-01-006 M2 local implementation, commit, and push at 542d03f) remain valid and are not reopened by this decision.
+
+### GOV-01-G04-002 (APPROVED)
+
+Related: GOV-01-G04-001; G-04. Note: GOV-01-G04-001 is defined by this decision; no prior record of it exists in the repository.
+
+GOV-01-G04-001 is the task of documenting, in AGENTS.md and docs/SECRETS-POLICY.md, that agent process environments must never contain a push-capable Git credential or a deploy-capable Cloudflare credential, and that push/deploy readiness is reported (not authorized) via the existing task-report "Open for the Product Manager" field. The documentation-only scope of GOV-01-G04-001 is authorized. This does not authorize any script, hook, or credential-provisioning mechanism, which remains NOT AUTHORIZED under G-04.
+
+### GOV-01-G04-003 (APPROVED)
+
+Related: G-04; docs/governance/GOV-01-G04-DESIGN-DRAFT.md.
+
+The GOV-01 G-04 design proposal (Revision 2) is recorded as a draft at docs/governance/GOV-01-G04-DESIGN-DRAFT.md, status DRAFT, not an approved architecture, for citation as a task input only. The file is currently untracked; it is to be committed together with the GOV-01-G04-001 implementation, under that task's own commit authorization, not as a separate commit.
+
 ## Candidate Work Items
 
 The items in Authorization Status are candidate work items. The approved decisions state only these ordering constraints:
@@ -203,3 +225,5 @@ This section proposes an implementation of decision G-12 and of the proposed pri
 ## Transcription Record
 
 Assignment GOV-01-001 directed Claude Code to transcribe G-01 to G-12 and the associated Product Manager requirements. Claude Code acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision.
+
+Assignment `/decision-transcription` (conversation) directed the transcription of GOV-01-G04-POLICY-1, GOV-01-G04-002 and GOV-01-G04-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
