@@ -30,6 +30,10 @@ Load only the minimum verified context required.
 - Do not expand or reinterpret an authorization. If authorization is unclear or conflicts with recorded governance, stop and request clarification.
 - Commit, push, and deployment operations require their applicable explicit authorization; authorization for one operation does not imply authorization for another.
 
+## G-04 Push and Deploy Capability
+
+Agent process environments must never contain a push-capable Git credential or a deploy-capable Cloudflare credential. Push/deploy readiness is reported, not authorized, via the existing task-report 'Open for the Product Manager' field.
+
 ## Local AI Coordination Mailbox
 
 The local coordination mailbox root is `.coordination/`. It holds temporary operational evidence and is never the permanent project source of truth.

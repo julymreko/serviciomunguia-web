@@ -8,6 +8,10 @@ APPROVED
 
 Sensitive values must never be committed to Git.
 
+## Agent Process Environments
+
+Agent process environments must never contain a push-capable Git credential or a deploy-capable Cloudflare credential.
+
 ## Cloudflare Production and Staging
 
 Sensitive values must be stored as Cloudflare Worker Secrets.
