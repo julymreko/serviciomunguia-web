@@ -55,9 +55,13 @@ Rules:
 - Commit, push and deploy each remain separate Product Manager authorization gates.
 - A report may propose a next task but cannot authorize it.
 - Durable accepted outcomes are recorded in governed repository documentation before task closure or archive.
-- ChatGPT Work, OpenCode, Claude Code and Claude Chat retain their existing G-08 role separation.
+- ChatGPT Work, OpenCode, Claude Code, Codex and Claude Chat retain G-08 role separation: roles are assigned per task, and an executor never reviews its own work.
 
 Contract template: `docs/templates/TASK-CONTRACT-TEMPLATE.md`.
+
+## Skills
+
+Shared Skills live in `.claude/skills/`. Agents that do not discover that directory automatically, such as Codex, read the relevant `SKILL.md` directly.
 
 ## Documentation
 

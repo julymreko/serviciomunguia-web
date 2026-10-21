@@ -30,7 +30,7 @@ Approved by: Julián Cely, Product Manager.
 | G-06 | Initial Skills: `task-preflight`, `task-report`, `decision-transcription` |
 | G-07 | Reuse proven community methods; no complete third-party framework installation at this stage |
 | G-08 | Preserve current agent roles while formalizing file-based handoffs |
-| G-09 | Introduce Codex later as an independent read-only reviewer |
+| G-09 | Introduce Codex as a working agent, assigned per task as executor or reviewer; push and deployment remain excluded under G-04 (amended by Decision GOV-01-G09-003) |
 | G-10 | Small controlled verification followed by a Priority B pilot |
 | G-11 | GOV-01 as an independent governance initiative |
 | G-12 | Reconcile `PROJECT-STATE.md` before implementing GOV-01 |

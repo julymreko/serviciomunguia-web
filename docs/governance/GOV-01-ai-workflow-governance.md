@@ -47,7 +47,7 @@ GOV-01-004: the Product Manager authorized the creation of three Skills under `.
 
 GOV-01-005: the Product Manager authorized a controlled, read-only validation of the three Skills. Results: see "GOV-01-005 Controlled Validation".
 
-Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation") and the G-04 scopes recorded in "GOV-01-G04 Decisions", no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
+Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation"), the G-04 scopes recorded in "GOV-01-G04 Decisions" and the G-09 scope recorded in "GOV-01-G09 Decisions", no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
 | Item | Status |
 |---|---|
@@ -57,7 +57,7 @@ Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governan
 | GOV-01-006 M2 mailbox, local implementation | AUTHORIZED (local implementation). Commit, push/publication, and deploy each require separate explicit Product Manager authorization. |
 | Technical permission controls for push and deployment (G-04) | Environment-level isolation AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G04-005). Documentation scopes authorized in Decisions GOV-01-G04-002 and GOV-01-G04-005. Separate Windows user account for agents NOT AUTHORIZED (pending evaluation). |
 | Scripts or hooks | NOT AUTHORIZED |
-| Codex installation and integration (G-09) | NOT AUTHORIZED |
+| Codex installation and integration (G-09) | AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G09-003). Documentation scope authorized in Decision GOV-01-G09-003. |
 | Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
 | Priority B pilot (G-10) | NOT AUTHORIZED |
 | G-06 research | NOT AUTHORIZED |
@@ -179,13 +179,33 @@ Accepted residual gaps: (1) the isolation applies only to agents launched throug
 
 GOV-01-G04-004 is the documentation-only task that transcribes this decision, updates the G-04 status in this document, and amends docs/governance/GOV-01-G04-DESIGN-DRAFT.md to record the verified mechanism. Its scope is authorized. Earlier G-04 status statements in the "GOV-01-006 Published Task-Preflight Verification" and "GOV-01-006 M2 Governance Reconciliation" sections are historical records of their own time and are not edited.
 
+## GOV-01-G09 Decisions
+
+Approver: Julián Cely, Product Manager. Transcribed under task GOV-01-G09-002; the transcriber is not an approver.
+
+### GOV-01-G09-003 (APPROVED)
+
+Related: G-09; G-08; G-04; GOV-01-G04-005; GOV-01-G09-001; GOV-01-G09-002; docs/decisions/ADR-007-ai-workflow-governance.md. Decision date: 2026-10-21.
+
+G-09 is amended. Codex is a working agent with the same standing as Claude Code and OpenCode: it may be assigned, per task, as executor or reviewer, for implementation, testing, design, planning, discovery or extraction work. All agents may read and edit files in the Product Manager's local working copy; push and deployment remain excluded for every agent under G-04. Under G-08, roles are assigned per task and an executor never reviews its own work. The G-09 line in docs/decisions/ADR-007-ai-workflow-governance.md is rewritten at the Product Manager's direction; its previous wording was "Introduce Codex later as an independent read-only reviewer". The ordering constraint "Codex is introduced later (G-09)" is fulfilled by this decision.
+
+Implemented by the Product Manager on 2026-10-20 and 2026-10-21, outside the repository. Codex CLI (npm `@openai/codex`, codex-cli 0.163.0, signed in with ChatGPT) is launched only through a `codex` shell function in the Product Manager's `~/.bashrc`, with the same G-04 isolation variables as the other agents and with `-c sandbox_workspace_write.network_access=true`. Codex runs its commands in PowerShell, preferring PowerShell 7; PowerShell 7 is installed with the MSI installer at `C:\Program Files\PowerShell\7\pwsh.exe`. Under Windows PowerShell 5.1, Codex wrote UTF-8 text double-encoded with a BOM (task GOV-01-G09-001, reports 01 to 03).
+
+Verified in task GOV-01-G09-001, report-04.md, on 2026-10-21: commands ran in PowerShell 7.6.7; UTF-8 text was written correctly and without a BOM; the isolation variables were present; `npx wrangler whoami` reached Cloudflare and failed authentication with the sentinel token.
+
+Accepted limitation: Codex's Windows sandbox (elevated mode) runs commands as a separate Windows sandbox user, and Git HTTPS connections from that user fail before authentication (schannel `SEC_E_NO_CREDENTIALS`). Codex therefore cannot fetch, pull or push; the Product Manager performs Git network operations. A push attempt from Codex was not exercised beyond that failure.
+
+Shared Skills remain in `.claude/skills/`. Agents that do not discover that directory automatically, such as Codex, read the relevant `SKILL.md` directly.
+
+GOV-01-G09-002 is the documentation-only task that records this decision: it rewrites the G-09 line in ADR-007, updates the G-09 status and the related lines in this document, and updates AGENTS.md for Codex and for Skills discovery. Its scope is authorized.
+
 ## Candidate Work Items
 
 The items in Authorization Status are candidate work items. The approved decisions state only these ordering constraints:
 
 - GOV-01-001 reconciliation comes first (G-12).
 - Small controlled verification comes before the Priority B pilot (G-10).
-- Codex is introduced later (G-09).
+- Codex is introduced later (G-09). Fulfilled by Decision GOV-01-G09-003.
 
 No other ordering is approved. The Product Manager sets it.
 
@@ -241,3 +261,5 @@ Assignment GOV-01-001 directed Claude Code to transcribe G-01 to G-12 and the as
 Assignment `/decision-transcription` (conversation) directed the transcription of GOV-01-G04-POLICY-1, GOV-01-G04-002 and GOV-01-G04-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
 
 Task GOV-01-G04-004 (contract `.coordination/tasks/GOV-01-G04-004/contract-r1.md`) directed the transcription of GOV-01-G04-005 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
+
+Task GOV-01-G09-002 (contract `.coordination/tasks/GOV-01-G09-002/contract-r1.md`) directed the transcription of GOV-01-G09-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G09 Decisions".
