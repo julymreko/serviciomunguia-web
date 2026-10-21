@@ -47,7 +47,7 @@ GOV-01-004: the Product Manager authorized the creation of three Skills under `.
 
 GOV-01-005: the Product Manager authorized a controlled, read-only validation of the three Skills. Results: see "GOV-01-005 Controlled Validation".
 
-Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation"), no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
+Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation") and the G-04 scopes recorded in "GOV-01-G04 Decisions", no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
 | Item | Status |
 |---|---|
@@ -55,7 +55,7 @@ Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governan
 | `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
 | Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Committed and published in `6fa14a7` (GOV-01-004) |
 | GOV-01-006 M2 mailbox, local implementation | AUTHORIZED (local implementation). Commit, push/publication, and deploy each require separate explicit Product Manager authorization. |
-| Technical permission controls for push and deployment (G-04) | NOT AUTHORIZED, except the GOV-01-G04-001 documentation-only scope authorized in Decision GOV-01-G04-002 |
+| Technical permission controls for push and deployment (G-04) | Environment-level isolation AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G04-005). Documentation scopes authorized in Decisions GOV-01-G04-002 and GOV-01-G04-005. Separate Windows user account for agents NOT AUTHORIZED (pending evaluation). |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | NOT AUTHORIZED |
 | Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
@@ -167,6 +167,18 @@ Related: G-04; docs/governance/GOV-01-G04-DESIGN-DRAFT.md.
 
 The GOV-01 G-04 design proposal (Revision 2) is recorded as a draft at docs/governance/GOV-01-G04-DESIGN-DRAFT.md, status DRAFT, not an approved architecture, for citation as a task input only. The file is currently untracked; it is to be committed together with the GOV-01-G04-001 implementation, under that task's own commit authorization, not as a separate commit.
 
+### GOV-01-G04-005 (APPROVED)
+
+Related: G-04; GOV-01-G04-002; GOV-01-G04-004; docs/governance/GOV-01-G04-DESIGN-DRAFT.md. Decision date: 2026-10-20.
+
+G-04 environment-level isolation is authorized and was implemented personally by the Product Manager on 2026-10-20, on the Product Manager's own Windows machine, outside the repository. Shell functions `claude` and `opencode` in the Product Manager's `~/.bashrc` (Git Bash, loaded by `~/.bash_profile`) launch each agent with `GIT_ASKPASS=false`, `SSH_ASKPASS=false`, `GIT_TERMINAL_PROMPT=0`, `GCM_INTERACTIVE=never`, `credential.helper` reset to empty through `GIT_CONFIG_COUNT=1`, `GIT_CONFIG_KEY_0=credential.helper` and an empty `GIT_CONFIG_VALUE_0`, and `CLOUDFLARE_API_TOKEN=g04-agent-no-deploy`, a non-credential sentinel. Agents are launched only through these functions; OpenCode is launched from Git Bash, not from WARP.
+
+Verified on 2026-10-20. Inside Claude Code launched through its function, the isolation variables were present and `git push --dry-run` failed authentication (exit 128); this check ran before `GIT_ASKPASS=false` and `SSH_ASKPASS=false` were added. Inside OpenCode launched through its function, all eight isolation variables were present, `git push --dry-run` failed authentication (exit 128), and `npx wrangler whoami` failed authentication without opening a browser (exit 1). In the Product Manager's own shell, `git push --dry-run` succeeded.
+
+Accepted residual gaps: (1) the isolation applies only to agents launched through these functions; (2) the Product Manager's GitHub credential remains in Windows Credential Manager under the same Windows user, so a deliberate bypass such as `git -c credential.helper=manager push` remains possible; (3) whether the sentinel `CLOUDFLARE_API_TOKEN` takes precedence over a stored `wrangler login` session is untested. Running agents under a separate Windows user account is pending evaluation and NOT AUTHORIZED.
+
+GOV-01-G04-004 is the documentation-only task that transcribes this decision, updates the G-04 status in this document, and amends docs/governance/GOV-01-G04-DESIGN-DRAFT.md to record the verified mechanism. Its scope is authorized. Earlier G-04 status statements in the "GOV-01-006 Published Task-Preflight Verification" and "GOV-01-006 M2 Governance Reconciliation" sections are historical records of their own time and are not edited.
+
 ## Candidate Work Items
 
 The items in Authorization Status are candidate work items. The approved decisions state only these ordering constraints:
@@ -227,3 +239,5 @@ This section proposes an implementation of decision G-12 and of the proposed pri
 Assignment GOV-01-001 directed Claude Code to transcribe G-01 to G-12 and the associated Product Manager requirements. Claude Code acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision.
 
 Assignment `/decision-transcription` (conversation) directed the transcription of GOV-01-G04-POLICY-1, GOV-01-G04-002 and GOV-01-G04-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
+
+Task GOV-01-G04-004 (contract `.coordination/tasks/GOV-01-G04-004/contract-r1.md`) directed the transcription of GOV-01-G04-005 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
