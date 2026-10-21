@@ -16,7 +16,7 @@ Collect evidence first. Report only what a command, a file read or your own acti
 3. Remote. Run `git status -sb`; its first line gives the relation to the upstream as last fetched. Report it as "last fetched". If there is no upstream or no output, report `NOT VERIFIED`. Never infer remote state from local commits.
 4. Actions. From your own command log, state whether this session ran commit, push or deployment commands. Deployment state is not visible in Git: report it `NOT DETERMINABLE FROM GIT` unless the assignment or a command output you ran states it.
 5. Validation. List each check actually run, with its command and result. A check not run is `NOT RUN`.
-6. Discrepancies. List each conflict you encountered while doing the work, between canonical documents, between documents and Git state, or between the assignment and the repository, with the files involved. Do not search for additional ones. Do not classify them. Do not fix them unless the assignment allows it.
+6. Discrepancies. List each conflict you encountered while doing the work, between canonical documents, between documents and Git state, or between the assignment and the repository, with the files involved. Classify each one: A, evidence only (no tracked change is needed); B, stale wording (state the exact proposed edit; applying it requires Product Manager authorization); C, genuine contradiction (stop and escalate to the Product Manager). Do not search for additional ones. Do not fix them unless the assignment allows it.
 
 ## Output
 
@@ -30,7 +30,7 @@ TASK <ID> REPORT
 - Remote (last fetched): <relation|NOT VERIFIED>
 - Actions this session: commit <none|list>; push <none|list>; deploy <none|list>
 - Deployment state: <evidence|NOT DETERMINABLE FROM GIT>
-- Discrepancies: <item - files>
+- Discrepancies: <A|B|C - item - files>
 - Open for the Product Manager: <items>
 
 Redact secrets. Write the report to a file only if the assignment names the path; otherwise reply in chat. End with the exact closing statement the assignment requires, if any. Language: follow `AGENTS.md` (Communication).

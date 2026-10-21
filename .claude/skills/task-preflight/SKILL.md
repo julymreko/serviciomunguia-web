@@ -33,7 +33,7 @@ STOP when any of these holds: authorization for the task or for a required opera
 
 Report any discrepancy you encounter while running these checks. Do not search for others, classify them, or fix them.
 
-Otherwise READY. Reply with this and nothing more:
+Otherwise READY. Report the preflight result in exactly this format and add nothing to the block. If the assignment continues after a READY preflight, report this block first and then continue with the assignment:
 
 PREFLIGHT: READY | STOP
 - Authorization: task <stated|NOT STATED>; edit <authorized|not required|NOT STATED>; commit <...>; push <...>; deploy <...>

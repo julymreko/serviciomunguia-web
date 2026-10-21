@@ -54,6 +54,7 @@ Rules:
 - `approval.md` and `decision.md` are Product Manager-only artifacts. Any agent attempt to create or modify them without explicit Product Manager action is a STOP condition.
 - Commit, push and deploy each remain separate Product Manager authorization gates.
 - A report may propose a next task but cannot authorize it.
+- Reports and reviews classify each discrepancy as A, B or C, as defined in the `task-report` skill.
 - Durable accepted outcomes are recorded in governed repository documentation before task closure or archive.
 - ChatGPT Work, OpenCode, Claude Code, Codex and Claude Chat retain G-08 role separation: roles are assigned per task, and an executor never reviews its own work.
 

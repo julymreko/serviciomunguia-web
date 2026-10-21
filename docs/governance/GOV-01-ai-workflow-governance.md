@@ -199,6 +199,30 @@ Shared Skills remain in `.claude/skills/`. Agents that do not discover that dire
 
 GOV-01-G09-002 is the documentation-only task that records this decision: it rewrites the G-09 line in ADR-007, updates the G-09 status and the related lines in this document, and updates AGENTS.md for Codex and for Skills discovery. Its scope is authorized.
 
+## GOV-01-G12 Decisions
+
+Approver: Julián Cely, Product Manager. Transcribed under task GOV-01-G12-001; the transcriber is not an approver.
+
+### GOV-01-G12-002 (APPROVED)
+
+Related: G-12; GOV-01-001 (Option B); GOV-01-G04-003; docs/ARTIFACT-CONVENTIONS.md; .claude/skills/task-report/SKILL.md; .claude/skills/task-preflight/SKILL.md; AGENTS.md. Decision date: 2026-10-21.
+
+The "Proposed Derived Principles" and the "Proposed Reconciliation Mechanism" in this document, kept as PROPOSED, NOT APPROVED under GOV-01-001 Option B, are resolved as follows.
+
+Principles 1, 2, 3, 4 and 7 are closed as already covered by existing rules, and no new text is added for them: principle 1 by the Canonical Status Rule in docs/CONTEXT-PROTOCOL.md and by AGENTS.md, which names docs/PROJECT-STATE.md as the canonical record of the global operational state; principle 2 by the Canonical Status Rule and by the Scope section of ADR-007; principle 3 by docs/00-START-HERE.md, which names the Git repository as the authoritative project memory; principle 4 by AGENTS.md and docs/CONTEXT-PROTOCOL.md; principle 7 by the Durable Status Rule in docs/ARTIFACT-CONVENTIONS.md.
+
+Principle 5 is adopted as the Historical Records Rule in docs/ARTIFACT-CONVENTIONS.md. Under it, the statement in Decision GOV-01-G04-003 that the design draft "is currently untracked" is historical and is not corrected.
+
+Principle 6 is adopted for reports and reviews: each discrepancy is classified as A (evidence only), B (stale wording, with the exact proposed edit; applying it requires Product Manager authorization) or C (genuine contradiction: stop and escalate to the Product Manager). It is recorded in the task-report skill and in AGENTS.md. The task-preflight skill does not classify discrepancies; it already stops on contradictions.
+
+The Proposed Reconciliation Mechanism is not adopted. Its before-work checks are discarded: docs/PROJECT-STATE.md cites few commit SHAs, the wording check produces false positives, and it requires a fetch that the task-preflight skill does not allow. Its after-publication check is not an agent duty: the Product Manager performs every push, and the published result is verified after each push outside the agents' tasks.
+
+The task-preflight skill is clarified: when an assignment continues after a READY preflight, the agent reports the preflight block first and then continues with the assignment.
+
+This resolution fulfils the G-12 requirement to propose a preventive state-reconciliation mechanism.
+
+GOV-01-G12-001 is the documentation-only task that records this decision and applies these changes to docs/ARTIFACT-CONVENTIONS.md, .claude/skills/task-report/SKILL.md, .claude/skills/task-preflight/SKILL.md, AGENTS.md and this document. Its scope is authorized.
+
 ## Candidate Work Items
 
 The items in Authorization Status are candidate work items. The approved decisions state only these ordering constraints:
@@ -225,10 +249,12 @@ Transcribed from the Product Manager's GOV-01-001 assignments. No approval dates
 
 - G-06 research: existing GitHub solutions for reverse engineering and reference extraction; assessment of architecture, design rules, interactions, SEO, responsive behavior and accessibility; and functional, visual, responsive, performance, accessibility and regression testing. Research first; do not invent a replacement for established methods. Text: ADR-007.
 - G-11 repository: GOV-01 should eventually become an independent, reusable, versioned template repository. Creation is not authorized. Text: ADR-007.
-- G-12 mechanism: a preventive reconciliation mechanism is required. Proposed design below. Text: ADR-007.
+- G-12 mechanism: a preventive reconciliation mechanism is required. Proposed design below. Text: ADR-007. Resolved by Decision GOV-01-G12-002.
 - Q5: `.remember/` and `.playwright-mcp/` examination and configuration are deferred.
 
 ## Proposed Derived Principles (PROPOSED, NOT APPROVED)
+
+Resolved by Decision GOV-01-G12-002; this section is kept as a historical record.
 
 The Product Manager's requirement, as stated in the GOV-01-001 assignment, is that the documentation must address the root cause of recurring governance inconsistencies, minimize ongoing documentation maintenance, and avoid unnecessary reporting requirements.
 
@@ -243,6 +269,8 @@ The principles below are a structured derivation of that requirement. They are n
 7. Do not create an endless commit cycle by treating a recorded historical SHA as the current HEAD.
 
 ## Proposed Reconciliation Mechanism (PROPOSED, NOT APPROVED)
+
+Resolved by Decision GOV-01-G12-002; this section is kept as a historical record.
 
 This section proposes an implementation of decision G-12 and of the proposed principles above. It is not a decision. It requires explicit Product Manager approval before any use. No scripts or hooks are created.
 
@@ -263,3 +291,5 @@ Assignment `/decision-transcription` (conversation) directed the transcription o
 Task GOV-01-G04-004 (contract `.coordination/tasks/GOV-01-G04-004/contract-r1.md`) directed the transcription of GOV-01-G04-005 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions".
 
 Task GOV-01-G09-002 (contract `.coordination/tasks/GOV-01-G09-002/contract-r1.md`) directed the transcription of GOV-01-G09-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G09 Decisions".
+
+Task GOV-01-G12-001 (contract `.coordination/tasks/GOV-01-G12-001/contract-r1.md`) directed the transcription of GOV-01-G12-002 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G12 Decisions".

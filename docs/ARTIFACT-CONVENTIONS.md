@@ -150,6 +150,12 @@ Point-in-time facts such as "present in the working tree", "not yet committed", 
 
 Historical records must not be the sole source of a standing authorization rule.
 
+## Historical Records Rule
+
+Dated narrative records and transcribed decisions preserve the state at their own point in time. They are not edited to reflect a later state.
+
+A later state is recorded in its canonical current-status location. When an earlier statement could be read as current, a later decision or record states that it is historical.
+
 ## Local AI Coordination Mailbox
 
 Name:
