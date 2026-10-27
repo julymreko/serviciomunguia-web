@@ -130,7 +130,7 @@ Chronological record of Product Manager decisions and evidence produced during t
 
 ### Priority sequence (PM-approved)
 - **A — IMMEDIATE (visually approved):** CTA corrections (D7, D8) and complete responsive visual inspection across all approved viewports, including the post-D9/D10 regression.
-- **B — DEFERRED:** dynamic scroll-driven process stepper — pending a separate specification and implementation authorization; not started. *Priority B PM decisions PD-1 to PD-15 are recorded in "Priority B — PM Decision Record (2026-10-13)" below; implementation NOT AUTHORIZED.*
+- **B — DEFERRED:** dynamic scroll-driven process stepper — pending separate explicit implementation authorization (technical specification approved 2026-10-27, PD-30); not started. *Priority B PM decisions PD-1 to PD-15 are recorded in "Priority B — PM Decision Record (2026-10-13)" below; implementation NOT AUTHORIZED.*
 - **C — LAST:** intelligent Header — deferred until A and B are completed; not started.
 
 ### Priority B — PM Decision Record (2026-10-13)
