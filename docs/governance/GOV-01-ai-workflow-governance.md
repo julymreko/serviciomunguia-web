@@ -47,7 +47,7 @@ GOV-01-004: the Product Manager authorized the creation of three Skills under `.
 
 GOV-01-005: the Product Manager authorized a controlled, read-only validation of the three Skills. Results: see "GOV-01-005 Controlled Validation".
 
-Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation"), the G-04 scopes recorded in "GOV-01-G04 Decisions" and the G-09 scope recorded in "GOV-01-G09 Decisions", no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
+Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governance Reconciliation"), the G-04 scopes recorded in "GOV-01-G04 Decisions", the G-09 scope recorded in "GOV-01-G09 Decisions" and the G-10 pilot scope recorded in "GOV-01-G10 Decisions", no other GOV-01 item has been authorized. Every other item below is NOT AUTHORIZED until the Product Manager authorizes it explicitly.
 
 | Item | Status |
 |---|---|
@@ -55,11 +55,11 @@ Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governan
 | `CLAUDE.md` | Committed and published in `2ff2819` (GOV-01-003) |
 | Skills under `.claude/skills/` (`task-preflight`, `task-report`, `decision-transcription`) | Committed and published in `6fa14a7` (GOV-01-004) |
 | GOV-01-006 M2 mailbox, local implementation | AUTHORIZED (local implementation). Commit, push/publication, and deploy each require separate explicit Product Manager authorization. |
-| Technical permission controls for push and deployment (G-04) | Environment-level isolation AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G04-005). Documentation scopes authorized in Decisions GOV-01-G04-002 and GOV-01-G04-005. Separate Windows user account for agents NOT AUTHORIZED (pending evaluation). |
+| Technical permission controls for push and deployment (G-04) | Environment-level isolation AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G04-005). Documentation scopes authorized in Decisions GOV-01-G04-002, GOV-01-G04-005 and GOV-01-G04-006. Separate Windows user account for agents evaluated and not adopted; the residual gap is accepted (Decision GOV-01-G04-006). |
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G09-003). Documentation scope authorized in Decision GOV-01-G09-003. |
 | Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
-| Priority B pilot (G-10) | NOT AUTHORIZED |
+| Priority B pilot (G-10) | Completed through the approved Priority B technical specification (Decision GOV-01-G10-006). Priority B implementation NOT AUTHORIZED. |
 | G-06 research | NOT AUTHORIZED |
 | Independent GOV-01 repository (G-11) | NOT AUTHORIZED |
 
@@ -179,6 +179,14 @@ Accepted residual gaps: (1) the isolation applies only to agents launched throug
 
 GOV-01-G04-004 is the documentation-only task that transcribes this decision, updates the G-04 status in this document, and amends docs/governance/GOV-01-G04-DESIGN-DRAFT.md to record the verified mechanism. Its scope is authorized. Earlier G-04 status statements in the "GOV-01-006 Published Task-Preflight Verification" and "GOV-01-006 M2 Governance Reconciliation" sections are historical records of their own time and are not edited.
 
+### GOV-01-G04-006 (APPROVED)
+
+Related: G-04; GOV-01-G04-005; GOV-01-G10-005. Decision date: 2026-10-26.
+
+The Product Manager evaluated the item that Decision GOV-01-G04-005 left pending, running agents under a separate Windows user account, and chose to accept the residual gap (option C). Running agents under a separate Windows user account is not adopted, and pushing through an SSH key protected by a passphrase was also evaluated and not adopted. The accepted residual gap is item (2) of Decision GOV-01-G04-005: the Product Manager's GitHub credential remains in Windows Credential Manager under the same Windows user, so a deliberate bypass such as `git -c credential.helper=manager push` remains possible. Items (1) and (3) of Decision GOV-01-G04-005 are unchanged. The statement "pending evaluation" in Decision GOV-01-G04-005 is a historical record of its own time and is not edited.
+
+GOV-01-G10-005 is the documentation-only task that records this decision and Decision GOV-01-G10-006. Its scope is authorized.
+
 ## GOV-01-G09 Decisions
 
 Approver: Julián Cely, Product Manager. Transcribed under task GOV-01-G09-002; the transcriber is not an approver.
@@ -222,6 +230,24 @@ The task-preflight skill is clarified: when an assignment continues after a READ
 This resolution fulfils the G-12 requirement to propose a preventive state-reconciliation mechanism.
 
 GOV-01-G12-001 is the documentation-only task that records this decision and applies these changes to docs/ARTIFACT-CONVENTIONS.md, .claude/skills/task-report/SKILL.md, .claude/skills/task-preflight/SKILL.md, AGENTS.md and this document. Its scope is authorized.
+
+## GOV-01-G10 Decisions
+
+Approver: Julián Cely, Product Manager. Transcribed under task GOV-01-G10-005; the transcriber is not an approver.
+
+### GOV-01-G10-006 (APPROVED)
+
+Related: G-10; GOV-01-005; docs/phases/phase-03/M03-04-opencode-implementation.md (PD-16 to PD-30); docs/phases/phase-03/M03-04-priority-b-technical-specification.md. Decision date: 2026-10-27.
+
+The Priority B pilot (G-10) is closed as completed. The Product Manager limited its scope to preparing and approving the Priority B technical specification through the GOV-01 mailbox workflow, with roles assigned per task and no executor reviewing its own work. The scope did not include implementation.
+
+Pilot tasks, each reviewed CONFORME at its first review, with no fix round used and no stop condition triggered: GOV-01-G10-001 (specification drafted by Claude Code, reviewed by Codex); GOV-01-G10-002 (Product Manager answers recorded as PD-16 to PD-29, executed by OpenCode, reviewed by Claude Code); GOV-01-G10-003 (specification approval recorded as PD-30, executed by OpenCode, reviewed by Claude Code); GOV-01-G10-004 (status wording corrected after the approval, executed by OpenCode, reviewed by Claude Code). The results are recorded in docs/phases/phase-03/M03-04-opencode-implementation.md (PD-16 to PD-30). The Product Manager approved the specification on 2026-10-27.
+
+Observations recorded for the Product Manager: (1) the agents classified discrepancies as 3 A and 1 B in the executor's report of GOV-01-G10-001, 1 B in the review of GOV-01-G10-002, 4 B and 1 A in the review of GOV-01-G10-003, and 1 A in the review of GOV-01-G10-004; each B was resolved by a later documentation task of the pilot. (2) An expected baseline blob ID in the specification of GOV-01-G10-002 had been computed from a stale copy; the Product Manager's verification before approval detected the mismatch and the files were reissued before approval. (3) The contract of GOV-01-G10-001 listed Mobile Landscape (844 x 390) as a separate layout; the executor reported that it uses the 3+2 grid, and the Product Manager confirmed the layout set (PD-22). (4) Two operational slips were caught by checking the mailbox before launching an agent or after archiving: an approval.md written in the wrong folder, and a folder that Windows reported as in use during archiving.
+
+Priority B implementation remains NOT AUTHORIZED; it requires a separate explicit Product Manager authorization (PD-14 step 7, PD-30). This decision does not authorize PD-15 implementation, Priority C, M03-05, M03-06, commit, push or deployment.
+
+GOV-01-G10-005 is the documentation-only task that records this decision. Its scope is authorized.
 
 ## Candidate Work Items
 
@@ -293,3 +319,5 @@ Task GOV-01-G04-004 (contract `.coordination/tasks/GOV-01-G04-004/contract-r1.md
 Task GOV-01-G09-002 (contract `.coordination/tasks/GOV-01-G09-002/contract-r1.md`) directed the transcription of GOV-01-G09-003 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G09 Decisions".
 
 Task GOV-01-G12-001 (contract `.coordination/tasks/GOV-01-G12-001/contract-r1.md`) directed the transcription of GOV-01-G12-002 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G12 Decisions".
+
+Task GOV-01-G10-005 (contract `.coordination/tasks/GOV-01-G10-005/contract-r1.md`) directed the transcription of GOV-01-G04-006 and GOV-01-G10-006 into this document. The transcriber acted as transcriber only and did not approve, interpret, extend, correct, or reopen any decision. See "GOV-01-G04 Decisions" and "GOV-01-G10 Decisions".
