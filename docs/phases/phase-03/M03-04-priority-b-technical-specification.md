@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority B (dynamic scroll-driven process stepper)
-Status: DRAFT FOR PM REVIEW — NOT APPROVED
+Status: DRAFT FOR PM REVIEW — NOT APPROVED. The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in `docs/phases/phase-03/M03-04-opencode-implementation.md`.
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Claude Code (executor), task GOV-01-G10-001, contract-r1 (SHA-256 `47306719eebdb12170b24bd1dca7e4bccdb7ff5dc228eda03e58b9d4da4a3474`)
 Reviewer: Codex (review-01 is written by the Reviewer, not by this document)
 Baseline: repository HEAD `bc691f964f6ce77848d2b4b51ff588320c2765c7` (branch `main`, working tree clean before this file was added)
 Source references: `file:line` citations refer to the baseline.
 
-**Status statement.** This document is a proposal for Product Manager review. It approves nothing. Every item marked **PROPOSAL** or **PM DECISION REQUIRED** is pending. Priority B implementation is NOT AUTHORIZED. Priority C, M03-05, M03-06, commit, push and deployment are NOT AUTHORIZED.
+**Status statement.** This document is a proposal for Product Manager review. It approves nothing. Items marked **PROPOSAL** or **PM DECISION REQUIRED** were pending when this document was issued; those answered by the Product Manager on 2026-10-27 are resolved by PD-16 to PD-29 (see section 13). This document as a whole remains unapproved. Priority B implementation is NOT AUTHORIZED. Priority C, M03-05, M03-06, commit, push and deployment are NOT AUTHORIZED.
 
 ## 1. Traceability — PD-1 to PD-15
 
@@ -257,7 +257,9 @@ Integration consideration only. No implementation is proposed. Future authorizat
 | `src/_includes/components/mobile-nav.njk`, Bottom Navigation selectors (`main.css:1086–1122`) | **Not included** | PD-15 requires separate authorization |
 | `package.json`, dependencies | **Not included** | No new dependency |
 
-## 13. Open questions for the Product Manager
+## 13. Open questions for the Product Manager (RESOLVED 2026-10-27)
+
+Resolved on 2026-10-27. The Product Manager's answers are recorded as PD-16 to PD-29 in `docs/phases/phase-03/M03-04-opencode-implementation.md`, in the order of the questions: Q1 = PD-16, Q2 = PD-17, Q3 = PD-18, Q4 = PD-19, Q5 = PD-20, Q6 = PD-21, Q7 = PD-22, Q8 = PD-23, Q9 = PD-24, Q10 = PD-25, Q11 = PD-26, Q12 = PD-27, Q13 = PD-28, Q14 = PD-29. The questions below are preserved as originally issued. Where a proposal in this document differs from PD-16 to PD-29, the PD-16 to PD-29 text prevails. This resolution does not approve the specification as a whole.
 
 - **Q1 Marker size (PD-10a).** Proposal: 12 px diameter including 2 px white ring. Decide.
 - **Q2 Reading-line definition (PD-8a).** Viewport centre, as in the existing MOT-03 band (`process.js:133–136`), or another fraction? Confirm whether Bottom Navigation is the only occluder.
