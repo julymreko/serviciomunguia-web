@@ -1,0 +1,14 @@
+# Line endings: store and check out every text file with LF, on every platform.
+* text=auto eol=lf
+
+# Binary assets: never convert.
+*.webp binary
+*.woff2 binary
+*.woff binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.avif binary
+*.pdf binary
