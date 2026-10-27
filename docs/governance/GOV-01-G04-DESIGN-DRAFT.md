@@ -28,8 +28,8 @@ credentials from the agent's process environment, but the Product Manager's
 GitHub credential remains in Windows Credential Manager under the same
 Windows user. The principle is therefore met for default and accidental use,
 not against a deliberate bypass. This gap is accepted in Decision
-GOV-01-G04-005; a separate Windows user account for agents is pending
-evaluation and NOT AUTHORIZED.
+GOV-01-G04-005; a separate Windows user account for agents was
+evaluated and not adopted (Decision GOV-01-G04-006).
 
 ## 4. Recommended Architecture
 
