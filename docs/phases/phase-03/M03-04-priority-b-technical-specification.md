@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority B (dynamic scroll-driven process stepper)
-Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation is NOT AUTHORIZED. The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
+Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31 in the same file). The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Claude Code (executor), task GOV-01-G10-001, contract-r1 (SHA-256 `47306719eebdb12170b24bd1dca7e4bccdb7ff5dc228eda03e58b9d4da4a3474`)
 Reviewer: Codex (review-01 is written by the Reviewer, not by this document)
 Baseline: repository HEAD `bc691f964f6ce77848d2b4b51ff588320c2765c7` (branch `main`, working tree clean before this file was added)
 Source references: `file:line` citations refer to the baseline.
 
-**Status statement.** This document was issued as a proposal for Product Manager review and was approved by the Product Manager as a whole on 2026-10-27 (PD-30). Items marked **PROPOSAL** or **PM DECISION REQUIRED** were pending when this document was issued; those answered by the Product Manager on 2026-10-27 are resolved by PD-16 to PD-29 (see section 13). Items marked **PROPOSAL** that section 13 did not ask about are part of the approved specification. Priority B implementation is NOT AUTHORIZED. Priority C, M03-05, M03-06, commit, push and deployment are NOT AUTHORIZED.
+**Status statement.** This document was issued as a proposal for Product Manager review and was approved by the Product Manager as a whole on 2026-10-27 (PD-30). Items marked **PROPOSAL** or **PM DECISION REQUIRED** were pending when this document was issued; those answered by the Product Manager on 2026-10-27 are resolved by PD-16 to PD-29 (see section 13). Items marked **PROPOSAL** that section 13 did not ask about are part of the approved specification. Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31). Priority C, M03-05, M03-06, commit, push and deployment are NOT AUTHORIZED.
 
 ## 1. Traceability — PD-1 to PD-15
 
@@ -247,7 +247,7 @@ Integration consideration only. No implementation is proposed. Future authorizat
 - Performance: §10, observed values only.
 - Regression: Hero, Header, Menu, Mobile Navigation, CTA image, CTA button size (D8), CTA card shadow (D9), Mobile Portrait card backgrounds (D10).
 
-## 12. Proposed implementation allow-list (PROPOSAL; not authorized)
+## 12. Proposed implementation allow-list (PROPOSAL; authorized as written by PD-31)
 
 | Path | Proposed change | Note |
 |---|---|---|

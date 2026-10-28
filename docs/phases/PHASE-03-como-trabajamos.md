@@ -289,7 +289,7 @@ The Product Manager explicitly authorized M03-04 implementation in the project c
 Implementation status (2026-10-13):
 - PM execution authorization: granted on 2026-10-11 and recorded.
 - Priority A (implementation, responsive PM visual validation, D7–D10 decisions, local documentation): COMPLETED and passed Product Manager visual verification; consolidated in commit `542601e` (historical reference; publication evidence is determined from Git).
-- Priority B (dynamic scroll-driven process stepper): NOT STARTED — PM decisions PD-1 to PD-15 recorded in M03-04; technical specification approved 2026-10-27 (PD-30); implementation NOT AUTHORIZED.
+- Priority B (dynamic scroll-driven process stepper): NOT STARTED — PM decisions PD-1 to PD-15 recorded in M03-04; technical specification approved 2026-10-27 (PD-30); implementation authorized in four stages 2026-10-27 (PD-31).
 - Priority C (intelligent Header): DEFERRED until A and B are completed.
 - M03-05 (independent testing) and M03-06 (formal audit): NOT STARTED and NOT AUTHORIZED.
 

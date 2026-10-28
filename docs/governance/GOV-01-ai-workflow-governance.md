@@ -59,7 +59,7 @@ Except GOV-01-006 M2 local implementation (see table and "GOV-01-006 M2 Governan
 | Scripts or hooks | NOT AUTHORIZED |
 | Codex installation and integration (G-09) | AUTHORIZED and implemented by the Product Manager outside the repository (Decision GOV-01-G09-003). Documentation scope authorized in Decision GOV-01-G09-003. |
 | Small controlled verification (G-10) | Completed as GOV-01-005 (see below) |
-| Priority B pilot (G-10) | Completed through the approved Priority B technical specification (Decision GOV-01-G10-006). Priority B implementation NOT AUTHORIZED. |
+| Priority B pilot (G-10) | Completed through the approved Priority B technical specification (Decision GOV-01-G10-006). Priority B implementation was authorized in stages by the Product Manager on 2026-10-27 (PD-31 in M03-04); that authorization is a Phase 03 decision, outside GOV-01. |
 | G-06 research | NOT AUTHORIZED |
 | Independent GOV-01 repository (G-11) | NOT AUTHORIZED |
 
