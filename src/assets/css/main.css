@@ -2466,3 +2466,43 @@ body.sm-menu-open {
   }
 }
 
+/* Priority B stepper — stage 1 (Mobile Portrait): JS-created marker and fills */
+.sm-process-marker,
+.sm-process-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sm-process-marker {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--sm-primary);
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+.sm-process-fill {
+  width: 2px;
+  border-radius: 999px;
+  background: var(--sm-primary);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.sm-process-step.is-traversed .sm-process-step__number {
+  background: #bfeacf;
+  border-color: #ffffff;
+  color: #0f5c33;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sm-process-marker {
+    transition: opacity 150ms ease-out;
+  }
+}
+
