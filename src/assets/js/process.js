@@ -13,6 +13,7 @@ if (processSection) {
     const gridLayout = window.matchMedia(
       "(min-width: 479px) and (max-width: 991.98px)"
     );
+    const desktopLayout = window.matchMedia("(min-width: 992px)");
 
     const revealTargets = Array.from(
       root.querySelectorAll("[data-sm-reveal]")
@@ -30,6 +31,8 @@ if (processSection) {
     const STEPPER_DISC_HALF = 42;
     const GRID_FILL_COUNT = 5;
     const GRID_FILL_END_STEPS = [1, 2, 2, 3, 4];
+    const DESKTOP_FILL_COUNT = 4;
+    const DESKTOP_FILL_END_STEPS = [1, 2, 3, 4];
 
     let revealObserver = null;
     let connectorDrawn = false;
@@ -266,6 +269,61 @@ if (processSection) {
       };
     };
 
+    // Desktop (single row) geometry, measured transform-free only on the
+    // defined triggers. cx is list x (relative to .sm-process-steps); cy,
+    // row top and row bottom are document y. Returns null (no error) when
+    // the five steps do not form exactly one row of five in order.
+    const measureDesktopGeometry = () => {
+      if (!stepsList || steps.length === 0) {
+        return null;
+      }
+
+      const listTop = stepsList.getBoundingClientRect().top + window.scrollY;
+      const cx = [];
+      const cy = [];
+      const stepTopDoc = [];
+      const stepBottomDoc = [];
+      const stepFillTop = [];
+
+      steps.forEach((step, k) => {
+        const visual = step.querySelector(".sm-process-step__visual");
+        const visualWidth = visual ? visual.offsetWidth : 0;
+        const visualHeight = visual ? visual.offsetHeight : 0;
+        const visualLeft = visual ? visual.offsetLeft : 0;
+        const visualTop = visual ? visual.offsetTop : 0;
+
+        cx[k] = step.offsetLeft + visualLeft + visualWidth / 2;
+        stepTopDoc[k] = listTop + step.offsetTop;
+        stepBottomDoc[k] = stepTopDoc[k] + step.offsetHeight;
+        cy[k] = stepTopDoc[k] + visualTop + visualHeight / 2;
+        stepFillTop[k] = step.offsetTop + visualTop + visualHeight / 2;
+      });
+
+      // Guard: exactly one row of five (all steps share the same offsetTop).
+      const rowTop = steps[0].offsetTop;
+      const singleRow = steps.every(
+        (step) => Math.abs(step.offsetTop - rowTop) <= 0.5
+      );
+
+      if (!singleRow) {
+        return null;
+      }
+
+      return {
+        isDesktop: true,
+        listTop,
+        cx,
+        cy,
+        stepTopDoc,
+        stepBottomDoc,
+        rowTop: listTop,
+        rowBottom: listTop + stepsList.offsetHeight,
+        x0: cx[0],
+        x1: cx[4],
+        fillTop: stepFillTop[0]
+      };
+    };
+
     const getGridFillExtents = () => {
       const { cx, listWidth } = stepperGeometry;
       const half = STEPPER_DISC_HALF;
@@ -276,6 +334,18 @@ if (processSection) {
         { left: cx[2] + half, right: listWidth, row: 0 },
         { left: 0, right: cx[3] - half, row: 1 },
         { left: cx[3] + half, right: cx[4] - half, row: 1 }
+      ];
+    };
+
+    const getDesktopFillExtents = () => {
+      const { cx } = stepperGeometry;
+      const half = STEPPER_DISC_HALF;
+
+      return [
+        { left: cx[0] + half, right: cx[1] - half },
+        { left: cx[1] + half, right: cx[2] - half },
+        { left: cx[2] + half, right: cx[3] - half },
+        { left: cx[3] + half, right: cx[4] - half }
       ];
     };
 
@@ -317,6 +387,26 @@ if (processSection) {
 
         fill.style.left = `${extent.left}px`;
         fill.style.top = `${stepperGeometry.rows[extent.row].fillTop}px`;
+        fill.style.width = `${extent.right - extent.left}px`;
+      });
+    };
+
+    const positionDesktopFills = () => {
+      if (!stepperGeometry || !stepperGeometry.isDesktop) {
+        return;
+      }
+
+      const extents = getDesktopFillExtents();
+
+      stepperFills.forEach((fill, index) => {
+        const extent = extents[index];
+
+        if (!extent) {
+          return;
+        }
+
+        fill.style.left = `${extent.left}px`;
+        fill.style.top = `${stepperGeometry.fillTop}px`;
         fill.style.width = `${extent.right - extent.left}px`;
       });
     };
@@ -483,6 +573,94 @@ if (processSection) {
       });
     };
 
+    // Desktop (single row) state: same formulas as grid with one row.
+    const updateDesktopState = () => {
+      if (!stepperGeometry || !stepperGeometry.isDesktop || !stepperMarker) {
+        return;
+      }
+
+      const {
+        cx,
+        stepTopDoc,
+        stepBottomDoc,
+        rowTop,
+        rowBottom,
+        x0,
+        x1,
+        fillTop
+      } = stepperGeometry;
+      const ly = getReadingLine();
+      const rl = window.scrollY + ly;
+      const markerOffset = STEPPER_MARKER_SIZE / 2;
+
+      // Single row, no row switching (D4).
+      const progress = clamp((rl - rowTop) / (rowBottom - rowTop), 0, 1);
+      const markerX = x0 + progress * (x1 - x0);
+      const markerY = fillTop + 1;
+
+      stepperMarker.style.transform =
+        `translate3d(${markerX - markerOffset}px, ${markerY - markerOffset}px, 0)`;
+      stepperMarker.style.opacity = rl >= rowTop && rl <= rowBottom ? "1" : "0";
+
+      // Connector fills follow the marker x (D3).
+      const extents = getDesktopFillExtents();
+
+      stepperFills.forEach((fill, index) => {
+        const extent = extents[index];
+
+        if (!extent) {
+          return;
+        }
+
+        const fillProgress = clamp(
+          (markerX - extent.left) / (extent.right - extent.left),
+          0,
+          1
+        );
+
+        fill.style.transform = `scaleX(${fillProgress})`;
+      });
+
+      // Traversed rule (D4): traversed iff rl >= rowTop and X >= cx[k].
+      steps.forEach((step, k) => {
+        const traversed = rl >= rowTop && markerX >= cx[k];
+        step.classList.toggle("is-traversed", traversed);
+      });
+
+      // Current-step rule (D4, C-1): the row decides, not the individual `li`
+      // heights. If any `li` box intersects the band, the current step is the
+      // one whose `cx` is nearest to `markerX` (ties to the lower index); if
+      // none intersects, no step is current.
+      const bandTop = ly - STEPPER_BAND_HEIGHT / 2;
+      const bandBottom = ly + STEPPER_BAND_HEIGHT / 2;
+      const scrollY = window.scrollY;
+      const rowInBand = steps.some((step, k) => {
+        const top = stepTopDoc[k] - scrollY;
+        const bottom = stepBottomDoc[k] - scrollY;
+
+        return bottom > bandTop && top < bandBottom;
+      });
+
+      let currentStep = -1;
+
+      if (rowInBand) {
+        let stepDistance = Infinity;
+
+        cx.forEach((centre, k) => {
+          const distance = Math.abs(centre - markerX);
+
+          if (distance < stepDistance) {
+            stepDistance = distance;
+            currentStep = k;
+          }
+        });
+      }
+
+      steps.forEach((step, k) => {
+        step.classList.toggle("is-current", k === currentStep);
+      });
+    };
+
     // Reduced motion (Option R3): discrete state, no scroll listener, no frame.
     // Recomputes every step from current getBoundingClientRect() values.
     const updateReducedStepperState = () => {
@@ -587,15 +765,71 @@ if (processSection) {
       });
     };
 
+    // Reduced motion, Desktop (single row): discrete state from live
+    // getBoundingClientRect() values; no cached geometry for states (D6).
+    const updateReducedDesktopState = () => {
+      if (!stepperGeometry || !stepperGeometry.isDesktop) {
+        return;
+      }
+
+      const ly = getReadingLine();
+      const bandTop = ly - STEPPER_BAND_HEIGHT / 2;
+      const bandBottom = ly + STEPPER_BAND_HEIGHT / 2;
+      const traversed = [];
+
+      steps.forEach((step, index) => {
+        const visual = step.querySelector(".sm-process-step__visual");
+        const rect = visual ? visual.getBoundingClientRect() : step.getBoundingClientRect();
+        traversed[index] = rect.top + rect.height / 2 <= ly;
+      });
+
+      // The five discs share the same centre line, so they change together
+      // (D6). `is-current` applies to all five steps while the `li` boxes
+      // intersect the band, and to none otherwise.
+      let hasCandidate = false;
+
+      steps.forEach((step) => {
+        const rect = step.getBoundingClientRect();
+
+        if (rect.bottom > bandTop && rect.top < bandBottom) {
+          hasCandidate = true;
+        }
+      });
+
+      steps.forEach((step, index) => {
+        step.classList.toggle("is-current", hasCandidate);
+        step.classList.toggle("is-traversed", traversed[index]);
+      });
+
+      stepperFills.forEach((fill, index) => {
+        const endStep = DESKTOP_FILL_END_STEPS[index];
+        fill.style.transform = `scaleX(${traversed[endStep] ? 1 : 0})`;
+      });
+    };
+
     const isGridStepper = () =>
       stepperLayout === "grid";
 
-    const measureActiveGeometry = () =>
-      isGridStepper() ? measureGridGeometry() : measureStepperGeometry();
+    const isDesktopStepper = () =>
+      stepperLayout === "desktop";
+
+    const measureActiveGeometry = () => {
+      if (isGridStepper()) {
+        return measureGridGeometry();
+      }
+
+      if (isDesktopStepper()) {
+        return measureDesktopGeometry();
+      }
+
+      return measureStepperGeometry();
+    };
 
     const positionActiveFills = () => {
       if (isGridStepper()) {
         positionGridFills();
+      } else if (isDesktopStepper()) {
+        positionDesktopFills();
       } else {
         positionStepperFills();
       }
@@ -604,6 +838,8 @@ if (processSection) {
     const updateActiveState = () => {
       if (isGridStepper()) {
         updateGridState();
+      } else if (isDesktopStepper()) {
+        updateDesktopState();
       } else {
         updateStepperState();
       }
@@ -612,6 +848,8 @@ if (processSection) {
     const updateActiveReducedState = () => {
       if (isGridStepper()) {
         updateReducedGridState();
+      } else if (isDesktopStepper()) {
+        updateReducedDesktopState();
       } else {
         updateReducedStepperState();
       }
@@ -797,8 +1035,9 @@ if (processSection) {
 
       const portrait = mobilePortrait.matches;
       const grid = gridLayout.matches;
+      const desktop = desktopLayout.matches;
 
-      if (!portrait && !grid) {
+      if (!portrait && !grid && !desktop) {
         return;
       }
 
@@ -809,10 +1048,14 @@ if (processSection) {
           stepperLayout = "portrait";
           createStepperLayers(!reduced);
           stepperGeometry = measureStepperGeometry();
-        } else {
+        } else if (grid) {
           stepperLayout = "grid";
           createStepperLayers(!reduced, GRID_FILL_COUNT);
           stepperGeometry = measureGridGeometry();
+        } else {
+          stepperLayout = "desktop";
+          createStepperLayers(!reduced, DESKTOP_FILL_COUNT);
+          stepperGeometry = measureDesktopGeometry();
         }
 
         if (!stepperGeometry) {
@@ -874,8 +1117,12 @@ if (processSection) {
       setupStepper();
     };
 
+    const handleDesktopChange = () => {
+      setupStepper();
+    };
+
     const handleReduceMotionChange = () => {
-      if (mobilePortrait.matches || gridLayout.matches) {
+      if (mobilePortrait.matches || gridLayout.matches || desktopLayout.matches) {
         setupStepper();
       }
     };
@@ -923,6 +1170,12 @@ if (processSection) {
       gridLayout.addEventListener("change", handleGridChange);
     } else {
       gridLayout.addListener(handleGridChange);
+    }
+
+    if (desktopLayout.addEventListener) {
+      desktopLayout.addEventListener("change", handleDesktopChange);
+    } else {
+      desktopLayout.addListener(handleDesktopChange);
     }
 
     if (reduceMotion.addEventListener) {
