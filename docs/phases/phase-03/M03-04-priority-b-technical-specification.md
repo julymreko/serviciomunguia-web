@@ -4,7 +4,7 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority B (dynamic scroll-driven process stepper)
-Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31 in the same file). The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
+Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31 in the same file). Stage 1 (Mobile Portrait) was implemented and committed on 2026-10-29 (commit 6f1e252); the traversed-badge colours were amended by PD-32 in the same file. The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Claude Code (executor), task GOV-01-G10-001, contract-r1 (SHA-256 `47306719eebdb12170b24bd1dca7e4bccdb7ff5dc228eda03e58b9d4da4a3474`)
 Reviewer: Codex (review-01 is written by the Reviewer, not by this document)
@@ -115,6 +115,8 @@ Bottom Navigation (measured): display `none` in Desktop, Tablet and Mobile Lands
 
 **Important observation.** 844 × 390 is inside the 479–991.98 px band (`main.css:2017`). Its layout is the 3+2 grid, not a separate layout. See §13, Q7.
 
+**Note (2026-10-29, review of task M03-04-PB-01, discrepancy B-1).** The Mobile Portrait row above is a historical measurement taken on the baseline build; it is preserved as recorded. On the build with stage 1 (commit 6f1e252) the report of task M03-04-PB-01 measured, at 390 × 844: step visual centres at y 1571.91, 1827.91, 2077.91, 2308.91 and 2597.91; steps list top 1529.91 and height 1276. The implementation computes geometry at runtime, so no requirement depends on these values. The other rows were not re-measured.
+
 ### 5.2 Scroll span (DERIVED from §5.1; arithmetic only)
 
 Scroll position `s` at which the reading line `s + Ly` (document coordinates) reaches step 1 and step 5 visual centres: `start = A1 − Ly`, `end = A5 − Ly`, span `= A5 − A1`. Values use the §4.3 proposal.
@@ -159,8 +161,12 @@ Horizontal path (derived): x 207 → 1218 = 1011 px at y = 1433. Vertical span =
 |---|---|---|
 | Pending | Unchanged: primary disc, `#f2f5ff` icon, white-background badge with primary numeral | `main.css:1686–1730`; PD-10a |
 | Active (current) | MOT-03 ring: `box-shadow: 0 0 0 6px rgba(26,42,211,0.16)` on the disc; in motion mode `transform: scale(1.06)` | `main.css:2440–2454`; PD-3 (all layouts) |
-| Traversed | Badge filled with `--sm-primary`; numeral `#ffffff` | PD-10a |
-| Current and traversed | Ring plus filled badge (both) | PROPOSAL |
+| Traversed | Badge background `#bfeacf`, 2 px border `#ffffff`, numeral `#0f5c33` (contrast 6.11 on `#bfeacf`); instantaneous change, no transition | PD-10a, amended by PD-32 |
+| Current and traversed | Ring plus traversed badge (both) | PROPOSAL |
+
+**Note (PD-32, 2026-10-29).** The Traversed row originally read: "Badge filled with `--sm-primary`; numeral `#ffffff`" (PD-10a). After visual validation of stage 1 the Product Manager amended the colours (PD-32 in `docs/phases/phase-03/M03-04-opencode-implementation.md`); the colour change is instantaneous, with no transition.
+
+**Carry-over for the stage 2 contract (review A-2 of task M03-04-PB-01; not a decision).** The stage 1 CSS for the marker, the fills and the traversed badge is not wrapped in `@media (max-width: 478.98px)`. It has no effect outside Mobile Portrait, because those elements and the `is-traversed` class exist only there. The stage 2 contract may wrap it in that media query.
 
 Active-state detection is the single mechanism of §4 (not `aria-current`, PD-4).
 
