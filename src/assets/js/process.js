@@ -10,6 +10,9 @@ if (processSection) {
     const mobilePortrait = window.matchMedia(
       "(max-width: 478.98px) and (orientation: portrait)"
     );
+    const gridLayout = window.matchMedia(
+      "(min-width: 479px) and (max-width: 991.98px)"
+    );
 
     const revealTargets = Array.from(
       root.querySelectorAll("[data-sm-reveal]")
@@ -24,12 +27,16 @@ if (processSection) {
     const STEPPER_FILL_CLASS = "sm-process-fill";
     const STEPPER_BAND_HEIGHT = 90;
     const STEPPER_MARKER_SIZE = 12;
+    const STEPPER_DISC_HALF = 42;
+    const GRID_FILL_COUNT = 5;
+    const GRID_FILL_END_STEPS = [1, 2, 2, 3, 4];
 
     let revealObserver = null;
     let connectorDrawn = false;
     let imageSettled = false;
 
     let stepperMode = null;
+    let stepperLayout = null;
     let stepperSectionObserver = null;
     let stepperReducedActiveObserver = null;
     let stepperReducedTraversedObserver = null;
@@ -177,6 +184,101 @@ if (processSection) {
       };
     };
 
+    // Grid (3+2) geometry, measured transform-free only on the defined
+    // triggers. cx is list x (relative to .sm-process-steps); cy, row top and
+    // row bottom are document y. Returns null (no error) when the five steps
+    // do not form exactly two rows of three then two steps in order.
+    const measureGridGeometry = () => {
+      if (!stepsList || steps.length === 0) {
+        return null;
+      }
+
+      const listTop = stepsList.getBoundingClientRect().top + window.scrollY;
+      const cx = [];
+      const cy = [];
+      const stepTopDoc = [];
+      const stepBottomDoc = [];
+      const stepFillTop = [];
+
+      steps.forEach((step, k) => {
+        const visual = step.querySelector(".sm-process-step__visual");
+        const visualWidth = visual ? visual.offsetWidth : 0;
+        const visualHeight = visual ? visual.offsetHeight : 0;
+        const visualLeft = visual ? visual.offsetLeft : 0;
+        const visualTop = visual ? visual.offsetTop : 0;
+
+        cx[k] = step.offsetLeft + visualLeft + visualWidth / 2;
+        stepTopDoc[k] = listTop + step.offsetTop;
+        stepBottomDoc[k] = stepTopDoc[k] + step.offsetHeight;
+        cy[k] = stepTopDoc[k] + visualTop + visualHeight / 2;
+        stepFillTop[k] = step.offsetTop + visualTop + visualHeight / 2;
+      });
+
+      const rows = [];
+      let groupTop = null;
+      let group = null;
+
+      steps.forEach((step, k) => {
+        if (groupTop === null || Math.abs(step.offsetTop - groupTop) > 0.5) {
+          groupTop = step.offsetTop;
+          group = { offsetTop: groupTop, steps: [] };
+          rows.push(group);
+        }
+
+        group.steps.push(k);
+      });
+
+      if (rows.length !== 2 || rows[0].steps.length !== 3 ||
+          rows[1].steps.length !== 2) {
+        return null;
+      }
+
+      if (rows[0].steps[0] !== 0 || rows[1].steps[0] !== 3) {
+        return null;
+      }
+
+      rows.forEach((row) => {
+        let maxBottomDoc = -Infinity;
+
+        row.steps.forEach((k) => {
+          maxBottomDoc = Math.max(maxBottomDoc, stepBottomDoc[k]);
+        });
+
+        row.top = listTop + row.offsetTop;
+        row.bottom = maxBottomDoc;
+        row.fillTop = stepFillTop[row.steps[0]];
+      });
+
+      rows[0].x0 = cx[0];
+      rows[0].x1 = stepsList.offsetWidth;
+      rows[1].x0 = 0;
+      rows[1].x1 = cx[4];
+
+      return {
+        isGrid: true,
+        listTop,
+        cx,
+        cy,
+        stepTopDoc,
+        stepBottomDoc,
+        listWidth: stepsList.offsetWidth,
+        rows
+      };
+    };
+
+    const getGridFillExtents = () => {
+      const { cx, listWidth } = stepperGeometry;
+      const half = STEPPER_DISC_HALF;
+
+      return [
+        { left: cx[0] + half, right: cx[1] - half, row: 0 },
+        { left: cx[1] + half, right: cx[2] - half, row: 0 },
+        { left: cx[2] + half, right: listWidth, row: 0 },
+        { left: 0, right: cx[3] - half, row: 1 },
+        { left: cx[3] + half, right: cx[4] - half, row: 1 }
+      ];
+    };
+
     const positionStepperFills = () => {
       if (!stepperGeometry) {
         return;
@@ -196,6 +298,26 @@ if (processSection) {
         fill.style.left = `${item.connectorX}px`;
         fill.style.top = `${top - stepperGeometry.listTop}px`;
         fill.style.height = `${height}px`;
+      });
+    };
+
+    const positionGridFills = () => {
+      if (!stepperGeometry || !stepperGeometry.isGrid) {
+        return;
+      }
+
+      const extents = getGridFillExtents();
+
+      stepperFills.forEach((fill, index) => {
+        const extent = extents[index];
+
+        if (!extent) {
+          return;
+        }
+
+        fill.style.left = `${extent.left}px`;
+        fill.style.top = `${stepperGeometry.rows[extent.row].fillTop}px`;
+        fill.style.width = `${extent.right - extent.left}px`;
       });
     };
 
@@ -256,6 +378,111 @@ if (processSection) {
       });
     };
 
+    const updateGridState = () => {
+      if (!stepperGeometry || !stepperGeometry.isGrid || !stepperMarker) {
+        return;
+      }
+
+      const { rows, cx, stepTopDoc, stepBottomDoc } = stepperGeometry;
+      const ly = getReadingLine();
+      const rl = window.scrollY + ly;
+      const markerOffset = STEPPER_MARKER_SIZE / 2;
+
+      // Per-row marker x (linear in rl, PD-21 / R5).
+      const markerX = rows.map((row) => {
+        const progress = clamp((rl - row.top) / (row.bottom - row.top), 0, 1);
+        return row.x0 + progress * (row.x1 - row.x0);
+      });
+
+      const activeRow = rl < (rows[0].bottom + rows[1].top) / 2 ? 0 : 1;
+      const markerY = rows[activeRow].fillTop + 1;
+
+      stepperMarker.style.transform =
+        `translate3d(${markerX[activeRow] - markerOffset}px, ${markerY - markerOffset}px, 0)`;
+
+      const inRow = rl >= rows[0].top && rl <= rows[0].bottom ||
+        rl >= rows[1].top && rl <= rows[1].bottom;
+
+      stepperMarker.style.opacity = inRow ? "1" : "0";
+
+      // Connector fills follow their row's marker x.
+      const extents = getGridFillExtents();
+
+      stepperFills.forEach((fill, index) => {
+        const extent = extents[index];
+
+        if (!extent) {
+          return;
+        }
+
+        const progress = clamp(
+          (markerX[extent.row] - extent.left) / (extent.right - extent.left),
+          0,
+          1
+        );
+
+        fill.style.transform = `scaleX(${progress})`;
+      });
+
+      // Traversed rule (R6): within a row, a step is traversed once the
+      // marker x reaches its disc centre.
+      steps.forEach((step, k) => {
+        const rowIndex = k < 3 ? 0 : 1;
+        const traversed = rl >= rows[rowIndex].top && markerX[rowIndex] >= cx[k];
+        step.classList.toggle("is-traversed", traversed);
+      });
+
+      // Current-step rule (R7): band candidates, nearest row, nearest disc.
+      const bandTop = ly - STEPPER_BAND_HEIGHT / 2;
+      const bandBottom = ly + STEPPER_BAND_HEIGHT / 2;
+      const scrollY = window.scrollY;
+      const candidateRows = [];
+
+      rows.forEach((row, rowIndex) => {
+        const hasCandidate = row.steps.some((k) => {
+          const top = stepTopDoc[k] - scrollY;
+          const bottom = stepBottomDoc[k] - scrollY;
+          return bottom > bandTop && top < bandBottom;
+        });
+
+        if (hasCandidate) {
+          candidateRows.push(rowIndex);
+        }
+      });
+
+      let currentStep = -1;
+
+      if (candidateRows.length > 0) {
+        let chosenRow = candidateRows[0];
+        let rowDistance = Infinity;
+
+        candidateRows.forEach((rowIndex) => {
+          const centre = (rows[rowIndex].top + rows[rowIndex].bottom) / 2;
+          const distance = Math.abs(centre - rl);
+
+          if (distance < rowDistance) {
+            rowDistance = distance;
+            chosenRow = rowIndex;
+          }
+        });
+
+        let stepDistance = Infinity;
+
+        rows[chosenRow].steps.forEach((k) => {
+          const distance = Math.abs(cx[k] - markerX[chosenRow]);
+
+          if (distance < stepDistance) {
+            stepDistance = distance;
+            currentStep = k;
+          }
+        });
+      }
+
+      steps.forEach((step, k) => {
+        step.classList.toggle("is-current", k === currentStep);
+      });
+    };
+
     // Reduced motion (Option R3): discrete state, no scroll listener, no frame.
     // Recomputes every step from current getBoundingClientRect() values.
     const updateReducedStepperState = () => {
@@ -298,6 +525,98 @@ if (processSection) {
       });
     };
 
+    // Reduced motion, grid (3+2): discrete row-level state from live
+    // getBoundingClientRect() values; no cached geometry for states (R9).
+    const updateReducedGridState = () => {
+      if (!stepperGeometry || !stepperGeometry.isGrid) {
+        return;
+      }
+
+      const { rows } = stepperGeometry;
+      const ly = getReadingLine();
+      const bandTop = ly - STEPPER_BAND_HEIGHT / 2;
+      const bandBottom = ly + STEPPER_BAND_HEIGHT / 2;
+      const traversed = [];
+
+      steps.forEach((step, index) => {
+        const visual = step.querySelector(".sm-process-step__visual");
+        const rect = visual ? visual.getBoundingClientRect() : step.getBoundingClientRect();
+        traversed[index] = rect.top + rect.height / 2 <= ly;
+      });
+
+      let currentRow = -1;
+      let currentDistance = Infinity;
+
+      rows.forEach((row, rowIndex) => {
+        let minTop = Infinity;
+        let maxBottom = -Infinity;
+        let hasCandidate = false;
+
+        row.steps.forEach((k) => {
+          const rect = steps[k].getBoundingClientRect();
+          minTop = Math.min(minTop, rect.top);
+          maxBottom = Math.max(maxBottom, rect.bottom);
+
+          if (rect.bottom > bandTop && rect.top < bandBottom) {
+            hasCandidate = true;
+          }
+        });
+
+        if (!hasCandidate) {
+          return;
+        }
+
+        const centre = (minTop + maxBottom) / 2;
+        const distance = Math.abs(centre - ly);
+
+        if (distance < currentDistance) {
+          currentDistance = distance;
+          currentRow = rowIndex;
+        }
+      });
+
+      steps.forEach((step, index) => {
+        const isCurrent = currentRow >= 0 && rows[currentRow].steps.indexOf(index) !== -1;
+        step.classList.toggle("is-current", isCurrent);
+        step.classList.toggle("is-traversed", traversed[index]);
+      });
+
+      stepperFills.forEach((fill, index) => {
+        const endStep = GRID_FILL_END_STEPS[index];
+        fill.style.transform = `scaleX(${traversed[endStep] ? 1 : 0})`;
+      });
+    };
+
+    const isGridStepper = () =>
+      stepperLayout === "grid";
+
+    const measureActiveGeometry = () =>
+      isGridStepper() ? measureGridGeometry() : measureStepperGeometry();
+
+    const positionActiveFills = () => {
+      if (isGridStepper()) {
+        positionGridFills();
+      } else {
+        positionStepperFills();
+      }
+    };
+
+    const updateActiveState = () => {
+      if (isGridStepper()) {
+        updateGridState();
+      } else {
+        updateStepperState();
+      }
+    };
+
+    const updateActiveReducedState = () => {
+      if (isGridStepper()) {
+        updateReducedGridState();
+      } else {
+        updateReducedStepperState();
+      }
+    };
+
     const handleStepperScroll = () => {
       if (stepperFrameId) {
         return;
@@ -307,7 +626,7 @@ if (processSection) {
         stepperFrameId = 0;
 
         if (stepperControllerActive) {
-          updateStepperState();
+          updateActiveState();
         }
       });
     };
@@ -317,13 +636,13 @@ if (processSection) {
         return;
       }
 
-      stepperGeometry = measureStepperGeometry();
+      stepperGeometry = measureActiveGeometry();
 
       if (!stepperGeometry) {
         return;
       }
 
-      positionStepperFills();
+      positionActiveFills();
       stepperControllerActive = true;
 
       if (!stepperScrollAttached) {
@@ -333,7 +652,7 @@ if (processSection) {
 
       // Compute once on activation so reload and deep links are correct
       // without waiting for a scroll event.
-      updateStepperState();
+      updateActiveState();
     };
 
     const stopStepperController = () => {
@@ -378,7 +697,7 @@ if (processSection) {
       );
 
       stepperReducedActiveObserver = new IntersectionObserver(() => {
-        updateReducedStepperState();
+        updateActiveReducedState();
       }, {
         rootMargin: `-${activeTopOffset}px 0px -${activeBottomOffset}px 0px`,
         threshold: 0
@@ -392,7 +711,7 @@ if (processSection) {
       const traversedBottomOffset = Math.round(window.innerHeight - ly);
 
       stepperReducedTraversedObserver = new IntersectionObserver(() => {
-        updateReducedStepperState();
+        updateActiveReducedState();
       }, {
         rootMargin: `0px 0px -${traversedBottomOffset}px 0px`,
         threshold: 0.5
@@ -406,13 +725,13 @@ if (processSection) {
         }
       });
 
-      updateReducedStepperState();
+      updateActiveReducedState();
     };
 
-    const createStepperLayers = (withMarker) => {
-      const fillCount = Math.max(0, steps.length - 1);
+    const createStepperLayers = (withMarker, fillCount) => {
+      const count = fillCount == null ? Math.max(0, steps.length - 1) : fillCount;
 
-      for (let index = 0; index < fillCount; index += 1) {
+      for (let index = 0; index < count; index += 1) {
         const fill = document.createElement("div");
         fill.className = STEPPER_FILL_CLASS;
         fill.setAttribute("aria-hidden", "true");
@@ -461,6 +780,7 @@ if (processSection) {
       stepperFills = [];
       stepperGeometry = null;
       stepperMode = null;
+      stepperLayout = null;
 
       steps.forEach((step) => {
         step.classList.remove("is-current");
@@ -471,22 +791,36 @@ if (processSection) {
     const setupStepper = () => {
       teardownStepper();
 
-      if (!mobilePortrait.matches || !stepsList || steps.length === 0) {
+      if (!stepsList || steps.length === 0) {
+        return;
+      }
+
+      const portrait = mobilePortrait.matches;
+      const grid = gridLayout.matches;
+
+      if (!portrait && !grid) {
         return;
       }
 
       try {
         const reduced = reduceMotion.matches;
 
-        createStepperLayers(!reduced);
-        stepperGeometry = measureStepperGeometry();
+        if (portrait) {
+          stepperLayout = "portrait";
+          createStepperLayers(!reduced);
+          stepperGeometry = measureStepperGeometry();
+        } else {
+          stepperLayout = "grid";
+          createStepperLayers(!reduced, GRID_FILL_COUNT);
+          stepperGeometry = measureGridGeometry();
+        }
 
         if (!stepperGeometry) {
           teardownStepper();
           return;
         }
 
-        positionStepperFills();
+        positionActiveFills();
 
         if (reduced) {
           stepperMode = "reduced";
@@ -505,17 +839,17 @@ if (processSection) {
         return;
       }
 
-      stepperGeometry = measureStepperGeometry();
+      stepperGeometry = measureActiveGeometry();
 
       if (!stepperGeometry) {
         teardownStepper();
         return;
       }
 
-      positionStepperFills();
+      positionActiveFills();
 
       if (stepperMode === "controller") {
-        updateStepperState();
+        updateActiveState();
         return;
       }
 
@@ -536,8 +870,12 @@ if (processSection) {
       setupStepper();
     };
 
+    const handleGridChange = () => {
+      setupStepper();
+    };
+
     const handleReduceMotionChange = () => {
-      if (mobilePortrait.matches) {
+      if (mobilePortrait.matches || gridLayout.matches) {
         setupStepper();
       }
     };
@@ -579,6 +917,12 @@ if (processSection) {
       mobilePortrait.addEventListener("change", handleMobilePortraitChange);
     } else {
       mobilePortrait.addListener(handleMobilePortraitChange);
+    }
+
+    if (gridLayout.addEventListener) {
+      gridLayout.addEventListener("change", handleGridChange);
+    } else {
+      gridLayout.addListener(handleGridChange);
     }
 
     if (reduceMotion.addEventListener) {

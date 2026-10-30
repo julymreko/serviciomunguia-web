@@ -2435,14 +2435,15 @@ body.sm-menu-open {
   }
 }
 
-/* MOT-03 active-step emphasis — Mobile Portrait only */
-@media (max-width: 478.98px) {
+/* MOT-03 active-step emphasis — Mobile Portrait and the 3+2 layouts;
+   extends to Desktop in stage 3. */
+@media (max-width: 991.98px) {
   .sm-process-step.is-current .sm-process-step__visual {
     box-shadow: 0 0 0 6px rgba(26, 42, 211, 0.16);
   }
 }
 
-@media (max-width: 478.98px) and (prefers-reduced-motion: no-preference) {
+@media (max-width: 991.98px) and (prefers-reduced-motion: no-preference) {
   .sm-process-step__visual {
     transition:
       transform 250ms ease-out,
@@ -2466,7 +2467,7 @@ body.sm-menu-open {
   }
 }
 
-/* Priority B stepper — stage 1 (Mobile Portrait): JS-created marker and fills */
+/* Priority B stepper — JS-created marker and fills (shared base) */
 .sm-process-marker,
 .sm-process-fill {
   position: absolute;
@@ -2487,11 +2488,26 @@ body.sm-menu-open {
 }
 
 .sm-process-fill {
-  width: 2px;
   border-radius: 999px;
   background: var(--sm-primary);
-  transform: scaleY(0);
-  transform-origin: top center;
+}
+
+/* Vertical fill axis — Mobile Portrait */
+@media (max-width: 478.98px) {
+  .sm-process-fill {
+    width: 2px;
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+}
+
+/* Horizontal fill axis — 3+2 layouts */
+@media (min-width: 479px) and (max-width: 991.98px) {
+  .sm-process-fill {
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
 }
 
 .sm-process-step.is-traversed .sm-process-step__number {
