@@ -4,7 +4,7 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority B (dynamic scroll-driven process stepper)
-Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31 in the same file). Stage 1 (Mobile Portrait) was implemented and committed on 2026-10-29 (commit 6f1e252); the traversed-badge colours were amended by PD-32 in the same file. The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
+Status: APPROVED BY THE PRODUCT MANAGER — 2026-10-27 (PD-30 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Priority B implementation was authorized in four stages by the Product Manager on 2026-10-27 (PD-31 in the same file). Priority B was implemented in four stages: stage 1 (Mobile Portrait) on 2026-10-29 (commit 6f1e252), stage 2 (3+2 layouts) on 2026-10-30 (commit 3436414), stage 3 (Desktop) on 2026-10-30 (commit f0743d5) and stage 4 (performance measurement and full regression) on 2026-11-03 without a source change; the traversed-badge colours were amended by PD-32 and the stage decisions are PD-33 to PD-35, all in the same file. The Product Manager's answers to section 13 (Q1 to Q14) were recorded on 2026-10-27 as PD-16 to PD-29 in the same file.
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Claude Code (executor), task GOV-01-G10-001, contract-r1 (SHA-256 `47306719eebdb12170b24bd1dca7e4bccdb7ff5dc228eda03e58b9d4da4a3474`)
 Reviewer: Codex (review-01 is written by the Reviewer, not by this document)
@@ -142,6 +142,8 @@ Measured connector stubs (from computed pseudo-element geometry, `main.css:2050�
 
 Row-1 horizontal path (Mobile Landscape, derived): x 153 → 677 = 524 px. Row-2: x 284 → 546 = 262 px. The mapping between the horizontal row path and the vertical scroll span is not defined by the PM record (Q6).
 
+**Note (2026-11-03): behaviour as implemented in stage 2 (task M03-04-PB-02, commit 3436414; PD-33).** Each row of the wrapped layout is the box of its step items; the marker advances while the reading line crosses that row (PD-21) and is hidden in the gap between the rows, where it switches to the next row. There are five connector fills, including the two wrapped stubs, all solid primary (S-2). With motion allowed, the traversed state and the active ring follow the marker; under reduced motion the whole row changes at once (S-1). The tolerance between a fill and its track is 1 px (S-3). Observed at 820 × 1180 (reading line 590 px): row 1 spans 1701.94 to 2053.94 (352 px), row 2 spans 2101.94 to 2467.94 (366 px), and the gap is 48 px. The marker changes position only while the reading line is inside a row extent, plus the frames at the row boundaries (the clamp frames past the end of a row and the frames in the gap); in the 20 px per frame scroll of task M03-04-PB-04 this was 39 changes in 116 frames. The historical text above is preserved.
+
 ### 5.4 Mobile Portrait constant speed (PD-9)
 
 Constant-speed travel along the actual path length: path = centre-to-centre sum of the four vertical segments.
@@ -152,6 +154,8 @@ Constant-speed travel along the actual path length: path = centre-to-centre sum 
 ### 5.5 Desktop single-row
 
 Horizontal path (derived): x 207 → 1218 = 1011 px at y = 1433. Vertical span = 0 (§5.2). No progress mapping is proposed for Desktop beyond the open decision in §13, Q3.
+
+**Note (2026-11-03): behaviour as implemented in stage 3 (task M03-04-PB-03, commit f0743d5; PD-18, PD-33, PD-34).** Desktop applies from 992 px. The vertical extent of the steps list is the single row extent: the row top is the list top and the row bottom is the list top plus the list height (PD-18); the horizontal path runs from the centre of step 1 to the centre of step 5; there are four solid primary fills. Observed at 1440 × 900 (reading line 450 px): the list spans 1390.56 to 1808.56 (418 px). The marker changes position only while the reading line is inside that extent, plus the one frame past the end where it clamps to the last position; in the 20 px per frame scroll of task M03-04-PB-04 this was 21 changes in 93 frames. The current-step rule is C-1 (PD-34). Under reduced motion all five steps change together (S-1). The historical text above is preserved.
 
 ## 6. Visual states and tokens (PD-3, PD-4, PD-7, PD-10a, PD-11)
 
@@ -240,6 +244,18 @@ Integration consideration only. No implementation is proposed. Future authorizat
 - Metrics, observed values only: scripting time per frame, long-task count, rAF callback durations, number of `getBoundingClientRect`/`offsetTop` reads per frame, number of `scroll` listeners attached, IntersectionObserver callbacks per scroll.
 - Baseline (observed in this task, not throttled, single run, not a stepper measurement): Navigation Timing `domContentLoaded` / `load` (ms): Desktop 84 / 144; Tablet 74 / 100; Mobile Landscape 76 / 105; Mobile Portrait 89 / 131.
 - Stepper scroll timings: **NOT MEASURED** (stepper not implemented).
+
+**Update (2026-11-03): observed values of Priority B stage 4 (task M03-04-PB-04; PD-24, PD-35).** The plan above was executed; no threshold is asserted and none was approved (D-11, PD-2). Conditions: Chrome 156.0.8078.74 headless (`--headless=new`) driven over CDP, device pixel ratio 1, Windows 11 with an AMD Ryzen 7 5825U; CPU throttling at 1x, 4x and 6x; a scripted scroll of 20 px per frame from the section entering the viewport (section top at the viewport bottom) to the section bottom reaching the viewport top, forward and then reverse; viewports 1440 × 900, 820 × 1180, 844 × 390 and 390 × 844; the build with Priority B (commit f0743d5) against the build before it (the parent of commit 6f1e252); 5 runs per cell, each on a fresh page load; four additional cells under emulated reduced motion. The executor harness ran with hidden scrollbars (scrollbar 0 px).
+
+- Script time (`ScriptDuration`), median ratio with Priority B over without: 1.064 to 1.467 in the forward pass and 1.103 to 1.509 in the reverse pass, over the twelve cells of each pass. In absolute terms the median script time with Priority B at 6x CPU was 0.132 s (Desktop), 0.146 s (Tablet), 0.162 s (Mobile Landscape) and 0.195 s (Mobile Portrait) over a scroll lasting about 1.6 to 2.8 s.
+- Frame interval, 95th percentile: ratio 0.934 to 1.012; unchanged in practice.
+- Long tasks: 0 in every cell with Priority B; 1 long task (57 ms) in a single run without it.
+- Layout reads per frame (`getBoundingClientRect` and offset reads) during the motion passes with Priority B: 0, because the geometry is cached; without Priority B, 0.08 in Mobile Portrait.
+- `requestAnimationFrame` callbacks: about two per scripted frame with Priority B and one without; medians at most 0.4 ms.
+- `scroll` listeners alive at the end of a pass: 1 with Priority B, 0 without. IntersectionObserver callbacks per pass: 5 (Desktop) and 6 (Tablet, Mobile Landscape) in both builds; 13 with and 23 without in Mobile Portrait.
+- Reduced motion: no marker, no stepper `scroll` listener, no stepper `requestAnimationFrame` request and no long task.
+- Variability: the Mobile Portrait CPU 6x ratio was 1.107 in the first measurement, 1.30 to 1.39 in the first review and 1.437 in the second review; the absolute script times differed between sessions by factors of 1.44 to 3.93, and the cause of the ratio spread is open. The ratios of the three other cells measured in more than one session (Desktop at 1x and 6x CPU, and Mobile Portrait at 1x CPU) agreed between sessions to within 0.01 to 0.09.
+- Regression (items B1 to B11 of the task): build and syntax, states against the predicted formulas at six viewports (largest horizontal deviation below 0.005 px, 0.0044 px at Desktop 1440 × 900, and largest vertical deviation 0.016 px at Mobile Portrait), reduced motion, live changes across 992/991, 479/478 and orientation, deep link and reload, no JavaScript, initialization error path, keyboard order and accessibility attributes, unrelated components, console and boundary widths: no deviation from the expectation. The source files stayed unchanged.
 
 ## 11. Test plan (PROPOSAL)
 
