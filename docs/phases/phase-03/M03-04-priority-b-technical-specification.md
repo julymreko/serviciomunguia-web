@@ -234,6 +234,8 @@ Integration consideration only. No implementation is proposed. Future authorizat
 
 **Observed gap (A, evidence):** widths in (478, 478.98] px are inside the process MOT-03/stepper breakpoint but outside the `max-width: 478px` Bottom Navigation rules. In that band the reading line (§4.3) would be computed with `bottomNavHeight = 0`, while the nav is `display: none` (`main.css:1086–1088`). The integration decision must cover this band (Q10).
 
+**Update (2026-11-06): PD-15 closed without implementation (PD-37).** The Product Manager decided not to implement the Bottom Navigation breakpoint alignment of this section and to close PD-15 without implementation. The band above 478 px and up to 478.98 px stays handled by the rule of PD-25, and the `max-width: 478px` selectors listed above stay unchanged. The text of this section above this update is preserved as the record of the observation (Historical Records Rule).
+
 ## 10. Performance measurement plan (PD-2)
 
 **Plan only. No threshold is asserted (D-11, PD-2).** The stepper does not yet exist, so no stepper value is measured in this document.
