@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority C (Smart Header)
-Status: SPECIFIED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation is NOT AUTHORIZED: it requires a separate explicit Product Manager authorization (PD-39).
+Status: SPECIFIED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval.
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Codex (documentation executor), task M03-04-PC-DOC-01
 Reviewer: Claude Code
 Baseline: repository HEAD `b717c26a179e7604a556b78d8bcaa19ef641c3ee` (branch `main`, working tree clean before this file was added)
 Source references: `file` citations refer to the baseline.
 
-**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D16) and reconciles it with the state of the repository at the baseline. It is a specification, not an implementation. Items marked **PROPOSAL** or **OPEN** are not decided; they are resolved by the Product Manager in the implementation authorization (PD-39).
+**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D18) and reconciles it with the state of the repository at the baseline. It is a specification, not an implementation. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
 
 ## 1. Classification
 
@@ -100,7 +100,7 @@ The state changes when the bottom edge of the Hero equals the effective bottom e
 - While `aria-expanded="true"`: Smart Header behavior is suspended. The trigger uses only its existing open and X state. The CONTENT-state circular surface is not shown. The logo receives no new Smart Header transition. The existing overlay stacking stays authoritative.
 - On overlay close: no previously cached state is restored. The state is recalculated immediately from the current physical position of the Hero, and the HERO or CONTENT state is applied.
 - SH-D16 (PM APPROVED, 2026-11-06): a click on an anchor link inside the Menu overlay closes the overlay and lets the anchor navigation proceed. The close must not cancel the navigation. This is a minimal change to `menu-overlay.js`; it does not change the Menu information architecture.
-- **OPEN (U-SH-02):** focus management when the overlay closes by a link click. `closeMenu()` at the baseline moves focus to the trigger. The implementation contract must state whether the link-click path keeps that behavior or leaves focus to the anchor navigation, and the Product Manager decides in PD-39. Recommendation to the Product Manager: do not force focus back to the trigger on the link-click path, so focus follows the navigation.
+- **RESOLVED (U-SH-02, SH-D18, PD-39):** focus management when the overlay closes by a click on an anchor link. `closeMenu()` at the baseline moves focus to the trigger. On the link-click path, focus is not forced back to the trigger, so focus follows the anchor navigation. Closing with the trigger or with `Escape` keeps the baseline behavior of returning focus to the trigger.
 - The order of the close, the anchor navigation and the state recalculation must be observed and recorded at implementation, with the scroll lock (`body.sm-menu-open`) taken into account.
 
 ## 8. Observation strategy (SH-D13)
@@ -156,7 +156,7 @@ The implementation must cover and test:
 
 The Smart Header fails safely: a JavaScript failure must not make the primary navigation inaccessible.
 
-**OPEN (U-SH-01), JavaScript baseline.** With no JavaScript, the Menu trigger must stay visible and operable in any page position. **PROPOSAL:** the CSS default is the CONTENT-state trigger surface, and JavaScript applies the HERO state when the Hero is behind the Header, so a failed script leaves a legible trigger everywhere. The logo keeps its baseline behavior without JavaScript. The Product Manager decides in PD-39.
+**RESOLVED (U-SH-01, SH-D17, PD-39), JavaScript baseline.** The CSS default is the HERO state (transparent trigger with white lines, logo visible), identical to the baseline, so there is no flash of the wrong state on load. JavaScript applies the CONTENT state when the Hero is no longer behind the Header. Without JavaScript the Header stays as at the baseline. At the baseline `src/assets/js/menu-overlay.js` is the only code that opens the Menu overlay, so without JavaScript the Menu trigger does not open it; the Smart Header does not change that. The Bottom Navigation in Mobile Portrait is made of plain anchors and does not depend on JavaScript. A JavaScript failure must not make inaccessible any navigation that works without JavaScript.
 
 ## 13. Non-goals
 
@@ -164,7 +164,7 @@ Not in scope; each needs a separate Product Manager decision: scroll-direction d
 
 ## 14. Product Manager decisions
 
-All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository. The decisions are recorded in PD-38 of M03-04.
+All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, and SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized. SH-D01 to SH-D16 are recorded in PD-38 of M03-04 and SH-D17 and SH-D18 in PD-39 of M03-04.
 
 | ID | Decision |
 |---|---|
@@ -184,18 +184,20 @@ All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Mana
 | SH-D14 | Under reduced motion the positional behavior stays active and the transitions are instantaneous. |
 | SH-D15 | The surface color is `#111a38`, which is `--sm-dark-soft` (not `--sm-dark`, which is `#0d0e13`). |
 | SH-D16 | A click on an anchor link inside the Menu overlay closes the overlay and the navigation proceeds. |
+| SH-D17 | The Menu trigger is in the HERO state by default in CSS and JavaScript applies the CONTENT state. Without JavaScript the Header stays as at the baseline. |
+| SH-D18 | When the overlay closes by a click on an anchor link, focus is not forced back to the trigger. Closing with the trigger or with `Escape` returns focus to the trigger, as at the baseline. |
 
-## 15. Proposed implementation allow-list and staging (PROPOSAL; not authorized)
+## 15. Implementation allow-list and staging (authorized by PD-39)
 
-Implementation is not authorized. PD-39 will authorize it, if the Product Manager decides, as written or amended. Proposed allowed paths:
+Implementation was authorized in stages by the Product Manager on 2026-11-06 (PD-39 in `docs/phases/phase-03/M03-04-opencode-implementation.md`) with the allowed paths below. Executor: OpenCode. Reviewer: Claude Code. Allowed paths:
 
 - `src/assets/css/main.css` (a Smart Header block only; no Bottom Navigation selectors);
 - `src/assets/js/smart-header.js` (new file);
-- `src/assets/js/menu-overlay.js` (only SH-D16 and the state hand-off required by SH-D11 and SH-D12);
+- `src/assets/js/menu-overlay.js` (only SH-D16, SH-D18 and the state hand-off required by SH-D11 and SH-D12);
 - `src/_includes/base.njk` (only the script include for the new file).
 
 Not included: `src/_includes/components/header.njk`, `hero.njk`, `menu-overlay.njk`, `mobile-nav.njk`, `process.njk`, `process.js`, `package.json`, dependencies, and any other source file. If the implementation requires another file, it stops and asks the Product Manager.
 
-Proposed stages, each a separate task with its own contract and approval, in the order used for Priority B: (1) state model, logo and trigger surface (CSS and JavaScript) in all viewport classes; (2) SH-D16 and the overlay interaction (SH-D11, SH-D12); (3) measurement and full regression (contrast, geometry, Mobile Portrait composition, reduced motion, no-JavaScript baseline).
+Stages, each a separate task with its own contract and approval, in the order used for Priority B. A stage starts only after the previous stage was reviewed CONFORME, validated visually by the Product Manager and committed by the Product Manager. The exact boundary of each stage is set in its contract, within the limits of PD-39: (1) state model, logo and trigger surface (CSS and JavaScript) in all viewport classes; (2) SH-D16, SH-D18 and the overlay interaction (SH-D11, SH-D12); (3) measurement and full regression (contrast, geometry, Mobile Portrait composition, reduced motion, no-JavaScript baseline).
 
 Evidence required: Build, Functional, Responsive (including 478/479 and 991/992), SEO (static HTML unchanged), Accessibility, Performance (measured values only, no invented thresholds), Security, Regression (Hero, Header, Menu, Mobile Navigation, Cómo trabajamos stepper). No passing result without observable evidence. M03-05 and M03-06 remain separate and NOT AUTHORIZED.
