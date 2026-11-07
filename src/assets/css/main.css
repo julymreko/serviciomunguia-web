@@ -2519,3 +2519,71 @@ body.sm-menu-open {
   }
 }
 
+/* ===== Smart Header (Priority C, stage 1: state model, logo, Menu trigger surface) ===== */
+
+/* Logo: hidden in CONTENT (SH-D03, SH-D07). HERO stays as the baseline. The
+   change is instant by default; the fade transition is declared only under
+   `data-sm-header-motion="on"`, which JavaScript sets once, after the initial
+   paint (B-1), so a load at a scrolled position shows CONTENT with no fade. */
+html[data-sm-header="content"] .sm-hero__logo {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html[data-sm-header-motion="on"] .sm-hero__logo {
+  transition:
+    opacity 240ms ease,
+    visibility 0s linear 0s;
+}
+
+html[data-sm-header-motion="on"][data-sm-header="content"] .sm-hero__logo {
+  transition:
+    opacity 240ms ease,
+    visibility 0s linear 240ms;
+}
+
+/* Menu trigger surface: circular backdrop behind the trigger in CONTENT
+   (SH-D04, SH-D05, SH-D06, SH-D07, SH-D08, SH-D15). The surface is the
+   ::before pseudo-element of the trigger layer, coincident with the button. */
+.sm-menu-trigger-layer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: var(--sm-space-inline);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--sm-dark-soft);
+  box-shadow: 0 4px 14px rgba(17, 26, 56, 0.22);
+  pointer-events: none;
+  opacity: 0;
+}
+
+html[data-sm-header="content"] .sm-menu-trigger-layer::before {
+  opacity: 1;
+}
+
+html[data-sm-header-motion="on"] .sm-menu-trigger-layer::before {
+  transition: opacity 240ms ease;
+}
+
+/* Menu open: the surface is not shown (SH-D11, CSS only in this stage). */
+body.sm-menu-open .sm-menu-trigger-layer::before {
+  opacity: 0;
+}
+
+/* Reduced motion (SH-D14): state logic unchanged, transitions disabled. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-sm-header-motion="on"] .sm-hero__logo,
+  html[data-sm-header-motion="on"][data-sm-header="content"] .sm-hero__logo,
+  html[data-sm-header-motion="on"] .sm-menu-trigger-layer::before {
+    transition: none;
+  }
+}
+
+/* Menu trigger top aligned with the logo top at every width
+   (Product Manager decision 2026-11-07, visual validation of stage 1). */
+.sm-menu-trigger-layer {
+  top: clamp(16px, 2vw, 32px);
+}
+
