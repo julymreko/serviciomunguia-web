@@ -286,11 +286,11 @@ IN PROGRESS
 Authorization record:
 The Product Manager explicitly authorized M03-04 implementation in the project conversation on 2026-10-11, after approving the implementation prompt. This status and permission take effect when the authorized documentation commit is published and the agent reconfirms the clean repository baseline. No deployment, M03-05 or M03-06 authorization is implied.
 
-Implementation status (2026-10-13; Priority B line updated 2026-11-03; Priority C line updated 2026-11-06):
+Implementation status (2026-10-13; Priority B line updated 2026-11-03; Priority C line updated 2026-11-07):
 - PM execution authorization: granted on 2026-10-11 and recorded.
 - Priority A (implementation, responsive PM visual validation, D7–D10 decisions, local documentation): COMPLETED and passed Product Manager visual verification; consolidated in commit `542601e` (historical reference; publication evidence is determined from Git).
 - Priority B (dynamic scroll-driven process stepper): COMPLETED in four stages — stage 1 (Mobile Portrait) 2026-10-29 (commit `6f1e252`), stage 2 (3+2 layouts) 2026-10-30 (commit `3436414`), stage 3 (Desktop) 2026-10-30 (commit `f0743d5`), stage 4 (performance measurement and full regression) 2026-11-03 without a source change; PM decisions PD-1 to PD-15 recorded in M03-04; technical specification approved 2026-10-27 (PD-30); implementation authorized in four stages 2026-10-27 (PD-31).
-- Priority C (intelligent Header): specified (PD-38) and implementation authorized in three stages (PD-39), recorded in docs/phases/phase-03/M03-04-opencode-implementation.md.
+- Priority C (intelligent Header): specified (PD-38) and implementation authorized in three stages (PD-39); stage 1 (state model, logo and Menu trigger surface) COMPLETED 2026-11-07 (commit `3865a34`, PD-40); recorded in docs/phases/phase-03/M03-04-opencode-implementation.md.
 - M03-05 (independent testing) and M03-06 (formal audit): NOT STARTED and NOT AUTHORIZED.
 
 Purpose:

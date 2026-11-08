@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority C (Smart Header)
-Status: SPECIFIED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval.
+Status: SPECIFIED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval. Stage 1 was implemented, reviewed and committed on 2026-11-07 (PD-40 in the same file).
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Codex (documentation executor), task M03-04-PC-DOC-01
 Reviewer: Claude Code
 Baseline: repository HEAD `b717c26a179e7604a556b78d8bcaa19ef641c3ee` (branch `main`, working tree clean before this file was added)
 Source references: `file` citations refer to the baseline.
 
-**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D18) and reconciles it with the state of the repository at the baseline. It is a specification, not an implementation. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
+**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D22) and reconciles it with the state of the repository at the baseline. It is a specification, not an implementation. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
 
 ## 1. Classification
 
@@ -74,6 +74,7 @@ The state changes when the bottom edge of the Hero equals the effective bottom e
 - A direct anchor navigation, or a reload at an already-scrolled position, results in the correct state. Returning to `#inicio` results in the HERO state.
 - No fixed pixel threshold is specified. The effective Header geometry is measured from the rendered page (section 8).
 - How a position exactly on the threshold is classified is recorded as an observation at implementation; it is not tuned.
+- **RESOLVED (SH-D19, PD-40), implemented in stage 1:** at exact equality of the Hero bottom edge and the Header bottom edge the state is `content`. The implementation offsets the observed boundary by 0.5 CSS px below the measured Header bottom edge and uses the same boundary in the synchronous evaluation and in the observer, so the state is `hero` while the Hero bottom edge is at least 0.5 CSS px below the Header bottom edge and `content` otherwise. For a distance between 0 and 0.5 CSS px the state is `content`, which the Product Manager accepted as a deviation from the literal rule above, because in the observer an edge-adjacent target counts as intersecting (observed in stage 1) and the literal rule needed an offset to place exact equality in `content`.
 
 ## 6. Visual definition
 
@@ -94,6 +95,8 @@ The state changes when the bottom edge of the Hero equals the effective bottom e
 - Animation: the surface is a separate layer whose `opacity` goes from `0` (HERO) to `1` (CONTENT) in `240ms ease`. `background-color` and `box-shadow` are not animated. Only compositor-friendly properties are animated where practical.
 - The existing lines and X stay above the surface.
 - **Constraint found at the baseline.** `::before` and `::after` of `.sm-hero__menu-trigger` already draw the two lines, so the surface cannot use them. **PROPOSAL:** use a pseudo-element of `.sm-menu-trigger-layer`, positioned behind the button, with `pointer-events: none`, coincident with the 52 × 52 px trigger. Acceptance: the surface and the trigger coincide within the tolerance the implementation contract defines, measured at the four viewport classes. If this mechanism cannot satisfy it, the alternative (a decorative element in `hero.njk`) returns to the Product Manager, because it adds a file to the allow-list.
+- **RESOLVED (PD-40), implemented in stage 1:** the surface is the `::before` pseudo-element of `.sm-menu-trigger-layer`; the contract tolerance was 0.5 CSS px on each edge and the measured deviation was at most 0.015 px at every measured width.
+- **Trigger position (SH-D22, PD-40):** the top edge of the Menu trigger is aligned with the top edge of the logo at every width: `.sm-menu-trigger-layer` has `top: clamp(16px, 2vw, 32px)`, the Header top padding. At the baseline the trigger was centered on the logo (its `top` was computed from the 150 to 200 px logo size), which put its top edge 49 px below the logo top at widths from 320 to 1440 px and 70 px at 1920 px (values measured in stage 1). This changes a baseline behavior and was decided by the Product Manager after the visual validation of 2026-11-07.
 
 ## 7. Menu overlay interaction (SH-D11, SH-D12, SH-D16)
 
@@ -110,6 +113,7 @@ The state changes when the bottom edge of the Hero equals the effective bottom e
 - The Header geometry changes with the viewport. The implementation reads the rendered Header geometry, derives the observer offset (root margin) from it, recomputes it when the viewport geometry changes, and handles resize and orientation change. It does not hard-code one Header height and does not reuse the `scroll-margin-top` formula of `.sm-process` (section 3.1).
 - Initialization performs an immediate state evaluation, so a reload or a deep link at an already-scrolled position is correct without waiting for a user scroll.
 - **Initial paint.** The implementation must show that there is no visible flash of the wrong state on load at `#inicio`; if it cannot be avoided, it returns to the Product Manager.
+- **RESOLVED (SH-D20 and SH-D21, PD-40), implemented in stage 1:** the Smart Header transitions are declared only under `html[data-sm-header-motion="on"]`, which `smart-header.js` sets once per load, after the initial state evaluation, with two chained one-shot `requestAnimationFrame` calls. This is the only use of `requestAnimationFrame`; it is not a loop and it is not used after initialization. A load at an already-scrolled position therefore shows the CONTENT state on the first painted frame with no logo fade. On a direct navigation to an anchor in a fresh document, the fragment scroll can happen after the first paint, and when the observer then changes the state after the motion attribute is set the logo fades in 240 ms. This depends on timing (it was seen at some viewport widths and not at others), the final state is always correct, and the Product Manager accepted it (SH-D21).
 
 ## 9. Reduced motion (SH-D14)
 
@@ -164,7 +168,7 @@ Not in scope; each needs a separate Product Manager decision: scroll-direction d
 
 ## 14. Product Manager decisions
 
-All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, and SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized. SH-D01 to SH-D16 are recorded in PD-38 of M03-04 and SH-D17 and SH-D18 in PD-39 of M03-04.
+All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized, and SH-D19 to SH-D22 on 2026-11-07 during stage 1. SH-D01 to SH-D16 are recorded in PD-38 of M03-04, SH-D17 and SH-D18 in PD-39 of M03-04, and SH-D19 to SH-D22 in PD-40 of M03-04.
 
 | ID | Decision |
 |---|---|
@@ -186,6 +190,10 @@ All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Mana
 | SH-D16 | A click on an anchor link inside the Menu overlay closes the overlay and the navigation proceeds. |
 | SH-D17 | The Menu trigger is in the HERO state by default in CSS and JavaScript applies the CONTENT state. Without JavaScript the Header stays as at the baseline. |
 | SH-D18 | When the overlay closes by a click on an anchor link, focus is not forced back to the trigger. Closing with the trigger or with `Escape` returns focus to the trigger, as at the baseline. |
+| SH-D19 | The state boundary is offset by 0.5 CSS px below the measured Header bottom edge, so at exact equality the state is `content`; the state is `hero` while the Hero bottom edge is at least 0.5 CSS px below the Header bottom edge. The same boundary is used in the synchronous evaluation and in the observer. |
+| SH-D20 | Transitions are enabled only after the initial state is applied: `data-sm-header-motion="on"` is set once per load by two chained one-shot `requestAnimationFrame` calls, so a load at a scrolled position shows CONTENT on the first painted frame with no fade. |
+| SH-D21 | A logo fade on a direct navigation to an anchor in a fresh document, when the observer changes the state after the motion attribute is set, is accepted; the final state is always correct. |
+| SH-D22 | The top edge of the Menu trigger is aligned with the top edge of the logo at every width (`top: clamp(16px, 2vw, 32px)` on `.sm-menu-trigger-layer`), instead of centered on the logo as at the baseline. |
 
 ## 15. Implementation allow-list and staging (authorized by PD-39)
 
