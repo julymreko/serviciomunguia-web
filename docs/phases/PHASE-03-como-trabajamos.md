@@ -281,7 +281,7 @@ M03-01, M03-02.
 ### M03-04 - OpenCode Implementation
 
 Status:
-IN PROGRESS
+COMPLETED
 
 Authorization record:
 The Product Manager explicitly authorized M03-04 implementation in the project conversation on 2026-10-11, after approving the implementation prompt. This status and permission take effect when the authorized documentation commit is published and the agent reconfirms the clean repository baseline. No deployment, M03-05 or M03-06 authorization is implied.
