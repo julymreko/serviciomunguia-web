@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority C (Smart Header)
-Status: SPECIFIED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval. Stage 1 was implemented, reviewed and committed on 2026-11-07 (PD-40 in the same file).
+Status: STAGES 1 AND 2 COMPLETED (PD-40, PD-41); STAGE 3 NOT STARTED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval. Stage 1 was implemented, reviewed and committed on 2026-11-07 (PD-40 in the same file). Stage 2 was implemented, reviewed and committed on 2026-11-08 (PD-41 in the same file).
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Codex (documentation executor), task M03-04-PC-DOC-01
 Reviewer: Claude Code
 Baseline: repository HEAD `b717c26a179e7604a556b78d8bcaa19ef641c3ee` (branch `main`, working tree clean before this file was added)
 Source references: `file` citations refer to the baseline.
 
-**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D22) and reconciles it with the state of the repository at the baseline. It is a specification, not an implementation. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
+**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D27) and reconciles it with the state of the repository at the baseline. Stages 1 and 2 are implemented (PD-40, PD-41); stage 3 is not started. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
 
 ## 1. Classification
 
@@ -105,6 +105,7 @@ The state changes when the bottom edge of the Hero equals the effective bottom e
 - SH-D16 (PM APPROVED, 2026-11-06): a click on an anchor link inside the Menu overlay closes the overlay and lets the anchor navigation proceed. The close must not cancel the navigation. This is a minimal change to `menu-overlay.js`; it does not change the Menu information architecture.
 - **RESOLVED (U-SH-02, SH-D18, PD-39):** focus management when the overlay closes by a click on an anchor link. `closeMenu()` at the baseline moves focus to the trigger. On the link-click path, focus is not forced back to the trigger, so focus follows the anchor navigation. Closing with the trigger or with `Escape` keeps the baseline behavior of returning focus to the trigger.
 - The order of the close, the anchor navigation and the state recalculation must be observed and recorded at implementation, with the scroll lock (`body.sm-menu-open`) taken into account.
+- **RESOLVED (SH-D11, SH-D12, SH-D16, SH-D18 and SH-D23 to SH-D27, PD-41), implemented in stage 2:** a plain click on a link whose `href` starts with `#` closes the overlay in the click handler of `menu-overlay.js`, synchronously and without cancelling the navigation, so the scroll lock is released before the browser moves the page; the `mailto:` and WhatsApp links and the empty area of the overlay do not close it. The close by a link does not return focus to the trigger, and the clicked link is blurred if it still holds focus so that no element inside the overlay keeps focus while the overlay is `aria-hidden`. `smart-header.js` observes `aria-expanded` of the trigger with one `MutationObserver`, writes no state while the Menu is open, and when it closes it measures the Header again and recomputes the state from the current Hero geometry. Observed order on a link-click close (not tuned): the change of `aria-expanded`, of the `sm-menu-open` class and the state recomputation happen within 0.1 ms of each other, the scroll follows 5 to 14 ms later in the recorded runs, and the observer callbacks and the final state follow the scroll. Closing from the HERO state recomputes `hero` before the scroll and the navigation then produces `content`; the logo fade (220 to 234 ms measured, 240 ms declared) is visible only for `#como-trabajamos` from the HERO state. Of the five links, only `#como-trabajamos` has a target element in the built page (finding D-1 of PD-41).
 
 ## 8. Observation strategy (SH-D13)
 
@@ -168,7 +169,7 @@ Not in scope; each needs a separate Product Manager decision: scroll-direction d
 
 ## 14. Product Manager decisions
 
-All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized, and SH-D19 to SH-D22 on 2026-11-07 during stage 1. SH-D01 to SH-D16 are recorded in PD-38 of M03-04, SH-D17 and SH-D18 in PD-39 of M03-04, and SH-D19 to SH-D22 in PD-40 of M03-04.
+All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized, SH-D19 to SH-D22 on 2026-11-07 during stage 1, and SH-D23 to SH-D27 on 2026-11-07 when stage 2 was approved. SH-D01 to SH-D16 are recorded in PD-38 of M03-04, SH-D17 and SH-D18 in PD-39 of M03-04, SH-D19 to SH-D22 in PD-40 of M03-04, and SH-D23 to SH-D27 in PD-41 of M03-04.
 
 | ID | Decision |
 |---|---|
@@ -194,6 +195,11 @@ All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Mana
 | SH-D20 | Transitions are enabled only after the initial state is applied: `data-sm-header-motion="on"` is set once per load by two chained one-shot `requestAnimationFrame` calls, so a load at a scrolled position shows CONTENT on the first painted frame with no fade. |
 | SH-D21 | A logo fade on a direct navigation to an anchor in a fresh document, when the observer changes the state after the motion attribute is set, is accepted; the final state is always correct. |
 | SH-D22 | The top edge of the Menu trigger is aligned with the top edge of the logo at every width (`top: clamp(16px, 2vw, 32px)` on `.sm-menu-trigger-layer`), instead of centered on the logo as at the baseline. |
+| SH-D23 | Only a plain click (primary button, no modifier key) closes the Menu overlay. |
+| SH-D24 | Only links whose `href` starts with `#` close the overlay; the `mailto:` and WhatsApp links and the empty area of the overlay keep the baseline behavior. |
+| SH-D25 | `smart-header.js` learns the Menu state by observing `aria-expanded` of the trigger with one `MutationObserver`; no custom event is used. |
+| SH-D26 | While the Menu is open the state attribute is not written; when it closes the state is recomputed from the current Hero geometry. |
+| SH-D27 | After a link-click close the clicked link is blurred if it still holds focus; no other element receives focus. |
 
 ## 15. Implementation allow-list and staging (authorized by PD-39)
 
