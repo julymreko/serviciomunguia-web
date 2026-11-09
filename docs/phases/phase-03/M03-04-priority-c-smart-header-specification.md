@@ -4,14 +4,14 @@
 
 Phase: 03 — CÓMO TRABAJAMOS
 Milestone: M03-04 — OpenCode Implementation, Priority C (Smart Header)
-Status: STAGES 1 AND 2 COMPLETED (PD-40, PD-41); STAGE 3 NOT STARTED — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval. Stage 1 was implemented, reviewed and committed on 2026-11-07 (PD-40 in the same file). Stage 2 was implemented, reviewed and committed on 2026-11-08 (PD-41 in the same file).
+Status: IMPLEMENTED IN THREE STAGES (PD-40, PD-41, PD-42) — behavior approved by the Product Manager on 2026-11-06 (PD-38 in `docs/phases/phase-03/M03-04-opencode-implementation.md`). Implementation was authorized in three stages by the Product Manager on 2026-11-06 (PD-39 in the same file); each stage has its own contract and approval. Stage 1 was implemented, reviewed and committed on 2026-11-07 (PD-40 in the same file). Stage 2 was implemented, reviewed and committed on 2026-11-08 (PD-41 in the same file). Stage 3 (measurement and full regression, with no source change) was completed on 2026-11-08 (PD-42 in the same file).
 Owner / Approver: Julián Cely — Product Manager
 Prepared by: Codex (documentation executor), task M03-04-PC-DOC-01
 Reviewer: Claude Code
 Baseline: repository HEAD `b717c26a179e7604a556b78d8bcaa19ef641c3ee` (branch `main`, working tree clean before this file was added)
 Source references: `file` citations refer to the baseline.
 
-**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D27) and reconciles it with the state of the repository at the baseline. Stages 1 and 2 are implemented (PD-40, PD-41); stage 3 is not started. The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
+**Status statement.** This document records the Smart Header behavior approved by the Product Manager (decisions SH-D01 to SH-D31) and reconciles it with the state of the repository at the baseline. The three implementation stages are completed (PD-40, PD-41, PD-42). The two items that were open when it was issued, U-SH-01 and U-SH-02, were resolved by PD-39 (SH-D17 and SH-D18). Items marked **PROPOSAL** are not decided unless a decision of section 14 or PD-39 adopts them.
 
 ## 1. Classification
 
@@ -139,6 +139,8 @@ The implementation records the measured values. No project acceptance threshold 
 
 Also inspected: normal state, hover, `:focus-visible` and `aria-expanded="true"` (X). The existing visible keyboard-focus treatment is not weakened.
 
+**Observed in stage 3 (SH-D28, PD-42).** At several CONTENT scroll positions the surface is not distinguishable from the dark page behind it (the Hero photo still behind the disc just after the state changes to CONTENT, and the dark CTA panel of Cómo trabajamos at Mobile Landscape); the white lines on the surface stay at about 17:1. No change was made in stage 3, and the matter is kept as a backlog item.
+
 ## 12. Initialization, edge cases and failure
 
 The implementation must cover and test:
@@ -161,6 +163,8 @@ The implementation must cover and test:
 
 The Smart Header fails safely: a JavaScript failure must not make the primary navigation inaccessible.
 
+**RESOLVED (SH-D29, SH-D30, SH-D31, PD-42), edge cases measured in stage 3.** The item "Bottom Navigation jump to `#inicio`" does not apply, because no link of the Bottom Navigation points to `#inicio` (SH-D31). On a direct navigation to an anchor in a fresh document the first painted frame can be HERO at the target position, and the state then becomes CONTENT; SH-D21 covers it (SH-D30). After a reload at an already-scrolled position the first painted frame can be the HERO default in some runs, with no fade afterwards; it is accepted as a known limitation (SH-D29).
+
 **RESOLVED (U-SH-01, SH-D17, PD-39), JavaScript baseline.** The CSS default is the HERO state (transparent trigger with white lines, logo visible), identical to the baseline, so there is no flash of the wrong state on load. JavaScript applies the CONTENT state when the Hero is no longer behind the Header. Without JavaScript the Header stays as at the baseline. At the baseline `src/assets/js/menu-overlay.js` is the only code that opens the Menu overlay, so without JavaScript the Menu trigger does not open it; the Smart Header does not change that. The Bottom Navigation in Mobile Portrait is made of plain anchors and does not depend on JavaScript. A JavaScript failure must not make inaccessible any navigation that works without JavaScript.
 
 ## 13. Non-goals
@@ -169,7 +173,7 @@ Not in scope; each needs a separate Product Manager decision: scroll-direction d
 
 ## 14. Product Manager decisions
 
-All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized, SH-D19 to SH-D22 on 2026-11-07 during stage 1, and SH-D23 to SH-D27 on 2026-11-07 when stage 2 was approved. SH-D01 to SH-D16 are recorded in PD-38 of M03-04, SH-D17 and SH-D18 in PD-39 of M03-04, SH-D19 to SH-D22 in PD-40 of M03-04, and SH-D23 to SH-D27 in PD-41 of M03-04.
+All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Manager; SH-D15 and SH-D16 were decided on 2026-11-06 during the reconciliation with the repository, SH-D17 and SH-D18 on 2026-11-06 when the implementation was authorized, SH-D19 to SH-D22 on 2026-11-07 during stage 1, SH-D23 to SH-D27 on 2026-11-07 when stage 2 was approved, and SH-D28 to SH-D31 on 2026-11-08 when stage 3 was closed. SH-D01 to SH-D16 are recorded in PD-38 of M03-04, SH-D17 and SH-D18 in PD-39 of M03-04, SH-D19 to SH-D22 in PD-40 of M03-04, SH-D23 to SH-D27 in PD-41 of M03-04, and SH-D28 to SH-D31 in PD-42 of M03-04.
 
 | ID | Decision |
 |---|---|
@@ -200,6 +204,10 @@ All **PM APPROVED**. SH-D01 to SH-D14 are the behavior given by the Product Mana
 | SH-D25 | `smart-header.js` learns the Menu state by observing `aria-expanded` of the trigger with one `MutationObserver`; no custom event is used. |
 | SH-D26 | While the Menu is open the state attribute is not written; when it closes the state is recomputed from the current Hero geometry. |
 | SH-D27 | After a link-click close the clicked link is blurred if it still holds focus; no other element receives focus. |
+| SH-D28 | Stage 3 makes no change to the Menu trigger surface. Where the surface is not distinguishable from a dark page behind it, the matter is kept as a backlog item for later Product Manager review. |
+| SH-D29 | After a reload at an already-scrolled position, a first painted frame in the HERO default before the script runs is accepted as a known limitation. |
+| SH-D30 | On a direct navigation to an anchor in a fresh document, a first painted frame in HERO followed by CONTENT is covered by SH-D21. |
+| SH-D31 | The case "Bottom Navigation jump to `#inicio`" of section 12 does not apply: no Bottom Navigation link points to `#inicio`, and the Bottom Navigation stays unchanged (SH-D10). |
 
 ## 15. Implementation allow-list and staging (authorized by PD-39)
 
