@@ -69,4 +69,49 @@ UNDEFINED
 
 ## Current Bugs
 
-NONE
+### BUG-001
+
+ID:
+BUG-001
+
+Status:
+OPEN
+
+Severity:
+HIGH (reason: a variable whose name denotes a deploy-capable Cloudflare credential is non-empty in the agent process environment, which G-04 of AGENTS.md forbids; the capability was not tested and no Cloudflare call was made)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 1 (M03-05-01)
+
+Summary:
+The environment of the agent process holds the variable CLOUDFLARE_API_TOKEN, non-empty.
+
+Expected Behavior:
+No deploy-capable Cloudflare credential in the agent process environment (AGENTS.md, G-04; docs/SECRETS-POLICY.md).
+
+Actual Behavior:
+The variable exists and is non-empty. Only its name and its non-empty status were recorded; its value was not read or printed, and it was not tested.
+
+Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, section 5, SEC-02 (environment names, non-empty status only).
+
+Related Test IDs:
+SEC-02
+
+Required Action:
+Product Manager decision on removing the variable from the agent environment. No change was made in this repository.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test SEC-02. Reviewer (Codex) pending.
+
+Verification Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02.
+
+Closed Date:
+UNDEFINED

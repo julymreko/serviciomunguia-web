@@ -937,3 +937,179 @@ docs/tracking/FINDINGS.md
 
 Closed Date:
 2026-10-06
+
+### FIND-019
+
+ID:
+FIND-019
+
+Status:
+OPEN
+
+Severity:
+LOW (reason: the links without target do not hide content and the decision to keep them is recorded (PD-41))
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-04 — OpenCode Implementation (known target gap, PD-41)
+
+Finding:
+Five in-page links have no target element in the built page: #servicios, #cobertura, #marcas and #contacto (Menu overlay) and #servicios, #cobertura and #agendar-diagnostico (Bottom Navigation; #agendar-diagnostico also in the process call to action). This is the known finding D-1 of PD-41, kept as a backlog item. Recorded as FAIL of SEO-07, marked known, PD-41; not a new defect.
+
+Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEO-07; docs/phases/phase-03/M03-04-opencode-implementation.md, PD-41 (line 215).
+
+Impact:
+Those links change the hash and the page does not move; the content is unaffected.
+
+Related Test IDs:
+SEO-07
+
+Required Action:
+Product Manager decision on the backlog item (PD-41). No action in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test SEO-07.
+
+Verification Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEO-07.
+
+Closed Date:
+UNDEFINED
+
+### FIND-020
+
+ID:
+FIND-020
+
+Status:
+ACTION_REQUIRED
+
+Severity:
+MEDIUM (reason: a credential-shaped variable is non-empty in the agent environment; its purpose and capability were not tested)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 1 (M03-05-01)
+
+Finding:
+The environment of the agent process holds the variable CLAUDE_CODE_MESSAGING_TOKEN, non-empty. Its name suggests a live credential; no repository document states its purpose. Reported as a discrepancy under G-04; not tested.
+
+Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02 (names and non-empty status only).
+
+Impact:
+If this is a live credential it is outside the G-04 isolation design; its scope is unknown.
+
+Related Test IDs:
+SEC-02
+
+Required Action:
+Product Manager to confirm whether the variable belongs in the agent environment under G-04, and to remove it if not. No change in this repository.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test SEC-02.
+
+Verification Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02.
+
+Closed Date:
+UNDEFINED
+
+### FIND-021
+
+ID:
+FIND-021
+
+Status:
+ACTION_REQUIRED
+
+Severity:
+LOW (reason: a static text file of no page use; it affects publication only)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 1 (M03-05-01)
+
+Finding:
+The tracked file src/assets/pipeline-proof.txt (added in commit 696aac3, before the M03-04 range) is published as assets/pipeline-proof.txt in the output. No page, script or stylesheet references it, and no M03-04 allow-list names it.
+
+Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, BLD-04 and BLD-09; git log --follow -- src/assets/pipeline-proof.txt.
+
+Impact:
+A pipeline test file is publicly reachable at the site root path /assets/pipeline-proof.txt.
+
+Related Test IDs:
+BLD-04, BLD-09
+
+Required Action:
+Product Manager decision whether to remove the file from src/assets in a separate task. Not changed here.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), tests BLD-04 and BLD-09.
+
+Verification Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, BLD-04 and BLD-09.
+
+Closed Date:
+UNDEFINED
+
+### FIND-022
+
+ID:
+FIND-022
+
+Status:
+OPEN
+
+Severity:
+MEDIUM (reason: npm reports high advisories only in development packages; none is in the production audit and the static output does not include them, but developer machines run them)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 1 (M03-05-01)
+
+Finding:
+npm audit reports 7 high advisories, all in development dependencies (wrangler, miniflare, sharp, undici, js-yaml, markdown-it, brace-expansion). npm audit --omit=dev reports 0. No threshold is approved; the severities are npm's own.
+
+Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-07; npm audit output recorded in the scratchpad.
+
+Impact:
+Development tooling exposure; no production exposure found by this audit.
+
+Related Test IDs:
+SEC-07
+
+Required Action:
+Triage in a separate task. No npm audit fix was run in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test SEC-07.
+
+Verification Evidence:
+docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-07.
+
+Closed Date:
+UNDEFINED
