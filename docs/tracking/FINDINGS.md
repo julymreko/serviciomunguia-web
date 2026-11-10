@@ -1032,7 +1032,7 @@ ID:
 FIND-021
 
 Status:
-ACTION_REQUIRED
+CLOSED
 
 Severity:
 LOW (reason: a static text file of no page use; it affects publication only)
@@ -1059,7 +1059,7 @@ Required Action:
 Product Manager decision whether to remove the file from src/assets in a separate task. Not changed here.
 
 Resolution:
-UNDEFINED
+PM decision (2026-11-09): keep src/assets/pipeline-proof.txt published; accepted as-is, no risk. Removal is deferred to a separate cleanup task in the backlog (item 55).
 
 Verified By:
 Claude Code (executor), tests BLD-04 and BLD-09.
@@ -1068,7 +1068,7 @@ Verification Evidence:
 docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, BLD-04 and BLD-09.
 
 Closed Date:
-UNDEFINED
+2026-11-09
 
 ### FIND-022
 
