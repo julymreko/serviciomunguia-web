@@ -56,6 +56,8 @@ Blob IDs of the files under test (`git hash-object`), checked before the work: a
 
 Counts: 26 tests. PASS 24 (SEC-07 counted as PASS: the command ran and its output is recorded), FAIL 2 (SEO-07 known, PD-41; SEC-02), BLOCKED 0, NOT RUN 0.
 
+CLARIFYING ANNOTATION (2026-11-09): the SEC-02 FAIL stays as recorded for this execution, but its cause was the test criterion, not the environment. `CLOUDFLARE_API_TOKEN` holds the G-04 sentinel (BUG-001, CLOSED as a false positive) and `CLAUDE_CODE_MESSAGING_TOKEN` is set by Claude Code itself (FIND-020, CLOSED). FIND-021 was closed as accepted (commit `df5649f`).
+
 ## 3. Build
 
 ### BLD-01 Runtime versions

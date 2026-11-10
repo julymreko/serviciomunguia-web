@@ -75,7 +75,7 @@ ID:
 BUG-001
 
 Status:
-OPEN
+CLOSED
 
 Severity:
 HIGH (reason: a variable whose name denotes a deploy-capable Cloudflare credential is non-empty in the agent process environment, which G-04 of AGENTS.md forbids; the capability was not tested and no Cloudflare call was made)
@@ -105,7 +105,7 @@ Required Action:
 Product Manager decision on removing the variable from the agent environment. No change was made in this repository.
 
 Resolution:
-UNDEFINED
+False positive of SEC-02 (2026-11-09). The value of CLOUDFLARE_API_TOKEN in the agent environment is the non-credential sentinel g04-agent-no-deploy, defined on purpose by the G-04 isolation (Decision GOV-01-G04-005). The Product Manager confirmed the exact value in Claude Code with a comparison that printed only SENTINEL. No deploy-capable credential is present. The test checked only non-empty status and did not distinguish the sentinel.
 
 Verified By:
 Claude Code (executor), test SEC-02. Reviewer (Codex) pending.
@@ -114,4 +114,4 @@ Verification Evidence:
 docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02.
 
 Closed Date:
-UNDEFINED
+2026-11-09

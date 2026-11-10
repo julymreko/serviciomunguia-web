@@ -988,7 +988,7 @@ ID:
 FIND-020
 
 Status:
-ACTION_REQUIRED
+CLOSED
 
 Severity:
 MEDIUM (reason: a credential-shaped variable is non-empty in the agent environment; its purpose and capability were not tested)
@@ -1015,7 +1015,7 @@ Required Action:
 Product Manager to confirm whether the variable belongs in the agent environment under G-04, and to remove it if not. No change in this repository.
 
 Resolution:
-UNDEFINED
+CLAUDE_CODE_MESSAGING_TOKEN is exported by Claude Code itself: a per-session token for cross-session messaging (public Claude Code environment variable documentation, code.claude.com/docs/en/env-vars). It is not a Git or Cloudflare credential and does not allow push or deploy. No action.
 
 Verified By:
 Claude Code (executor), test SEC-02.
@@ -1024,7 +1024,7 @@ Verification Evidence:
 docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02.
 
 Closed Date:
-UNDEFINED
+2026-11-09
 
 ### FIND-021
 
