@@ -1113,3 +1113,87 @@ docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-07.
 
 Closed Date:
 UNDEFINED
+
+ID:
+FIND-023
+
+Status:
+ACTION_REQUIRED
+
+Severity:
+MEDIUM (reason: without `menu-overlay.js` no primary-navigation link is reachable and the Menu cannot open; the behaviour without JavaScript is not stated in an approved document)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 2 (M03-05-02)
+
+Finding:
+With `menu-overlay.js` blocked, the Menu trigger does not open the overlay, and none of the five primary-navigation links (`¿Cómo trabajamos?`, `Servicios`, `Cobertura`, `Marcas`, `Contacto`) is visible or reachable at 1440 x 900 and 390 x 844. The Process section and the Smart Header remain usable.
+
+Evidence:
+Test record FUN-14; blocked-script run data (M03-05-02 harness directory).
+
+Impact:
+If the overlay script fails, the primary navigation has no reachable path.
+
+Related Test IDs:
+FUN-14
+
+Required Action:
+Product Manager decision: accept the current no-JavaScript behaviour of the Menu, or specify a fallback. No change was made in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test FUN-14. Reviewer (Codex) pending.
+
+Verification Evidence:
+Test record, FUN-14.
+
+Closed Date:
+UNDEFINED
+
+ID:
+FIND-024
+
+Status:
+ACTION_REQUIRED
+
+Severity:
+LOW (reason: attribute-level difference; no functional failure; the test expectation contradicts an approved document)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 2 (M03-05-02)
+
+Finding:
+The spec expectation of FUN-12 requires the Bottom Navigation WhatsApp link to open in a new tab with `target="_blank"` and `rel="noopener noreferrer"`. The link has neither attribute. The approved documents do not require it: `docs/phases/phase-03/M03-04-opencode-implementation.md` (line 60) says not to modify the Bottom Navigation, and PI-05(c) (`docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md`, line 108; M03-04 line 94) applies the new-tab requirement to the Process section's secondary CTA only.
+
+Evidence:
+Test record FUN-12; `src/_includes/components/mobile-nav.njk` (no target attribute); built `dist/index.html`.
+
+Impact:
+None observed; the link opens in the same tab.
+
+Related Test IDs:
+FUN-12
+
+Required Action:
+Product Manager decision: confirm that the new-tab requirement does not apply to the Bottom Navigation, or approve a change. No change was made in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test FUN-12. Reviewer (Codex) pending.
+
+Verification Evidence:
+Test record, FUN-12.
+
+Closed Date:
+UNDEFINED

@@ -115,3 +115,99 @@ docs/phases/phase-03/tests/M03-05-01-build-seo-security.md, SEC-02.
 
 Closed Date:
 2026-11-09
+
+ID:
+BUG-002
+
+Status:
+OPEN
+
+Severity:
+MEDIUM (reason: the stepper scroll handler keeps running outside its section, contrary to an approved gating rule; no visible failure was observed)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 2 (M03-05-02)
+
+Summary:
+The stepper scroll listener of `src/assets/js/process.js` stays registered and runs while the Process section is outside the viewport.
+
+Expected Behavior:
+Priority B specification `docs/phases/phase-03/M03-04-priority-b-technical-specification.md` section 4.1 step 3: while the section does not intersect the viewport the controller is stopped and its `scroll` listener is removed. Section 4.2: one passive `scroll` listener, attached only while active.
+
+Actual Behavior:
+At scroll 0 at 390 x 844 (section top at 844 px, outside the viewport) the window has one `scroll` listener registered by `process.js` (`handleStepperScroll`), and a synthetic `scroll` event there makes that handler request an animation frame. The count of window `scroll` listeners is 1 before, inside and after the section at all four set-L classes (FUN-03).
+
+Evidence:
+Test record `docs/phases/phase-03/tests/M03-05-02-functional-responsive-accessibility.md`, FUN-03; raw data and probe outputs in the M03-05-02 harness directory (outside the repository).
+
+Impact:
+Per-scroll work outside the Process section, against the approved gating. The Priority B measurements assume the listener is absent outside the section.
+
+Related Test IDs:
+FUN-03
+
+Required Action:
+Fix in `process.js` under a separate authorized task. No change was made under `src/` in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test FUN-03. Reviewer (Codex) pending.
+
+Verification Evidence:
+Test record, FUN-03.
+
+Closed Date:
+UNDEFINED
+
+ID:
+BUG-003
+
+Status:
+OPEN
+
+Severity:
+MEDIUM (reason: keyboard focus of two interactive elements is not perceptible on the Desktop Hero; no approved threshold exists)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 2 (M03-05-02)
+
+Summary:
+On the Desktop Hero the default keyboard-focus ring of the logo and of the Menu trigger is not visible against the hero photograph.
+
+Expected Behavior:
+Spec section 2.3 ACC-05 of `.coordination/tasks/M03-05-02/spec.md`: every interactive element has a visible focus indicator.
+
+Actual Behavior:
+At 1440 x 900 (HERO, scroll 0) the focus ring of the logo and of the trigger is `1px auto rgb(16, 16, 16)`. The sampled contrast of that ring against the surrounding photograph is 1.01:1 (median 1.01:1; 2781 logo pixels, 1017 trigger pixels). At 390 x 844 the same ring has a median contrast of 5.92:1 (logo) and 6.99:1 (trigger). With the Menu open, the trigger ring is present (`rgb(16, 16, 16)`).
+
+Evidence:
+Test record ACC-05; raw data and probe output in the M03-05-02 harness directory (outside the repository).
+
+Impact:
+Keyboard users on Desktop cannot see the focus position on the logo and on the Menu trigger in the Hero.
+
+Related Test IDs:
+ACC-05
+
+Required Action:
+Product Manager decision (class B) on the Desktop Hero focus treatment, since the approved Priority C text keeps the baseline focus treatment. No change was made in this task. Whether the Phase 02 baseline showed the same was not tested.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test ACC-05. Reviewer (Codex) pending.
+
+Verification Evidence:
+Test record, ACC-05.
+
+Closed Date:
+UNDEFINED
