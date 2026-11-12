@@ -26,6 +26,7 @@ Smart Header and navigation follow-ups (PD-41, PD-42):
 
 - Item 54 — FIND-022: review the 7 high `npm audit` advisories in development dependencies and decide whether to update any dependency (changes `package.json` and the lockfile; ADR-006 pins Eleventy 3.1.6).
 - Item 55 — remove `src/assets/pipeline-proof.txt` so it stops being published (own task, single allowed path; `/assets/pipeline-proof.txt` will return 404 after the next deploy).
+- Remove the Worker `serviciomunguia-web` that was created by mistake in the Cloudflare account `prooagency` on 2026-11-12 (PD-54); it has no route and serves nothing. Manual action in the Cloudflare dashboard by the Product Manager.
 - Item 10 — examine and configure `.remember/` and `.playwright-mcp/` (deferred, no date).
 - Before the production release: decide the indexing, canonical, robots and sitemap policy (ADR-003 leaves it open) and make sure the staging `noindex` of M03-07 is not carried to production.
 - Footer: PM decision recorded in `docs/PROJECT-STATE.md` — implemented as the final global component after the main page is completed; phase UNDEFINED.
