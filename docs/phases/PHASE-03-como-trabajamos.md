@@ -340,7 +340,7 @@ M03-03 closed.
 ### M03-05 - Claude Code Independent Testing
 
 Status:
-IN PROGRESS
+COMPLETED
 
 Purpose:
 Independently verify OpenCode's implementation at the exact commit or commit range.
