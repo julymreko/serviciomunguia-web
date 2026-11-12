@@ -1197,3 +1197,51 @@ Test record, FUN-12.
 
 Closed Date:
 UNDEFINED
+
+ID:
+FIND-025
+
+Status:
+ACTION_REQUIRED
+
+Severity:
+LOW (reason: the Hero carousel keeps its approved autoplay and pause control in both builds; no approved document states a reduced-motion rule for the Hero autoplay)
+
+Phase:
+03 — Como trabajamos
+
+Milestone:
+M03-05 — Independent testing, task 3 (M03-05-03)
+
+Finding:
+With `prefers-reduced-motion: reduce` the Hero carousel keeps advancing slides by autoplay. The behaviour is identical in CURRENT and PRE-M03-04, so it is not a regression of M03-04.
+
+Expected Behavior:
+No approved document of Phase 03 states a reduced-motion rule for the Hero autoplay. The reduced-motion rules that exist (PD-2, PD-5 and Priority B section 8) apply to the process stepper only.
+
+Actual Behavior:
+At 1440 x 900 with reduced motion emulated, two slide changes occurred in 12 s in CURRENT and in PRE-M03-04 (`results-reg08-10.json`, REG-10). The pause control `.sm-hero__autoplay-toggle` is present in both builds and works.
+
+Evidence:
+Test record REG-10; raw data in the M03-05-03 harness directory (outside the repository).
+
+Impact:
+Users who request reduced motion still see automatic slide movement in the Hero until they press the pause control.
+
+Related Test IDs:
+REG-10
+
+Required Action:
+Product Manager decision (class B): whether the Hero autoplay must stop or be paused when reduced motion is requested. No change was made in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test REG-10. Reviewer (Codex) pending.
+
+Verification Evidence:
+Test record, REG-10.
+
+Closed Date:
+UNDEFINED
