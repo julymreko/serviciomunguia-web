@@ -20,6 +20,10 @@ docs/phases/PHASE-03-como-trabajamos.md
 Milestone record:
 docs/phases/phase-03/M03-03-pm-approval-scope-freeze.md
 
+## Superseded Status (2026-11-11)
+
+This handoff is a historical snapshot of the state at the end of M03-03 and is preserved as originally issued (Historical Records Rule; the Product Manager decided on 2026-10-29 to keep it as a historical record). Its status lines ("READY", "scope freeze PENDING", "IMPLEMENTATION NOT AUTHORIZED", "No milestone is COMPLETED") no longer describe the project. Current state: Phase 03 is COMPLETED after the M03-06 audit PASS (PD-51); the audit result is `docs/audits/PHASE-03-AUDIT-RESULT-2026-11-12-R01.md`; phase-state authority is `docs/phases/PHASE-03-como-trabajamos.md` and `docs/PROJECT-STATE.md`. Deployment to Cloudflare remains NOT AUTHORIZED.
+
 ## Required Reading
 
 - docs/00-START-HERE.md

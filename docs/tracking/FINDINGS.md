@@ -1100,7 +1100,7 @@ Related Test IDs:
 SEC-07
 
 Required Action:
-Triage in a separate task. No npm audit fix was run in this task.
+Triage in a separate task. No npm audit fix was run in this task. Product Manager decision 2026-11-11 (PD-51): accepted as non-blocking for the closure of Phase 03 and for deployment, after the M03-06 audit PASS; the finding stays OPEN and the review of the development dependencies is in the backlog (item 54 of the Product Manager's tracking sheet).
 
 Resolution:
 UNDEFINED
