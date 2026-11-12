@@ -1118,7 +1118,7 @@ ID:
 FIND-023
 
 Status:
-ACTION_REQUIRED
+OPEN
 
 Severity:
 MEDIUM (reason: without `menu-overlay.js` no primary-navigation link is reachable and the Menu cannot open; the behaviour without JavaScript is not stated in an approved document)
@@ -1142,13 +1142,13 @@ Related Test IDs:
 FUN-14
 
 Required Action:
-Product Manager decision: accept the current no-JavaScript behaviour of the Menu, or specify a fallback. No change was made in this task.
+Product Manager decision: accept the current no-JavaScript behaviour of the Menu, or specify a fallback. No change was made in this task. Product Manager decision 2026-11-11 (PD-48): moved to the backlog (item 61 of the Product Manager's tracking sheet); the decision between accepting the behaviour and specifying a fallback is taken after the production release.
 
 Resolution:
 UNDEFINED
 
 Verified By:
-Claude Code (executor), test FUN-14. Reviewer (Codex) pending.
+Claude Code (executor), test FUN-14. Reviewer (Codex): entry and record reviewed (M03-05-02 review-04, CONFORME); FUN-14 not independently re-run.
 
 Verification Evidence:
 Test record, FUN-14.
@@ -1160,7 +1160,7 @@ ID:
 FIND-024
 
 Status:
-ACTION_REQUIRED
+OPEN
 
 Severity:
 LOW (reason: attribute-level difference; no functional failure; the test expectation contradicts an approved document)
@@ -1184,13 +1184,13 @@ Related Test IDs:
 FUN-12
 
 Required Action:
-Product Manager decision: confirm that the new-tab requirement does not apply to the Bottom Navigation, or approve a change. No change was made in this task.
+Product Manager decision: confirm that the new-tab requirement does not apply to the Bottom Navigation, or approve a change. No change was made in this task. Product Manager decision 2026-11-11 (PD-48): moved to the backlog (item 62 of the Product Manager's tracking sheet); the confirmation is given after the production release.
 
 Resolution:
 UNDEFINED
 
 Verified By:
-Claude Code (executor), test FUN-12. Reviewer (Codex) pending.
+Claude Code (executor), test FUN-12. Reviewer (Codex): the contradiction was confirmed independently (M03-05-02 review-03, CONFORME in review-04).
 
 Verification Evidence:
 Test record, FUN-12.
@@ -1202,7 +1202,7 @@ ID:
 FIND-025
 
 Status:
-ACTION_REQUIRED
+OPEN
 
 Severity:
 LOW (reason: the Hero carousel keeps its approved autoplay and pause control in both builds; no approved document states a reduced-motion rule for the Hero autoplay)
@@ -1232,13 +1232,13 @@ Related Test IDs:
 REG-10
 
 Required Action:
-Product Manager decision (class B): whether the Hero autoplay must stop or be paused when reduced motion is requested. No change was made in this task.
+Product Manager decision (class B): whether the Hero autoplay must stop or be paused when reduced motion is requested. No change was made in this task. Product Manager decision 2026-11-11 (PD-48): moved to the backlog (item 63 of the Product Manager's tracking sheet); the decision is taken after the production release.
 
 Resolution:
 UNDEFINED
 
 Verified By:
-Claude Code (executor), test REG-10. Reviewer (Codex) pending.
+Claude Code (executor), test REG-10. Reviewer (Codex): entry and record reviewed (M03-05-03 review-06, CONFORME); REG-10 not among the independent reruns.
 
 Verification Evidence:
 Test record, REG-10.

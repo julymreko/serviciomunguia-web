@@ -150,13 +150,13 @@ Related Test IDs:
 FUN-03
 
 Required Action:
-Fix in `process.js` under a separate authorized task. No change was made under `src/` in this task.
+Fix in `process.js` under a separate authorized task. No change was made under `src/` in this task. Product Manager decision 2026-11-11 (PD-48): accepted for the production release and moved to the backlog (item 60 of the Product Manager's tracking sheet); to be fixed after the production release, under its own task, allowed paths and authorization.
 
 Resolution:
 UNDEFINED
 
 Verified By:
-Claude Code (executor), test FUN-03. Reviewer (Codex) pending.
+Claude Code (executor), test FUN-03. Reviewer (Codex): confirmed independently (M03-05-02 review-02 and review-04, CONFORME).
 
 Verification Evidence:
 Test record, FUN-03.
@@ -198,13 +198,13 @@ Related Test IDs:
 ACC-05
 
 Required Action:
-Product Manager decision (class B) on the Desktop Hero focus treatment, since the approved Priority C text keeps the baseline focus treatment. No change was made in this task. Whether the Phase 02 baseline showed the same was not tested.
+Product Manager decision (class B) on the Desktop Hero focus treatment, since the approved Priority C text keeps the baseline focus treatment. No change was made in this task. Whether the Phase 02 baseline showed the same was not tested. Product Manager decision 2026-11-11 (PD-48): accepted for the production release and moved to the backlog (item 59 of the Product Manager's tracking sheet); to be fixed after the production release, under its own task, allowed paths and authorization.
 
 Resolution:
 UNDEFINED
 
 Verified By:
-Claude Code (executor), test ACC-05. Reviewer (Codex) pending.
+Claude Code (executor), test ACC-05. Reviewer (Codex): confirmed independently (M03-05-02 review-04, CONFORME).
 
 Verification Evidence:
 Test record, ACC-05.
