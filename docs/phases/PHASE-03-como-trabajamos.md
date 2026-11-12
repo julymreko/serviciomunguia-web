@@ -481,6 +481,6 @@ OpenCode instructions must state, at minimum:
 
 ## Closure
 
-Phase 03 is closed (PD-51, 2026-11-11): M03-06 returned PASS (`docs/audits/PHASE-03-AUDIT-RESULT-2026-11-12-R01.md`) and the repository state was synchronized (phase specification, PROJECT-STATE, handoff, audit references, backlog). Deployment to Cloudflare remains NOT AUTHORIZED and needs its own explicit Product Manager authorization. Post-closure addition (PD-52, 2026-11-11): task M03-07 (robots `noindex` meta tag in `src/_includes/base.njk` for the staging hostname) and a delta audit (result R02) are authorized before any deployment; the phase status stays COMPLETED.
+Phase 03 is closed (PD-51, 2026-11-11): M03-06 returned PASS (`docs/audits/PHASE-03-AUDIT-RESULT-2026-11-12-R01.md`) and the repository state was synchronized (phase specification, PROJECT-STATE, handoff, audit references, backlog). Deployment to Cloudflare remains NOT AUTHORIZED and needs its own explicit Product Manager authorization. Post-closure addition (PD-52, 2026-11-11): task M03-07 (robots `noindex` meta tag in `src/_includes/base.njk` for the staging hostname) was completed at commit `ffd5968` and its delta audit (result `docs/audits/PHASE-03-AUDIT-RESULT-2026-11-12-R02.md`) returned PASS (PD-53); the phase status stays COMPLETED.
 
 Previous text, preserved as a dated record: "Phase 03 is not closed. Closure conditions are defined above; `Status` under Identification is changed to COMPLETED only after M03-06 PASS and a synchronized-state verification."

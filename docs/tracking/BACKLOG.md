@@ -1,10 +1,10 @@
 # BACKLOG
 
-All items below are NOT AUTHORIZED. Item numbers refer to the Product Manager's tracking sheet. Sections follow the Product Manager's decision of 2026-11-11 (PD-48, PD-51): fixes come after the production release.
+All items below are NOT AUTHORIZED unless an item states an authorization. Item numbers refer to the Product Manager's tracking sheet. Sections follow the Product Manager's decision of 2026-11-11 (PD-48, PD-51): fixes come after the production release.
 
 ## NOW
 
-- M03-07 — add the robots `noindex` meta tag to `src/_includes/base.njk` (staging only), then a delta audit (R02). Authorized by PD-52; deployment to `new.serviciomunguia.com` follows only with its own explicit authorization.
+- UNDEFINED
 
 ## NEXT
 
