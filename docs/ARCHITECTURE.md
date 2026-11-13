@@ -103,16 +103,17 @@ The frontend must be organized into maintainable components or partials.
 
 A change to a specific section must be locatable without searching through a monolithic HTML document.
 
-Approved physical OnePage section order (PM decision O-04, M03-03):
+Approved physical OnePage section order (PM decision PD-55, 2026-11-13, which amends decision O-04 of M03-03):
 
 1. Hero
 2. Cómo trabajamos
 3. Servicios
-4. Marcas
-5. Zonas de cobertura
-6. Testimonios
-7. Contacto
-8. Footer
+4. Zonas de cobertura
+5. Marcas
+6. Contacto
+7. Footer
+
+Testimonios is not part of the approved order. Previous order of O-04 (M03-03), kept as a dated record: Hero, Cómo trabajamos, Servicios, Marcas, Zonas de cobertura, Testimonios, Contacto, Footer.
 
 The Header is a global shell component. Legal pages are separate pages linked from the Footer. Physical section order is distinct from navigation-menu order. This decision does not modify the approved Menu, Bottom Navigation, or anchors.
 
