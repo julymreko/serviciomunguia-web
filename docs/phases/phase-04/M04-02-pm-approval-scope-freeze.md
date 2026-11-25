@@ -128,3 +128,13 @@ The Product Manager reviewed the independent test record `docs/phases/phase-04/t
 - **Reduced motion.** The 0.25 s background-color transition of the CTA under `prefers-reduced-motion` is not movement and stays as in the reference.
 
 Not authorized by this decision: M04-05, commit of the M04-04 record, push and deployment.
+
+### PD-59 - Phase 04 closure authorized (PM APPROVED - 2026-11-25)
+
+The formal audit M04-05 returned PASS on 2026-11-25 (`docs/audits/PHASE-04-AUDIT-RESULT-2026-11-25-R01.md`, recorded in commit `9dd20b7`; audited commit `d8c62a6`, synchronized with `origin/main`; no blocking issue). The Product Manager declares Phase 04 - Servicios COMPLETED and authorizes the closure documentation: the status updates of `docs/phases/PHASE-04-servicios.md`, `docs/PROJECT-STATE.md` and `docs/tracking/BACKLOG.md` (including the update of item 49: the `#servicios` target now exists), the Phase 04 handoff `docs/handoffs/PHASE-04-M04-HANDOFF.md`, and the record of this closure in the phase specification.
+
+Accepted items carried forward (PD-58): FIND-026 (INFO), FIND-027 (LOW, ACC-03 exception) and backlog item 67 (CTA focus ring contrast). Open for later phases: the `#contacto`, `#cobertura`, `#marcas` and `#agendar-diagnostico` targets (item 49), the WhatsApp prefilled message and its automation (Contacto phase), the production indexing, canonical, robots and sitemap policy.
+
+The next section in the approved order (PD-55) is Zonas de cobertura; its phase is not defined or authorized by this decision.
+
+Not authorized by this decision: deployment of the Phase 04 state to `new.serviciomunguia.com` or to production (each needs its own explicit Product Manager authorization; the production release stays blocked until all sections exist, PD-55), and the definition or start of Phase 05.
