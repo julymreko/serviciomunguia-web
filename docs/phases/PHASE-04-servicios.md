@@ -1,6 +1,6 @@
 # PHASE 04 - SERVICIOS
 
-DRAFT FOR PRODUCT MANAGER REVIEW. This document is a proposal prepared by Claude (specification and verification role). It is not committed, creates no authorization, and changes no file under `src/`. It becomes effective only after the Product Manager records its entry in the repository (PD-55 requires the PM's approval of the phase entry).
+Phase 04 is COMPLETED (PD-59); the audit result is `docs/audits/PHASE-04-AUDIT-RESULT-2026-11-25-R01.md` (R01 PASS). The milestones below record what was done.
 
 ## Identification
 
@@ -8,7 +8,7 @@ Phase:
 04 - SERVICIOS (OnePage services section)
 
 Status:
-NOT AUTHORIZED (proposed)
+COMPLETED
 
 Owner:
 Julián Cely
@@ -50,7 +50,8 @@ PD-55 requires each phase to follow Phase 03's structure: extraction, PM approva
 ### M04-01 - "Servicios" Reference Extraction
 
 Status:
-DRAFT COMPLETE (not committed)
+COMPLETED
+Closure: extraction committed in `3019910` (PD-56).
 
 Output:
 `docs/reference-extraction/SERVICIOS-EXTRACTION.md`. Result: READY FOR RECONSTRUCTION. Five viewports measured (1920 × 945, 1024 × 1366, 820 × 1180, 844 × 414, 390 × 844); 62 section CSS rules read; three images, three card SVGs and thirteen Ionicons identified.
@@ -62,7 +63,8 @@ Closure: PM commits the extraction file.
 ### M04-02 - PM Approval & Scope Freeze
 
 Status:
-PENDING
+COMPLETED
+Closure: PD-56 scope freeze (`3019910`), image transfer (`0146c68`), PD-57 M04-03 authorization (`d5b3850`).
 
 Purpose:
 Resolve the open decisions below, record the frozen requirement set and the file allow-list. No `src/` change before this closes.
@@ -93,7 +95,8 @@ Not touched: `base.njk` (no new script, the staging `noindex` stays), `process.n
 ### M04-03 - OpenCode Implementation
 
 Status:
-NOT AUTHORIZED (needs its own explicit PM authorization after M04-02 closes)
+COMPLETED
+Closure: implementation committed in `dfc4f96` (PD-57; four fix rounds: base font, image vertical alignment, opaque base under the tint).
 
 Purpose:
 Implement only the frozen scope as one task: static section with three cards, trust bar, images and responsive layout at the five viewports.
@@ -110,14 +113,16 @@ STOP conditions: the allow-list is not enough; an existing selector would have t
 ### M04-04 - Claude Code Independent Testing
 
 Status:
-NOT AUTHORIZED
+COMPLETED
+Closure: test record committed in `b558b4b` (PD-58; 24 tests: PASS 22, FAIL 1 (ACC-03, accepted exception), NOT APPLICABLE 1).
 
 Scope: exact OpenCode commit; the nine areas of `docs/TESTING-PROTOCOL.md` as applicable (Build, Functional, Responsive, SEO, Accessibility, Performance, Security, Integrations, Regression), including reduced motion and no-JavaScript rendering. Regression covers Hero, process stepper, Smart Header, Menu overlay and Bottom Navigation. Outputs: test records PASS / FAIL / BLOCKED / NOT RUN with evidence; BUGS.md and FINDINGS.md entries for verified defects.
 
 ### M04-05 - Formal Audit & Phase Closure Gate
 
 Status:
-NOT AUTHORIZED
+COMPLETED
+Closure: audit request `d8c62a6`; result R01 PASS (`9dd20b7`, `docs/audits/PHASE-04-AUDIT-RESULT-2026-11-25-R01.md`); PD-59 (`0ba7ff9`).
 
 Scope: audit request, no-write audit under `docs/PRE-DEPLOYMENT-AUDIT.md`, immutable result `docs/audits/PHASE-04-AUDIT-RESULT-YYYY-MM-DD-R01.md`. PASS or FAIL. Closure documentation after PASS: phase specification, `docs/PROJECT-STATE.md`, handoff, backlog.
 
@@ -138,3 +143,5 @@ Execution stops when: the reference cannot be inspected; the repository is dirty
 5. Responsive and accessibility checks pass at the five viewports.
 6. M04-05 returns PASS; the repository is synchronized (HEAD = origin/main, clean working tree).
 7. `PROJECT-STATE.md` and `BACKLOG.md` are updated at closure, including item 49 for the ids that now exist.
+
+Closure (2026-11-25, PD-59): criteria 1 to 7 verified by audit R01 and by this closure documentation.

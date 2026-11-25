@@ -8,7 +8,10 @@ All items below are NOT AUTHORIZED unless an item states an authorization. Item 
 
 ## NEXT
 
-Sections to build before the production release, one per phase, in the approved order (PD-55): Servicios, Zonas de cobertura, Marcas, Contacto, then the Footer. The first phase (Servicios) is not defined or authorized yet; it needs the Product Manager's approval of its entry.
+Sections to build before the production release, one per phase, in the approved order (PD-55): Servicios (COMPLETED, Phase 04), Zonas de cobertura, Marcas, Contacto, then the Footer. The remaining sections are not defined or authorized yet.
+
+- Item 68 — decide the deployment of the Phase 04 state to `new.serviciomunguia.com` (needs explicit Product Manager authorization, PD-59).
+- Item 69 — define the Zonas de cobertura phase (PD-55 order).
 
 After the production release (PD-48):
 
@@ -20,7 +23,7 @@ After the production release (PD-48):
 
 Smart Header and navigation follow-ups (PD-41, PD-42):
 
-- Item 49 — add the target ids when the sections #servicios, #cobertura, #marcas, #contacto and #agendar-diagnostico are built, or change the links (FIND-019).
+- Item 49 — add the target ids when the sections are built, or change the links: `#servicios` now exists (Phase 04); `#cobertura`, `#marcas`, `#contacto` and `#agendar-diagnostico` are still missing (FIND-019).
 - Item 50 — decide whether the Menu trigger circle needs a visible border, outline or shadow over dark backgrounds (measured contrast 1.0 to 1.13:1).
 - Item 51 — decide whether to avoid the Hero-state first frame on reload when the page is already scrolled (accepted limitation today).
 - Item 67 — decide whether the CTA focus ring of the Services cards (measured 1.85:1 against the white card, copied from the reference) must reach 3:1 for focus indicators before the production release (PD-58, M04-04 ACC-02).
