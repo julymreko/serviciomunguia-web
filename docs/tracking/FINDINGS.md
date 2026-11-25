@@ -1245,3 +1245,93 @@ Test record, REG-10.
 
 Closed Date:
 UNDEFINED
+
+ID:
+FIND-026
+
+Status:
+OPEN
+
+Severity:
+INFO (reason: the layout rules, counts and sizes equal the extraction; only measured column widths and card heights at three viewports differ, by an amount consistent with the extraction session having a 15 px narrower container)
+
+Phase:
+04 — Servicios
+
+Milestone:
+M04-04 — Independent testing of the Services section
+
+Finding:
+The extraction (SERVICIOS-EXTRACTION.md section 5) records grid columns of 293 px at 1024 x 1366, 357.6 px at 820 x 1180 and 368.6 px at 844 x 414, and card heights of 773 / 795.8 at 820. The implementation (commit dfc4f96) measures 298.03, 365.20 and 376.25 px, and card heights 746.14 / 746.14 / 768.84 at 820. At 1920 and 390 the values agree (397.33 vs 397.3; 350 vs 350.4). Recomputing the implementation layout with a content width 15 px narrower reproduces the extraction values (1024: 293.03; 820: 357.7; 844: 368.7), including the 27 px extra description line at 820. A 15 px vertical scrollbar in the extraction session would explain all three, but the extraction does not state the scrollbar condition and the reference page was not reachable in M04-04 (no network beyond localhost), so the cause is not verified. The 0.4 px difference at 390 is unexplained.
+
+Evidence:
+Test record `docs/phases/phase-04/tests/M04-04-testing.md`, RSP-01; raw data `res1-new.json` in the M04-04 harness directory (outside the repository).
+
+Impact:
+None on the implementation if the cause is the scrollbar of the extraction session. If the reference renders narrower columns at those viewports, the implementation would differ from it by one description line at 820 px.
+
+Related Test IDs:
+RSP-01
+
+Required Action:
+Product Manager or reviewer decision (class B): confirm whether the extraction values at 1024, 820 and 844 were taken with a scrollbar, or re-measure the reference at those viewports. No change was made in this task.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test RSP-01.
+
+Verification Evidence:
+Test record, RSP-01.
+
+Closed Date:
+UNDEFINED
+
+ID:
+FIND-027
+
+Status:
+OPEN
+
+Severity:
+LOW (reason: two links have the same accessible name and the name includes the decorative arrow; the text and the arrow are approved frozen content)
+
+Phase:
+04 — Servicios
+
+Milestone:
+M04-04 — Independent testing of the Services section
+
+Finding:
+In the accessibility tree of the Services section the first two CTAs are both `link "Solicitar servicio →"` (cards: Diagnóstico y reparación de lavadoras, Diagnóstico y reparación de refrigeradores). The third is `link "Solicitar diagnóstico →"`. The accessible name includes the arrow glyph, which is generated content (`.sm-service-button::after { content: "→" }`) and is exposed to assistive technology. The labels are frozen by the extraction (section 3, and section 11 "Solicitar servicio x2") and the arrow reproduces the reference design (PD-56, D-7), so this is not a defect of the implementation against the approved specification.
+
+Expected Behavior:
+Spec M04-04 ACC-03: the section exposes no duplicate or empty accessible names.
+
+Actual Behavior:
+Two links share the role `link` and the name `Solicitar servicio →`; no empty names; the 19 inline SVG are hidden from the tree as required.
+
+Evidence:
+Test record `docs/phases/phase-04/tests/M04-04-testing.md`, ACC-03; accessibility tree in `res3.json` (`acc03tree`) in the M04-04 harness directory (outside the repository).
+
+Impact:
+A screen-reader user listing the links of the page hears two identical entries and the arrow glyph; the context (card heading) distinguishes them only by reading order.
+
+Related Test IDs:
+ACC-03
+
+Required Action:
+Product Manager decision (class B): keep the approved identical labels and generated arrow, or differentiate the accessible names (for example with a visually hidden suffix or `aria-label`) and hide the generated arrow from the name. No change was made in this task; the test is recorded FAIL and an exception, if any, must be recorded by the Product Manager.
+
+Resolution:
+UNDEFINED
+
+Verified By:
+Claude Code (executor), test ACC-03.
+
+Verification Evidence:
+Test record, ACC-03.
+
+Closed Date:
+UNDEFINED

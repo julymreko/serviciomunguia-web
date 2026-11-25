@@ -117,3 +117,14 @@ Clarifications that the reference evidence required while the specification was 
 - **A-4 Scroll margin.** `scroll-margin-top` of the section copies the two values of the process section (D-4).
 
 **Not authorized by this decision:** M04-04, M04-05, commit, push and deployment. Commit of the implementation is a separate Product Manager act after the review is CONFORME and the visual validation of the five viewports (1920 × 945, 1024 × 1366, 820 × 1180, 844 × 414, 390 × 844) is given.
+
+### PD-58 - M04-04 results accepted; ACC-03 exception; focus ring to backlog (PM APPROVED - 2026-11-25)
+
+The Product Manager reviewed the independent test record `docs/phases/phase-04/tests/M04-04-testing.md` (commit under test `dfc4f96`; 24 tests: PASS 22, FAIL 1, BLOCKED 0, NOT RUN 0, NOT APPLICABLE 1) and decided:
+
+- **ACC-03 exception (FIND-027).** The FAIL of ACC-03 is accepted as an exception under the Acceptance Rule of `docs/TESTING-PROTOCOL.md`. The two links `Solicitar servicio →` of the lavadoras and refrigeradores cards have the same accessible name and the same destination (`#contacto`); the label is approved frozen content (extraction) and no code changes. No BUG is opened.
+- **Focus ring contrast (observation of ACC-02).** The CTA focus ring copied from the reference measures 1.85:1 against the white card; no threshold is approved in the project. Phase 04 keeps the reference value. The matter is recorded as backlog item 67 for the pre-production review.
+- **FIND-026 (RSP-01).** Accepted as INFO: the width and height differences at 1024, 820 and 844 px equal a 15 px narrower container, consistent with the scrollbar of the extraction session. No action.
+- **Reduced motion.** The 0.25 s background-color transition of the CTA under `prefers-reduced-motion` is not movement and stays as in the reference.
+
+Not authorized by this decision: M04-05, commit of the M04-04 record, push and deployment.

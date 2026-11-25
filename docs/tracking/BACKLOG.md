@@ -23,6 +23,7 @@ Smart Header and navigation follow-ups (PD-41, PD-42):
 - Item 49 — add the target ids when the sections #servicios, #cobertura, #marcas, #contacto and #agendar-diagnostico are built, or change the links (FIND-019).
 - Item 50 — decide whether the Menu trigger circle needs a visible border, outline or shadow over dark backgrounds (measured contrast 1.0 to 1.13:1).
 - Item 51 — decide whether to avoid the Hero-state first frame on reload when the page is already scrolled (accepted limitation today).
+- Item 67 — decide whether the CTA focus ring of the Services cards (measured 1.85:1 against the white card, copied from the reference) must reach 3:1 for focus indicators before the production release (PD-58, M04-04 ACC-02).
 
 ## LATER
 
