@@ -102,3 +102,18 @@ Not touched: `src/_includes/base.njk`, `process.njk`, `mobile-nav.njk`, `menu-ov
 - The WhatsApp prefilled message and its automation: to be decided in the Contacto phase.
 - Non-critical extraction unknowns (extraction section 15, items 5 and 7 to 11 and the Ionicons license) do not block M04-03.
 - Contrast of the white text on `#1a2ad3` and of `#526078` on the tinted background is measured in M04-04.
+
+## Decision Record (continued)
+
+### PD-57 - M04-03 authorized; clarifications of PD-56 (PM APPROVED - 2026-11-24)
+
+The Product Manager authorized OpenCode to implement the Servicios section as specified in `.coordination/tasks/M04-03-SV-01/spec.md` and the contract `contract-r1.md` of the same folder, within the allow-list of PD-56. Executor: OpenCode. Reviewer: Claude Code. The authorization is the matching `.coordination/approvals/M04-03-SV-01/approval.md`, which identifies the contract and its SHA-256. The implementation is one task, not stages (PD-56). The task starts from baseline `0146c687f360ab2cdaa14976b9620e723d008a84` or a descendant whose changes from it are limited to `docs/`.
+
+Clarifications that the reference evidence required while the specification was written (extraction amendment; the committed extraction is not edited, Historical Records Rule):
+
+- **A-1 Icons.** The pill of each card uses two Font Awesome glyphs (`fa-calendar-days` on cards 1 and 2, `fa-calendar-plus` on card 3) in addition to the 13 Ionicons that the extraction lists. D-1 (inline SVG, no font dependency) applies to these three as well, so 16 glyphs are replaced in total. The equivalents are Material Design paths proposed in the specification; the Product Manager validates the visual equivalence in the M04-03 visual validation, and a rejected glyph is replaced in a later round.
+- **A-2 Breakpoints.** The reference breakpoints 991 px, 767 px and 478 px are written as 991.98 px, 767.98 px and 478.98 px, the convention of the current `main.css`. Results are identical at integer widths.
+- **A-3 H2 size.** The reference root font size is 10px, so its H2 rule renders 21.25 px to 31.25 px; the current stylesheet has no root rule, so the H2 is written in px (`clamp(21.25px, 3.6vw, 31.25px)`). This applies E-2 of PD-56 and preserves the rendering observed in the reference.
+- **A-4 Scroll margin.** `scroll-margin-top` of the section copies the two values of the process section (D-4).
+
+**Not authorized by this decision:** M04-04, M04-05, commit, push and deployment. Commit of the implementation is a separate Product Manager act after the review is CONFORME and the visual validation of the five viewports (1920 × 945, 1024 × 1366, 820 × 1180, 844 × 414, 390 × 844) is given.
